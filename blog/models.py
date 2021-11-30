@@ -29,3 +29,19 @@ class Article(models.Model):
 	series = models.ForeignKey(ArticleSeries, on_delete=models.CASCADE, null=True)
 	# user, image, title, content, tags, status, views, date_created, category, series 
 
+
+class Comment(models.Model):
+	article = models.ForeignKey(Article, on_delete=models.CASCADE)
+	name = models.CharField('Keyword', max_length=200)
+	email = models.CharField('Email', max_length=200)
+	message = models.CharField('Keyword', max_length=1200)
+	date_created = models.DateTimeField('Date Created', auto_now_add=True)
+
+
+class CommentReply(models.Model):
+	comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
+	name = models.CharField('Keyword', max_length=200)
+	email = models.CharField('Email', max_length=200)
+	message = models.CharField('Keyword', max_length=1200)
+	date_created = models.DateTimeField('Date Created', auto_now_add=True)
+

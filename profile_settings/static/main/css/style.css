@@ -1,0 +1,30 @@
+#navbarMain ***REMOVED***
+	padding-inline: 150px;
+	padding-top: 20px;
+***REMOVED***
+
+.nav-link:hover ***REMOVED***
+	color: cyan !important;
+***REMOVED***
+
+#intro-pill ***REMOVED***
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+	border-bottom-left-radius: 0px;
+***REMOVED***
+
+#profile-banner ***REMOVED***
+	min-height: 700px;
+	border-bottom: solid 1px;
+***REMOVED***
+
+.banner-profile-div ***REMOVED***
+	border: 20px solid rgba(0, 0, 0, 0.07);
+	margin: 0 auto;
+***REMOVED***
+
+.banner-profile-img ***REMOVED***
+	text-align: center;
+	border: 20px solid rgba(0, 0, 0, 0.17);
+***REMOVED***
