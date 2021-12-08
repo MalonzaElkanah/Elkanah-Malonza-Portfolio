@@ -7,6 +7,11 @@
 	color: cyan !important;
 ***REMOVED***
 
+.navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show > .nav-link ***REMOVED***
+    color: rgba(0,0,0,.9);
+    border-color: #212529 !important;
+	border-bottom: 1px solid;
+***REMOVED***
 #intro-pill ***REMOVED***
 	border-top-left-radius: 20px;
 	border-top-right-radius: 20px;
@@ -14,9 +19,8 @@
 	border-bottom-left-radius: 0px;
 ***REMOVED***
 
-#profile-banner ***REMOVED***
-	min-height: 700px;
-	border-bottom: solid 1px;
+.section-height ***REMOVED***
+	min-height: 680px;
 ***REMOVED***
 
 .banner-profile-div ***REMOVED***
@@ -27,4 +31,8 @@
 .banner-profile-img ***REMOVED***
 	text-align: center;
 	border: 20px solid rgba(0, 0, 0, 0.17);
+***REMOVED***
+
+.shadow-1 ***REMOVED***
+  	box-shadow: 0px 10px 20px 4px #00000015;
 ***REMOVED***

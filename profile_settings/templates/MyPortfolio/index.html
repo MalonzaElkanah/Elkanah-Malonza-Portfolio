@@ -11,11 +11,13 @@
     <!-- Custom CSS -->
     <link href="***REMOVED***% static 'main/css/style.css' %***REMOVED***" rel="stylesheet">
 
+    <link rel="stylesheet" href="***REMOVED***% static 'main/bundles/apexcharts/apexcharts.css' %***REMOVED***">
+
 	<title>Elkanah Malonza</title>
 </head>
-<body>
+<body data-bs-spy="scroll" data-bs-target="#scroll-navbar" data-bs-offset="5">
 	<!-- Naviigation Section -->
-	<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-transparent">
+	<nav id="scroll-navbar" class="navbar navbar-expand-lg fixed-top navbar-light" style="background-color: #fff;">
 		<div class="container">
 		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		    	<span class="navbar-toggler-icon"></span>
@@ -23,28 +25,28 @@
 		    <div class="collapse navbar-collapse" id="navbarMain">
 			    <ul class="navbar-nav mb-2 mb-lg-0 w-100 justify-content-around">
 			        <li class="nav-item">
-			        	<a class="nav-link fs-5 active" aria-current="page" href="#">Home</a>
+			        	<a class="nav-link fs-5" aria-current="page" href="#profile-banner">Home</a>
 			        </li>
 			        <li class="nav-item">
-			        	<a class="nav-link fs-5 active border-bottom border-dark" href="#">About</a>
+			        	<a class="nav-link fs-5" href="#section-about">About</a>
 			        </li>
 			        <li class="nav-item">
-			          	<a class="nav-link fs-5 active" href="#">Skills</a>
+			          	<a class="nav-link fs-5" href="#section-skills">Skills</a>
 			        </li>
 			        <li class="nav-item">
-			          	<a class="nav-link fs-5 active" href="#">Experiences</a>
+			          	<a class="nav-link fs-5" href="#section-experiences">Experiences</a>
 			        </li>
 			        <li class="nav-item">
-			          	<a class="nav-link fs-5 active" href="#">Project</a>
+			          	<a class="nav-link fs-5" href="#section-project">Project</a>
 			        </li>
 			        <li class="nav-item">
-			        	<a class="nav-link fs-5 active" href="#">Pricing</a>
+			        	<a class="nav-link fs-5" href="#section-pricing">Pricing</a>
 			        </li>
 			        <li class="nav-item">
-			        	<a class="nav-link fs-5 active" href="#">Blog</a>
+			        	<a class="nav-link fs-5" href="#section-blog">Blog</a>
 			        </li>
 			        <li class="nav-item">
-			        	<a class="nav-link fs-5 active" href="#">Contact</a>
+			        	<a class="nav-link fs-5" href="#section-contact">Contact</a>
 			        </li>
 			    </ul>
 		    </div>
@@ -56,8 +58,8 @@
 	<main class="container main-index">
 
         <!-- Banner Section Start -->
-        <div id="profile-banner" class="row align-items-end">
-        	<div class="col-md-6 pb-4">
+        <div id="profile-banner" class="row align-items-center section-height">
+        	<div class="col-md-6">
         		
         		<div class="row">
         			<p><span id="intro-pill" class="fs-5 badge bg-primary">Hello, I'm </span></p>
@@ -101,7 +103,974 @@
         </div>
         <!-- /Banner Section Ends -->
 
+        <!-- About-Me Section -->
+        <div id="section-about" class="row align-items-center section-height">
+        	<div class="col-md-6">
+        		<img src="***REMOVED***% static 'main/images/canvas.png' %***REMOVED***" class="ratio ratio-1x1 w-75">
+        	</div>
+        	<div class="col-md-6">
+        		<div class="row">
+        			<h3>About Me</h3>
+        			<p>Hello, I’m a Patrick, web-developer based on Paris. I have rich experience in web site design & building and customization. Also I am good at</p>        			
+        		</div>
+        		<div class="row">
+        			<div class="col-12">
+    					<a href="#" class="btn btn-outline-primary disabled my-1">Python</a>
+    					<a href="#" class="btn btn-outline-primary disabled my-1">Javascript</a>
+    					<a href="#" class="btn btn-outline-primary disabled my-1">HTML</a>
+    					<a href="#" class="btn btn-outline-primary disabled my-1">CSS</a>
+    					<a href="#" class="btn btn-outline-primary disabled my-1">JQuery</a>
+    					<a href="#" class="btn btn-outline-primary disabled my-1">Bootstrap</a>
+    					<a href="#" class="btn btn-outline-primary disabled my-1">XML</a>
+    					<a href="#" class="btn btn-outline-primary disabled my-1">SQL</a>
+    				</div>
+        		</div>
+        		<div class="row pt-3">
+        			<div class="col-12">
+        				<a href="#" class="btn btn-primary">Download CV <i class="fas fa-file-download"></i></a>
+        			</div>
+        		</div>
+        	</div>
+        </div>
+        <!-- /About-Me Section Ends -->
+
+        <!-- Service Section -->
+        <div id="section-skills" class="row align-items-center section-height">
+        	<div class="col-12">
+        		<div class="row text-center pb-5">
+        			<h2>What I DO</h2>
+        		</div>
+	        	<div class="row">
+		        	<div class="col-md-4">
+		        		<div class="card shadow bg-body rounded">
+		        			<div class="card-body">
+		        			 	<div class="row py-3">
+		        			 		<i class="fas fa-drafting-compass fa-2x text-success"></i>
+		        			 	</div>
+							    <h3 class="card-title">UI Design</h3>
+							    <p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+							</div>
+		        		</div>
+		        	</div>
+		        	<div class="col-md-4">
+		        		<div class="card shadow bg-body rounded">
+		        			<div class="card-body">
+		        			 	<div class="row py-3">
+		        			 		<i class="fas fa-laptop-code fa-2x text-primary"></i>
+		        			 	</div>
+							    <h3 class="card-title">Web Development</h3>
+							    <p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+							</div>
+		        			
+		        		</div>
+		        	</div>
+		        	<div class="col-md-4">
+		        		<div class="card shadow bg-body rounded">
+		        			<div class="card-body">
+		        			 	<div class="row py-3">
+		        			 		<i class="fas fa-object-group fa-2x text-danger"></i>
+		        			 	</div>
+		        			 	<div class="row">
+		        			 		<h3 class="card-title">App Development</h3>
+							    	<p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+		        			 	</div>
+							</div>
+		        		</div>
+		        	</div>
+	        	</div>
+	        </div>
+        </div>
+        <!-- /Service Section Ends -->
+
+        <!-- Skills Section -->
+        <div class="row align-items-center section-height">
+        	<div class="col-12">
+        		<div class="row">
+		        	<div class="col-md-6">
+		        		<div class="row  text-center pb-3">
+		        			<h3>Technical Skills</h3>
+		        		</div>
+		        		<div class="row">
+		        			<div class="col-12 pb-5">
+		        				<div class="row justify-content-between">
+		        					<div class="col">Python</div>
+		        					<div class="col text-end">80%</div>
+		        				</div>
+		        				<div class="progress" style="height: 7px;">
+								  	<div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+								</div>
+		        			</div>
+
+		        			<div class="col-12 pb-5">
+		        				<div class="row justify-content-between">
+		        					<div class="col">JavaScript</div>
+		        					<div class="col text-end">70%</div>
+		        				</div>
+		        				<div class="progress" style="height: 7px;">
+								  	<div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+								</div>
+		        			</div>
+
+		        			<div class="col-12 pb-5">
+		        				<div class="row justify-content-between">
+		        					<div class="col">Java</div>
+		        					<div class="col text-end">60%</div>
+		        				</div>
+		        				<div class="progress" style="height: 7px;">
+								  	<div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+								</div>
+		        			</div>
+
+		        			<div class="col-12 pb-5">
+		        				<div class="row justify-content-between">
+		        					<div class="col">PHP</div>
+		        					<div class="col text-end">50%</div>
+		        				</div>
+		        				<div class="progress" style="height: 7px;">
+								  	<div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+								</div>
+		        			</div>
+		        		</div>
+		        	</div>
+		        	<div class="col-md-6">
+		        		<div class="row text-center">
+		        			<h3>Professional Skills</h3>
+		        		</div>
+		        		<div class="row">
+		        			<div class="col-6">
+		        				<div id="chart1" class="align-self-center"></div>
+		        			</div>
+		        			<div class="col-6">
+		        				<div id="chart2" class="align-self-center"></div>
+		        			</div>
+		        			<div class="col-6">
+		        				<div id="chart3" class="align-self-center"></div>
+		        			</div>
+		        			<div class="col-6">
+		        				<div id="chart4" class="align-self-center"></div>
+		        			</div>
+		        		</div>
+		        	</div>
+		        </div>
+        	</div>
+        </div>
+        <!-- /Skills Section Ends -->
+
+        <!-- Experience Section -->
+        <div id="section-experiences" class="row align-items-center section-height">
+        	<div class="col-12">
+        		<div class="row">
+        			<div class="col-md-6">
+        				<div class="row text-center pb-4">
+        					<h3>Education</h3>
+        				</div>
+        				<div class="row">
+        					<div class="col-12 pb-3">
+        						<div class="card shadow bg-body rounded">
+        							<div class="card-body">
+        								<div class="card-title h5">Art & Multimedia From <a href="#" class="text-decoration-none text-primary"><em>Oxford University</em></a></div>
+        								<p class="text-primary">2005-2008</p>
+        								<div class="card-text">
+        									It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum 
+        								</div>
+        							</div>
+        						</div>
+        					</div>
+
+        					<div class="col-12 pb-3">
+        						<div class="card shadow bg-body rounded">
+        							<div class="card-body">
+        								<div class="card-title h5">Art & Multimedia From <a href="#" class="text-decoration-none text-primary"><em>Oxford University</em></a></div>
+        								<p class="text-primary">2005-2008</p>
+        								<div class="card-text">
+        									It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum 
+        								</div>
+        							</div>
+        						</div>
+        					</div>
+        					<div class="col-12 pb-3">
+        						<div class="card shadow bg-body rounded">
+        							<div class="card-body">
+        								<div class="card-title h5">Art & Multimedia From <a href="#" class="text-decoration-none text-primary"><em>Oxford University</em></a></div>
+        								<p class="text-primary">2005-2008</p>
+        								<div class="card-text">
+        									It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum 
+        								</div>
+        							</div>
+        						</div>
+        					</div>
+        				</div>
+        			</div>
+        			<div class="col-md-6">
+        				<div class="row text-center pb-4">
+        					<h3>Work Experience</h3>
+        				</div>
+        				<div class="row">
+        					<div class="col-12 pb-3">
+        						<div class="card shadow bg-body rounded">
+        							<div class="card-body">
+        								<div class="card-title h5">UI/UX Designer <a href="#" class="text-decoration-none text-primary"> <em>IronSketch</em></a></div>
+        								<p class="text-primary">2005-2008</p>
+        								<div class="card-text">
+        									<em class="small">Responsibility</em>
+        									<ul class="small">
+											    <li>An item</li>
+											    <li>A second item</li>
+											</ul>
+        								</div>
+        							</div>
+        						</div>
+        					</div>
+
+        					<div class="col-12 pb-3">
+        						<div class="card shadow bg-body rounded">
+        							<div class="card-body">
+        								<div class="card-title h5">UI/UX Designer <a href="#" class="text-decoration-none text-primary"> <em>IronSketch</em></a></div>
+        								<p class="text-primary">2005-2008</p>
+        								<div class="card-text">
+        									<em class="small">Responsibility</em>
+        									<ul class="small">
+											    <li>An item</li>
+											    <li>A second item</li>
+											</ul>
+        								</div>
+        							</div>
+        						</div>
+        					</div>
+
+        					<div class="col-12 pb-3">
+        						<div class="card shadow bg-body rounded">
+        							<div class="card-body">
+        								<div class="card-title h5">UI/UX Designer <a href="#" class="text-decoration-none text-primary"> <em>IronSketch</em></a></div>
+        								<p class="text-primary">2005-2008</p>
+        								<div class="card-text">
+        									<em class="small">Responsibility</em>
+        									<ul class="small">
+											    <li>An item</li>
+											    <li>A second item</li>
+											</ul>
+        								</div>
+        							</div>
+        						</div>
+        					</div>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </div>
+        <!-- /Experience Section Ends -->
+
+        <!-- Project Section -->
+        <div id="section-project" class="row align-items-center section-height">
+        	<div class="col-12">
+        		<div class="row text-center pb-4">
+	        		<h3>Recent Projects</h3>
+	        	</div>
+        	
+        		<div class="row">
+        			<div class="col-md-6">
+        				<div class="card shadow bg-body rounded mb-3" style="max-width: 540px;">
+							<div class="row g-0">
+								<div class="col-md-4">
+									<img src="***REMOVED***% static 'main/images/project-1.png' %***REMOVED***" class="img-fluid rounded-start" alt="...">
+								</div>
+								<div class="col-md-8">
+									<div class="card-body">
+									    <h5 class="card-title">Review Web App</h5>
+									    <p class="card-text text-success"> HTML, CSS, Javascript, Bootstrap, Python, Django, JQuery</p>
+									    <div class="row justify-content-between">
+									    	<div class="col"><small class="text-muted">January 13, 2021</small></div>
+									    	<div class="col text-end"><a href="#" class="btn btn-primary">Details</a></div>
+									    </div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+        			</div>
+        			<div class="col-md-6">
+        				<div class="card mb-3 shadow bg-body rounded" style="max-width: 540px;">
+							<div class="row g-0">
+								<div class="col-md-4">
+									<img src="***REMOVED***% static 'main/images/project-2.jpg' %***REMOVED***" class="img-fluid rounded-start" alt="...">
+								</div>
+								<div class="col-md-8">
+									<div class="card-body">
+									    <h5 class="card-title">Budget App</h5>
+									    <p class="card-text text-success"> HTML, CSS, Javascript, Bootstrap, Python, Django, JQuery</p>
+									    <div class="row justify-content-between">
+									    	<div class="col"><small class="text-muted">August 13, 2022</small></div>
+									    	<div class="col text-end"><a href="#" class="btn btn-primary">Details</a></div>
+									    </div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+        			</div>
+
+        			<div class="col-md-6">
+        				<div class="card mb-3 shadow bg-body rounded" style="max-width: 540px;">
+							<div class="row g-0">
+								<div class="col-md-4">
+									<img src="***REMOVED***% static 'main/images/project-3.jpg' %***REMOVED***" class="img-fluid rounded-start" alt="...">
+								</div>
+								<div class="col-md-8">
+									<div class="card-body">
+									    <h5 class="card-title">Job Web Scrapper</h5>
+									    <p class="card-text text-success"> HTML, CSS, Javascript, Bootstrap, Python, Django, JQuery</p>
+									    <div class="row justify-content-between">
+									    	<div class="col"><small class="text-muted">December 23, 2021</small></div>
+									    	<div class="col text-end"><a href="#" class="btn btn-primary">Details</a></div>
+									    </div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+        			</div>
+
+        			<div class="col-md-6">
+        				<div class="card mb-3 shadow bg-body rounded" style="max-width: 540px;">
+							<div class="row g-0">
+								<div class="col-md-4">
+									<img src="***REMOVED***% static 'main/images/project-5.png' %***REMOVED***" class="img-fluid rounded-start" alt="...">
+								</div>
+								<div class="col-md-8">
+									<div class="card-body">
+									    <h5 class="card-title">My Portfolio</h5>
+									    <p class="card-text text-success"> HTML, CSS, Javascript, Bootstrap, Python, Django, JQuery</p>
+									    <div class="row justify-content-between">
+									    	<div class="col"><small class="text-muted">December 13, 2021</small></div>
+									    	<div class="col text-end"><a href="#" class="btn btn-primary">Details</a></div>
+									    </div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+        			</div>
+
+
+        		</div>
+        	</div>
+        </div>
+        <!-- /Project Section Ends -->
+
+        <!-- Pricing Section -->
+        <div id="section-pricing" class="row align-items-center section-height">
+        	<div class="col-12">
+        		<div class="row text-center pb-4">
+	        		<h3>Pricing</h3>
+	        	</div>
+        		<div class="row text-center">
+        			<div class="col-4">
+        				<div class="card shadow bg-body rounded">
+        					<div class="card-body">
+		        				<div class="row p-4">
+		        					<i class="fas fa-file fa-2x text-primary"></i>
+		        				</div>
+		        				<div class="row pb-3">
+		        					<h4>Full Time Work</h4>
+		        					<small>I am available for full time</small>
+		        				</div>
+		        				<div class="row pb-3">
+		        					<h4 class="display-6 text-primary">kSH 50,000</h4>
+		        				</div>
+		        				<div class="row pb-3">
+		        					<p>
+								    Web Development<br>
+								    Advetising<br>
+								    Game Development<br>
+								    Music Writing<br>
+									</p>
+								</div>
+								<div class="row pb-3">
+									<div class="col-12">
+										<a href="#" class="btn btn-primary">Hire Me</a>
+									</div>
+								</div>
+
+        					</div>
+        				</div>
+        			</div>
+        			<div class="col-4">
+        				<div class="card shadow bg-body rounded">
+        					<div class="card-body">
+		        				<div class="row p-4">
+		        					<i class="fas fa-file fa-2x text-primary"></i>
+		        				</div>
+		        				<div class="row pb-3">
+		        					<h4>Fixed Price Project</h4>
+		        					<small>I am available for Fixed Roles</small>
+		        				</div>
+		        				<div class="row pb-3">
+		        					<h4 class="display-6 text-primary">kSH 17,000</h4>
+		        				</div>
+		        				<div class="row pb-3">
+		        					<p>
+								    Web Development<br>
+								    Advetising<br>
+								    Game Development<br>
+								    Music Writing<br>
+									</p>
+								</div>
+								<div class="row pb-3">
+									<div class="col-12">
+										<a href="#" class="btn btn-primary">Hire Me</a>
+									</div>
+								</div>
+
+        					</div>
+        				</div>
+        			</div>
+        			<div class="col-4">
+        				<div class="card shadow bg-body rounded">
+        					<div class="card-body">
+		        				<div class="row p-4">
+		        					<i class="fas fa-file fa-2x text-primary"></i>
+		        				</div>
+		        				<div class="row pb-3">
+		        					<h4>Hourley work</h4>
+		        					<small>I am available for Hourley projets</small>
+		        				</div>
+		        				<div class="row pb-3">
+		        					<h4 class="display-6 text-primary">kSH 100</h4>
+		        				</div>
+		        				<div class="row pb-3">
+		        					<p>
+								    Web Development<br>
+								    Advetising<br>
+								    Game Development<br>
+								    Music Writing<br>
+									</p>
+								</div>
+								<div class="row pb-3">
+									<div class="col-12">
+										<a href="#" class="btn btn-primary">Hire Me</a>
+									</div>
+								</div>
+
+        					</div>
+        				</div>
+        			</div>
+
+
+        		</div>
+        	</div>
+        </div>
+        <!-- /Pricing Section Ends -->
+
+        <!-- Blog Section -->
+        <div id="section-blog" class="row align-items-center section-height">
+        	<div class="col-12">
+        		<div class="row text-center pb-4">
+	        		<h3>Featured Posts</h3>
+	        	</div>
+        		<div class="row">
+			        <div class="col-12 col-md-4">
+			            <div class="card shadow bg-body rounded" style="">
+						  	<img src="***REMOVED***% static 'main/images/blog-1.jpg' %***REMOVED***" class="card-img-top" alt="...">
+							<div class="card-body">
+							    <h4 class="card-title"><a href="***REMOVED***% url 'blog' %***REMOVED***" class="text-decoration-none text-muted">The oddest place you will find photo studios</a></h4>
+							    <p class="small">
+							    	<strong>Posted on </strong>
+							    	<a href="#" class="text-decoration-none">January 06, 2021</a> 
+							    	<strong>By</strong> 
+							    	<a href="#" class="text-decoration-none"> Malonza Elkanah</a>
+							    </p>
+							    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+							    <a href="#" class="text-decoration-none">Read More...</a>
+							</div>
+						</div>
+			        </div>
+
+			        <div class="col-12 col-sm-6 col-md-4">
+			            <div class="card shadow bg-body rounded" style="">
+						  	<img src="***REMOVED***% static 'main/images/blog-2.jpg' %***REMOVED***" class="card-img-top" alt="...">
+							<div class="card-body">
+							    <h4 class="card-title"><a href="#" class="text-decoration-none text-muted">The oddest place you will find photo studios</a></h4>
+							    <p class="small">
+							    	<strong>Posted on </strong>
+							    	<a href="#" class="text-decoration-none">January 06, 2021</a> 
+							    	<strong>By</strong> 
+							    	<a href="#" class="text-decoration-none"> Malonza Elkanah</a>
+							    </p>
+							    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+							    <a href="#" class="text-decoration-none">Read More...</a>
+							</div>
+						</div>
+			        </div>
+
+			        <div class="col-12 col-sm-6 col-md-4">
+			            <div class="card shadow bg-body rounded" style="">
+						  	<img src="***REMOVED***% static 'main/images/blog-5.png' %***REMOVED***" class="card-img-top" alt="...">
+							<div class="card-body">
+							    <h4 class="card-title"><a href="#" class="text-decoration-none text-muted">The oddest place you will find photo studios</a></h4>
+							    <p class="small">
+							    	<strong>Posted on </strong>
+							    	<a href="#" class="text-decoration-none">January 06, 2021</a> 
+							    	<strong>By</strong> 
+							    	<a href="#" class="text-decoration-none"> Malonza Elkanah</a>
+							    </p>
+							    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+							    <a href="#" class="text-decoration-none">Read More...</a>
+							</div>
+						</div>
+			        </div>
+        		</div>
+        	</div>
+        </div>
+        <!-- /Blog Section Ends -->
+
+        <!-- Client-Review Section -->
+        <div class="row align-items-center section-height">
+        	<div class="col-12">
+        		<div class="row text-center pb-4">
+	        		<h3>Client Review</h3>
+	        	</div>
+        		<div class="row text-center">
+			        <div class="col-12 col-md-4">
+			            <div class="card shadow bg-body rounded" style="">
+			            	<div class="row justify-content-center p-4">
+			            		<div class="col-5">
+			            			<img src="***REMOVED***% static 'main/images/malonza.JPG' %***REMOVED***" class="ratio ratio-1x1 rounded-circle border border-info border-5" alt="...">
+			            		</div>
+			            	</div>
+			            	<div class="row px-4">
+			            		<figure class="text-center">
+									<blockquote class="blockquote">
+										<p>"A well-known quote, contained in a blockquote element. I think its good."</p>
+									</blockquote>
+									<figcaption class="blockquote-footer">
+									Someone famous in <cite title="Source Title">Source Title</cite>
+									</figcaption>
+								</figure>
+			            	</div>
+			            </div>
+			        </div>
+			        <div class="col-12 col-md-4">
+			            <div class="card shadow bg-body rounded" style="">
+			            	<div class="row justify-content-center p-4">
+			            		<div class="col-5">
+			            			<img src="***REMOVED***% static 'main/images/malonza.JPG' %***REMOVED***" class="ratio ratio-1x1 rounded-circle border border-info border-5" alt="...">
+			            		</div>
+			            	</div>
+			            	<div class="row px-4">
+			            		<figure class="text-center">
+									<blockquote class="blockquote">
+										<p>"A well-known quote, contained in a blockquote element. I think its good."</p>
+									</blockquote>
+									<figcaption class="blockquote-footer">
+									Someone famous in <cite title="Source Title">Source Title</cite>
+									</figcaption>
+								</figure>
+			            	</div>
+			            </div>
+			        </div>
+			        <div class="col-12 col-md-4">
+			            <div class="card shadow bg-body rounded" style="">
+			            	<div class="row justify-content-center p-4">
+			            		<div class="col-5">
+			            			<img src="***REMOVED***% static 'main/images/malonza.JPG' %***REMOVED***" class="ratio ratio-1x1 rounded-circle border border-info border-5" alt="...">
+			            		</div>
+			            	</div>
+			            	<div class="row px-4">
+			            		<figure class="text-center">
+									<blockquote class="blockquote">
+										<p>"A well-known quote, contained in a blockquote element. I think its good."</p>
+									</blockquote>
+									<figcaption class="blockquote-footer">
+									Someone famous in <cite title="Source Title">Source Title</cite>
+									</figcaption>
+								</figure>
+			            	</div>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+		</div>
+		<!-- /Client-Review Section End -->
+
+		<!-- Contact-Me Section -->
+        <div id="section-contact" class="row align-items-center section-height">
+        	<div class="col-12">
+        		<div class="row text-center pb-4">
+	        		<h3>Contact Me</h3>
+	        	</div>
+        		<div class="row">
+        			<div class="col-md-6">
+        				<div class="row pb-3">
+	        				<div class="card shadow bg-body rounded">
+	        					<div class="card-body">
+			        				<div class="row">
+			        					<div class="col-4 text-center">
+			        						<div class="row align-items-center pt-4">
+			        							<div class="">
+			        								<i class="fas fa-paper-plane fa-3x"></i>
+			        							</div>
+			        						</div>
+			        					</div>
+			        					<div class="col-8">
+			        						<div class="row"><h5>Address</h5></div>
+			        						<div class="row"><p>5th Avenue, 34th floor,<br>New york </p></div>
+			        						
+			        					</div>
+			        				</div>
+			        			</div>
+	        				</div>
+        				</div>
+
+        				<div class="row pb-3">
+	        				<div class="card shadow bg-body rounded">
+	        					<div class="card-body">
+			        				<div class="row">
+			        					<div class="col-4 text-center">
+			        						<div class="row align-items-center pt-4">
+			        							<div class="">
+			        								<i class="fas fa-envelope fa-3x"></i>
+			        							</div>
+			        						</div>
+			        					</div>
+			        					<div class="col-8">
+			        						<div class="row"><h5>Email</h5></div>
+			        						<div class="row"><p>elkanahmalonza@gmail.com<br>elkanahmalonza@gmail.com </p></div>
+			        						
+			        					</div>
+			        				</div>
+			        			</div>
+	        				</div>
+        				</div>
+
+        				<div class="row pb-3">
+	        				<div class="card shadow bg-body rounded">
+	        					<div class="card-body">
+			        				<div class="row">
+			        					<div class="col-4 text-center">
+			        						<div class="row align-items-center pt-4">
+			        							<div class="">
+			        								<i class="fas fa-phone-alt fa-3x"></i>
+			        							</div>
+			        						</div>
+			        					</div>
+			        					<div class="col-8">
+			        						<div class="row"><h5>Phone</h5></div>
+			        						<div class="row"><p>0716504983<br>0716504983</p></div>
+			        						
+			        					</div>
+			        				</div>
+			        			</div>
+	        				</div>
+        				</div>
+
+
+        			</div>
+
+        			<div class="col-md-6">
+        				<div class="row">
+        					<div class="mb-3">
+							 	<input type="email" class="form-control form-control-lg" id="exampleFormControlInput1" placeholder="First Name">
+							</div>
+							<div class="mb-3">
+							 	<input type="email" class="form-control form-control-lg" id="exampleFormControlInput1" placeholder="Last Name">
+							</div>
+        					<div class="mb-3">
+							 	<input type="email" class="form-control form-control-lg" id="exampleFormControlInput1" placeholder="Your Email">
+							</div>
+
+							<div class="mb-3">
+							  	<textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Message Here"></textarea>
+							</div>
+							<div class="col-12 d-grid gap-2"> 
+								<button type="submit" class="btn btn-primary">SEND MESSAGE</button>
+							</div>
+							
+        				</div>
+        				
+        			</div>
+
+        		</div>
+        	</div>
+        </div>
+        <!-- /Contact-Me Section Ends -->
+
     </main>
     <!-- /Content Section Ends  -->
+
+    <!-- Footer Section-->
+
+    <div class="container">
+		<footer class="py-3 my-4">
+		    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+		      	<li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+		      	<li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+		      	<li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Skills</a></li>
+    			<li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Experiences</a></li>
+		      	<li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Project</a></li>
+		      	<li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+		      	<li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Blog</a></li>
+		     	<li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Contact</a></li>
+		    </ul>
+		    <p class="text-center text-muted">&copy; 2021 Elkanah-Malonza, Inc</p>
+		</footer>
+	</div>
+    <!-- /Footer Section Ends-->
+
+    <!-- JS Libraies -->
+    <script src="***REMOVED***% static 'main/js/jquery-3.6.0.min.js' %***REMOVED***"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <script src="***REMOVED***% static 'main/bundles/apexcharts/apexcharts.js' %***REMOVED***"></script>
+    <script type="text/javascript">
+    	$(function () ***REMOVED***
+            chart1();
+            chart2();
+            chart3();
+            chart4();
+        ***REMOVED***);
+
+        function chart1()***REMOVED***
+        	var options = ***REMOVED***
+			  	chart: ***REMOVED***
+				    height: 180,
+				    type: "radialBar",
+			  	***REMOVED***,
+
+			  	series: [85],
+			  	colors: ["#20E647"],
+			  	plotOptions: ***REMOVED***
+			    	radialBar: ***REMOVED***
+			      		hollow: ***REMOVED***
+					        margin: 0,
+					        size: "70%",
+					        background: "#293450"
+				      	***REMOVED***,
+					    track: ***REMOVED***
+					        dropShadow: ***REMOVED***
+						        enabled: true,
+						        top: 2,
+						        left: 0,
+						        blur: 4,
+						        opacity: 0.15
+						    ***REMOVED***
+				      	***REMOVED***,
+					    dataLabels: ***REMOVED***
+					        name: ***REMOVED***
+					          offsetY: -10,
+					          color: "#fff",
+					          fontSize: "13px"
+					        ***REMOVED***,
+					        value: ***REMOVED***
+					          color: "#fff",
+					          fontSize: "25px",
+					          show: true
+					        ***REMOVED***
+					    ***REMOVED***
+			    	***REMOVED***
+			  	***REMOVED***,
+				fill: ***REMOVED***
+				    type: "gradient",
+				    gradient: ***REMOVED***
+				      shade: "dark",
+				      type: "vertical",
+				      gradientToColors: ["#87D4F9"],
+				      stops: [0, 100]
+				    ***REMOVED***
+				***REMOVED***,
+				stroke: ***REMOVED***
+				    lineCap: "round"
+				***REMOVED***,
+				labels: ["Communication"]
+			***REMOVED***;
+
+			var chart = new ApexCharts(document.querySelector("#chart1"), options);
+			chart.render();
+        ***REMOVED***
+
+        function chart2()***REMOVED***
+        	var options = ***REMOVED***
+			  	chart: ***REMOVED***
+				    height: 180,
+				    type: "radialBar",
+			  	***REMOVED***,
+
+			  	series: [74],
+			  	colors: ["#20E647"],
+			  	plotOptions: ***REMOVED***
+			    	radialBar: ***REMOVED***
+			      		hollow: ***REMOVED***
+					        margin: 0,
+					        size: "70%",
+					        background: "#293450"
+				      	***REMOVED***,
+					    track: ***REMOVED***
+					        dropShadow: ***REMOVED***
+						        enabled: true,
+						        top: 2,
+						        left: 0,
+						        blur: 4,
+						        opacity: 0.15
+						    ***REMOVED***
+				      	***REMOVED***,
+					    dataLabels: ***REMOVED***
+					        name: ***REMOVED***
+					          offsetY: -10,
+					          color: "#fff",
+					          fontSize: "13px"
+					        ***REMOVED***,
+					        value: ***REMOVED***
+					          color: "#fff",
+					          fontSize: "25px",
+					          show: true
+					        ***REMOVED***
+					    ***REMOVED***
+			    	***REMOVED***
+			  	***REMOVED***,
+				fill: ***REMOVED***
+				    type: "gradient",
+				    gradient: ***REMOVED***
+				      shade: "dark",
+				      type: "vertical",
+				      gradientToColors: ["#87D4F9"],
+				      stops: [0, 100]
+				    ***REMOVED***
+				***REMOVED***,
+				stroke: ***REMOVED***
+				    lineCap: "round"
+				***REMOVED***,
+				labels: ["Team Work"]
+			***REMOVED***;
+
+			var chart = new ApexCharts(document.querySelector("#chart2"), options);
+			chart.render();
+        ***REMOVED***
+
+        function chart3()***REMOVED***
+        	var options = ***REMOVED***
+			  	chart: ***REMOVED***
+				    height: 180,
+				    type: "radialBar",
+			  	***REMOVED***,
+
+			  	series: [80],
+			  	colors: ["#20E647"],
+			  	plotOptions: ***REMOVED***
+			    	radialBar: ***REMOVED***
+			      		hollow: ***REMOVED***
+					        margin: 0,
+					        size: "70%",
+					        background: "#293450"
+				      	***REMOVED***,
+					    track: ***REMOVED***
+					        dropShadow: ***REMOVED***
+						        enabled: true,
+						        top: 2,
+						        left: 0,
+						        blur: 4,
+						        opacity: 0.15
+						    ***REMOVED***
+				      	***REMOVED***,
+					    dataLabels: ***REMOVED***
+					        name: ***REMOVED***
+					          offsetY: -10,
+					          color: "#fff",
+					          fontSize: "13px"
+					        ***REMOVED***,
+					        value: ***REMOVED***
+					          color: "#fff",
+					          fontSize: "25px",
+					          show: true
+					        ***REMOVED***
+					    ***REMOVED***
+			    	***REMOVED***
+			  	***REMOVED***,
+				fill: ***REMOVED***
+				    type: "gradient",
+				    gradient: ***REMOVED***
+				      shade: "dark",
+				      type: "vertical",
+				      gradientToColors: ["#87D4F9"],
+				      stops: [0, 100]
+				    ***REMOVED***
+				***REMOVED***,
+				stroke: ***REMOVED***
+				    lineCap: "round"
+				***REMOVED***,
+				labels: ["Project Mngmt"]
+			***REMOVED***;
+
+			var chart = new ApexCharts(document.querySelector("#chart3"), options);
+			chart.render();
+        ***REMOVED***
+
+        function chart4()***REMOVED***
+        	var options = ***REMOVED***
+			  	chart: ***REMOVED***
+				    height: 180,
+				    type: "radialBar",
+			  	***REMOVED***,
+
+			  	series: [90],
+			  	colors: ["#20E647"],
+			  	plotOptions: ***REMOVED***
+			    	radialBar: ***REMOVED***
+			      		hollow: ***REMOVED***
+					        margin: 0,
+					        size: "70%",
+					        background: "#293450"
+				      	***REMOVED***,
+					    track: ***REMOVED***
+					        dropShadow: ***REMOVED***
+						        enabled: true,
+						        top: 2,
+						        left: 0,
+						        blur: 4,
+						        opacity: 0.15
+						    ***REMOVED***
+				      	***REMOVED***,
+					    dataLabels: ***REMOVED***
+					        name: ***REMOVED***
+					          offsetY: -10,
+					          color: "#fff",
+					          fontSize: "13px"
+					        ***REMOVED***,
+					        value: ***REMOVED***
+					          color: "#fff",
+					          fontSize: "25px",
+					          show: true
+					        ***REMOVED***
+					    ***REMOVED***
+			    	***REMOVED***
+			  	***REMOVED***,
+				fill: ***REMOVED***
+				    type: "gradient",
+				    gradient: ***REMOVED***
+				      shade: "dark",
+				      type: "vertical",
+				      gradientToColors: ["#87D4F9"],
+				      stops: [0, 100]
+				    ***REMOVED***
+				***REMOVED***,
+				stroke: ***REMOVED***
+				    lineCap: "round"
+				***REMOVED***,
+				labels: ["Creativity"]
+			***REMOVED***;
+
+			var chart = new ApexCharts(document.querySelector("#chart4"), options);
+			chart.render();
+        ***REMOVED***
+        $(document).ready(function()***REMOVED***
+        	$(this).scroll(function()***REMOVED***
+        		$("#scroll-navbar").addClass('border-bottom');
+        		clearTimeout($.data(this, 'scrollTimer'));
+				$.data(this, 'scrollTimer', setTimeout(function() ***REMOVED***
+				      $("#scroll-navbar").removeClass('border-bottom');
+				      console.log("Haven't scrolled in 250ms!");
+				***REMOVED***, 500));
+        	***REMOVED***);
+        ***REMOVED***);
+    	
+    </script>
 </body>
 </html>
