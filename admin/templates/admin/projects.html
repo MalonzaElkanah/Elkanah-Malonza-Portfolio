@@ -1,0 +1,210 @@
+***REMOVED***% extends "admin/base.html" %***REMOVED***
+
+***REMOVED***% block title %***REMOVED*** Admin - Home ***REMOVED***% endblock %***REMOVED***
+
+***REMOVED***% load static %***REMOVED***
+
+***REMOVED***% block css %***REMOVED***
+    <link rel="stylesheet" href="***REMOVED***% static 'admin/bundles/datatables/datatables.min.css' %***REMOVED***">
+    <link rel="stylesheet" href="***REMOVED***% static 'admin/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css' %***REMOVED***">
+***REMOVED***% endblock %***REMOVED***
+
+***REMOVED***% block sidenav %***REMOVED***                              
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-home' %***REMOVED***" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-messages' %***REMOVED***" class="nav-link"><i data-feather="message-square"></i><span>Messages</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-profile' %***REMOVED***" class="nav-link"><i data-feather="user"></i><span>Profile</span></a>
+    </li>
+    <li class="dropdown active">
+        <a href="***REMOVED***% url 'admin-projects' %***REMOVED***" class="nav-link"><i data-feather="codepen"></i><span>Project</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-work' %***REMOVED***" class="nav-link"><i data-feather="clipboard"></i><span>Work</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-education' %***REMOVED***" class="nav-link"><i data-feather="book-open"></i><span>Education</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-skills' %***REMOVED***" class="nav-link"><i data-feather="sliders"></i><span>Skills</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-services' %***REMOVED***" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
+    </li> 
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-blog' %***REMOVED***" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
+    </li>          
+    <li class="dropdown">
+        <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Settings</span></a>
+        <ul class="dropdown-menu">
+            <li><a class="nav-link" href="***REMOVED***% url 'admin-settings' %***REMOVED***">App Settings</a></li>
+            <li><a class="nav-link" href="***REMOVED***% url 'admin-settings' %***REMOVED***">Profile Settings</a></li>
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="unlock"></i><span>Authentication</span></a>
+        <ul class="dropdown-menu">
+            <li><a class="nav-link" href="#">New-password</a></li>
+            <li><a class="nav-link" href="***REMOVED***% url 'logout' %***REMOVED***">Logout</a></li>
+        </ul>
+    </li>                                   
+***REMOVED***% endblock %***REMOVED***
+
+***REMOVED***% block content %***REMOVED***
+    <section class="section">
+        <div class="section-body">
+            
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Multi Select</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table table-striped" id="table-2">
+                        <thead>
+                          <tr>
+                            <th class="text-center pt-3">
+                              <div class="custom-checkbox custom-checkbox-table custom-control">
+                                <input type="checkbox" data-checkboxes="mygroup" data-checkbox-role="dad"
+                                  class="custom-control-input" id="checkbox-all">
+                                <label for="checkbox-all" class="custom-control-label">&nbsp;</label>
+                              </div>
+                            </th>
+                            <th>Task Name</th>
+                            <th>Progress</th>
+                            <th>Members</th>
+                            <th>Due Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="text-center pt-2">
+                              <div class="custom-checkbox custom-control">
+                                <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input"
+                                  id="checkbox-1">
+                                <label for="checkbox-1" class="custom-control-label">&nbsp;</label>
+                              </div>
+                            </td>
+                            <td>Create a mobile app</td>
+                            <td class="align-middle">
+                              <div class="progress progress-xs">
+                                <div class="progress-bar width-per-70"></div>
+                              </div>
+                            </td>
+                            <td>
+                              <img alt="image" src="assets/img/users/user-5.png" width="35">
+                            </td>
+                            <td>2018-01-20</td>
+                            <td>
+                              <div class="badge badge-success badge-shadow">Completed</div>
+                            </td>
+                            <td><a href="***REMOVED***% url 'admin-project' %***REMOVED***" class="btn btn-primary">Detail</a></td>
+                          </tr>
+                          <tr>
+                            <td class="text-center pt-2">
+                              <div class="custom-checkbox custom-control">
+                                <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input"
+                                  id="checkbox-2">
+                                <label for="checkbox-2" class="custom-control-label">&nbsp;</label>
+                              </div>
+                            </td>
+                            <td>Redesign homepage</td>
+                            <td class="align-middle">
+                              <div class="progress progress-xs">
+                                <div class="progress-bar width-per-60"></div>
+                              </div>
+                            </td>
+                            <td>
+                              <img alt="image" src="assets/img/users/user-1.png" width="35">
+                              <img alt="image" src="assets/img/users/user-3.png" width="35">
+                              <img alt="image" src="assets/img/users/user-4.png" width="35">
+                            </td>
+                            <td>2018-04-10</td>
+                            <td>
+                              <div class="badge badge-info badge-shadow">Todo</div>
+                            </td>
+                            <td><a href="#" class="btn btn-primary">Detail</a></td>
+                          </tr>
+                          <tr>
+                            <td class="text-center pt-2">
+                              <div class="custom-checkbox custom-control">
+                                <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input"
+                                  id="checkbox-3">
+                                <label for="checkbox-3" class="custom-control-label">&nbsp;</label>
+                              </div>
+                            </td>
+                            <td>Backup database</td>
+                            <td class="align-middle">
+                              <div class="progress progress-xs">
+                                <div class="progress-bar bg-warning width-per-70"></div>
+                              </div>
+                            </td>
+                            <td>
+                              <img alt="image" src="assets/img/users/user-1.png" width="35">
+                              <img alt="image" src="assets/img/users/user-2.png" width="35">
+                            </td>
+                            <td>2018-01-29</td>
+                            <td>
+                              <div class="badge badge-warning badge-shadow">In Progress</div>
+                            </td>
+                            <td><a href="#" class="btn btn-primary">Detail</a></td>
+                          </tr>
+                          <tr>
+                            <td class="text-center pt-2">
+                              <div class="custom-checkbox custom-control">
+                                <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input"
+                                  id="checkbox-4">
+                                <label for="checkbox-4" class="custom-control-label">&nbsp;</label>
+                              </div>
+                            </td>
+                            <td>Input data</td>
+                            <td class="align-middle">
+                              <div class="progress progress-xs">
+                                <div class="progress-bar bg-success width-per-40"></div>
+                              </div>
+                            </td>
+                            <td>
+                              <img alt="image" src="assets/img/users/user-2.png" width="35">
+                              <img alt="image" src="assets/img/users/user-5.png" width="35">
+                              <img alt="image" src="assets/img/users/user-4.png" width="35">
+                              <img alt="image" src="assets/img/users/user-1.png" width="35">
+                            </td>
+                            <td>2018-01-16</td>
+                            <td>
+                              <div class="badge badge-success badge-shadow">Completed</div>
+                            </td>
+                            <td><a href="#" class="btn btn-primary">Detail</a></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </div>
+    </section>
+***REMOVED***% endblock %***REMOVED***
+
+***REMOVED***% block javascript %***REMOVED***
+    <script src="***REMOVED***% static 'admin/bundles/datatables/datatables.min.js' %***REMOVED***"></script>
+    <script src="***REMOVED***% static 'admin/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js' %***REMOVED***"></script>
+
+    <script type="text/javascript">
+        $("#table-2").dataTable(***REMOVED***
+            "columnDefs": [
+                ***REMOVED*** "sortable": false, "targets": [0, 1] ***REMOVED***
+            ],
+            order: [[1, "asc"]] //column indexes is zero based
+        ***REMOVED***);
+    </script>
+
+***REMOVED***% endblock %***REMOVED***

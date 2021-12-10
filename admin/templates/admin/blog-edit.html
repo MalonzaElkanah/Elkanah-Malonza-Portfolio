@@ -1,0 +1,261 @@
+***REMOVED***% extends "admin/base.html" %***REMOVED***
+
+***REMOVED***% block title %***REMOVED*** Admin - Home ***REMOVED***% endblock %***REMOVED***
+
+***REMOVED***% load static %***REMOVED***
+
+***REMOVED***% block css %***REMOVED***
+    <script src="https://kit.fontawesome.com/00b6dc780b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="***REMOVED***% static 'admin/bundles/summernote/summernote-bs4.css' %***REMOVED***">
+    <link rel="stylesheet" href="***REMOVED***% static 'admin/bundles/jquery-selectric/selectric.css' %***REMOVED***">
+    <link rel="stylesheet" href="***REMOVED***% static 'admin/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.css' %***REMOVED***">
+***REMOVED***% endblock %***REMOVED***
+
+***REMOVED***% block sidenav %***REMOVED***                              
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-home' %***REMOVED***" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-messages' %***REMOVED***" class="nav-link"><i data-feather="message-square"></i><span>Messages</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-profile' %***REMOVED***" class="nav-link"><i data-feather="user"></i><span>Profile</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-projects' %***REMOVED***" class="nav-link"><i data-feather="codepen"></i><span>Projects</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-work' %***REMOVED***" class="nav-link"><i data-feather="clipboard"></i><span>Work</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-education' %***REMOVED***" class="nav-link"><i data-feather="book-open"></i><span>Education</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-skills' %***REMOVED***" class="nav-link"><i data-feather="sliders"></i><span>Skills</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-services' %***REMOVED***" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
+    </li> 
+    <li class="dropdown active">
+        <a href="***REMOVED***% url 'admin-blog' %***REMOVED***" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
+    </li>          
+    <li class="dropdown">
+        <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Settings</span></a>
+        <ul class="dropdown-menu">
+            <li><a class="nav-link" href="***REMOVED***% url 'admin-settings' %***REMOVED***">App Settings</a></li>
+            <li><a class="nav-link" href="***REMOVED***% url 'admin-settings' %***REMOVED***">Profile Settings</a></li>
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="unlock"></i><span>Authentication</span></a>
+        <ul class="dropdown-menu">
+            <li><a class="nav-link" href="#">New-password</a></li>
+            <li><a class="nav-link" href="***REMOVED***% url 'logout' %***REMOVED***">Logout</a></li>
+        </ul>
+    </li>                                   
+***REMOVED***% endblock %***REMOVED***
+
+***REMOVED***% block content %***REMOVED***
+    <section class="section">
+        <div class="section-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>BLog Entry</h4>
+                        </div>
+                        <div class="card-body">
+                        <form action="#" method="POST" enctype="multipart/form-data">
+                            ***REMOVED***% csrf_token %***REMOVED***    
+                            <div class="form-group row mb-4">
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Title</label>
+                                <div class="col-sm-12 col-md-7">
+                                    <input type="text" class="form-control" name="title" required="">
+                                </div>
+                            </div>
+                            <div class="form-group row mb-4">
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Category</label>
+                                <div class="col-sm-12 col-md-7">
+                                    <div class="row">
+                                        <div class="col-10">
+                                            <select class="form-control selectric" name="category">
+                                            ***REMOVED***% for category in categories %***REMOVED***
+                                                <option>***REMOVED******REMOVED***category.name***REMOVED******REMOVED***</option>
+                                            ***REMOVED***% endfor %***REMOVED***
+                                            </select>
+                                        </div>
+                                        <div class="add-more col-2">
+                                            <a class="btn btn-outline-primary" href="#" data-toggle="modal" data-target="#addCategoryModal">
+                                                <i class="fa fa-plus"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-4">
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Content</label>
+                                <div class="col-sm-12 col-md-7">
+                                    <textarea class="summernote" name="content" required=""></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-4">
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Thumbnail</label>
+                                <div class="col-sm-12 col-md-7">
+                                    <div id="image-preview" class="image-preview">
+                                        <label for="image-upload" id="image-label">Choose File</label>
+                                        <input type="file" name="image" id="image-upload" required=""/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-4">
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Tags</label>
+                                <div class="col-sm-12 col-md-7">
+                                    <input type="text" class="form-control inputtags" name="tags">
+                                </div>
+                            </div>
+                            <div class="form-group row mb-4">
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Status</label>
+                                <div class="col-sm-12 col-md-7">
+                                    <select class="form-control selectric" name="status">
+                                        <option>Publish</option>
+                                        <option>Draft</option>
+                                        <option>Pending</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-4">
+                                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+                                <div class="col-sm-12 col-md-7">
+                                    <button class="btn btn-primary">Create Post</button>
+                                </div>
+                            </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+***REMOVED***% endblock %***REMOVED***
+
+***REMOVED***% block modal %***REMOVED***
+    <!-- Modal with form -->
+    <div class="modal fade bd-example-modal-lg" id="addCategoryModal" tabindex="-1" role="dialog" aria-labelledby="formModal" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="formModal">New Category</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="addForm" action="#" method="POST">
+                        ***REMOVED***% csrf_token %***REMOVED***
+                        <div class="category-info">
+                            <div class="row form-row category-cont">
+                                <div class="col-10">
+                                    <div class="form-group">
+                                        <label>Category</label>
+                                        <input type="text" class="form-control" name="category-name_1" required="">
+                                    </div> 
+                                </div>
+                                <div class="col-12 col-md-2">
+                                    <label class="d-md-block d-sm-none d-none">&nbsp;</label>
+                                    <a href="#" class="btn btn-danger trash"><i class="far fa-trash-alt"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add-more">
+                            <a href="javascript:void(0);" class="add-category"><i class="fa fa-plus-circle"></i> Add More</a>
+                        </div>
+                        <input type="hidden" name="form_num" value="1">
+                        <p id="count" style="display: none;">1</p>
+
+                        <button type="submit" class="btn btn-primary m-t-15 waves-effect">CREATE</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+***REMOVED***% endblock %***REMOVED***
+
+***REMOVED***% block javascript %***REMOVED***
+    <!-- JS Libraies -->
+    <script src="***REMOVED***% static 'admin/bundles/summernote/summernote-bs4.js' %***REMOVED***"></script>
+  <script src="***REMOVED***% static 'admin/bundles/jquery-selectric/jquery.selectric.min.js' %***REMOVED***"></script>
+  <script src="***REMOVED***% static 'admin/bundles/upload-preview/assets/js/jquery.uploadPreview.min.js' %***REMOVED***"></script>
+  <script src="***REMOVED***% static 'admin/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js' %***REMOVED***"></script>
+    <script type="text/javascript">
+        (function($) ***REMOVED***
+            "use strict";
+            // Add Milestone Add More
+            
+            $(".category-info").on('click','.trash', function () ***REMOVED***
+                $(this).closest('.category-cont').remove();
+                return false;
+            ***REMOVED***);
+
+            $(".add-category").on('click', function () ***REMOVED***
+                var input_num = parseInt($("#count").text());
+                input_num = input_num + 1;
+                $("#count").text(''+input_num+'');
+                $("input[name='form_num']").val(''+input_num+'');
+                var listcontent = '<div class="row form-row category-cont">' +
+                    '<div class="col-10">' +
+                        '<div class="form-group">' +
+                            '<label>Category</label>' +
+                            '<input type="text" class="form-control" name="category-name_'+input_num+'">' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="col-12 col-md-2">' +
+                       ' <label class="d-md-block d-sm-none d-none">&nbsp;</label>' +
+                        '<a href="#" class="btn btn-danger trash"><i class="far fa-trash-alt"></i></a>' +
+                    '</div>' +
+                '</div>';
+                
+                $(".category-info").append(listcontent);
+                return false;
+            ***REMOVED***);
+
+
+            $(".addForm").submit(function(event) ***REMOVED***
+                event.preventDefault();
+                $.ajax(***REMOVED*** 
+                    data: $(this).serialize(),
+                    type: $(this).attr('method'),
+                    url: $(this).attr('action'),
+                    success: function(response) ***REMOVED***
+                        console.log(response);
+                        if(response['success']) ***REMOVED***
+                            alert(response['success']);
+                            window.location.href = "../../../notes/update/";
+                        ***REMOVED***
+                        if(response['error']) ***REMOVED***
+                            alert(response['error']);
+                            //$("#id_error-text").html("Error: "+response['error']+"");
+                        ***REMOVED***
+                    ***REMOVED***,
+                    error: function (request, status, error) ***REMOVED***
+                        console.log(request.responseText);
+                    ***REMOVED***
+                ***REMOVED***);
+            ***REMOVED***);
+
+
+            $("select").selectric();
+            $.uploadPreview(***REMOVED***
+              input_field: "#image-upload",   // Default: .image-upload
+              preview_box: "#image-preview",  // Default: .image-preview
+              label_field: "#image-label",    // Default: .image-label
+              label_default: "Choose File",   // Default: Choose File
+              label_selected: "Change File",  // Default: Change File
+              no_label: false,                // Default: false
+              success_callback: null          // Default: null
+            ***REMOVED***);
+            $(".inputtags").tagsinput('items');
+
+        ***REMOVED***)(jQuery);
+    </script>
+
+***REMOVED***% endblock %***REMOVED***

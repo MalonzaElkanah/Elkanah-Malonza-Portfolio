@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- base.html  10 December 2021 10:30:05 EAT -->
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    ***REMOVED***% load static %***REMOVED***
+    <title>Elkanah Malonza | ***REMOVED***% block title %***REMOVED*** ***REMOVED***% endblock %***REMOVED***</title>
+    <link rel='shortcut icon' type='image/x-icon' href="***REMOVED***% static 'main/img/favicon.ico' %***REMOVED***" />
+
+    <!-- General CSS Files -->
+    <link rel="stylesheet" href="***REMOVED***% static 'admin/css/app.min.css' %***REMOVED***">
+    <link rel="stylesheet" href="***REMOVED***% static 'admin/bundles/bootstrap-social/bootstrap-social.css' %***REMOVED***">
+    <script src="https://kit.fontawesome.com/00b6dc780b.js" crossorigin="anonymous"></script>
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="***REMOVED***% static 'admin/css/style.css' %***REMOVED***">
+    <link rel="stylesheet" href="***REMOVED***% static 'admin/css/components.css' %***REMOVED***">
+    ***REMOVED***% block css %***REMOVED***
+    ***REMOVED***% endblock %***REMOVED***
+</head>
+
+<body>
+    <div class="loader"></div>
+    <div id="app">
+        <div class="main-wrapper main-wrapper-1">
+            <div class="navbar-bg"></div>
+            <nav class="navbar navbar-expand-lg main-navbar sticky">
+                <div class="form-inline mr-auto">
+                    <ul class="navbar-nav mr-3">
+                        <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg collapse-btn"> <i data-feather="align-justify"></i></a></li>
+                        <li><a href="#" class="nav-link nav-link-lg fullscreen-btn"> <i data-feather="maximize"></i></a></li>
+                        <li>
+                            <form class="form-inline mr-auto">
+                                <div class="search-element">
+                                    <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="200">
+                                    <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="navbar-nav navbar-right">
+                    
+                    <li class="dropdown dropdown-list-toggle">
+                        <a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg"><i data-feather="bell" class="bell"></i></a>
+                        <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
+                            <div class="dropdown-header"> Notifications
+                                <div class="float-right">
+                                    <a href="#">Mark All As Read</a>
+                                </div>
+                            </div>
+                            <div class="dropdown-list-content dropdown-list-icons">
+                            ***REMOVED***% for notification in notifications %***REMOVED***
+                                <a href="***REMOVED******REMOVED***notification.url***REMOVED******REMOVED***" class="dropdown-item dropdown-item-unread"> 
+                                    <span class="dropdown-item-icon ***REMOVED******REMOVED***notification.icon_color***REMOVED******REMOVED*** text-white"> <i class="***REMOVED******REMOVED***notification.icon***REMOVED******REMOVED***"></i></span> 
+                                    <span class="dropdown-item-desc"> 
+                                        ***REMOVED******REMOVED***notification.name***REMOVED******REMOVED*** 
+                                        <span class="time">***REMOVED******REMOVED***notification.time_difference***REMOVED******REMOVED***</span>
+                                    </span>
+                                </a> 
+                            ***REMOVED***% endfor %***REMOVED***
+                            </div>
+                            <div class="dropdown-footer text-center">
+                                <a href="#">View All <i class="fas fa-chevron-right"></i></a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user"> 
+                            <img alt="image" src="***REMOVED******REMOVED***profile.image.url***REMOVED******REMOVED***" class="user-img-radious-style"> 
+                            <span class="d-sm-none d-lg-inline-block"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right pullDown">
+                            <div class="dropdown-title">Hello ***REMOVED******REMOVED***user.first_name***REMOVED******REMOVED*** ***REMOVED******REMOVED***user.second_name***REMOVED******REMOVED***</div>
+                            <a href="#" class="dropdown-item has-icon"> 
+                                <i class="far fa-user"></i> Profile
+                            </a> 
+                            <a href="#" class="dropdown-item has-icon"> 
+                                <i class="fas fa-bolt"></i>Activities
+                            </a> 
+                            <a href="#" class="dropdown-item has-icon"> 
+                                <i class="fas fa-cog"></i> Settings
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item has-icon text-danger"> 
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="main-sidebar sidebar-style-2">
+                <aside id="sidebar-wrapper">
+                    <div class="sidebar-brand">
+                        <a href="***REMOVED***% url 'index' %***REMOVED***"> <img alt="image" src="***REMOVED******REMOVED***app.logo.url***REMOVED******REMOVED***" class="header-logo" /> <span class="logo-name">***REMOVED******REMOVED***app.app_name***REMOVED******REMOVED***</span> </a>
+                    </div>
+                    <ul class="sidebar-menu">
+                        <li class="menu-header">Main</li>
+                        
+                        ***REMOVED***% block sidenav %***REMOVED***
+                                                
+                        ***REMOVED***% endblock %***REMOVED***
+                    </ul>
+                </aside>
+            </div>
+            <!-- Main Content -->
+            <div class="main-content">
+                ***REMOVED***% block content %***REMOVED***
+                                
+                ***REMOVED***% endblock %***REMOVED***
+
+                ***REMOVED***% block modal %***REMOVED***
+
+                ***REMOVED***% endblock %***REMOVED***
+                
+                <div class="settingSidebar">
+                    <a href="javascript:void(0)" class="settingPanelToggle"> 
+                        <i class="fa fa-spin fa-cog"></i>
+                    </a>
+                    <div class="settingSidebar-body ps-container ps-theme-default">
+                        <div class=" fade show active">
+                            <div class="setting-panel-header">Setting Panel </div>
+                            <div class="p-15 border-bottom">
+                                <h6 class="font-medium m-b-10">Select Layout</h6>
+                                <div class="selectgroup layout-color w-50">
+                                    <label class="selectgroup-item">
+                                        <input type="radio" name="value" value="1" class="selectgroup-input-radio select-layout" checked>
+                                        <span class="selectgroup-button">Light</span>
+                                    </label>
+                                    <label class="selectgroup-item">
+                                        <input type="radio" name="value" value="2" class="selectgroup-input-radio select-layout">
+                                        <span class="selectgroup-button">Dark</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="p-15 border-bottom">
+                                <h6 class="font-medium m-b-10">Sidebar Color</h6>
+                                <div class="selectgroup selectgroup-pills sidebar-color">
+                                    <label class="selectgroup-item">
+                                        <input type="radio" name="icon-input" value="1" class="selectgroup-input select-sidebar">
+                                        <span class="selectgroup-button selectgroup-button-icon" data-toggle="tooltip"
+                                        data-original-title="Light Sidebar"><i class="fas fa-sun"></i></span>
+                                    </label>
+                                    <label class="selectgroup-item">
+                                        <input type="radio" name="icon-input" value="2" class="selectgroup-input select-sidebar" checked>
+                                        <span class="selectgroup-button selectgroup-button-icon" data-toggle="tooltip"
+                                        data-original-title="Dark Sidebar"><i class="fas fa-moon"></i></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="p-15 border-bottom">
+                                <h6 class="font-medium m-b-10">Color Theme</h6>
+                                <div class="theme-setting-options">
+                                    <ul class="choose-theme list-unstyled mb-0">
+                                        <li title="white" class="active">
+                                            <div class="white"></div>
+                                        </li>
+                                        <li title="cyan">
+                                            <div class="cyan"></div>
+                                        </li>
+                                        <li title="black">
+                                            <div class="black"></div>
+                                        </li>
+                                        <li title="purple">
+                                            <div class="purple"></div>
+                                        </li>
+                                        <li title="orange">
+                                            <div class="orange"></div>
+                                        </li>
+                                        <li title="green">
+                                            <div class="green"></div>
+                                        </li>
+                                        <li title="red">
+                                            <div class="red"></div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="p-15 border-bottom">
+                                <div class="theme-setting-options">
+                                    <label class="m-b-0">
+                                        <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input" id="mini_sidebar_setting">
+                                        <span class="custom-switch-indicator"></span>
+                                        <span class="control-label p-l-10">Mini Sidebar</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="p-15 border-bottom">
+                                <div class="theme-setting-options">
+                                    <label class="m-b-0">
+                                        <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input" id="sticky_header_setting">
+                                        <span class="custom-switch-indicator"></span>
+                                        <span class="control-label p-l-10">Sticky Header</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="mt-4 mb-4 p-3 align-center rt-sidebar-last-ele">
+                                <a href="#" class="btn btn-icon icon-left btn-primary btn-restore-theme">
+                                    <i class="fas fa-undo"></i> Restore Default
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- General JS Scripts -->
+    <script src="***REMOVED***% static 'admin/js/app.min.js' %***REMOVED***"></script>
+
+    <!-- Template JS File -->
+    <script src="***REMOVED***% static 'admin/js/scripts.js' %***REMOVED***"></script>
+
+    ***REMOVED***% block javascript %***REMOVED*** ***REMOVED***% endblock %***REMOVED***
+
+
+    <script type="text/javascript">
+        $(window).on("load", function () ***REMOVED***
+            //add class on body tag
+            jQuery("body").addClass("***REMOVED******REMOVED***app.layout_class***REMOVED******REMOVED***");
+            jQuery("body").addClass("***REMOVED******REMOVED***app.sidebar_color_class***REMOVED******REMOVED***");
+            jQuery("body").addClass("***REMOVED******REMOVED***app.color_theme_class***REMOVED******REMOVED***");
+            // set theme color
+            $(".choose-theme li").removeClass("active");
+            $(".choose-theme li[title|='***REMOVED******REMOVED***app.color_theme***REMOVED******REMOVED***']").addClass("active");
+            // set dark or light layout(1=light, 2=dark)
+            $(".select-layout[value|='***REMOVED******REMOVED***app.layout***REMOVED******REMOVED***']").prop("checked", true);
+            // set dark or light sidebar(1=light, 2=dark)
+            $(".select-sidebar[value|='***REMOVED******REMOVED***app.sidebar_color***REMOVED******REMOVED***']").prop("checked", true);
+            // set sticky header 
+            $("#sticky_header_setting").prop("checked", ***REMOVED******REMOVED***app.sticky_header***REMOVED******REMOVED***);
+            if (!***REMOVED******REMOVED***app.sticky_header***REMOVED******REMOVED***)***REMOVED***
+                $(".main-navbar")[0].classList.remove("***REMOVED******REMOVED***app.sticky_header_class***REMOVED******REMOVED***");
+            ***REMOVED***
+            // set mini sidebar 
+            $("#mini_sidebar_setting").prop("checked", ***REMOVED******REMOVED***app.mini_sidebar***REMOVED******REMOVED***);
+            if (***REMOVED******REMOVED***app.mini_sidebar***REMOVED******REMOVED***)***REMOVED***
+                let body = $("body");
+                sidebar_nicescroll = $(".main-sidebar").getNiceScroll();
+                body.addClass("sidebar-mini");
+                body.removeClass("sidebar-show");
+                sidebar_nicescroll.remove();
+                sidebar_nicescroll = null;
+                $(".main-sidebar .sidebar-menu > li").each(function () ***REMOVED***
+                    let me = $(this);
+
+                    if (me.find("> .dropdown-menu").length) ***REMOVED***
+                        me.find("> .dropdown-menu").hide();
+                        me.find("> .dropdown-menu").prepend(
+                            '<li class="dropdown-title pt-3">' + me.find("> a").text() + "</li>"
+                        );
+                    ***REMOVED*** else ***REMOVED***
+                        me.find("> a").attr("data-toggle", "tooltip");
+                        me.find("> a").attr("data-original-title", me.find("> a").text());
+                        $("[data-toggle='tooltip']").tooltip(***REMOVED***
+                            placement: "right"
+                        ***REMOVED***);
+                    ***REMOVED***
+              ***REMOVED***);
+            ***REMOVED***
+
+        ***REMOVED***);
+        $(function () ***REMOVED***
+            $('#restore_default').click(function(event)***REMOVED***
+                event.preventDefault();
+                var id = 0;
+                var update_data = ***REMOVED***
+                    update_id: id
+                ***REMOVED***;
+                $.ajax(***REMOVED*** 
+                    data: update_data,
+                    type: 'GET',
+                    url: "***REMOVED***% url 'restore-default' %***REMOVED***", //restore-default
+                    success: function(response) ***REMOVED***
+                        console.log(response);
+                        if(response['success']) ***REMOVED***
+                            console.log(response['success']);
+                        ***REMOVED***
+                        if(response['error']) ***REMOVED***
+                            console.log(response['error']);
+                        ***REMOVED***
+                    ***REMOVED***,
+                    error: function (request, status, error) ***REMOVED***
+                        console.log(request.response);
+                    ***REMOVED***
+                ***REMOVED***);
+                return false;    
+            ***REMOVED***);
+
+            $("#sticky_header_setting").on("change", function () ***REMOVED***
+                var id = "on";
+                if ($(".main-navbar")[0].classList.contains("sticky")) ***REMOVED***
+                    sticky_header(true);
+                ***REMOVED*** else ***REMOVED***
+                    sticky_header(false);
+                ***REMOVED***
+            ***REMOVED***);
+
+            $("#mini_sidebar_setting").on("change", function () ***REMOVED***
+                var _val = $(this).is(":checked") ? "checked" : "unchecked";
+                if (_val === "checked") ***REMOVED***
+                  sidebar_mini(true);
+                ***REMOVED*** else ***REMOVED***
+                  sidebar_mini(false);
+                ***REMOVED***
+            ***REMOVED***);
+
+            // theme change event
+            $(".choose-theme li").on("click", function () ***REMOVED***
+                var selectedTheme = $(this).attr("title");
+                var update_data = ***REMOVED***
+                    theme: selectedTheme
+                ***REMOVED***;
+                $.ajax(***REMOVED*** 
+                    data: update_data,
+                    type: 'GET',
+                    url: "***REMOVED***% url 'color-theme-settings' %***REMOVED***",
+                    success: function(response) ***REMOVED***
+                        console.log(response);
+                        if(response['success']) ***REMOVED***
+                            console.log(response['success'] + selectedTheme);
+                        ***REMOVED***
+                        if(response['error']) ***REMOVED***
+                            console.log(response['error']);
+                        ***REMOVED***
+                    ***REMOVED***,
+                    error: function (request, status, error) ***REMOVED***
+                        console.log(request.response);
+                    ***REMOVED***
+                ***REMOVED***);
+                return false;
+            ***REMOVED***);
+
+            // dark light sidebar button setting
+            $(".sidebar-color input:radio").change(function () ***REMOVED***
+                if ($(this).val() == "1") ***REMOVED***
+                    sidebar_color("1");
+                ***REMOVED*** else ***REMOVED***
+                    sidebar_color("2");
+                ***REMOVED***
+            ***REMOVED***);
+
+            // dark light layout button setting
+            $(".select-layout").click(function(event)***REMOVED***
+                var k = $(this).val()
+                if (k == "1") ***REMOVED***
+                    layout_color("1");
+                ***REMOVED*** else ***REMOVED***
+                    layout_color("2");
+                ***REMOVED***
+            ***REMOVED***);
+
+            var sticky_header = function (sticky) ***REMOVED***
+                id = "true";
+                if (!sticky) ***REMOVED***
+                    id = "false";
+                ***REMOVED*** else ***REMOVED***
+                    id = "true";
+                ***REMOVED***
+                var update_data = ***REMOVED***
+                    header: id
+                ***REMOVED***;
+                $.ajax(***REMOVED*** 
+                    data: update_data,
+                    type: 'GET',
+                    url: "***REMOVED***% url 'sticky-header' %***REMOVED***",
+                    success: function(response) ***REMOVED***
+                        console.log(response);
+                        if(response['success']) ***REMOVED***
+                            console.log(response['success'] + id);
+                        ***REMOVED***
+                        if(response['error']) ***REMOVED***
+                            console.log(response['error']);
+                        ***REMOVED***
+                    ***REMOVED***,
+                    error: function (request, status, error) ***REMOVED***
+                        console.log(request.response);
+                    ***REMOVED***
+                ***REMOVED***);
+                return false;
+            ***REMOVED***;
+
+            var sidebar_mini = function (mini) ***REMOVED***
+                var id = "false";
+                if (!mini) ***REMOVED***
+                    id = "false";
+                ***REMOVED***else ***REMOVED***
+                    id = "true";
+                ***REMOVED***
+                var update_data = ***REMOVED***
+                    sidebar: id
+                ***REMOVED***;
+                $.ajax(***REMOVED*** 
+                    data: update_data,
+                    type: 'GET',
+                    url: "***REMOVED***% url 'sidebar-toggle' %***REMOVED***",
+                    success: function(response) ***REMOVED***
+                        console.log(response);
+                        if(response['success']) ***REMOVED***
+                            console.log(response['success'] + id);
+                        ***REMOVED***
+                        if(response['error']) ***REMOVED***
+                            console.log(response['error']);
+                        ***REMOVED***
+                    ***REMOVED***,
+                    error: function (request, status, error) ***REMOVED***
+                        console.log(request.response);
+                    ***REMOVED***
+                ***REMOVED***);
+                return false;
+            ***REMOVED***;
+
+            var sidebar_color = function (color) ***REMOVED***
+                var update_data = ***REMOVED***
+                    sidebar: color
+                ***REMOVED***;
+                $.ajax(***REMOVED*** 
+                    data: update_data,
+                    type: 'GET',
+                    url: "***REMOVED***% url 'sidebar-color-settings' %***REMOVED***",
+                    success: function(response) ***REMOVED***
+                        console.log(response);
+                        if(response['success']) ***REMOVED***
+                            console.log(response['success'] + color);
+                        ***REMOVED***
+                        if(response['error']) ***REMOVED***
+                            console.log(response['error']);
+                        ***REMOVED***
+                    ***REMOVED***,
+                    error: function (request, status, error) ***REMOVED***
+                        console.log(request.response);
+                    ***REMOVED***
+                ***REMOVED***);
+                return false;
+            ***REMOVED***;
+
+            var layout_color = function(color)***REMOVED***
+                var update_data = ***REMOVED***
+                    layout: color
+                ***REMOVED***;
+                $.ajax(***REMOVED*** 
+                    data: update_data,
+                    type: 'GET',
+                    url: "***REMOVED***% url 'layout-settings' %***REMOVED***",
+                    success: function(response) ***REMOVED***
+                        console.log(response);
+                        if(response['success']) ***REMOVED***
+                            console.log(response['success'] + color);
+                        ***REMOVED***
+                        if(response['error']) ***REMOVED***
+                            console.log(response['error']);
+                        ***REMOVED***
+                    ***REMOVED***,
+                    error: function (request, status, error) ***REMOVED***
+                        console.log(request.response);
+                    ***REMOVED***
+                ***REMOVED***);
+                return false;
+            ***REMOVED***
+            
+        ***REMOVED***);
+
+    </script>
+</body>
+
+
+<!--base.html  10 December 2021 10:30:05 EAT -->
+</html>

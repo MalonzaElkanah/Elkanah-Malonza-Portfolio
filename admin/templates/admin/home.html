@@ -1,0 +1,492 @@
+***REMOVED***% extends "admin/base.html" %***REMOVED***
+
+***REMOVED***% block title %***REMOVED*** Admin - Home ***REMOVED***% endblock %***REMOVED***
+
+***REMOVED***% load static %***REMOVED***
+
+***REMOVED***% block css %***REMOVED***
+   <link rel="stylesheet" href="***REMOVED***% static 'admin/bundles/apexcharts/apexcharts.css' %***REMOVED***">
+    <link rel="stylesheet" href="***REMOVED***% static 'admin/bundles/datatables/datatables.min.css' %***REMOVED***">
+    <link rel="stylesheet" href="***REMOVED***% static 'admin/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css' %***REMOVED***">
+    <!-- Custom style CSS 
+    <link rel="stylesheet" href="***REMOVED***% static 'main/css/page/index.css' %***REMOVED***">-->
+***REMOVED***% endblock %***REMOVED***
+
+***REMOVED***% block sidenav %***REMOVED***                              
+    <li class="dropdown active">
+        <a href="***REMOVED***% url 'admin-home' %***REMOVED***" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-messages' %***REMOVED***" class="nav-link"><i data-feather="loader"></i><span>message-square</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-profile' %***REMOVED***" class="nav-link"><i data-feather="user"></i><span>Profile</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-projects' %***REMOVED***" class="nav-link"><i data-feather="codepen"></i><span>Projects</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-work' %***REMOVED***" class="nav-link"><i data-feather="clipboard"></i><span>Work</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-education' %***REMOVED***" class="nav-link"><i data-feather="book-open"></i><span>Education</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-skills' %***REMOVED***" class="nav-link"><i data-feather="sliders"></i><span>Skills</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-services' %***REMOVED***" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
+    </li> 
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-blog' %***REMOVED***" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
+    </li>          
+    <li class="dropdown">
+        <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Settings</span></a>
+        <ul class="dropdown-menu">
+            <li><a class="nav-link" href="***REMOVED***% url 'admin-settings' %***REMOVED***">App Settings</a></li>
+            <li><a class="nav-link" href="***REMOVED***% url 'admin-settings' %***REMOVED***">Profile Settings</a></li>
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="unlock"></i><span>Authentication</span></a>
+        <ul class="dropdown-menu">
+            <li><a class="nav-link" href="#">New-password</a></li>
+            <li><a class="nav-link" href="***REMOVED***% url 'logout' %***REMOVED***">Logout</a></li>
+        </ul>
+    </li>                                   
+***REMOVED***% endblock %***REMOVED***
+
+***REMOVED***% block content %***REMOVED***
+    <section class="section">
+        <div class="section-body">
+            <div class="row">
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card">
+                        <div class="card-body card-type-3">
+                            <div class="row">
+                                <div class="col">
+                                    <h6 class="text-muted mb-0">Orders</h6>
+                                    <span class="font-weight-bold mb-0">450</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="card-circle l-bg-orange text-white">
+                                      <i class="fas fa-book-open"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mt-3 mb-0 text-muted text-sm">
+                                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 10%</span>
+                                <span class="text-nowrap">Since last month</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card">
+                        <div class="card-body card-type-3">
+                            <div class="row">
+                                <div class="col">
+                                    <h6 class="text-muted mb-0">New Booking</h6>
+                                    <span class="font-weight-bold mb-0">1,562</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="card-circle l-bg-cyan text-white">
+                                      <i class="fas fa-briefcase"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mt-3 mb-0 text-muted text-sm">
+                                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 7.8%</span>
+                                <span class="text-nowrap">Since last month</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card">
+                        <div class="card-body card-type-3">
+                            <div class="row">
+                                <div class="col">
+                                    <h6 class="text-muted mb-0">Inquiry</h6>
+                                    <span class="font-weight-bold mb-0">7,897</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="card-circle l-bg-green text-white">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mt-3 mb-0 text-muted text-sm">
+                                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 15%</span>
+                                <span class="text-nowrap">Since last month</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card">
+                        <div class="card-body card-type-3">
+                            <div class="row">
+                                <div class="col">
+                                    <h6 class="text-muted mb-0">Earning</h6>
+                                    <span class="font-weight-bold mb-0">$8,965</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="card-circle l-bg-purple text-white">
+                                      <i class="fas fa-dollar-sign"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mt-3 mb-0 text-muted text-sm">
+                                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 5.4%</span>
+                                <span class="text-nowrap">Since last month</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Start Graphical Data -->      
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Job Data</h4>
+                        </div>
+                        <div class="card-body p-4">
+                            <div id="chart1"></div>
+                            <div class="row mb-0">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <div class="list-inline text-center">
+                                        <div class="list-inline-item p-r-30">
+                                            <i data-feather="arrow-up-circle" class="col-green"></i>
+                                            <h5 class="mb-0 m-b-0">400</h5>
+                                            <p class="text-muted font-14 m-b-0">Jobs Scrapped</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <div class="list-inline text-center">
+                                        <div class="list-inline-item p-r-30">
+                                            <i data-feather="arrow-up-circle" class="col-green"></i>
+                                            <h5 class="m-b-0">306</h5>
+                                            <p class="text-muted font-14 m-b-0">Jobs Applied</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                    <div class="list-inline text-center">
+                                        <div class="list-inline-item p-r-30">
+                                            <i data-feather="arrow-down-circle" class="col-orange"></i>
+                                            <h5 class="m-b-0">104</h5>
+                                            <p class="text-muted font-14 m-b-0">Jobs Feedback</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Graphical Data --> 
+
+            <div class="row">
+              <div class="col-lg-8 col-md-12 col-12 col-sm-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Task Details</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table table-striped">
+                        <tr>
+                          <th>
+                            <div class="custom-checkbox custom-control">
+                              <input type="checkbox" data-checkboxes="mygroup" data-checkbox-role="dad"
+                                class="custom-control-input" id="checkbox-all">
+                              <label for="checkbox-all" class="custom-control-label">&nbsp;</label>
+                            </div>
+                          </th>
+                          <th>Task Name</th>
+                          <th>Progress</th>
+                          <th>Due Date</th>
+                          <th>Action</th>
+                        </tr>
+                        <tr>
+                          <td class="p-0 text-center">
+                            <div class="custom-checkbox custom-control">
+                              <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input"
+                                id="checkbox-1">
+                              <label for="checkbox-1" class="custom-control-label">&nbsp;</label>
+                            </div>
+                          </td>
+                          <td>Ecommerce website</td>
+                          <td class="align-middle">
+                            <div class="progress" data-height="4" data-toggle="tooltip" title="100%">
+                              <div class="progress-bar bg-success" data-width="100"></div>
+                            </div>
+                          </td>
+                          <td>2018-01-20</td>
+                          <td>
+                            <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit"><i
+                                class="fas fa-pencil-alt"></i></a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete"
+                              data-confirm="Are You Sure?|This action can not be undone. Do you want to continue?"
+                              data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="p-0 text-center">
+                            <div class="custom-checkbox custom-control">
+                              <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input"
+                                id="checkbox-4">
+                              <label for="checkbox-4" class="custom-control-label">&nbsp;</label>
+                            </div>
+                          </td>
+                          <td>Android App</td>
+                          <td class="align-middle">
+                            <div class="progress" data-height="4" data-toggle="tooltip" title="30%">
+                              <div class="progress-bar bg-orange" data-width="30"></div>
+                            </div>
+                          </td>
+                          <td>2018-09-11</td>
+                          <td>
+                            <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit"><i
+                                class="fas fa-pencil-alt"></i></a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete"
+                              data-confirm="Are You Sure?|This action can not be undone. Do you want to continue?"
+                              data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="p-0 text-center">
+                            <div class="custom-checkbox custom-control">
+                              <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input"
+                                id="checkbox-5">
+                              <label for="checkbox-5" class="custom-control-label">&nbsp;</label>
+                            </div>
+                          </td>
+                          <td>Logo Design</td>
+                          <td class="align-middle">
+                            <div class="progress" data-height="4" data-toggle="tooltip" title="67%">
+                              <div class="progress-bar bg-purple" data-width="67"></div>
+                            </div>
+                          </td>
+                          <td>2018-04-12</td>
+                          <td>
+                            <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit"><i
+                                class="fas fa-pencil-alt"></i></a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete"
+                              data-confirm="Are You Sure?|This action can not be undone. Do you want to continue?"
+                              data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="p-0 text-center">
+                            <div class="custom-checkbox custom-control">
+                              <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input"
+                                id="checkbox-6">
+                              <label for="checkbox-6" class="custom-control-label">&nbsp;</label>
+                            </div>
+                          </td>
+                          <td>Java Project</td>
+                          <td class="align-middle">
+                            <div class="progress" data-height="4" data-toggle="tooltip" title="43%">
+                              <div class="progress-bar bg-success" data-width="43"></div>
+                            </div>
+                          </td>
+                          <td>2018-01-20</td>
+                          <td>
+                            <a class="btn btn-primary btn-action mr-1" data-toggle="tooltip" title="Edit"><i
+                                class="fas fa-pencil-alt"></i></a>
+                            <a class="btn btn-danger btn-action" data-toggle="tooltip" title="Delete"
+                              data-confirm="Are You Sure?|This action can not be undone. Do you want to continue?"
+                              data-confirm-yes="alert('Deleted')"><i class="fas fa-trash"></i></a>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-12 col-12 col-sm-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Referral Link</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="mb-4">
+                      <div class="text-small float-right font-weight-bold text-muted">2,675</div>
+                      <div class="font-weight-bold">Google</div>
+                      <div class="progress" data-height="5">
+                        <div class="progress-bar l-bg-purple" role="progressbar" data-width="80%" aria-valuenow="80"
+                          aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                    <div class="mb-4">
+                      <div class="text-small float-right font-weight-bold text-muted">1,753</div>
+                      <div class="font-weight-bold">Facebook</div>
+                      <div class="progress" data-height="5">
+                        <div class="progress-bar l-bg-green" role="progressbar" data-width="67%" aria-valuenow="25"
+                          aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                    <div class="mb-4">
+                      <div class="text-small float-right font-weight-bold text-muted">1,254</div>
+                      <div class="font-weight-bold">Bing</div>
+                      <div class="progress" data-height="5">
+                        <div class="progress-bar l-bg-orange" role="progressbar" data-width="58%" aria-valuenow="25"
+                          aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                    <div class="mb-4">
+                      <div class="text-small float-right font-weight-bold text-muted">984</div>
+                      <div class="font-weight-bold">Yahoo</div>
+                      <div class="progress" data-height="5">
+                        <div class="progress-bar l-bg-yellow" role="progressbar" data-width="36%" aria-valuenow="25"
+                          aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                    <div class="mb-4">
+                      <div class="text-small float-right font-weight-bold text-muted">563</div>
+                      <div class="font-weight-bold">Instagram</div>
+                      <div class="progress" data-height="5">
+                        <div class="progress-bar bg-cyan" role="progressbar" data-width="28%" aria-valuenow="25"
+                          aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                    <div class="mb-4">
+                      <div class="text-small float-right font-weight-bold text-muted">345</div>
+                      <div class="font-weight-bold">Twitter</div>
+                      <div class="progress" data-height="5">
+                        <div class="progress-bar bg-light-blue" role="progressbar" data-width="20%" aria-valuenow="25"
+                          aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+        </div>
+    </section>
+***REMOVED***% endblock %***REMOVED***
+
+***REMOVED***% block javascript %***REMOVED*** 
+    <!-- JS Libraies -->
+    <script src="***REMOVED***% static 'admin/bundles/apexcharts/apexcharts.js' %***REMOVED***"></script>
+    <script src="***REMOVED***% static 'admin/bundles/datatables/datatables.min.js' %***REMOVED***"></script>
+    <script src="***REMOVED***% static 'admin/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js' %***REMOVED***"></script>
+
+    <script type="text/javascript">
+        $(function () ***REMOVED***
+            chart1();
+        ***REMOVED***);
+
+        function chart1() ***REMOVED***
+            var options = ***REMOVED***
+                chart: ***REMOVED***
+                    height: 350,
+                    type: "line",
+                    stacked: false
+                ***REMOVED***,
+                dataLabels: ***REMOVED***
+                    enabled: false
+                ***REMOVED***,
+                colors: ["#FF1654", "#247BA0"],
+                series: [
+                    ***REMOVED***
+                        name: "Series A",
+                        data: [1.4, 2, 2.5, 1.5, 2.5, 2.8, 3.8, 4.6]
+                    ***REMOVED***,
+                    ***REMOVED***
+                        name: "Series B",
+                        data: [20, 29, 37, 36, 44, 45, 50, 58]
+                    ***REMOVED***
+                ],
+                stroke: ***REMOVED***
+                    width: [4, 4]
+                ***REMOVED***,
+                plotOptions: ***REMOVED***
+                    bar: ***REMOVED***
+                      columnWidth: "20%"
+                    ***REMOVED***
+                ***REMOVED***,
+                xaxis: ***REMOVED***
+                    categories: [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016]
+                ***REMOVED***,
+                yaxis: [
+                    ***REMOVED***
+                        axisTicks: ***REMOVED***
+                            show: true
+                        ***REMOVED***,
+                        axisBorder: ***REMOVED***
+                            show: true,
+                            color: "#FF1654"
+                        ***REMOVED***,
+                        labels: ***REMOVED***
+                            style: ***REMOVED***
+                              colors: "#FF1654"
+                            ***REMOVED***
+                        ***REMOVED***,
+                        title: ***REMOVED***
+                            text: "Series A",
+                            style: ***REMOVED***
+                              color: "#FF1654"
+                            ***REMOVED***
+                        ***REMOVED***
+                    ***REMOVED***,
+                    ***REMOVED***
+                        opposite: true,
+                        axisTicks: ***REMOVED***
+                            show: true
+                        ***REMOVED***,
+                        axisBorder: ***REMOVED***
+                            show: true,
+                            color: "#247BA0"
+                        ***REMOVED***,
+                        labels: ***REMOVED***
+                            style: ***REMOVED***
+                                colors: "#247BA0"
+                            ***REMOVED***
+                        ***REMOVED***,
+                        title: ***REMOVED***
+                            text: "Series B",
+                            style: ***REMOVED***
+                                color: "#247BA0"
+                            ***REMOVED***
+                        ***REMOVED***
+                    ***REMOVED***
+                ],
+                tooltip: ***REMOVED***
+                    shared: false,
+                    intersect: true,
+                    x: ***REMOVED***
+                        show: false
+                    ***REMOVED***
+                ***REMOVED***,
+                legend: ***REMOVED***
+                    horizontalAlign: "left",
+                    offsetX: 40
+                ***REMOVED***
+            ***REMOVED***;
+
+            var chart = new ApexCharts(document.querySelector("#chart1"), options);
+
+            chart.render();
+        ***REMOVED***
+        $("#table-2").dataTable(***REMOVED***
+            "columnDefs": [
+                ***REMOVED*** "sortable": false, "targets": [0, 2, 3] ***REMOVED***
+            ],
+            order: [[1, "asc"]] //column indexes is zero based
+        ***REMOVED***);
+        $("#table-1").dataTable(***REMOVED***
+            "columnDefs": [
+                ***REMOVED*** "sortable": false, "targets": [0, 1] ***REMOVED***
+            ],
+            order: [[1, "asc"]] //column indexes is zero based
+        ***REMOVED***);
+    </script>
+***REMOVED***% endblock %***REMOVED***
