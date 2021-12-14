@@ -10,13 +10,21 @@ urlpatterns = [
 	path('edit/profile/', views.edit_profile, name='admin-profile-edit'),
 
 	path('projects/', views.projects, name='admin-projects'),
-	path('project/', views.project, name='admin-project'),
-	path('edit/project/', views.project_edit, name='admin-project-edit'),
+	path('project/<slug:slug>/<int:project_id>/', views.project, name='admin-project'),
+	path('edit/project/<slug:slug>/<int:project_id>/', views.project_edit, name='admin-project-edit'),
+	path('add/project/', views.project_add, name='admin-project-add'),
 
 	path('work/', views.work, name='admin-work'),
+	path('edit/work/', views.edit_work, name='admin-work-edit'),
+
 	path('education/', views.education, name='admin-education'),
+	path('edit/education/', views.edit_education, name='admin-education-edit'),
+
 	path('skills/', views.skills, name='admin-skills'),
+	path('edit/skills/', views.skills_edit, name='admin-skills-edit'),
+
 	path('services/', views.services, name='admin-services'),
+	path('edit/services/', views.services_edit, name='admin-services-edit'),
 
 	path('blog/', views.blog, name='admin-blog'),
 	path('edit/blog/', views.edit_blog, name='admin-blog-edit'),
@@ -29,6 +37,4 @@ urlpatterns = [
 	path('sidebar-toggle/', views.sidebar_toggle, name = 'sidebar-toggle'),
 	path('sticky-header/', views.sticky_header, name = 'sticky-header'),
 	path('restore-default/', views.restore_default, name = 'restore-default'),
-
-	path('logout/', views.logout, name='logout'),
 ]

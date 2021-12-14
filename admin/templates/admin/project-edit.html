@@ -5,8 +5,6 @@
 ***REMOVED***% load static %***REMOVED***
 
 ***REMOVED***% block css %***REMOVED***
-    <!-- Custom style CSS 
-    <link rel="stylesheet" href="***REMOVED***% static 'main/css/page/index.css' %***REMOVED***">-->
 ***REMOVED***% endblock %***REMOVED***
 
 ***REMOVED***% block sidenav %***REMOVED***                              
@@ -64,9 +62,16 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12">
+                                    ***REMOVED***% if state == 'ADD_STATE' %***REMOVED***
+                                    <form method="post" action="***REMOVED***% url 'admin-project-add' %***REMOVED***" enctype="multipart/form-data">
+                                    ***REMOVED***% elif state == 'EDIT_STATE' %***REMOVED***
                                     <form method="post" action="***REMOVED***% url 'admin-project-edit' %***REMOVED***" enctype="multipart/form-data">
+                                    ***REMOVED***% else %***REMOVED***
+                                    <form method="post" action="***REMOVED***% url 'admin-project-edit' %***REMOVED***" enctype="multipart/form-data">
+                                    ***REMOVED***% endif %***REMOVED***
                                         ***REMOVED***% csrf_token %***REMOVED***
                                         <div class="form-row">
+                                            
                                             <div class="form-group col-md-6">
                                                 <label>Image</label>
                                                 <input type="file" class="form-control" name="file" required>

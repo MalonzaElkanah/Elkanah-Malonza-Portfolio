@@ -61,62 +61,126 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
+                        <div class="card-header text-center"><h4>PROFILE SETTINGS</h4></div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-12">
+                                <div class="col-12 pt-2">
                                     <form method="post" action="***REMOVED***% url 'admin-profile-edit' %***REMOVED***" enctype="multipart/form-data">
                                         ***REMOVED***% csrf_token %***REMOVED***
+                                        <input type="hidden" name="user" value="***REMOVED******REMOVED***user.id***REMOVED******REMOVED***">
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Image</label>
-                                                <input type="file" class="form-control" name="file" required>
+                                            ***REMOVED***% for field in form %***REMOVED***
+                                                ***REMOVED***% if field.name == 'image' %***REMOVED***
+                                                    ***REMOVED******REMOVED***field***REMOVED******REMOVED***
+                                                ***REMOVED***% endif %***REMOVED***
+                                            ***REMOVED***% endfor %***REMOVED***
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>First Name</label>
-                                                <input type="text" class="form-control" name="first_name" required>
+                                                <input type="text" class="form-control" name="first_name" value="***REMOVED******REMOVED***profile.first_name***REMOVED******REMOVED***" required>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Second Name</label>
-                                                <input type="text" class="form-control" name="second_name" required>
+                                                <input type="text" class="form-control" name="second_name" value="***REMOVED******REMOVED***profile.second_name***REMOVED******REMOVED***" required>
                                             </div>
                                         </div>
 
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Phone 1</label>
-                                                <input type="text" class="form-control" name="phone_1" required>
+                                                <input type="text" class="form-control" name="phone_number_1" value="***REMOVED******REMOVED***profile.phone_number_1***REMOVED******REMOVED***" required>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Phone 2</label>
-                                                 <input type="text" class="form-control" name="phone_2" required>
+                                                 <input type="text" class="form-control" name="phone_number_2" value="***REMOVED******REMOVED***profile.phone_number_2***REMOVED******REMOVED***" required>
                                             </div>
                                         </div>
 
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Email 1</label>
-                                                <input type="text" class="form-control" name="email_1" required>
+                                                <input type="text" class="form-control" name="email_1" value="***REMOVED******REMOVED***profile.email_1***REMOVED******REMOVED***" required>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Email 2</label>
-                                                 <input type="text" class="form-control" name="email_2" required>
+                                                 <input type="text" class="form-control" name="email_2" value="***REMOVED******REMOVED***profile.email_2***REMOVED******REMOVED***" required>
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Address</label>
-                                                <input type="text" class="form-control" name="address" required>
+                                                <input type="text" class="form-control" name="address" value="***REMOVED******REMOVED***profile.address***REMOVED******REMOVED***" required>
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Description</label>
-                                                <textarea class="form-control" name="description"></textarea>
+                                                <textarea class="form-control" name="description">***REMOVED******REMOVED***profile.description***REMOVED******REMOVED***</textarea>
                                             </div>
                                         </div>
-                                        <div class="form-row">
+                                        <div class="form-row pt-4 pb-2">
+                                            <h4 class="text-center">Social LInks</h4>
+                                        </div>
+                                        ***REMOVED***% for social in socials %***REMOVED***
+                                        <div class="row form-row social-cont">
+                                            <div class="col-10">
+                                                <div class="row">
+                                                <div class="form-group col-md-6">
+                                                    <label>Name</label>
+                                                    <input type="text" class="form-control" name="name-***REMOVED******REMOVED***social.id***REMOVED******REMOVED***" value="***REMOVED******REMOVED***social.name***REMOVED******REMOVED***" required="">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label>FA Logo</label>
+                                                    <input type="text" class="form-control" name="logo-***REMOVED******REMOVED***social.id***REMOVED******REMOVED***" value="***REMOVED******REMOVED***social.logo***REMOVED******REMOVED***" required="">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label>Url</label>
+                                                    <input type="text" class="form-control" name="url-***REMOVED******REMOVED***social.id***REMOVED******REMOVED***" value="***REMOVED******REMOVED***social.url***REMOVED******REMOVED***" required="">
+                                                </div> 
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-2">
+                                                <label class="d-md-block d-sm-none d-none">&nbsp;</label>
+                                                <a href="#" class="btn btn-danger trash"><i class="far fa-trash-alt"></i></a>
+                                            </div>
+                                        </div>
+                                        ***REMOVED***% endfor %***REMOVED***
+                                        <div class="social-info">
+                                            <div class="row form-row social-cont">
+                                                <div class="col-10">
+                                                    <div class="row">
+                                                    <div class="form-group col-md-6">
+                                                        <label>Name</label>
+                                                        <input type="text" class="form-control" name="name_1" required="">
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label>FA Logo</label>
+                                                        <input type="text" class="form-control" name="logo_1" required="">
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label>Url</label>
+                                                        <input type="text" class="form-control" name="url_1" required="">
+                                                    </div> 
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-2">
+                                                    <label class="d-md-block d-sm-none d-none">&nbsp;</label>
+                                                    <a href="#" class="btn btn-danger trash"><i class="far fa-trash-alt"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="add-more">
+                                            <a href="javascript:void(0);" class="add-social"><i class="fa fa-plus-circle"></i> Add More</a>
+                                        </div>
+                                        <input type="hidden" name="form_num" value="1">
+                                        <p id="count" style="display: none;">1</p>
+
+
+                                        <div class="form-row pt-4">
                                             <button type="submit" class="btn btn-primary">Update Profile</button>
                                         </div>
 
@@ -135,5 +199,44 @@
 ***REMOVED***% endblock %***REMOVED***
 
 ***REMOVED***% block javascript %***REMOVED***
+    <script type="text/javascript">
+        $(function()***REMOVED***
+            $(".add-social").click(function(event)***REMOVED***
+                var input_num = parseInt($("#count").text());
+                input_num = input_num + 1;
+                $("#count").text(''+input_num+'');
+                $("input[name='form_num']").val(''+input_num+'');
+                var content = '<div class="row form-row social-cont">' +
+                    '<div class="col-10">' +
+                        '<div class="row">' +
+                            '<div class="form-group col-md-6">' +
+                                '<label>Name</label>' +
+                                '<input type="text" class="form-control" name="name_'+input_num+'" required>' +
+                            '</div>' +
+                            '<div class="form-group col-md-6">' +
+                                '<label>FA Logo</label>' +
+                                '<input type="text" class="form-control" name="logo_'+input_num+'" required>' +
+                            '</div>' +
+                            '<div class="form-group col-md-6">' +
+                                '<label>Url</label>' +
+                                '<input type="text" class="form-control" name="url_'+input_num+'" required>' +
+                            '</div>' + 
+                        '</div>' +
+                    '</div>' +
+                    '<div class="col-12 col-md-2">' +
+                        '<label class="d-md-block d-sm-none d-none">&nbsp;</label>' +
+                        '<a href="#" class="btn btn-danger trash"><i class="far fa-trash-alt"></i></a>' +
+                    '</div>' +
+                '</div>';
+                
+                $(".social-info").append(content);
+                return false;
+            ***REMOVED***);
 
+            $(".social-info").on('click','.trash', function () ***REMOVED***
+                $(this).closest('.social-cont').remove();
+                return false;
+            ***REMOVED***);
+        ***REMOVED***);
+    </script>
 ***REMOVED***% endblock %***REMOVED***

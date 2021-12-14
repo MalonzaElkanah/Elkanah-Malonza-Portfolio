@@ -18,7 +18,7 @@ class Profile(models.Model):
 	phone_number_2 = models.CharField('Phone Number 2', max_length=50)
 	description = models.CharField('Description', max_length=1000, null=True)
 	address = models.CharField('Address', max_length=50)
-	# user, image, profile_name, first_name, second_name, email_1, email_2, phone_number_1, 
+	# user, image, first_name, second_name, email_1, email_2, phone_number_1, 
 	# phone_number_2, description, address
 
 
@@ -29,7 +29,7 @@ class Project(models.Model):
 	url = models.URLField(null=True)
 	date = models.DateField(default=tz.now)
 	date_created = models.DateTimeField('Date Created', auto_now_add=True)
-	# job_profile, name, description, url,
+	# profile, name, description, url, date
 
 	def keywords(self):
 		return ProjectKeyword.objects.filter(project=self.id)

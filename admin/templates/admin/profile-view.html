@@ -61,52 +61,60 @@
                     <div class="card author-box card-primary">
                         <div class="card-body">
                             <div class="author-box-left">
-                                <img alt="image" src="***REMOVED***% static 'main/images/malonza.JPG' %***REMOVED***" class="rounded-circle author-box-picture">
+                                <img alt="image" src="***REMOVED******REMOVED***profile.image.url***REMOVED******REMOVED***" class="rounded-circle author-box-picture">
                                 <div class="clearfix"></div>
                                 <a href="***REMOVED***% url 'admin-profile-edit' %***REMOVED***" class="btn btn-primary mt-3 follow-btn">Update</a>
                             </div>
                             <div class="author-box-details">
                                 <div class="author-box-name">
-                                    <a href="#">Elkanah Malonza</a>
+                                    <a href="#">***REMOVED******REMOVED***profile.first_name***REMOVED******REMOVED*** ***REMOVED******REMOVED***profile.second_name***REMOVED******REMOVED***</a>
                                 </div>
                                 <div class="author-box-job">Web Developer</div>
                                 <div class="author-box-description">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                      consequat.</p>
+                                    <p>***REMOVED******REMOVED***profile.description***REMOVED******REMOVED***</p>
                                 </div>
 
                                 <div class="author-box-description">
                                     <p>
                                         <i class="fas fa-envelope px-2"></i>
-                                        <a href="mailto:elkanahmalonza@gmail.com">elkanahmalonza@gmail.com</a>
+                                        <a href="mailto:***REMOVED******REMOVED***profile.email_1***REMOVED******REMOVED***">***REMOVED******REMOVED***profile.email_1***REMOVED******REMOVED***</a>, <a href="mailto:***REMOVED******REMOVED***profile.email_2***REMOVED******REMOVED***">***REMOVED******REMOVED***profile.email_2***REMOVED******REMOVED***</a>
                                         <br>
 
                                         <i class="fas fa-phone-alt px-2"></i>
-                                        <a href="#">0716504983</a>, <a href="#">0716504983</a>
+                                        <a href="#">***REMOVED******REMOVED***profile.phone_number_1***REMOVED******REMOVED***</a>, <a href="#">***REMOVED******REMOVED***profile.phone_number_2***REMOVED******REMOVED***</a>
                                         <br>
 
                                         <i class="fas fa-paper-plane px-2"></i>
-                                        <a href="#">5th Avenue, 34th floor, New york</a>
+                                        <a href="#">***REMOVED******REMOVED***profile.address***REMOVED******REMOVED***</a>
                                     </p>
                                 </div>
 
                                 <div class="mb-2 mt-3">
                                     <div class="text-small font-weight-bold">My Links</div>
                                 </div>
-                                <a href="#" class="btn btn-social-icon mr-1 btn-facebook">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="#" class="btn btn-social-icon mr-1 btn-twitter">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a href="#" class="btn btn-social-icon mr-1 btn-github">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="#" class="btn btn-social-icon mr-1 btn-instagram">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
+                                ***REMOVED***% for social in socials %***REMOVED***
+                                    ***REMOVED***% if social.name == 'Facebook' %***REMOVED***
+                                    <a href="***REMOVED******REMOVED***social.url***REMOVED******REMOVED***" class="btn btn-social-icon mr-1 btn-facebook">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                    ***REMOVED***% elif social.name == 'Twitter' %***REMOVED***  
+                                    <a href="***REMOVED******REMOVED***social.url***REMOVED******REMOVED***" class="btn btn-social-icon mr-1 btn-twitter">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    ***REMOVED***% elif social.name == 'Github' %***REMOVED***
+                                    <a href="***REMOVED******REMOVED***social.url***REMOVED******REMOVED***" class="btn btn-social-icon mr-1 btn-github">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    ***REMOVED***% elif social.name == 'Instagram' %***REMOVED***
+                                    <a href="***REMOVED******REMOVED***social.url***REMOVED******REMOVED***" class="btn btn-social-icon mr-1 btn-instagram">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    ***REMOVED***% else %***REMOVED***
+                                    <a href="***REMOVED******REMOVED***social.url***REMOVED******REMOVED***" class="btn btn-social-icon mr-1 btn-instagram">
+                                        <i class="***REMOVED******REMOVED***social.logo***REMOVED******REMOVED***"></i>
+                                    </a>
+                                    ***REMOVED***% endif %***REMOVED***
+                                ***REMOVED***% endfor %***REMOVED***
                                 <div class="w-100 d-sm-none"></div>
                                 <div class="float-right mt-sm-0 mt-3">
                                     <a href="***REMOVED***% url 'admin-profile-edit' %***REMOVED***" class="btn">Edit Profile <i class="fas fa-edit"></i></a>
