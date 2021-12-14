@@ -1,0 +1,210 @@
+***REMOVED***% extends "admin/base.html" %***REMOVED***
+
+***REMOVED***% block title %***REMOVED*** Admin - Home ***REMOVED***% endblock %***REMOVED***
+
+***REMOVED***% load static %***REMOVED***
+
+***REMOVED***% block css %***REMOVED***
+    <!-- Custom style CSS 
+    <link rel="stylesheet" href="***REMOVED***% static 'main/css/page/index.css' %***REMOVED***">-->
+***REMOVED***% endblock %***REMOVED***
+
+***REMOVED***% block sidenav %***REMOVED***                              
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-home' %***REMOVED***" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-messages' %***REMOVED***" class="nav-link"><i data-feather="message-square"></i><span>Messages</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-profile' %***REMOVED***" class="nav-link"><i data-feather="user"></i><span>Profile</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-projects' %***REMOVED***" class="nav-link"><i data-feather="codepen"></i><span>Projects</span></a>
+    </li>
+    <li class="dropdown active">
+        <a href="***REMOVED***% url 'admin-work' %***REMOVED***" class="nav-link"><i data-feather="clipboard"></i><span>Work</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-education' %***REMOVED***" class="nav-link"><i data-feather="book-open"></i><span>Education</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-skills' %***REMOVED***" class="nav-link"><i data-feather="sliders"></i><span>Skills</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-services' %***REMOVED***" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
+    </li> 
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-blog' %***REMOVED***" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
+    </li>          
+    <li class="dropdown">
+        <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Settings</span></a>
+        <ul class="dropdown-menu">
+            <li><a class="nav-link" href="***REMOVED***% url 'admin-settings' %***REMOVED***">App Settings</a></li>
+            <li><a class="nav-link" href="***REMOVED***% url 'admin-settings' %***REMOVED***">Profile Settings</a></li>
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="unlock"></i><span>Authentication</span></a>
+        <ul class="dropdown-menu">
+            <li><a class="nav-link" href="#">New-password</a></li>
+            <li><a class="nav-link" href="***REMOVED***% url 'logout' %***REMOVED***">Logout</a></li>
+        </ul>
+    </li>                                   
+***REMOVED***% endblock %***REMOVED***
+
+***REMOVED***% block content %***REMOVED***
+    <section class="section">
+        <div class="section-body">     
+            <h2 class="section-title">Work</h2>
+            <div class="row">
+                <div class="col-12">
+                    <div class="activities">
+
+                        <div class="activity">
+                            <div class="activity-icon bg-primary text-white">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <div class="activity-detail">
+                                <div class="mb-2">
+                                <a href="javascript:void(0);" class="add-category"><i class="fa fa-plus-circle"></i> Add More</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="activity">
+                            <div class="activity-icon bg-primary text-white">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="activity-detail">
+                                <div class="mb-2">
+                                <span class="text-job">Office of the Director of Public Prosecution </span>
+                                <span class="bullet"></span>
+                                <a class="text-job" href="***REMOVED***% url 'admin-work-edit' %***REMOVED***">Edit</a>
+                                    <div class="float-right dropdown">
+                                        <a href="#" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
+                                        <div class="dropdown-menu">
+                                            <div class="dropdown-title">Options</div>
+                                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-eye"></i> View</a>
+                                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-list"></i> Detail</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a href="#" id="***REMOVED******REMOVED***timeline.id***REMOVED******REMOVED***" class="update-data dropdown-item has-icon text-danger"><i class="fas fa-trash-alt"></i> Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="profile-widget-description pb-0">
+                                    <div class="profile-widget-name">ICT Intern <div class="text-muted d-inline font-weight-normal"> <div class="slash"></div> July 01, 2021 - December 31, 2021</div></div>
+                                    <p>
+                                        <i class="fas fa-globe px-2"></i>
+                                        <a href="mailto:elkanahmalonza@gmail.com">www.odpp.go.ke</a>
+                                        <br>
+                                        <i class="fas fa-map-marker-alt px-2"></i>
+                                        <a href="#">5th Avenue, 34th floor, New york</a>
+                                    </p>
+                                    <div>
+                                        <ul>
+                                            <li>I did this and that.</li>
+                                            <li>Also did those and that.</li>
+                                            <li>I am trying to make a list of random stuff.</li>
+                                            <li>End of thinkng Capacity.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="activity">
+                            <div class="activity-icon bg-primary text-white">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="activity-detail">
+                                <div class="mb-2">
+                                <span class="text-job">Office of the Director of Public Prosecution </span>
+                                <span class="bullet"></span>
+                                <a class="text-job" href="***REMOVED***% url 'admin-work-edit' %***REMOVED***">Edit</a>
+                                    <div class="float-right dropdown">
+                                        <a href="#" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
+                                        <div class="dropdown-menu">
+                                            <div class="dropdown-title">Options</div>
+                                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-eye"></i> View</a>
+                                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-list"></i> Detail</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a href="#" id="***REMOVED******REMOVED***timeline.id***REMOVED******REMOVED***" class="update-data dropdown-item has-icon text-danger"><i class="fas fa-trash-alt"></i> Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="profile-widget-description pb-0">
+                                    <div class="profile-widget-name">ICT Intern <div class="text-muted d-inline font-weight-normal"> <div class="slash"></div> July 01, 2021 - December 31, 2021</div></div>
+                                    <p>
+                                        <i class="fas fa-globe px-2"></i>
+                                        <a href="mailto:elkanahmalonza@gmail.com">www.odpp.go.ke</a>
+                                        <br>
+                                        <i class="fas fa-map-marker-alt px-2"></i>
+                                        <a href="#">5th Avenue, 34th floor, New york</a>
+                                    </p>
+                                    <div>
+                                        <ul>
+                                            <li>I did this and that.</li>
+                                            <li>Also did those and that.</li>
+                                            <li>I am trying to make a list of random stuff.</li>
+                                            <li>End of thinkng Capacity.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="activity">
+                            <div class="activity-icon bg-primary text-white">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="activity-detail">
+                                <div class="mb-2">
+                                <span class="text-job">Office of the Director of Public Prosecution </span>
+                                <span class="bullet"></span>
+                                <a class="text-job" href="***REMOVED***% url 'admin-work-edit' %***REMOVED***">Edit</a>
+                                    <div class="float-right dropdown">
+                                        <a href="#" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
+                                        <div class="dropdown-menu">
+                                            <div class="dropdown-title">Options</div>
+                                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-eye"></i> View</a>
+                                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-list"></i> Detail</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a href="#" id="***REMOVED******REMOVED***timeline.id***REMOVED******REMOVED***" class="update-data dropdown-item has-icon text-danger"><i class="fas fa-trash-alt"></i> Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="profile-widget-description pb-0">
+                                    <div class="profile-widget-name">ICT Intern <div class="text-muted d-inline font-weight-normal"> <div class="slash"></div> July 01, 2021 - December 31, 2021</div></div>
+                                    <p>
+                                        <i class="fas fa-globe px-2"></i>
+                                        <a href="mailto:elkanahmalonza@gmail.com">www.odpp.go.ke</a>
+                                        <br>
+                                        <i class="fas fa-map-marker-alt px-2"></i>
+                                        <a href="#">5th Avenue, 34th floor, New york</a>
+                                    </p>
+                                    <div>
+                                        <ul>
+                                            <li>I did this and that.</li>
+                                            <li>Also did those and that.</li>
+                                            <li>I am trying to make a list of random stuff.</li>
+                                            <li>End of thinkng Capacity.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+***REMOVED***% endblock %***REMOVED***
+
+***REMOVED***% block javascript %***REMOVED***
+
+
+***REMOVED***% endblock %***REMOVED***
