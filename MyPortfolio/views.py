@@ -12,7 +12,9 @@ from profile_settings.models import Testimony, Pricing, Message
 def index(request):
 	profile = Profile.objects.get(user=request.user.id) # Profile data
 	socials = SocialLink.objects.filter(profile=profile.id) # Social Media Links
-	return render(request, "MyPortfolio/index.html", ***REMOVED***'profile': profile, 'socials': socials***REMOVED***)
+	projects = Project.objects.filter(profile=profile.id).order_by('date').reverse()[0:4] # 4 Recent Projects 
+	return render(request, "MyPortfolio/index.html", ***REMOVED***'profile': profile, 'socials': socials, 
+		'projects': projects***REMOVED***)
 
 
 def auth_login(request):

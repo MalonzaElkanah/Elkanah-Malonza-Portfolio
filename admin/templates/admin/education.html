@@ -4,11 +4,6 @@
 
 ***REMOVED***% load static %***REMOVED***
 
-***REMOVED***% block css %***REMOVED***
-    <!-- Custom style CSS 
-    <link rel="stylesheet" href="***REMOVED***% static 'main/css/page/index.css' %***REMOVED***">-->
-***REMOVED***% endblock %***REMOVED***
-
 ***REMOVED***% block sidenav %***REMOVED***                              
     <li class="dropdown">
         <a href="***REMOVED***% url 'admin-home' %***REMOVED***" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
@@ -56,7 +51,7 @@
 ***REMOVED***% block content %***REMOVED***
     <section class="section">
         <div class="section-body">     
-            <h2 class="section-title">Work</h2>
+            <h2 class="section-title">Education History</h2>
             <div class="row">
                 <div class="col-12">
                     <div class="activities">
@@ -67,91 +62,40 @@
                             </div>
                             <div class="activity-detail">
                                 <div class="mb-2">
-                                <a href="#" class="btn btn-primary">Add Education</a>
+                                <a href="***REMOVED***% url 'admin-education-add' %***REMOVED***" class="btn btn-primary">Add Education</a>
                                 </div>
                             </div>
                         </div>
 
-
+                    ***REMOVED***% for edu in edu_history %***REMOVED***
                         <div class="activity">
                             <div class="activity-icon bg-primary text-white">
                                 <i class="fas fa-award"></i>
                             </div>
                             <div class="activity-detail">
                                 <div class="mb-2">
-                                <span class="text-job">Multimedia University of Kenya</span>
-                                <span class="bullet"></span>
-                                <a class="text-job" href="***REMOVED***% url 'admin-education-edit' %***REMOVED***">Edit</a>
-                                    <div class="float-right dropdown">
-                                        <a href="#" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
-                                        <div class="dropdown-menu">
-                                            <div class="dropdown-title">Options</div>
-                                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-eye"></i> View</a>
-                                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-list"></i> Detail</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a href="#" id="***REMOVED******REMOVED***timeline.id***REMOVED******REMOVED***" class="update-data dropdown-item has-icon text-danger"><i class="fas fa-trash-alt"></i> Delete</a>
-                                        </div>
-                                    </div>
+                                    <span class="text-job">***REMOVED******REMOVED***edu.institution***REMOVED******REMOVED***</span>
+                                    <span class="bullet"></span>
+                                    <a class="text-job" href="***REMOVED***% url 'admin-education-edit' edu.study_type|slugify edu.id %***REMOVED***">Edit</a>
                                 </div>
                                 <div class="profile-widget-description pb-0">
-                                    <div class="profile-widget-name">Bachelor of Science in Computer Technology<div class="text-muted d-inline font-weight-normal"> <div class="slash"></div> September 01, 2015 - October 19, 2019</div></div>
+                                    <div class="profile-widget-name">***REMOVED******REMOVED***edu.study_area***REMOVED******REMOVED***, ***REMOVED******REMOVED***edu.study_type***REMOVED******REMOVED***<div class="text-muted d-inline font-weight-normal"> <div class="slash"></div> ***REMOVED******REMOVED***edu.start_date***REMOVED******REMOVED*** - ***REMOVED******REMOVED***edu.end_date***REMOVED******REMOVED***</div></div>
                                     <p>
                                         <i class="fas fa-medal px-2"></i>
-                                        <a href="mailto:elkanahmalonza@gmail.com">second class, upper division</a>
+                                        <a href="mailto:elkanahmalonza@gmail.com">***REMOVED******REMOVED***edu.gpa***REMOVED******REMOVED***</a>
                                         <br>
                                         <i class="fas fa-map-marker-alt px-2"></i>
-                                        <a href="#">5th Avenue, 34th floor, New york</a>
+                                        <a href="#">***REMOVED******REMOVED***edu.location***REMOVED******REMOVED***</a>
                                     </p>
-                                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    <p>***REMOVED******REMOVED***edu.description***REMOVED******REMOVED***</p>
                                 </div>
                             </div>
                         </div>
-
-
-                        <div class="activity">
-                            <div class="activity-icon bg-primary text-white">
-                                <i class="fas fa-award"></i>
-                            </div>
-                            <div class="activity-detail">
-                                <div class="mb-2">
-                                <span class="text-job">Multimedia University of Kenya</span>
-                                <span class="bullet"></span>
-                                <a class="text-job" href="***REMOVED***% url 'admin-education-edit' %***REMOVED***">Edit</a>
-                                    <div class="float-right dropdown">
-                                        <a href="#" data-toggle="dropdown"><i class="fas fa-ellipsis-h"></i></a>
-                                        <div class="dropdown-menu">
-                                            <div class="dropdown-title">Options</div>
-                                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-eye"></i> View</a>
-                                            <a href="#" class="dropdown-item has-icon"><i class="fas fa-list"></i> Detail</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a href="#" id="***REMOVED******REMOVED***timeline.id***REMOVED******REMOVED***" class="update-data dropdown-item has-icon text-danger"><i class="fas fa-trash-alt"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="profile-widget-description pb-0">
-                                    <div class="profile-widget-name">Bachelor of Science in Computer Technology<div class="text-muted d-inline font-weight-normal"> <div class="slash"></div> September 01, 2015 - October 19, 2019</div></div>
-                                    <p>
-                                        <i class="fas fa-medal px-2"></i>
-                                        <a href="mailto:elkanahmalonza@gmail.com">second class, upper division</a>
-                                        <br>
-                                        <i class="fas fa-map-marker-alt px-2"></i>
-                                        <a href="#">5th Avenue, 34th floor, New york</a>
-                                    </p>
-                                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                                </div>
-                            </div>
-                        </div>
-
-
+                    ***REMOVED***% endfor %***REMOVED***
                     </div>
                 </div>
             </div>
 
         </div>
     </section>
-***REMOVED***% endblock %***REMOVED***
-
-***REMOVED***% block javascript %***REMOVED***
-
-
 ***REMOVED***% endblock %***REMOVED***

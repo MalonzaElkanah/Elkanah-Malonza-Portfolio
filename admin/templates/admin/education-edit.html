@@ -64,54 +64,61 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12">
-                                    <form method="post" action="***REMOVED***% url 'admin-project-edit' %***REMOVED***" enctype="multipart/form-data">
+                                    ***REMOVED***% if state == 'ADD_STATE' %***REMOVED***
+                                    <form method="post" action="***REMOVED***% url 'admin-education-add' %***REMOVED***">
+                                    ***REMOVED***% elif state == 'EDIT_STATE' %***REMOVED***
+                                    <form method="post" action="***REMOVED***% url 'admin-education-edit' edu.study_type|slugify edu.id %***REMOVED***">
+                                    ***REMOVED***% else %***REMOVED***
+                                    <form method="post" action="***REMOVED***% url 'admin-education-add' %***REMOVED***">
+                                    ***REMOVED***% endif %***REMOVED***
                                         ***REMOVED***% csrf_token %***REMOVED***
+                                        <input type="hidden" name="profile" value="***REMOVED******REMOVED***profile.id***REMOVED******REMOVED***"> 
                                         <div class="form-row">
                                             <div class="form-group col-md-10">
                                                 <label>Institution</label>
-                                                <input type="text" class="form-control" name="first_name" required>
+                                                <input type="text" class="form-control" name="institution" value="***REMOVED******REMOVED***edu.institution***REMOVED******REMOVED***" required>
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Study Area</label>
-                                                <input type="text" class="form-control" name="first_name" required>
+                                                <input type="text" class="form-control" name="study_area" value="***REMOVED******REMOVED***edu.study_area***REMOVED******REMOVED***" required>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Study Type</label>
-                                                <input type="text" class="form-control" name="second_name" required>
+                                                <input type="text" class="form-control" name="study_type" value="***REMOVED******REMOVED***edu.study_type***REMOVED******REMOVED***" required>
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>GPA</label>
-                                                <input type="text" class="form-control" name="first_name" required>
+                                                <input type="text" class="form-control" name="gpa" value="***REMOVED******REMOVED***edu.gpa***REMOVED******REMOVED***" required>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Location</label>
-                                                <input type="text" class="form-control" name="second_name" required>
+                                                <input type="text" class="form-control" name="location" value="***REMOVED******REMOVED***edu.location***REMOVED******REMOVED***" required>
                                             </div>
                                         </div>
 
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Start Date</label>
-                                                <input type="text" class="form-control" name="phone_1" required>
+                                                <input type="text" class="form-control" name="start_date" value="***REMOVED******REMOVED***edu.start_date|date:'Y-m-d'***REMOVED******REMOVED***" required>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>End Date</label>
-                                                 <input type="text" class="form-control" name="phone_2" required>
+                                                 <input type="text" class="form-control" name="end_date" value="***REMOVED******REMOVED***edu.end_date|date:'Y-m-d'***REMOVED******REMOVED***" required>
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Description</label>
-                                                <textarea class="form-control" name="description"></textarea>
+                                                <textarea class="form-control" name="description">***REMOVED******REMOVED***edu.description***REMOVED******REMOVED***</textarea>
                                             </div>
                                         </div>
 
                                         <div class="form-row py-4">
-                                            <button type="submit" class="btn btn-primary">Update Work</button>
+                                            <button type="submit" class="btn btn-primary">Update Education</button>
                                         </div>
 
                                     </form>

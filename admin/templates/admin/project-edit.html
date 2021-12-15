@@ -5,6 +5,7 @@
 ***REMOVED***% load static %***REMOVED***
 
 ***REMOVED***% block css %***REMOVED***
+    <link rel="stylesheet" href="***REMOVED***% static 'admin/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.css' %***REMOVED***">
 ***REMOVED***% endblock %***REMOVED***
 
 ***REMOVED***% block sidenav %***REMOVED***                              
@@ -61,68 +62,59 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-12">
+                                <div class="col-12 pt-4">
                                     ***REMOVED***% if state == 'ADD_STATE' %***REMOVED***
                                     <form method="post" action="***REMOVED***% url 'admin-project-add' %***REMOVED***" enctype="multipart/form-data">
                                     ***REMOVED***% elif state == 'EDIT_STATE' %***REMOVED***
-                                    <form method="post" action="***REMOVED***% url 'admin-project-edit' %***REMOVED***" enctype="multipart/form-data">
+                                    <form method="post" action="***REMOVED***% url 'admin-project-edit' project.name|slugify project.id %***REMOVED***" enctype="multipart/form-data">
                                     ***REMOVED***% else %***REMOVED***
-                                    <form method="post" action="***REMOVED***% url 'admin-project-edit' %***REMOVED***" enctype="multipart/form-data">
+                                    <form method="post" action="***REMOVED***% url 'admin-project-add' %***REMOVED***" enctype="multipart/form-data">
                                     ***REMOVED***% endif %***REMOVED***
                                         ***REMOVED***% csrf_token %***REMOVED***
                                         <div class="form-row">
-                                            
+                                            <input type="hidden" name="profile" value="***REMOVED******REMOVED***profile.id***REMOVED******REMOVED***">
                                             <div class="form-group col-md-6">
                                                 <label>Image</label>
-                                                <input type="file" class="form-control" name="file" required>
+                                            ***REMOVED***% for field in form %***REMOVED***
+                                                ***REMOVED***% if field.name == 'image' %***REMOVED***
+                                                    ***REMOVED******REMOVED***field***REMOVED******REMOVED***
+                                                ***REMOVED***% endif %***REMOVED***
+                                            ***REMOVED***% endfor %***REMOVED***
                                             </div>
+                                        </div>
+                                        <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Project Name</label>
-                                                <input type="text" class="form-control" name="first_name" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label>First Name</label>
-                                                <input type="text" class="form-control" name="first_name" required>
+                                                <input type="text" class="form-control" name="name" value="***REMOVED******REMOVED***project.name***REMOVED******REMOVED***" required>
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label>Second Name</label>
-                                                <input type="text" class="form-control" name="second_name" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label>Link</label>
-                                                <input type="text" class="form-control" name="phone_1" required>
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label>Video LInk</label>
-                                                 <input type="text" class="form-control" name="phone_2" required>
+                                                <label>Url</label>
+                                                <input type="text" class="form-control" name="url" value="***REMOVED******REMOVED***project.url***REMOVED******REMOVED***" required>
                                             </div>
                                         </div>
 
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Date</label>
-                                                <input type="text" class="form-control" name="email_1" required>
+                                                <input type="text" class="form-control" name="date" value="***REMOVED******REMOVED***project.date|date:"Y-m-d"***REMOVED******REMOVED***" placeholder="YYYY-MM-DD" required>
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label>Images</label>
-                                                 <input type="text" class="form-control" name="email_2" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label>Keywords</label>
-                                                <input type="text" class="form-control" name="address" required>
+                                                <label>Video LInk</label>
+                                                 <input type="text" class="form-control" name="phone_2">
                                             </div>
                                         </div>
                                         <div class="form-row">
-                                            <div class="form-group col-md-6">
+                                            <div class="form-group col-md-8">
+                                                <label>Technologies</label>
+                                                <input type="text" class="form-control inputtags" name="keywords" value="***REMOVED***% for keyword in project.keywords %***REMOVED***
+                                              ***REMOVED******REMOVED***keyword.technology***REMOVED******REMOVED***, 
+                                            ***REMOVED***% endfor %***REMOVED***" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-8">
                                                 <label>Description</label>
-                                                <textarea class="form-control" name="description"></textarea>
+                                                <textarea class="form-control" name="description">***REMOVED******REMOVED***project.description***REMOVED******REMOVED***</textarea>
                                             </div>
                                         </div>
                                         <div class="form-row">
@@ -144,5 +136,11 @@
 ***REMOVED***% endblock %***REMOVED***
 
 ***REMOVED***% block javascript %***REMOVED***
-
+  <script src="***REMOVED***% static 'admin/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js' %***REMOVED***"></script>
+  <script type="text/javascript">
+        (function($) ***REMOVED***
+            "use strict";
+            $(".inputtags").tagsinput('items');
+        ***REMOVED***)(jQuery);
+  </script>
 ***REMOVED***% endblock %***REMOVED***

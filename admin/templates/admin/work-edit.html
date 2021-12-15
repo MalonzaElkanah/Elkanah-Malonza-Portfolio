@@ -64,45 +64,68 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12">
-                                    <form method="post" action="***REMOVED***% url 'admin-project-edit' %***REMOVED***" enctype="multipart/form-data">
+                                    ***REMOVED***% if state == 'ADD_STATE' %***REMOVED***
+                                    <form method="post" action="***REMOVED***% url 'admin-work-add' %***REMOVED***">
+                                    ***REMOVED***% elif state == 'EDIT_STATE' %***REMOVED***
+                                    <form method="post" action="***REMOVED***% url 'admin-work-edit' work.position|slugify work.id %***REMOVED***">
+                                    ***REMOVED***% else %***REMOVED***
+                                    <form method="post" action="***REMOVED***% url 'admin-work-add' %***REMOVED***">
+                                    ***REMOVED***% endif %***REMOVED***
                                         ***REMOVED***% csrf_token %***REMOVED***
+                                        <input type="hidden" name="profile" value="***REMOVED******REMOVED***profile.id***REMOVED******REMOVED***">
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Company</label>
-                                                <input type="text" class="form-control" name="first_name" required>
+                                                <input type="text" class="form-control" name="company" value="***REMOVED******REMOVED***work.company***REMOVED******REMOVED***" required>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Position</label>
-                                                <input type="text" class="form-control" name="first_name" required>
+                                                <input type="text" class="form-control" name="position" value="***REMOVED******REMOVED***work.position***REMOVED******REMOVED***" required>
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Location</label>
-                                                <input type="text" class="form-control" name="first_name" required>
+                                                <input type="text" class="form-control" name="location" value="***REMOVED******REMOVED***work.location***REMOVED******REMOVED***" required>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Website</label>
-                                                <input type="text" class="form-control" name="second_name" required>
+                                                <input type="text" class="form-control" name="website" value="***REMOVED******REMOVED***work.website***REMOVED******REMOVED***" required>
                                             </div>
                                         </div>
 
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Start Date</label>
-                                                <input type="text" class="form-control" name="phone_1" required>
+                                                <input type="text" class="form-control" name="start_date" placeholder="YYYY-MM-DD" value="***REMOVED******REMOVED***work.start_date|date:"Y-m-d"***REMOVED******REMOVED***" required>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>End Date</label>
-                                                 <input type="text" class="form-control" name="phone_2" required>
+                                                 <input type="text" class="form-control" name="end_date" value="***REMOVED******REMOVED***work.end_date|date:"Y-m-d"***REMOVED******REMOVED***" required>
                                             </div>
                                         </div>
-                                        <div class="category-info">
-                                            <div class="row form-row category-cont">
+                                        ***REMOVED***% for highlight in work.highlights %***REMOVED***
+                                        <div class="edit-highlight-info">
+                                            <div class="row form-row highlight-cont">
                                                 <div class="col-10">
                                                     <div class="form-group">
-                                                        <label>Keyword</label>
-                                                        <input type="text" class="form-control" name="category-name_1" required="">
+                                                        <label>Highlight</label>
+                                                        <input type="text" class="form-control" name="name-***REMOVED******REMOVED***highlight.id***REMOVED******REMOVED***" value="***REMOVED******REMOVED***highlight.name***REMOVED******REMOVED***" required>
+                                                    </div> 
+                                                </div>
+                                                <div class="col-12 col-md-2">
+                                                    <label class="d-md-block d-sm-none d-none">&nbsp;</label>
+                                                    <a href="#" class="btn btn-danger trash"><i class="far fa-trash-alt"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        ***REMOVED***% endfor %***REMOVED***
+                                        <div class="highlight-info">
+                                            <div class="row form-row highlight-cont">
+                                                <div class="col-10">
+                                                    <div class="form-group">
+                                                        <label>Highlight</label>
+                                                        <input type="text" class="form-control" name="name_1" required>
                                                     </div> 
                                                 </div>
                                                 <div class="col-12 col-md-2">
@@ -112,7 +135,7 @@
                                             </div>
                                         </div>
                                         <div class="add-more">
-                                            <a href="javascript:void(0);" class="add-category"><i class="fa fa-plus-circle"></i> Add More</a>
+                                            <a href="javascript:void(0);" class="add-highlight"><i class="fa fa-plus-circle"></i> Add More</a>
                                         </div>
                                         <input type="hidden" name="form_num" value="1">
                                         <p id="count" style="display: none;">1</p>
@@ -136,5 +159,35 @@
 ***REMOVED***% endblock %***REMOVED***
 
 ***REMOVED***% block javascript %***REMOVED***
+    <script type="text/javascript">
+        $(function()***REMOVED***
+            $(".add-highlight").click(function(event)***REMOVED***
+                var input_num = parseInt($("#count").text());
+                input_num = input_num + 1;
+                $("#count").text(''+input_num+'');
+                $("input[name='form_num']").val(''+input_num+'');
+                var content = '<div class="row form-row highlight-cont">' +
+                    '<div class="col-10">' +
+                        '<div class="form-group">' +
+                            '<label>Highlight</label>' +
+                            '<input type="text" class="form-control" name="name_'+input_num+'" required>' +
+                        '</div>' + 
+                    '</div>' +
+                    '<div class="col-12 col-md-2">' +
+                        '<label class="d-md-block d-sm-none d-none">&nbsp;</label>' +
+                       ' <a href="#" class="btn btn-danger trash"><i class="far fa-trash-alt"></i></a>' +
+                    '</div>' +
+                '</div>';
+                
+                $(".highlight-info").append(content);
+                return false;
+            ***REMOVED***);
+
+            $(".highlight-info").on('click','.trash', function () ***REMOVED***
+                $(this).closest('.highlight-cont').remove();
+                return false;
+            ***REMOVED***);
+        ***REMOVED***);
+    </script>
 
 ***REMOVED***% endblock %***REMOVED***

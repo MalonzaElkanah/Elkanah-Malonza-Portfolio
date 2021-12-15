@@ -15,13 +15,16 @@ urlpatterns = [
 	path('add/project/', views.project_add, name='admin-project-add'),
 
 	path('work/', views.work, name='admin-work'),
-	path('edit/work/', views.edit_work, name='admin-work-edit'),
+	path('edit/work/<slug:slug>/<int:work_id>/', views.edit_work, name='admin-work-edit'),
+	path('add/work/', views.add_work, name='admin-work-add'),
 
 	path('education/', views.education, name='admin-education'),
-	path('edit/education/', views.edit_education, name='admin-education-edit'),
+	path('edit/education/<slug:slug>/<int:edu_id>/', views.edit_education, name='admin-education-edit'),
+	path('add/education/', views.add_education, name='admin-education-add'),
 
 	path('skills/', views.skills, name='admin-skills'),
-	path('edit/skills/', views.skills_edit, name='admin-skills-edit'),
+	path('edit/skills/<slug:slug>/<int:skill_id>/', views.skills_edit, name='admin-skills-edit'),
+	path('add/skills/', views.skills_add, name='admin-skills-add'),
 
 	path('services/', views.services, name='admin-services'),
 	path('edit/services/', views.services_edit, name='admin-services-edit'),

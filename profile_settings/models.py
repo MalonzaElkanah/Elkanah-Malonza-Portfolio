@@ -24,6 +24,8 @@ class Profile(models.Model):
 
 class Project(models.Model):
 	profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+	image = models.ImageField(upload_to='image/project/', max_length=1000, 
+		default='image/project/default_profile.jpg')
 	name = models.CharField('Projects', max_length=200)
 	description = models.TextField()
 	url = models.URLField(null=True)
@@ -33,6 +35,9 @@ class Project(models.Model):
 
 	def keywords(self):
 		return ProjectKeyword.objects.filter(project=self.id)
+
+	def highlight_keywords(self):
+		return ProjectKeyword.objects.filter(project=self.id)[0:7]
 
 
 class ProjectKeyword(models.Model):
@@ -60,7 +65,7 @@ class Education(models.Model):
 	start_date = models.DateField()
 	end_date = models.DateField()
 	gpa = models.CharField('GPA', max_length=50)
-	description = models.CharField('Description', max_length=200)
+	description = models.CharField('Description', max_length=1200)
 	date_created = models.DateTimeField('Date Created', auto_now_add=True)
 	# profile, institution, location, study_area, study_type, start_date, end_date, gpa,
 	# description
@@ -75,7 +80,7 @@ class Work(models.Model):
 	start_date = models.DateField()
 	end_date = models.DateField()
 	date_created = models.DateTimeField('Date Created', auto_now_add=True)
-	# job_profile, company, location, position, website, start_date, end_date
+	# profile, company, location, position, website, start_date, end_date
 
 	def highlights(self):
 		return WorkHighlight.objects.filter(work=self.id)

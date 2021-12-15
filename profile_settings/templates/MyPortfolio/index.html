@@ -364,18 +364,23 @@
 	        	</div>
         	
         		<div class="row">
+        		***REMOVED***% for project in projects %***REMOVED***
         			<div class="col-md-6">
         				<div class="card shadow bg-body rounded mb-3" style="max-width: 540px;">
 							<div class="row g-0">
 								<div class="col-md-4">
-									<img src="***REMOVED***% static 'main/images/project-1.png' %***REMOVED***" class="img-fluid rounded-start" alt="...">
+									<img src="***REMOVED******REMOVED***project.image.url***REMOVED******REMOVED***" class="img-fluid rounded-start" alt="...">
 								</div>
 								<div class="col-md-8">
 									<div class="card-body">
-									    <h5 class="card-title">Review Web App</h5>
-									    <p class="card-text text-success"> HTML, CSS, Javascript, Bootstrap, Python, Django, JQuery</p>
+									    <h5 class="card-title">***REMOVED******REMOVED***project.name***REMOVED******REMOVED***</h5>
+									    <p class="card-text text-success">
+									    ***REMOVED***% for keyword in project.highlight_keywords %***REMOVED***
+                                            ***REMOVED******REMOVED***keyword.technology***REMOVED******REMOVED***, 
+                                        ***REMOVED***% endfor %***REMOVED***
+                                        </p>
 									    <div class="row justify-content-between">
-									    	<div class="col"><small class="text-muted">January 13, 2021</small></div>
+									    	<div class="col"><small class="text-muted">***REMOVED******REMOVED***project.date***REMOVED******REMOVED***</small></div>
 									    	<div class="col text-end"><a href="#" class="btn btn-primary">Details</a></div>
 									    </div>
 
@@ -384,70 +389,8 @@
 							</div>
 						</div>
         			</div>
-        			<div class="col-md-6">
-        				<div class="card mb-3 shadow bg-body rounded" style="max-width: 540px;">
-							<div class="row g-0">
-								<div class="col-md-4">
-									<img src="***REMOVED***% static 'main/images/project-2.jpg' %***REMOVED***" class="img-fluid rounded-start" alt="...">
-								</div>
-								<div class="col-md-8">
-									<div class="card-body">
-									    <h5 class="card-title">Budget App</h5>
-									    <p class="card-text text-success"> HTML, CSS, Javascript, Bootstrap, Python, Django, JQuery</p>
-									    <div class="row justify-content-between">
-									    	<div class="col"><small class="text-muted">August 13, 2022</small></div>
-									    	<div class="col text-end"><a href="#" class="btn btn-primary">Details</a></div>
-									    </div>
-
-									</div>
-								</div>
-							</div>
-						</div>
-        			</div>
-
-        			<div class="col-md-6">
-        				<div class="card mb-3 shadow bg-body rounded" style="max-width: 540px;">
-							<div class="row g-0">
-								<div class="col-md-4">
-									<img src="***REMOVED***% static 'main/images/project-3.jpg' %***REMOVED***" class="img-fluid rounded-start" alt="...">
-								</div>
-								<div class="col-md-8">
-									<div class="card-body">
-									    <h5 class="card-title">Job Web Scrapper</h5>
-									    <p class="card-text text-success"> HTML, CSS, Javascript, Bootstrap, Python, Django, JQuery</p>
-									    <div class="row justify-content-between">
-									    	<div class="col"><small class="text-muted">December 23, 2021</small></div>
-									    	<div class="col text-end"><a href="#" class="btn btn-primary">Details</a></div>
-									    </div>
-
-									</div>
-								</div>
-							</div>
-						</div>
-        			</div>
-
-        			<div class="col-md-6">
-        				<div class="card mb-3 shadow bg-body rounded" style="max-width: 540px;">
-							<div class="row g-0">
-								<div class="col-md-4">
-									<img src="***REMOVED***% static 'main/images/project-5.png' %***REMOVED***" class="img-fluid rounded-start" alt="...">
-								</div>
-								<div class="col-md-8">
-									<div class="card-body">
-									    <h5 class="card-title">My Portfolio</h5>
-									    <p class="card-text text-success"> HTML, CSS, Javascript, Bootstrap, Python, Django, JQuery</p>
-									    <div class="row justify-content-between">
-									    	<div class="col"><small class="text-muted">December 13, 2021</small></div>
-									    	<div class="col text-end"><a href="#" class="btn btn-primary">Details</a></div>
-									    </div>
-
-									</div>
-								</div>
-							</div>
-						</div>
-        			</div>
-
-
+        		***REMOVED***% endfor %***REMOVED***
+        			
         		</div>
         	</div>
         </div>
