@@ -11,6 +11,8 @@ from profile_settings.models import Profile, Project, SocialLink, Education, Wor
 from profile_settings.models import Testimony, Pricing, Message
 from profile_settings.models import ProjectKeyword, WorkHighlight, SkillKeyword, PricingKeyword
 from profile_settings.forms import ProfileForm, ProjectForm, WorkForm, EducationForm
+from blog.models import ArticleSeries, ArticleCategory, Article, Comment
+from blog.forms import ArticleForm
 
 
 def check_profile(user):
@@ -373,25 +375,231 @@ def skills_add(request):
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
 def services(request):
-	return render(request, 'admin/services.html')
+	# Get profile and service data
+	profile = Profile.objects.get(user=request.user.id)
+	services = Service.objects.filter(profile=profile.id)
+	return render(request, 'admin/services.html', ***REMOVED***'profile': profile, 'services': services***REMOVED***)
 
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
-def services_edit(request):
-	return render(request, 'admin/services-edit.html')
+def services_edit(request, slug, service_id):
+	# Get profile and service data
+	profile = Profile.objects.get(user=request.user.id)
+	service = Service.objects.get(id=int(service_id))
+	# Check if request is from a form
+	if request.method == 'POST':
+		# Update the Service data if request from a form
+		name = request.POST['name']
+		logo = request.POST['logo']
+		description = request.POST['description']
+		service.name = name
+		service.logo = logo
+		service.description = description
+		service.save()
+		return redirect('admin-services')
+	else:
+		state = 'EDIT_STATE'
+		return render(request, 'admin/services-edit.html', ***REMOVED***'service': service, 'profile': profile,
+			'state': state***REMOVED***)
+
+
+@login_required(login_url='/login/')
+@user_passes_test(check_profile, login_url='/admin/edit/profile/')
+def services_add(request):
+	profile = Profile.objects.get(user=request.user.id)
+	if request.method == 'POST':
+		# Add New Services
+		name = request.POST['name']
+		logo = request.POST['logo']
+		description = request.POST['description']
+		service = Service(profile=profile, name=name, logo=logo, description=description)
+		service.save() 
+		return redirect('admin-services')
+	else:
+		state = 'ADD_STATE'
+		return render(request, 'admin/services-edit.html', ***REMOVED***'profile': profile, 'state': state***REMOVED***)
+
+
+@login_required(login_url='/login/')
+@user_passes_test(check_profile, login_url='/admin/edit/profile/')
+def prices(request):
+	# Get profile and price data
+	profile = Profile.objects.get(user=request.user.id)
+	pricing = Pricing.objects.filter(profile=profile.id)
+	return render(request, 'admin/prices.html', ***REMOVED***'prices': pricing, 'profile': profile***REMOVED***)
+
+
+@login_required(login_url='/login/')
+@user_passes_test(check_profile, login_url='/admin/edit/profile/')
+def price_edit(request, slug, price_id):
+	# Get profile and price data
+	profile = Profile.objects.get(user=request.user.id)
+	pricing = Pricing.objects.get(id=int(price_id))
+	# Check if request is from a form
+	if request.method == 'POST':
+		# Update the Service data if request from a form
+		name = request.POST['name']
+		price = request.POST['price']
+		description = request.POST['description']
+		pricing.name = name
+		pricing.price = price 
+		pricing.description = description
+		pricing.save()
+		# Update Pricing Keyword
+		keywords = PricingKeyword.objects.filter(pricing=pricing.id)
+		for keyword in keywords:
+			price = request.POST['price-'+int(keyword.id)]
+			status = request.POST['status-'+int(keyword.id)]
+			keyword.price = price
+			keyword.status = status
+			keyword.save()
+
+		#Add New Keywords
+		# Get the number of new Work Highlights
+		form_num = int(request.POST['form_num'])
+		form_num = form_num + 1
+		# Loop through all the new social items
+		for x in range(1,form_num):
+			#try:
+			name = request.POST['name_'+str(x)]
+			status = request.POST['status_'+str(x)]
+			keyword = PricingKeyword(pricing=pricing, name=name, status=status)
+			keyword.save()
+			#except Exception:
+			#	pass
+		
+		return redirect('admin-prices')
+	else:
+		state = 'EDIT_STATE'
+		return render(request, 'admin/price-edit.html', ***REMOVED***'price': pricing, 'profile': profile,
+			'state': state***REMOVED***)
+
+
+@login_required(login_url='/login/')
+@user_passes_test(check_profile, login_url='/admin/edit/profile/')
+def price_add(request):
+	profile = Profile.objects.get(user=request.user.id)
+	if request.method == 'POST':
+		# Add New Pricing
+		name = request.POST['name']
+		price = float(request.POST['price'])
+		description = request.POST['description']
+		price = Pricing(profile=profile, name=name, price=price, description=description)
+		price.save() 
+
+		# Add New Keywords
+		# Get the number of new Keywords
+		form_num = int(request.POST['form_num'])
+		form_num = form_num + 1
+		# Loop through all the new Keywords items
+		for x in range(1, form_num):
+			try:
+				name = request.POST['name_'+str(x)]
+				status = request.POST['status_'+str(x)]
+				keyword = PricingKeyword(pricing=price, name=name, status=status)
+				keyword.save()
+			except Exception:
+				pass
+
+		return redirect('admin-prices')
+	else:
+		state = 'ADD_STATE'
+		return render(request, 'admin/price-edit.html', ***REMOVED***'profile': profile, 'state': state***REMOVED***)
+
 
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
 def blog(request):
-	return render(request, 'admin/blog-view.html') 
+	profile = Profile.objects.get(user=request.user.id)
+	articles = Article.objects.all()
+	categories = ArticleCategory.objects.all()
+	series = ArticleSeries.objects.all()
+	return render(request, 'admin/blog-view.html', ***REMOVED***'profile': profile, 'articles': articles, 
+		'series': series, 'categories': categories***REMOVED***) 
 
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
-def edit_blog(request):
-	return render(request, 'admin/blog-edit.html') 
+def edit_blog(request, slug, article_id):
+	profile = Profile.objects.get(user=request.user.id)
+	article = Article.objects.get(id=int(article_id))
+	# Check if request is from a form
+	if request.method == 'POST':
+		# Update the Education data if request from a form
+		form = ArticleForm(request.POST, instance=article)
+		if form.is_valid():
+			form.save()
+		else:
+			return HttpResponse(form.errors)
+		return redirect('admin-blog')
+	else:
+		state = 'EDIT_STATE'
+		form = ArticleForm(instance=article)
+		categories = ArticleCategory.objects.all()
+		series = ArticleSeries.objects.all()
+		return render(request, 'admin/blog-edit.html', ***REMOVED***'state': state, 'form': form, 'article': article,
+			'profile': profile, 'categories': categories, 'series': series***REMOVED***) 
+
+
+
+@login_required(login_url='/login/')
+@user_passes_test(check_profile, login_url='/admin/edit/profile/')
+def add_blog(request):
+	profile = Profile.objects.get(user=request.user.id)
+	if request.method == 'POST':
+		article = None
+		form = ArticleForm(request.POST, request.FILES)
+		if form.is_valid():
+			article = form.save()
+		else:
+			return HttpResponse(form.errors)
+		return redirect('admin-blog')
+	else:
+		state = 'ADD_STATE'
+		form = ArticleForm()
+		categories = ArticleCategory.objects.all()
+		series = ArticleSeries.objects.all()
+		return render(request, 'admin/blog-edit.html', ***REMOVED***'state': state, 'profile': profile, 
+			'form': form, 'categories': categories, 'series': series***REMOVED***)
+
+
+@login_required(login_url='/login/')
+@user_passes_test(check_profile, login_url='/admin/edit/profile/')
+def add_category(request):
+	if request.is_ajax():
+		form_num = int(request.POST['form_num'])
+		form_num = form_num + 1
+		for x in range(1, form_num):
+			#try:
+			name = request.POST['category-name_'+str(x)]
+			category = ArticleCategory(name=name)
+			category.save()
+			#except Exception:
+			#	name = ''
+		return JsonResponse(***REMOVED***"success": "Category Created"***REMOVED***, status=200)
+	else:
+		return redirect('admin-blog') 
+
+
+@login_required(login_url='/login/')
+@user_passes_test(check_profile, login_url='/admin/edit/profile/')
+def add_series(request):
+	if request.is_ajax():
+		form_num = int(request.POST['form_num-series'])
+		form_num = form_num + 1
+		for x in range(1, form_num):
+			#try:
+			name = request.POST['series-name_'+str(x)]
+			series = ArticleSeries(name=name)
+			series.save()
+			#except Exception:
+			#	name = ''
+		return JsonResponse(***REMOVED***"success": "Series Created"***REMOVED***, status=200)
+	else:
+		return redirect('admin-blog') 
+
 
 
 @login_required(login_url='/login/')

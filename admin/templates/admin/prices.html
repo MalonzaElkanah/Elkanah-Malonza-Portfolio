@@ -31,8 +31,11 @@
     <li class="dropdown">
         <a href="***REMOVED***% url 'admin-skills' %***REMOVED***" class="nav-link"><i data-feather="sliders"></i><span>Skills</span></a>
     </li>
-    <li class="dropdown active">
+    <li class="dropdown">
         <a href="***REMOVED***% url 'admin-services' %***REMOVED***" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
+    </li> 
+    <li class="dropdown active">
+        <a href="***REMOVED***% url 'admin-services' %***REMOVED***" class="nav-link"><i data-feather="briefcase"></i><span>Pricing</span></a>
     </li> 
     <li class="dropdown">
         <a href="***REMOVED***% url 'admin-blog' %***REMOVED***" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
@@ -58,47 +61,43 @@
         <div class="section-body"> 
 
         <!-- Edit/Add Profile Form Body  -->
+            <div class="row p-3">
+                <a href="***REMOVED***% url 'admin-price-add' %***REMOVED***" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Add Pricing</a>
+            </div>
             <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-12">
-                                    ***REMOVED***% if state == 'ADD_STATE' %***REMOVED***
-                                    <form method="post" action="***REMOVED***% url 'admin-services-add' %***REMOVED***">
-                                    ***REMOVED***% elif state == 'EDIT_STATE' %***REMOVED***
-                                    <form method="post" action="***REMOVED***% url 'admin-services-edit' service.name|slugify service.id %***REMOVED***">
-                                    ***REMOVED***% else %***REMOVED***
-                                    ***REMOVED***% endif %***REMOVED***
-                                        ***REMOVED***% csrf_token %***REMOVED***
-                                        <input type="hidden" name="profile" value="***REMOVED******REMOVED***profile.id***REMOVED******REMOVED***">
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label>Name</label>
-                                                <input type="text" class="form-control" name="name" value="***REMOVED******REMOVED***service.name***REMOVED******REMOVED***" required>
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label>FA icon</label>
-                                                <input type="text" class="form-control" name="logo" value="***REMOVED******REMOVED***service.logo***REMOVED******REMOVED***" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-12">
-                                                <label>Description</label>
-                                                <textarea class="form-control" name="description">***REMOVED******REMOVED***service.description***REMOVED******REMOVED***</textarea>
-                                            </div>
-                                        </div>
-                                        <div class="form-row py-4">
-                                            <button type="submit" class="btn btn-primary">Update Service</button>
-                                        </div>
-
-                                    </form>
-                                </div>
+            ***REMOVED***% for price in prices %***REMOVED***
+                <div class="col-12 col-md-4 col-lg-4">
+                    <div class="pricing">
+                        <div class="pricing-title">***REMOVED******REMOVED***price.name***REMOVED******REMOVED***</div>
+                        <div class="pricing-padding">
+                            <div class="pricing-price">
+                                <div>kSh ***REMOVED******REMOVED***price.price***REMOVED******REMOVED***</div>
+                                <div>per month</div>
                             </div>
-
+                            <div class="pricing-details">
+                            ***REMOVED***% for keyword in price.keywords %***REMOVED***
+                                <div class="pricing-item">
+                                ***REMOVED***% if keyword.status == 'active'  %***REMOVED***
+                                    <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
+                                ***REMOVED***% elif keyword.status == 'not_active'  %***REMOVED***
+                                    <div class="pricing-item-icon bg-danger text-white"><i class="fas fa-times"></i></div>
+                                ***REMOVED***% else %***REMOVED***
+                                    <div class="pricing-item-icon bg-danger text-white"><i class="fas fa-times"></i></div>
+                                ***REMOVED***% endif %***REMOVED***
+                                    
+                                    <div class="pricing-item-label">***REMOVED******REMOVED***keyword.name***REMOVED******REMOVED***</div>
+                                </div>
+                            ***REMOVED***% endfor %***REMOVED***
+                            </div>
+                        </div>
+                        <div class="pricing-cta">
+                            <a href="***REMOVED***% url 'admin-price-edit' price.name|slugify price.id %***REMOVED***">Edit <i class="fas fa-pencil-alt"></i></a>
                         </div>
                     </div>
                 </div>
+            ***REMOVED***% empty %***REMOVED***
+                <div class="text-center"><p>No Prices Available. Click <a href="***REMOVED***% url 'admin-price-add' %***REMOVED***">Here</a> to Add.</p></div>
+            ***REMOVED***% endfor %***REMOVED***
             </div>
         <!-- /Add Letter Form Body  -->
 

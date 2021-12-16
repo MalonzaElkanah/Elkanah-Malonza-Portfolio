@@ -1,0 +1,217 @@
+***REMOVED***% extends "admin/base.html" %***REMOVED***
+
+***REMOVED***% block title %***REMOVED*** Admin - Home ***REMOVED***% endblock %***REMOVED***
+
+***REMOVED***% load static %***REMOVED***
+
+***REMOVED***% block css %***REMOVED***
+    <!-- Custom style CSS 
+    <link rel="stylesheet" href="***REMOVED***% static 'main/css/page/index.css' %***REMOVED***">-->
+***REMOVED***% endblock %***REMOVED***
+
+***REMOVED***% block sidenav %***REMOVED***                              
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-home' %***REMOVED***" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-messages' %***REMOVED***" class="nav-link"><i data-feather="message-square"></i><span>Messages</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-profile' %***REMOVED***" class="nav-link"><i data-feather="user"></i><span>Profile</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-projects' %***REMOVED***" class="nav-link"><i data-feather="codepen"></i><span>Projects</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-work' %***REMOVED***" class="nav-link"><i data-feather="clipboard"></i><span>Work</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-education' %***REMOVED***" class="nav-link"><i data-feather="book-open"></i><span>Education</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-skills' %***REMOVED***" class="nav-link"><i data-feather="sliders"></i><span>Skills</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-services' %***REMOVED***" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
+    </li>     
+    <li class="dropdown active">
+        <a href="***REMOVED***% url 'admin-prices' %***REMOVED***" class="nav-link"><i data-feather="briefcase"></i><span>Pricing</span></a>
+    </li>
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-blog' %***REMOVED***" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
+    </li>       
+    <li class="dropdown">
+        <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Settings</span></a>
+        <ul class="dropdown-menu">
+            <li><a class="nav-link" href="***REMOVED***% url 'admin-settings' %***REMOVED***">App Settings</a></li>
+            <li><a class="nav-link" href="***REMOVED***% url 'admin-settings' %***REMOVED***">Profile Settings</a></li>
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="unlock"></i><span>Authentication</span></a>
+        <ul class="dropdown-menu">
+            <li><a class="nav-link" href="#">New-password</a></li>
+            <li><a class="nav-link" href="***REMOVED***% url 'logout' %***REMOVED***">Logout</a></li>
+        </ul>
+    </li>                                   
+***REMOVED***% endblock %***REMOVED***
+
+***REMOVED***% block content %***REMOVED***
+    <section class="section">
+        <div class="section-body"> 
+
+        <!-- Edit/Add Profile Form Body  -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    ***REMOVED***% if state == 'ADD_STATE' %***REMOVED***
+                                    <form method="post" action="***REMOVED***% url 'admin-price-add' %***REMOVED***">
+                                    ***REMOVED***% elif state == 'EDIT_STATE' %***REMOVED***
+                                    <form method="post" action="***REMOVED***% url 'admin-price-edit' price.name|slugify price.id %***REMOVED***">
+                                    ***REMOVED***% else %***REMOVED***
+                                    <form method="post" action="***REMOVED***% url 'admin-price-add' %***REMOVED***">
+                                    ***REMOVED***% endif %***REMOVED***
+                                        ***REMOVED***% csrf_token %***REMOVED***
+                                        <input type="hidden" name="profile" value="***REMOVED******REMOVED***profile.id***REMOVED******REMOVED***">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label>Name</label>
+                                                <input type="text" class="form-control" name="name" value="***REMOVED******REMOVED***price.name***REMOVED******REMOVED***" required>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label>Price</label>
+                                                <input type="text" class="form-control" name="price" value="***REMOVED******REMOVED***price.price***REMOVED******REMOVED***" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group col-md-10">
+                                                <label>Description</label>
+                                                <textarea class="form-control" name="description">***REMOVED******REMOVED***price.description***REMOVED******REMOVED***</textarea>
+                                            </div>
+                                        </div>
+                                        ***REMOVED***% for keyword in keyword.keywords %***REMOVED***
+                                        <div class="edit-keyword-info">
+                                            <div class="row form-row keyword-cont">
+                                                <div class="col-md-5">
+                                                    <div class="form-group">
+                                                        <label>Keywords</label>
+                                                        <input type="text" class="form-control" name="name-***REMOVED******REMOVED***keyword.id***REMOVED******REMOVED***" value="***REMOVED******REMOVED***keyword.name***REMOVED******REMOVED***" required>
+                                                    </div> 
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="form-group">
+                                                        <label>Status</label>
+                                                        <select class="form-control" name="status-***REMOVED******REMOVED***keyword.id***REMOVED******REMOVED***">
+                                                        ***REMOVED***% if keyword.status == 'active'  %***REMOVED***
+                                                            <option value="active" selected="">Active</option>
+                                                            <option value="not_active">Not Active</option>
+                                                        ***REMOVED***% elif keyword.status == 'not_active'  %***REMOVED***
+                                                            <option value="not_active" selected="">Not Active</option> 
+                                                            <option value="active">Active</option>
+                                                        ***REMOVED***% else %***REMOVED***
+                                                            <option value="active">Active</option>
+                                                            <option value="not_active">Not Active</option>
+                                                        ***REMOVED***% endif %***REMOVED***
+                                                        </select>
+                                                    </div> 
+                                                </div>
+                                                <div class="col-12 col-md-2">
+                                                    <label class="d-md-block d-sm-none d-none">&nbsp;</label>
+                                                    <a href="#" class="btn btn-danger trash"><i class="far fa-trash-alt"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        ***REMOVED***% endfor %***REMOVED***
+                                        <div class="keyword-info">
+                                            <div class="row form-row keyword-cont">
+                                                <div class="col-md-5">
+                                                    <div class="form-group">
+                                                        <label>Keyword</label>
+                                                        <input type="text" class="form-control" name="name_1" required>
+                                                    </div> 
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="form-group">
+                                                        <label>Status</label>
+                                                        <select class="form-control" name="status_1">
+                                                            <option value="active">Active</option>
+                                                            <option value="not_active">Not Active</option>
+                                                        </select>
+                                                    </div> 
+                                                </div>
+                                                <div class="col-12 col-md-2">
+                                                    <label class="d-md-block d-sm-none d-none">&nbsp;</label>
+                                                    <a href="#" class="btn btn-danger trash"><i class="far fa-trash-alt"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="add-more">
+                                            <a href="javascript:void(0);" class="add-keyword"><i class="fa fa-plus-circle"></i> Add More</a>
+                                        </div>
+                                        <input type="hidden" name="form_num" value="1">
+                                        <p id="count" style="display: none;">1</p>
+
+                                        <div class="form-row py-4">
+                                            <button type="submit" class="btn btn-primary">Update Work</button>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- /Add Letter Form Body  -->
+
+        </div>
+    </section>   
+***REMOVED***% endblock %***REMOVED***
+
+***REMOVED***% block javascript %***REMOVED***
+    <script type="text/javascript">
+        $(function()***REMOVED***
+            $(".add-keyword").click(function(event)***REMOVED***
+                var input_num = parseInt($("#count").text());
+                input_num = input_num + 1;
+                $("#count").text(''+input_num+'');
+                $("input[name='form_num']").val(''+input_num+'');
+                var content = '<div class="row form-row keyword-cont">' +
+                    '<div class="col-md-5">' +
+                        '<div class="form-group">' +
+                            '<label>Keyword</label>' +
+                            '<input type="text" class="form-control" name="name_'+input_num+'" required>' +
+                        '</div>' + 
+                    '</div>' + 
+                    '<div class="col-md-5">' +
+                        '<div class="form-group">' +
+                            '<label>Status</label>' +
+                            '<select class="form-control" name="status_'+input_num+'">' +
+                                '<option value="active">Active</option>' +
+                                '<option value="not_active">Not Active</option>' +
+                            '</select>' +
+                        '</div>' + 
+                    '</div>' +
+                    '<div class="col-12 col-md-2">' +
+                        '<label class="d-md-block d-sm-none d-none">&nbsp;</label>' +
+                        '<a href="#" class="btn btn-danger trash"><i class="far fa-trash-alt"></i></a>' +
+                    '</div>' +
+                '</div>';
+                
+                $(".keyword-info").append(content);
+                return false;
+            ***REMOVED***);
+
+            $(".keyword-info").on('click','.trash', function () ***REMOVED***
+                $(this).closest('.keyword-cont').remove();
+                return false;
+            ***REMOVED***);
+        ***REMOVED***);
+    </script>
+
+***REMOVED***% endblock %***REMOVED***

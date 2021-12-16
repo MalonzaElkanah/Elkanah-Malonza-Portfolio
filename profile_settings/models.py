@@ -113,10 +113,11 @@ class SkillKeyword(models.Model):
 
 class Service(models.Model):
 	profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+	logo = models.CharField('Favicon Logo', max_length=200, default='fas fa-object-group')
 	name = models.CharField('Service', max_length=200)
 	description = models.CharField('Description', max_length=1000)
 	date_created = models.DateTimeField('Date Created', auto_now_add=True)
-	# profile, name, description
+	# profile, logo, name, description
 
 
 class Testimony(models.Model):

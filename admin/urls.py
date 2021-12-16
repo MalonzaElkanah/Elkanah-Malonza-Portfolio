@@ -27,10 +27,18 @@ urlpatterns = [
 	path('add/skills/', views.skills_add, name='admin-skills-add'),
 
 	path('services/', views.services, name='admin-services'),
-	path('edit/services/', views.services_edit, name='admin-services-edit'),
+	path('edit/services/<slug:slug>/<int:service_id>/', views.services_edit, name='admin-services-edit'),
+	path('add/services/', views.services_add, name='admin-services-add'),
+
+	path('prices/', views.prices, name='admin-prices'),
+	path('edit/price/<slug:slug>/<int:price_id>/', views.price_edit, name='admin-price-edit'),
+	path('add/price/', views.price_add, name='admin-price-add'),
 
 	path('blog/', views.blog, name='admin-blog'),
-	path('edit/blog/', views.edit_blog, name='admin-blog-edit'),
+	path('edit/blog/<slug:slug>/<int:article_id>/', views.edit_blog, name='admin-blog-edit'),
+	path('add/blog/', views.add_blog, name='admin-blog-add'),
+	path('add-category/', views.add_category, name = 'add-blog-category'),
+	path('add-series/', views.add_series, name = 'add-blog-series'),
 
 	path('settings/', views.settings, name='admin-settings'),
 

@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
+# Create your models here. 
 
 class ArticleSeries(models.Model):
 	name = models.CharField('Keyword', max_length=200)
@@ -23,10 +23,10 @@ class Article(models.Model):
 	content = models.TextField()
 	tags = models.CharField('Tags', max_length=50)
 	status = models.CharField('Status', max_length=50, default='PRIVATE')
-	views = models.IntegerField('Views')
+	views = models.IntegerField('Views', default=0, null=True, blank=True)
 	date_created = models.DateTimeField('Date Created', auto_now_add=True)
 	category = models.ForeignKey(ArticleCategory, on_delete=models.CASCADE)
-	series = models.ForeignKey(ArticleSeries, on_delete=models.CASCADE, null=True)
+	series = models.ForeignKey(ArticleSeries, on_delete=models.CASCADE, null=True, blank=True)
 	# user, image, title, content, tags, status, views, date_created, category, series 
 
 

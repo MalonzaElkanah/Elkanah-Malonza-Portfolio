@@ -83,6 +83,12 @@
                     <div class="card">
                         <div class="card-header">
                             <h4>All Posts</h4>
+                            <div class="card-header-action">
+                                <a href="***REMOVED***% url 'admin-blog-add' %***REMOVED***" class="btn btn-primary">
+                                    <i class="fas fa-plus"></i>
+                                    Add Post
+                                 </a>
+                            </div>
                         </div>
                              <div class="card-body">
                                 <div class="float-left">
@@ -115,13 +121,14 @@
                                                 </div>
                                             </th>
                                             <th>Title</th>
+                                            <th>Series</th>
                                             <th>Category</th>
                                             <th>Created At</th>
                                             <th>Tags</th>
                                             <th>views</th>
                                             <th>Status</th>
                                         </tr>
-                                        ***REMOVED***% for journal in journals %***REMOVED***
+                                        ***REMOVED***% for article in articles %***REMOVED***
                                         <tr>
                                             <td>
                                                 <div class="custom-checkbox custom-control">
@@ -132,33 +139,36 @@
                                             </td>
                                             <td>
                                                 <a href="#">
-                                                  <img alt="image" src="***REMOVED******REMOVED***journal.image.url***REMOVED******REMOVED***" class="rounded-circle" width="35"
+                                                  <img alt="image" src="***REMOVED******REMOVED***article.image.url***REMOVED******REMOVED***" class="rounded-circle" width="35"
                                                     data-toggle="title" title="">
-                                                  <span class="d-inline-block ml-1">***REMOVED******REMOVED***journal.title***REMOVED******REMOVED***</span>
+                                                  <span class="d-inline-block ml-1">***REMOVED******REMOVED***article.title***REMOVED******REMOVED***</span>
                                                 </a>
                                                 <div class="table-links">
                                                   <a href="#">View</a>
                                                   <div class="bullet"></div>
-                                                  <a href="#">Edit</a>
+                                                  <a href="***REMOVED***% url 'admin-blog-edit' article.title|slugify article.id %***REMOVED***">Edit</a>
                                                   <div class="bullet"></div>
                                                   <a href="#" class="text-danger">Trash</a>
                                                 </div>
                                             </td>
                                             <td>
-                                                <a href="#">***REMOVED******REMOVED***journal.category***REMOVED******REMOVED***</a>
+                                                <a href="#">***REMOVED******REMOVED***article.series.name***REMOVED******REMOVED***</a>
                                             </td>
-                                            <td>***REMOVED******REMOVED***journal.date_created***REMOVED******REMOVED***</td>
-                                            <td>***REMOVED******REMOVED***journal.tags***REMOVED******REMOVED***</td>
-                                            <td>***REMOVED******REMOVED***journal.views***REMOVED******REMOVED***</td>
+                                            <td>
+                                                <a href="#">***REMOVED******REMOVED***article.category.name***REMOVED******REMOVED***</a>
+                                            </td>
+                                            <td>***REMOVED******REMOVED***article.date_created***REMOVED******REMOVED***</td>
+                                            <td>***REMOVED******REMOVED***article.tags***REMOVED******REMOVED***</td>
+                                            <td>***REMOVED******REMOVED***article.views***REMOVED******REMOVED***</td>
                                             <td> 
-                                            ***REMOVED***% if journal.status == 'Pending' %***REMOVED***
-                                                <div class="badge badge-warning">***REMOVED******REMOVED***journal.status***REMOVED******REMOVED***</div>
-                                            ***REMOVED***% elif journal.status == 'Publish' %***REMOVED***
-                                                <div class="badge badge-primary">***REMOVED******REMOVED***journal.status***REMOVED******REMOVED***</div>
-                                            ***REMOVED***% elif journal.status == 'Draft' %***REMOVED***
-                                                <div class="badge badge-danger">***REMOVED******REMOVED***journal.status***REMOVED******REMOVED***</div>
+                                            ***REMOVED***% if article.status == 'Pending' %***REMOVED***
+                                                <div class="badge badge-warning">***REMOVED******REMOVED***article.status***REMOVED******REMOVED***</div>
+                                            ***REMOVED***% elif article.status == 'Publish' %***REMOVED***
+                                                <div class="badge badge-primary">***REMOVED******REMOVED***article.status***REMOVED******REMOVED***</div>
+                                            ***REMOVED***% elif article.status == 'Draft' %***REMOVED***
+                                                <div class="badge badge-danger">***REMOVED******REMOVED***article.status***REMOVED******REMOVED***</div>
                                             ***REMOVED***% else %***REMOVED***
-                                                <div class="badge badge-primary">***REMOVED******REMOVED***journal.status***REMOVED******REMOVED***</div>
+                                                <div class="badge badge-primary">***REMOVED******REMOVED***article.status***REMOVED******REMOVED***</div>
                                             ***REMOVED***% endif %***REMOVED***
                                             </td>
                                         </tr>
@@ -167,7 +177,7 @@
                                 </div>
                                 <div class="float-left">
                                     <a href="#" class="btn btn-danger">Danger</a>
-                                    <a href="***REMOVED***% url 'admin-blog-edit' %***REMOVED***" class="btn btn-warning">Edit</a>
+                                    <a href="#" class="btn btn-warning">Edit</a>
                                 </div>
                                 <div class="float-right">
                                     <nav>
