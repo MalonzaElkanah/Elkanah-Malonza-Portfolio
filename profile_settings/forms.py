@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Profile, Project, Work, Education
+from .models import Profile, Project, Work, Education, AppSettings
 
 
 class ProfileForm(ModelForm):
@@ -28,4 +28,9 @@ class EducationForm(ModelForm):
 		fields = ('profile', 'institution', 'location', 'study_area', 'study_type', 'start_date', 
 			'end_date', 'gpa', 'description')
 
-		
+
+class AppSettingsForm(ModelForm):
+	class Meta:
+		model = AppSettings
+		fields = ( 'user', 'app_name', 'logo', 'favicon', 'layout', 'sidebar_color', 'color_theme', 
+			'mini_sidebar', 'sticky_header')

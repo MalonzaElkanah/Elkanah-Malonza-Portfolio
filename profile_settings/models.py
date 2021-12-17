@@ -157,3 +157,74 @@ class Message(models.Model):
 	message = models.CharField('Message', max_length=1500)
 	date_created = models.DateTimeField('Date Created', auto_now_add=True)
 	# first_name, last_name, email, message
+
+
+class AppSettings(models.Model):
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	app_name = models.CharField('App Name', max_length=20)
+	logo = models.ImageField('Logo', upload_to='Image/Settings/Logo', default='logo.png', blank=True, 
+		null=True)
+	favicon = models.ImageField('Favicon', upload_to='Image/Settings/Logo', default='favicon.ico', 
+		blank=True, null=True)
+	layout = models.CharField('layout', max_length=10)
+	sidebar_color = models.CharField('Sidebar Color', max_length=10)
+	color_theme = models.CharField('Color Theme', max_length=10)
+	mini_sidebar = models.CharField('Mini Sidebar', max_length=10)
+	sticky_header = models.CharField('Sticky Header', max_length=10)
+	# user, app_name, logo, favicon, layout, sidebar_color, color_theme, mini_sidebar, sticky_header
+
+	def layout_class(self): 
+		layout = self.layout
+		if layout == "1":
+			return "light"
+		elif layout == "2":
+			return "dark"
+		else:
+			return "dark"
+
+	def sidebar_color_class(self): 
+		sidebar_color = self.sidebar_color
+		if sidebar_color == "1":
+			return "light-sidebar"
+		elif sidebar_color == "2":
+			return "dark-sidebar"
+		else:
+			return "light-sidebar"
+
+	def color_theme_class(self):
+		color_theme = self.color_theme
+		if color_theme == "white":
+			return "theme-white"
+		elif color_theme == "cyan":
+			return "theme-cyan"
+		elif color_theme == "black":
+			return "theme-black"
+		elif color_theme == "purple":
+			return "theme-purple"
+		elif color_theme == "orange":
+			return "theme-orange"
+		elif color_theme == "green":
+			return "theme-green"
+		elif color_theme == "red":
+			return "theme-red"
+		else:
+			return "theme-white"
+
+	def mini_sidebar_class(self):
+		mini_sidebar = self.mini_sidebar
+		if mini_sidebar == "false":
+			return " "
+		elif mini_sidebar == "true":
+			return "sidebar-mini"
+		else:
+			return " "
+
+	def sticky_header_class(self):
+		sticky_header = self.sticky_header
+		if sticky_header == "false":
+	 		return "sticky"
+		elif sticky_header == "true":
+	 		return " "
+	 		pass
+		else:
+	 		return " "

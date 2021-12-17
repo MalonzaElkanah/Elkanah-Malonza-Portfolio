@@ -83,17 +83,22 @@
                                             <label>Website Name</label>
                                             <input type="text" class="form-control" name="app_name" value="***REMOVED******REMOVED***app.app_name***REMOVED******REMOVED***">
                                         </div>
+                                    ***REMOVED***% for field in form %***REMOVED***
+                                        ***REMOVED***% if field.name == 'logo' %***REMOVED***
                                         <div class="form-group">
                                             <label>Logo</label>
-                                            <input type="file" class="form-control" name="app_name" value="***REMOVED******REMOVED***app.app_name***REMOVED******REMOVED***">
+                                            ***REMOVED******REMOVED***field***REMOVED******REMOVED***
                                             <small class="text-secondary">Recommended image size is <b>150px x 150px</b></small>
                                         </div>
+                                        ***REMOVED***% elif field.name == 'favicon' %***REMOVED***
                                         <div class="form-group mb-0">
                                             <label>Favicon</label>
-                                            <input type="file" class="form-control" name="app_name" value="***REMOVED******REMOVED***app.app_name***REMOVED******REMOVED***">
+                                            ***REMOVED******REMOVED***field***REMOVED******REMOVED***
                                             <small class="text-secondary">Recommended image size is <b>16px x 16px</b> or <b>32px x 32px</b></small><br>
                                             <small class="text-secondary">Accepted formats : only png and ico</small>
                                         </div>
+                                        ***REMOVED***% endif %***REMOVED***
+                                    ***REMOVED***% endfor %***REMOVED***
                                     ***REMOVED***% if app == None %***REMOVED***
                                         <input type="hidden" name="layout" value="1">
                                         <input type="hidden" name="sidebar_color" value="1">

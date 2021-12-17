@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.html import strip_tags
 
 # Create your models here. 
 
@@ -28,6 +29,9 @@ class Article(models.Model):
 	category = models.ForeignKey(ArticleCategory, on_delete=models.CASCADE)
 	series = models.ForeignKey(ArticleSeries, on_delete=models.CASCADE, null=True, blank=True)
 	# user, image, title, content, tags, status, views, date_created, category, series 
+
+	def content_text(self):
+		return strip_tags(self.content)
 
 
 class Comment(models.Model):

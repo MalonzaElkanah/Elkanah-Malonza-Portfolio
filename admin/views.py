@@ -8,9 +8,9 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.utils.text import slugify
 
 from profile_settings.models import Profile, Project, SocialLink, Education, Work, Skill, Service
-from profile_settings.models import Testimony, Pricing, Message
+from profile_settings.models import Testimony, Pricing, Message, AppSettings
 from profile_settings.models import ProjectKeyword, WorkHighlight, SkillKeyword, PricingKeyword
-from profile_settings.forms import ProfileForm, ProjectForm, WorkForm, EducationForm
+from profile_settings.forms import ProfileForm, ProjectForm, WorkForm, EducationForm, AppSettingsForm
 from blog.models import ArticleSeries, ArticleCategory, Article, Comment
 from blog.forms import ArticleForm
 
@@ -19,31 +19,48 @@ def check_profile(user):
 	profile = Profile.objects.filter(user=user.id)
 	return profile.count()>=1
 
+def check_settings(user):
+	app = AppSettings.objects.filter(user=user.id)
+	return app.count()>=1
+
+
+
+
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
 def home(request):
-	return render(request, 'admin/home.html')
+	app = AppSettings.objects.get(user=request.user.id)
+	profile = Profile.objects.get(user=request.user.id)
+	return render(request, 'admin/home.html', ***REMOVED***'profile': profile, 'app': app***REMOVED***)
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
 def messages(request):
-	return render(request, 'admin/messages.html')
+	app = AppSettings.objects.get(user=request.user.id)
+	profile = Profile.objects.get(user=request.user.id)
+	return render(request, 'admin/messages.html', ***REMOVED***'profile': profile, 'app': app***REMOVED***)
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
 def profile(request):
 	profile = Profile.objects.get(user=request.user.id)
 	socials = SocialLink.objects.filter(profile=profile.id)
-	return render(request, 'admin/profile-view.html', ***REMOVED***'profile': profile, 'socials': socials***REMOVED***)
+	app = AppSettings.objects.get(user=request.user.id)
+	return render(request, 'admin/profile-view.html', ***REMOVED***'profile': profile, 'socials': socials, 'app': app***REMOVED***)
 
 
 @login_required(login_url='/login/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
 def edit_profile(request):
 	# Get Profile data if exists
 	profile = None
 	form = None
 	profiles = Profile.objects.filter(user=request.user.id)
+	app = AppSettings.objects.get(user=request.user.id)
 	socials = None
 	if profiles.count() > 0:
 		profile = profiles[0]
@@ -103,27 +120,32 @@ def edit_profile(request):
 				pass
 		return redirect('admin-profile')
 	else:
-		return render(request, 'admin/profile-edit.html', ***REMOVED***'profile': profile, 'form': form, 
+		return render(request, 'admin/profile-edit.html', ***REMOVED***'profile': profile, 'form': form, 'app': app, 
 			'socials': socials***REMOVED***)
 
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
 def projects(request):
 	profile = Profile.objects.get(user=request.user.id)
 	projects = Project.objects.filter(profile=profile.id)
-	return render(request, 'admin/projects.html', ***REMOVED***'profile': profile, 'projects': projects***REMOVED***) 
+	app = AppSettings.objects.get(user=request.user.id)
+	return render(request, 'admin/projects.html', ***REMOVED***'profile': profile, 'projects': projects, 'app': app***REMOVED***) 
 
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
 def project(request, slug, project_id):
 	project = Project.objects.get(id=int(project_id))
-	return render(request, 'admin/project.html', ***REMOVED***'project': project***REMOVED***)
+	app = AppSettings.objects.get(user=request.user.id)
+	return render(request, 'admin/project.html', ***REMOVED***'project': project, 'app': app***REMOVED***)
 
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
 def project_edit(request, slug, project_id):
 	# Get profile and project data
 	profile = Profile.objects.get(user=request.user.id)
@@ -152,12 +174,14 @@ def project_edit(request, slug, project_id):
 	else:
 		state = 'EDIT_STATE'
 		form = ProjectForm(instance=project)
+		app = AppSettings.objects.get(user=request.user.id)
 		return render(request, 'admin/project-edit.html', ***REMOVED***'profile': profile, 'state': state, 
-			'project': project, 'form': form***REMOVED***)
+			'project': project, 'form': form, 'app': app***REMOVED***)
 
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
 def project_add(request):
 	profile = Profile.objects.get(user=request.user.id)
 	if request.method == 'POST':
@@ -178,19 +202,24 @@ def project_add(request):
 	else:
 		state = 'ADD_STATE'
 		form = ProjectForm()
-		return render(request, 'admin/project-edit.html', ***REMOVED***'profile': profile, 'state': state, 'form': form***REMOVED***)
+		app = AppSettings.objects.get(user=request.user.id)
+		return render(request, 'admin/project-edit.html', ***REMOVED***'profile': profile, 'state': state, 'form': form, 
+			'app': app***REMOVED***)
 
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
 def work(request):
 	profile = Profile.objects.get(user=request.user.id)
 	work = Work.objects.filter(profile=profile.id)
-	return render(request, 'admin/work.html', ***REMOVED***'work_history': work, 'profile': profile***REMOVED***)
+	app = AppSettings.objects.get(user=request.user.id)
+	return render(request, 'admin/work.html', ***REMOVED***'work_history': work, 'profile': profile, 'app': app***REMOVED***)
 
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
 def edit_work(request, slug, work_id):
 	profile = Profile.objects.get(user=request.user.id)
 	work = Work.objects.get(id=int(work_id))
@@ -226,12 +255,14 @@ def edit_work(request, slug, work_id):
 	else:
 		state = 'EDIT_STATE'
 		form = WorkForm(instance=work)
+		app = AppSettings.objects.get(user=request.user.id)
 		return render(request, 'admin/work-edit.html', ***REMOVED***'profile': profile, 'state': state, 
-			'work': work, 'form': form***REMOVED***)
+			'work': work, 'form': form, 'app': app***REMOVED***)
 
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
 def add_work(request):
 	profile = Profile.objects.get(user=request.user.id)
 	if request.method == 'POST':
@@ -259,21 +290,25 @@ def add_work(request):
 	else:
 		state = 'ADD_STATE'
 		form = WorkForm()
+		app = AppSettings.objects.get(user=request.user.id)
 		return render(request, 'admin/work-edit.html', ***REMOVED***'profile': profile, 'form': form, 
-			'state': state***REMOVED***)
+			'state': state, 'app': app***REMOVED***)
 
 
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
 def education(request):
 	profile = Profile.objects.get(user=request.user.id)
 	edu = Education.objects.filter(profile=profile.id)
-	return render(request, 'admin/education.html', ***REMOVED***'profile': profile, 'edu_history': edu***REMOVED***)
+	app = AppSettings.objects.get(user=request.user.id)
+	return render(request, 'admin/education.html', ***REMOVED***'profile': profile, 'edu_history': edu, 'app': app***REMOVED***)
 
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
 def edit_education(request, slug, edu_id):
 	profile = Profile.objects.get(user=request.user.id)
 	edu = Education.objects.get(id=int(edu_id))
@@ -290,12 +325,14 @@ def edit_education(request, slug, edu_id):
 	else:
 		state = 'EDIT_STATE'
 		form = EducationForm(instance=edu)
+		app = AppSettings.objects.get(user=request.user.id)
 		return render(request, 'admin/education-edit.html', ***REMOVED***'profile': profile, 'form': form, 
-			'state': state, 'edu': edu***REMOVED***)
+			'state': state, 'edu': edu, 'app': app***REMOVED***)
 
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
 def add_education(request):
 	profile = Profile.objects.get(user=request.user.id)
 	if request.method == 'POST':
@@ -308,19 +345,23 @@ def add_education(request):
 		return redirect('admin-education')
 	else:
 		state = 'ADD_STATE'
-		return render(request, 'admin/education-edit.html', ***REMOVED***'profile': profile, 'state': state***REMOVED***)
+		app = AppSettings.objects.get(user=request.user.id)
+		return render(request, 'admin/education-edit.html', ***REMOVED***'profile': profile, 'state': state, 'app': app***REMOVED***)
 
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
 def skills(request):
 	profile = Profile.objects.get(user=request.user.id)
 	skills = Skill.objects.filter(profile=profile.id)
-	return render(request, 'admin/skills.html', ***REMOVED***'profile': profile, 'skills': skills***REMOVED***)
+	app = AppSettings.objects.get(user=request.user.id)
+	return render(request, 'admin/skills.html', ***REMOVED***'profile': profile, 'skills': skills, 'app': app***REMOVED***)
 
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
 def skills_edit(request, slug, skill_id):
 	# Get profile and project data
 	profile = Profile.objects.get(user=request.user.id)
@@ -347,11 +388,13 @@ def skills_edit(request, slug, skill_id):
 		return redirect('admin-skills')
 	else:
 		state = 'EDIT_STATE'
-		return render(request, 'admin/skills-edit.html', ***REMOVED***'state': state, 'skill': skill***REMOVED***)
+		app = AppSettings.objects.get(user=request.user.id)
+		return render(request, 'admin/skills-edit.html', ***REMOVED***'state': state, 'skill': skill, 'app': app***REMOVED***)
 
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
 def skills_add(request):
 	profile = Profile.objects.get(user=request.user.id)
 	if request.method == 'POST':
@@ -369,20 +412,24 @@ def skills_add(request):
 		return redirect('admin-skills')
 	else:
 		state = 'ADD_STATE'
-		return render(request, 'admin/skills-edit.html')
+		app = AppSettings.objects.get(user=request.user.id)
+		return render(request, 'admin/skills-edit.html', ***REMOVED***'app': app, 'state': state, 'profile': profile***REMOVED***)
 
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
 def services(request):
 	# Get profile and service data
 	profile = Profile.objects.get(user=request.user.id)
 	services = Service.objects.filter(profile=profile.id)
-	return render(request, 'admin/services.html', ***REMOVED***'profile': profile, 'services': services***REMOVED***)
+	app = AppSettings.objects.get(user=request.user.id)
+	return render(request, 'admin/services.html', ***REMOVED***'profile': profile, 'services': services, 'app': app***REMOVED***)
 
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
 def services_edit(request, slug, service_id):
 	# Get profile and service data
 	profile = Profile.objects.get(user=request.user.id)
@@ -400,12 +447,14 @@ def services_edit(request, slug, service_id):
 		return redirect('admin-services')
 	else:
 		state = 'EDIT_STATE'
+		app = AppSettings.objects.get(user=request.user.id)
 		return render(request, 'admin/services-edit.html', ***REMOVED***'service': service, 'profile': profile,
-			'state': state***REMOVED***)
+			'state': state, 'app': app***REMOVED***)
 
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
 def services_add(request):
 	profile = Profile.objects.get(user=request.user.id)
 	if request.method == 'POST':
@@ -418,20 +467,24 @@ def services_add(request):
 		return redirect('admin-services')
 	else:
 		state = 'ADD_STATE'
-		return render(request, 'admin/services-edit.html', ***REMOVED***'profile': profile, 'state': state***REMOVED***)
+		app = AppSettings.objects.get(user=request.user.id)
+		return render(request, 'admin/services-edit.html', ***REMOVED***'profile': profile, 'state': state, 'app': app***REMOVED***)
 
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
 def prices(request):
 	# Get profile and price data
 	profile = Profile.objects.get(user=request.user.id)
 	pricing = Pricing.objects.filter(profile=profile.id)
-	return render(request, 'admin/prices.html', ***REMOVED***'prices': pricing, 'profile': profile***REMOVED***)
+	app = AppSettings.objects.get(user=request.user.id)
+	return render(request, 'admin/prices.html', ***REMOVED***'prices': pricing, 'profile': profile, 'app': app***REMOVED***)
 
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
 def price_edit(request, slug, price_id):
 	# Get profile and price data
 	profile = Profile.objects.get(user=request.user.id)
@@ -472,12 +525,14 @@ def price_edit(request, slug, price_id):
 		return redirect('admin-prices')
 	else:
 		state = 'EDIT_STATE'
+		app = AppSettings.objects.get(user=request.user.id)
 		return render(request, 'admin/price-edit.html', ***REMOVED***'price': pricing, 'profile': profile,
-			'state': state***REMOVED***)
+			'state': state, 'app': app***REMOVED***)
 
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
 def price_add(request):
 	profile = Profile.objects.get(user=request.user.id)
 	if request.method == 'POST':
@@ -505,23 +560,27 @@ def price_add(request):
 		return redirect('admin-prices')
 	else:
 		state = 'ADD_STATE'
-		return render(request, 'admin/price-edit.html', ***REMOVED***'profile': profile, 'state': state***REMOVED***)
+		app = AppSettings.objects.get(user=request.user.id)
+		return render(request, 'admin/price-edit.html', ***REMOVED***'profile': profile, 'state': state, 'app': app***REMOVED***)
 
 
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
 def blog(request):
 	profile = Profile.objects.get(user=request.user.id)
 	articles = Article.objects.all()
 	categories = ArticleCategory.objects.all()
 	series = ArticleSeries.objects.all()
+	app = AppSettings.objects.get(user=request.user.id)
 	return render(request, 'admin/blog-view.html', ***REMOVED***'profile': profile, 'articles': articles, 
-		'series': series, 'categories': categories***REMOVED***) 
+		'series': series, 'categories': categories, 'app': app***REMOVED***) 
 
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
 def edit_blog(request, slug, article_id):
 	profile = Profile.objects.get(user=request.user.id)
 	article = Article.objects.get(id=int(article_id))
@@ -539,13 +598,15 @@ def edit_blog(request, slug, article_id):
 		form = ArticleForm(instance=article)
 		categories = ArticleCategory.objects.all()
 		series = ArticleSeries.objects.all()
+		app = AppSettings.objects.get(user=request.user.id)
 		return render(request, 'admin/blog-edit.html', ***REMOVED***'state': state, 'form': form, 'article': article,
-			'profile': profile, 'categories': categories, 'series': series***REMOVED***) 
+			'profile': profile, 'categories': categories, 'series': series, 'app': app***REMOVED***) 
 
 
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
 def add_blog(request):
 	profile = Profile.objects.get(user=request.user.id)
 	if request.method == 'POST':
@@ -561,8 +622,9 @@ def add_blog(request):
 		form = ArticleForm()
 		categories = ArticleCategory.objects.all()
 		series = ArticleSeries.objects.all()
+		app = AppSettings.objects.get(user=request.user.id)
 		return render(request, 'admin/blog-edit.html', ***REMOVED***'state': state, 'profile': profile, 
-			'form': form, 'categories': categories, 'series': series***REMOVED***)
+			'form': form, 'categories': categories, 'series': series, 'app': app***REMOVED***)
 
 
 @login_required(login_url='/login/')
@@ -605,35 +667,106 @@ def add_series(request):
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
 def settings(request):
-	return render(request, 'admin/settings.html')
+	app_settings = AppSettings.objects.filter(user=request.user.id)
+	if app_settings.count() == 0: 
+		init_app_settings(request.user)
+	app = AppSettings.objects.get(user=request.user.id)
+	if request.method == 'POST':
+		form = AppSettingsForm(request.POST, request.FILES, instance=app)
+		if form.is_valid():
+			form.save()
+		else:
+			return HttpResponse(form.errors)
+		return redirect('admin-settings') 
+	else:
+		profile = Profile.objects.get(user=request.user.id)
+		form = AppSettingsForm(instance=app)
+		return render(request, 'admin/settings.html', ***REMOVED***'app': app, 'form': form, 'profile': profile***REMOVED***)
 
 
-#@login_required(login_url='/auth-login/')
+@login_required(login_url='/login/')
 def layout_settings(request):
-	pass 
+	try:
+		app_settings = AppSettings.objects.get(user=request.user.id)
+	except Exception:
+		app_settings = init_app_settings(request.user)
+	layout = str(request.GET['layout'])
+	settings = AppSettings.objects.filter(user=request.user.id)
+	if layout == "1":
+		# light light-sidebar theme-white
+		settings.update(layout=layout, sidebar_color="1", color_theme="white")
+	elif layout == "2":
+		# dark dark-sidebar theme-black
+		settings.update(layout=layout, sidebar_color="2", color_theme="black")
+	return JsonResponse(***REMOVED***"success": "Settings Updated"***REMOVED***, status=200)
 
-# @login_required(login_url='/auth-login/')
+
+@login_required(login_url='/login/')
 def sidebar_color_settings(request):
-	pass
+	try:
+		app_settings = AppSettings.objects.get(user=request.user.id)
+	except Exception:
+		app_settings = init_app_settings(request.user)
+	sidebar = str(request.GET['sidebar'])
+	settings = AppSettings.objects.filter(user=request.user.id)
+	settings.update(sidebar_color=sidebar)
+	return JsonResponse(***REMOVED***"success": "Settings Updated"***REMOVED***, status=200)
 
 
-@login_required(login_url='/auth-login/')
+@login_required(login_url='/login/')
 def color_theme_settings(request):
-	pass
+	try:
+		app_settings = AppSettings.objects.get(user=request.user.id)
+	except Exception:
+		app_settings = init_app_settings(request.user)
+	theme = str(request.GET['theme'])
+	settings = AppSettings.objects.filter(user=request.user.id)
+	settings.update(color_theme=theme)
+	return JsonResponse(***REMOVED***"success": "Settings Updated"***REMOVED***, status=200)
 
 
-# @login_required(login_url='/auth-login/')
+
+@login_required(login_url='/login/')
 def sidebar_toggle(request):
-	pass
+	try:
+		app_settings = AppSettings.objects.get(user=request.user.id)
+	except Exception:
+		app_settings = init_app_settings(request.user)
+	sidebar = str(request.GET['sidebar'])
+	settings = AppSettings.objects.filter(user=request.user.id)
+	settings.update(mini_sidebar=sidebar)
+	return JsonResponse(***REMOVED***"success": "Settings Updated"***REMOVED***, status=200)
 
 
-# @login_required(login_url='/auth-login/')
+
+
+@login_required(login_url='/login/')
 def sticky_header(request):
-	pass
+	try:
+		app_settings = AppSettings.objects.get(user=request.user.id)
+	except Exception:
+		app_settings = init_app_settings(request.user)
+	header = str(request.GET['header'])
+	settings = AppSettings.objects.filter(user=request.user.id)
+	settings.update(sticky_header=header)
+	return JsonResponse(***REMOVED***"success": "Settings Updated"***REMOVED***, status=200)
 
 
-# @login_required(login_url='/auth-login')
+@login_required(login_url='/login/')
 def restore_default(request):
-	pass
+	try:
+		app_settings = AppSettings.objects.get(user=request.user.id)
+	except Exception:
+		app_settings = init_app_settings(request.user)
+	settings = AppSettings.objects.filter(user=request.user.id)
+	settings.update(layout="1", sidebar_color="1", color_theme="white", mini_sidebar="off", 
+		sticky_header="on")
+	return JsonResponse(***REMOVED***"success": "Settings Updated"***REMOVED***, status=200)
 
+
+def init_app_settings(user):
+	app = AppSettings(user=user, app_name="Malone", layout="1", sidebar_color="1", color_theme="white", 
+		mini_sidebar="false", sticky_header="true")
+	app.save()
+	return app
 
