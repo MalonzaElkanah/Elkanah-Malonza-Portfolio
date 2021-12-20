@@ -21,6 +21,9 @@ class Profile(models.Model):
 	# user, image, first_name, second_name, email_1, email_2, phone_number_1, 
 	# phone_number_2, description, address
 
+	def socials(self):
+		return SocialLink.objects.filter(profile=self.id)
+
 
 class Project(models.Model):
 	profile = models.ForeignKey(Profile, on_delete=models.CASCADE)

@@ -9,11 +9,17 @@ class ArticleSeries(models.Model):
 	date_created = models.DateTimeField('Date Created', auto_now_add=True)
 	# name,
 
+	def articles(self):
+		return Article.objects.filter(series = self.id)
+
 
 class ArticleCategory(models.Model):
 	name = models.CharField('Keyword', max_length=200)
 	date_created = models.DateTimeField('Date Created', auto_now_add=True)
 	# name,
+
+	def articles(self):
+		return Article.objects.filter(category = self.id)
 
 
 class Article(models.Model):
