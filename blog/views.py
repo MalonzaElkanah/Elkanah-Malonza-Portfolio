@@ -41,6 +41,7 @@ def article(request, slug, article_id):
 	my_series = None
 	if article.series: 
 		my_series = Article.objects.filter(series=article.series.id)
+		
 	# 4 Featured Posts
 	articles = Article.objects.filter(category = article.category.id).order_by('views').reverse()
 	features = []
