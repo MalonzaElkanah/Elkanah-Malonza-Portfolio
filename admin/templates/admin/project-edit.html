@@ -100,7 +100,7 @@
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Video LInk</label>
-                                                 <input type="text" class="form-control" name="phone_2">
+                                                 <input type="text" class="form-control" name="video_url" value="***REMOVED******REMOVED***project.video_url***REMOVED******REMOVED***">
                                             </div>
                                         </div>
                                         <div class="form-row">
@@ -109,6 +109,26 @@
                                                 <input type="text" class="form-control inputtags" name="keywords" value="***REMOVED***% for keyword in project.keywords %***REMOVED***
                                               ***REMOVED******REMOVED***keyword.technology***REMOVED******REMOVED***, 
                                             ***REMOVED***% endfor %***REMOVED***" required>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-row">
+                                        ***REMOVED***% for form in form_set %***REMOVED***
+                                            <div class="form-group col-md-6">
+                                                <label>Project Images</label>
+                                            ***REMOVED***% for field in form %***REMOVED***
+                                                ***REMOVED***% if field.name == 'picture' %***REMOVED***
+                                                ***REMOVED******REMOVED***field***REMOVED******REMOVED***
+                                                ***REMOVED***% endif %***REMOVED***
+                                            ***REMOVED***% endfor %***REMOVED***
+                                            </div>
+                                        ***REMOVED***% endfor %***REMOVED***
+                                        </div>
+                                        
+                                        <div class="form-row">
+                                            <div class="form-group col-md-8">
+                                                <label>New Project Images</label>
+                                                <input type="file" class="form-control" name="new_images" multiple>
                                             </div>
                                         </div>
                                         <div class="form-row">

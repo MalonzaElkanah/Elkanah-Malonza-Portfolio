@@ -12,6 +12,9 @@ class ArticleSeries(models.Model):
 	def articles(self):
 		return Article.objects.filter(series = self.id)
 
+	def article_count(self):
+		return Article.objects.filter(series=self.id).count()
+
 
 class ArticleCategory(models.Model):
 	name = models.CharField('Keyword', max_length=200)
@@ -20,6 +23,10 @@ class ArticleCategory(models.Model):
 
 	def articles(self):
 		return Article.objects.filter(category = self.id)
+
+	def article_count(self):
+		return Article.objects.filter(category=self.id).count()
+
 
 
 class Article(models.Model):

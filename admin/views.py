@@ -8,9 +8,10 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.utils.text import slugify
 
 from profile_settings.models import Profile, Project, SocialLink, Education, Work, Skill, Service
-from profile_settings.models import Testimony, Pricing, Message, AppSettings
+from profile_settings.models import Testimony, Pricing, Message, AppSettings, ProjectImage
 from profile_settings.models import ProjectKeyword, WorkHighlight, SkillKeyword, PricingKeyword
 from profile_settings.forms import ProfileForm, ProjectForm, WorkForm, EducationForm, AppSettingsForm
+from profile_settings.forms import ProjectImageForm
 from blog.models import ArticleSeries, ArticleCategory, Article, Comment
 from blog.forms import ArticleForm
 
@@ -140,7 +141,8 @@ def projects(request):
 def project(request, slug, project_id):
 	project = Project.objects.get(id=int(project_id))
 	app = AppSettings.objects.get(user=request.user.id)
-	return render(request, 'admin/project.html', ***REMOVED***'project': project, 'app': app***REMOVED***)
+	profile = Profile.objects.get(user=request.user.id)
+	return render(request, 'admin/project.html', ***REMOVED***'project': project, 'app': app, 'profile': profile***REMOVED***)
 
 
 @login_required(login_url='/login/')
@@ -152,6 +154,7 @@ def project_edit(request, slug, project_id):
 	project = Project.objects.get(id=int(project_id))
 	# Check if request is from a form
 	if request.method == 'POST':
+		print("check point1111--")
 		# Update the project data if request from a form
 		form = ProjectForm(request.POST, instance=project)
 		if form.is_valid():
@@ -170,13 +173,44 @@ def project_edit(request, slug, project_id):
 			new_keyword = ProjectKeyword(project=project, technology=keyword)
 			new_keyword.save()
 
+		# Update Project Images
+		images = request.FILES.getlist('picture')
+		print(images)
+		pictures = project.images()
+		count = 0
+		for image in images:
+			form_data = ***REMOVED***'project': project, 'picture': image***REMOVED***
+			image_form = ProjectImageForm(form_data, instance=pictures[count])
+			if image_form.has_changed():
+				print("=-----Changed")
+				if image_form.is_valid():
+					# image_form.save()
+					pictures[count].picture = image
+					pictures[count].save()
+					print("=-----valid")
+				else:
+					print(image_form.errors)
+			else:
+				print("=-----Not Changed")
+			count += 1
+
+		# Add New Project Images
+		new_images = request.FILES.getlist('new_images')
+		for image in new_images:
+			project_image = ProjectImage(project=project, picture=image)
+			project_image.save()
 		return redirect('admin-project', slugify(project.name), project.id)
 	else:
 		state = 'EDIT_STATE'
 		form = ProjectForm(instance=project)
+		form_set = []
+
+		for img in project.images():
+			image_form = ProjectImageForm(instance=img)
+			form_set += [image_form]
 		app = AppSettings.objects.get(user=request.user.id)
 		return render(request, 'admin/project-edit.html', ***REMOVED***'profile': profile, 'state': state, 
-			'project': project, 'form': form, 'app': app***REMOVED***)
+			'project': project, 'form_set': form_set, 'form': form, 'app': app***REMOVED***)
 
 
 @login_required(login_url='/login/')
@@ -198,6 +232,13 @@ def project_add(request):
 		for keyword in keywords_dic:
 			new_keyword = ProjectKeyword(project=project, technology=keyword)
 			new_keyword.save()
+
+		# Update Project Images
+		images = request.FILES.getlist('images')
+		for image in images:
+			project_image = ProjectImage(project=project, picture=image)
+			project_image.save()
+			
 		return redirect('admin-project', slugify(project.name), project.id)
 	else:
 		state = 'ADD_STATE'

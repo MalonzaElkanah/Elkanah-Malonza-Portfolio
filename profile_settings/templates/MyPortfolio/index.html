@@ -303,7 +303,7 @@
                                         </p>
 									    <div class="row justify-content-between">
 									    	<div class="col"><small class="text-muted">***REMOVED******REMOVED***project.date***REMOVED******REMOVED***</small></div>
-									    	<div class="col text-end"><a href="#" class="btn btn-primary">Details</a></div>
+									    	<div class="col text-end"><a href="***REMOVED***% url 'project' project.name|slugify project.id %***REMOVED***" class="btn btn-primary">Details</a></div>
 									    </div>
 
 									</div>
@@ -372,15 +372,15 @@
 			            <div class="card shadow bg-body rounded" style="">
 						  	<img src="***REMOVED******REMOVED***article.image.url***REMOVED******REMOVED***" class="card-img-top" width="100%" height="200" preserveAspectRatio="xMidYMid slice" alt="...">
 							<div class="card-body">
-							    <h4 class="card-title"><a href="***REMOVED***% url 'blog' %***REMOVED***" class="text-decoration-none text-muted">***REMOVED******REMOVED***article.title***REMOVED******REMOVED***</a></h4>
+							    <h4 class="card-title"><a href="***REMOVED***% url 'article' article.title|slugify article.id %***REMOVED***" class="text-decoration-none text-muted">***REMOVED******REMOVED***article.title***REMOVED******REMOVED***</a></h4>
 							    <p class="small">
 							    	<strong>Posted on </strong>
-							    	<a href="#" class="text-decoration-none">***REMOVED******REMOVED***article.date_created***REMOVED******REMOVED***</a> 
+							    	<a href="#" class="text-decoration-none">***REMOVED******REMOVED***article.date_created.date***REMOVED******REMOVED***</a> 
 							    	<strong>By</strong> 
 							    	<a href="#" class="text-decoration-none"> ***REMOVED******REMOVED***article.user.first_name***REMOVED******REMOVED*** ***REMOVED******REMOVED***article.user.last_name***REMOVED******REMOVED***</a>
 							    </p>
 							    <p class="card-text">***REMOVED******REMOVED***article.content_text|truncatechars_html:100|safe ***REMOVED******REMOVED***</p>
-							    <a href="#" class="text-decoration-none">Read More...</a>
+							    <a href="***REMOVED***% url 'article' article.title|slugify article.id %***REMOVED***" class="text-decoration-none">Read More...</a>
 							</div>
 						</div>
 			        </div>

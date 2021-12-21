@@ -12,25 +12,7 @@
     <!-- Custom CSS -->
     <link href="***REMOVED***% static 'main/css/style.css' %***REMOVED***" rel="stylesheet">
 
-	<title>Elkanah Malonza | Category Articles</title>
-
-    <style type="text/css">
-        .blog-image ***REMOVED***
-            background-image: url("***REMOVED***% static 'main/images/blog-2.jpg' %***REMOVED***");
-            height: 500px;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            position: relative;
-        ***REMOVED***
-        .blog-image-cover ***REMOVED***
-            position: absolute;
-            top: 0px;
-            bottom: 0px;
-            left: 0px;
-            right: 0px;
-        ***REMOVED***
-    </style>
+	<title>Elkanah Malonza | Project - ***REMOVED******REMOVED***project.name***REMOVED******REMOVED***</title>
 </head>
 <body>
     <!-- Naviigation Section -->
@@ -60,7 +42,7 @@
                         <a class="nav-link fs-5" href="#">Pricing</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-5" href="#">Blog</a>
+                        <a class="nav-link fs-5" href="***REMOVED***% url 'blog' %***REMOVED***">Blog</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fs-5" href="#">Contact</a>
@@ -87,11 +69,15 @@
                         <div class="col-lg-8 col-sm-12">
                             <div class="row">
                                 <div class="col-lg-3 col-sm-12">
-                                    <img src="***REMOVED***% static 'main/images/project-2.jpg' %***REMOVED***" class="img-thumbnail" alt="# Business Image">
+                                    <img src="***REMOVED******REMOVED***project.image.url***REMOVED******REMOVED***" class="img-thumbnail" alt="# Business Image">
                                 </div>
                                 <div class="col-lg-9 col-sm-12">
-                                    <h1>Django Portfolio</h1>
-                                    <p class="text-muted">Django | <span>Python</span></p>
+                                    <h1>***REMOVED******REMOVED***project.name***REMOVED******REMOVED***</h1>
+                                    <p class="text-muted">
+                                    ***REMOVED***% for keyword in project.highlight_keywords %***REMOVED***
+                                        ***REMOVED******REMOVED***keyword.technology***REMOVED******REMOVED*** | 
+                                    ***REMOVED***% endfor %***REMOVED***
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -99,8 +85,8 @@
                             <ul class="list-group">
                                 <li class="list-group-item d-flex justify-content-between">
                                     <div class="ms-2 me-auto">
-                                      <div class="fw-bold">Github<i class="fas fa-globe text-muted"></i></div>
-                                      <a class="text-decoration-none" href="#" target="_blank" rel="noopener noreferrer"> vist this website</a>
+                                      <div class="fw-bold">Project Link<i class="fas fa-globe text-muted"></i></div>
+                                      <a class="text-decoration-none" href="***REMOVED******REMOVED***project.url***REMOVED******REMOVED***" target="_blank" rel="noopener noreferrer"> visit project website</a>
                                     </div>
                                 </li>
                             </ul>
@@ -121,9 +107,14 @@
             <div class="col-md-8 ">
                 <div class="row pt-3 bg-light border">
                     <h3>About</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <p>***REMOVED******REMOVED***project.description***REMOVED******REMOVED***</p>
+                    <div class="col-12">
+                    ***REMOVED***% for keyword in project.keywords %***REMOVED***
+                        <span class="badge bg-primary">***REMOVED******REMOVED***keyword.technology***REMOVED******REMOVED***</span>
+                    ***REMOVED***% endfor %***REMOVED***
+                    </div>
                     <div class="col-12 pt-4">
-                        <iframe width="100%" height="500"  src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                        <iframe width="100%" height="500"  src="***REMOVED******REMOVED***project.video_url***REMOVED******REMOVED***">
                         </iframe> 
                     </div>
                     <div class="col-12 py-4">
@@ -131,40 +122,13 @@
                         <div class="row clearfix">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">                            
                                 <div id="aniimated-thumbnials" class="list-unstyled row clearfix">
+                                ***REMOVED***% for image in project.images %***REMOVED***
                                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 g-5">
-                                        <a href="***REMOVED***% static 'main/images/project-2.jpg' %***REMOVED***" data-sub-html="Demo Description">
-                                          <img class="img-fluid thumbnail" src="***REMOVED***% static 'main/images/project-2.jpg' %***REMOVED***" alt="">
+                                        <a href="***REMOVED******REMOVED***image.picture.url***REMOVED******REMOVED***" data-sub-html="***REMOVED******REMOVED***project.name***REMOVED******REMOVED***">
+                                          <img class="img-fluid thumbnail" src="***REMOVED******REMOVED***image.picture.url***REMOVED******REMOVED***" alt="">
                                         </a>
                                     </div>
-                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 g-5">
-                                        <a href="***REMOVED***% static 'main/images/project-1.png' %***REMOVED***" data-sub-html="Demo Description">
-                                          <img class="img-fluid thumbnail" src="***REMOVED***% static 'main/images/project-1.png' %***REMOVED***" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 g-5">
-                                        <a href="***REMOVED***% static 'main/images/project-3.jpg' %***REMOVED***" data-sub-html="Demo Description">
-                                          <img class="img-fluid thumbnail" src="***REMOVED***% static 'main/images/project-3.jpg' %***REMOVED***"
-                                            alt="">
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 g-5">
-                                        <a href="***REMOVED***% static 'main/images/project-4.png' %***REMOVED***" data-sub-html="Demo Description">
-                                          <img class="img-fluid thumbnail" src="***REMOVED***% static 'main/images/project-4.png' %***REMOVED***"
-                                            alt="">
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 g-5">
-                                        <a href="***REMOVED***% static 'main/images/project-5.png' %***REMOVED***" data-sub-html="Demo Description">
-                                          <img class="img-fluid thumbnail" src="***REMOVED***% static 'main/images/project-5.png' %***REMOVED***"
-                                            alt="">
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 g-5">
-                                        <a href="***REMOVED***% static 'main/images/blog-1.jpg' %***REMOVED***" data-sub-html="Demo Description">
-                                          <img class="img-fluid" src="***REMOVED***% static 'main/images/blog-1.jpg' %***REMOVED***"
-                                            alt="">
-                                        </a>
-                                    </div>
+                                ***REMOVED***% endfor %***REMOVED***
                                 </div>                            
                             </div>
                         </div>
@@ -177,27 +141,27 @@
                 <div class="position-sticky border shadow" style="top: 4rem;">
                     <div class="p-4 mb-3 bg-light rounded border-bottom">
                         <div class="text-center pb-4">
-                          <img src="***REMOVED***% static 'main/images/malonza.JPG' %***REMOVED***" class="w-25 rounded-circle" alt="...">
+                          <img src="***REMOVED******REMOVED***project.profile.image.url***REMOVED******REMOVED***" class="w-25 rounded-circle" alt="...">
                         </div>
                         <div class="text-center pb-4">
-                            <h5>Elkanah Malonza</h5>
-                            <strong>Computer Programmer and analyst</strong>
+                            <h5>***REMOVED******REMOVED***project.profile.first_name***REMOVED******REMOVED*** ***REMOVED******REMOVED***project.profile.second_name***REMOVED******REMOVED***</h5>
+                            <strong>Computer Programmer</strong>
                         </div>
                         <div class="text-center pb-4">
-                            <p class="mb-0">Customize this section to tell your visitors a little bit about your publication, writers, content, or something else entirely. Totally up to you.</p>
+                            <p class="mb-0">***REMOVED******REMOVED***project.profile.description***REMOVED******REMOVED***</p>
                         </div>
                         <div class="text-center">
-                            <a href="#" class="btn btn-outline-dark"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="btn btn-outline-dark"><i class="fab fa-facebook"></i></a>
-                            <a href="#" class="btn btn-outline-dark"><i class="fab fa-github"></i></a>
+                        ***REMOVED***% for social in project.profile.socials %***REMOVED***
+                            <a href="***REMOVED******REMOVED***social.url***REMOVED******REMOVED***" class="btn btn-outline-dark"><i class="***REMOVED******REMOVED***social.logo***REMOVED******REMOVED***"></i></a>
+                        ***REMOVED***% endfor %***REMOVED***
                         </div>
                     </div>
                     <div class="p-4">
-                        <h4>Category</h4>
+                        <h4>Technologies</h4>
                         <ol class="list-unstyled text-decoration-none">
-                            <li><a href="#" class="text-decoration-none">Web Programming</a></li>
-                            <li><a href="#" class="text-decoration-none">Lifestyle</a></li>
-                            <li><a href="#" class="text-decoration-none">Data Science</a></li>
+                        ***REMOVED***% for keyword in keywords %***REMOVED***
+                            <li><a href="***REMOVED***% url 'project-technology' keyword %***REMOVED***" class="text-decoration-none">***REMOVED******REMOVED***keyword***REMOVED******REMOVED***</a></li>
+                        ***REMOVED***% endfor %***REMOVED***
                         </ol>
                     </div>
                 </div>

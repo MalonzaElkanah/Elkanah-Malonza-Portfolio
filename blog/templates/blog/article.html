@@ -185,7 +185,9 @@
                         <h4>Category</h4>
                         <ol class="list-unstyled text-decoration-none">
                         ***REMOVED***% for category in categories %***REMOVED***
-                            <li><a href="#" class="text-decoration-none">***REMOVED******REMOVED***category.name***REMOVED******REMOVED***</a></li>
+                            ***REMOVED***% if category.article_count > 0 %***REMOVED***
+                            <li><a href="***REMOVED***% url 'articles-category' category.name|slugify category.id %***REMOVED***" class="text-decoration-none">***REMOVED******REMOVED***category.name***REMOVED******REMOVED*** (***REMOVED******REMOVED***category.article_count***REMOVED******REMOVED***)</a></li>
+                            ***REMOVED***% endif %***REMOVED***
                         ***REMOVED***% endfor %***REMOVED***
                         </ol>
                     </div>
@@ -194,7 +196,7 @@
                         <h4>Top Series</h4>
                         <ol class="list-unstyled text-decoration-none">
                         ***REMOVED***% for entity in series %***REMOVED***
-                            <li><a href="#" class="text-decoration-none">***REMOVED******REMOVED***entity.name***REMOVED******REMOVED***</a></li>
+                            <li><a href="***REMOVED***% url 'articles-series' entity.name|slugify entity.id %***REMOVED***" class="text-decoration-none">***REMOVED******REMOVED***entity.name***REMOVED******REMOVED*** (***REMOVED******REMOVED***entity.article_count***REMOVED******REMOVED***)</a></li>
                         ***REMOVED***% endfor %***REMOVED***
                         </ol>
                     </div>

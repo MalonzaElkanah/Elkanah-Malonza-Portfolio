@@ -32,12 +32,16 @@ class Project(models.Model):
 	name = models.CharField('Projects', max_length=200)
 	description = models.TextField()
 	url = models.URLField(null=True)
+	video_url = models.URLField(null=True, blank=True)
 	date = models.DateField(default=tz.now)
 	date_created = models.DateTimeField('Date Created', auto_now_add=True)
 	# profile, name, description, url, date
 
 	def keywords(self):
 		return ProjectKeyword.objects.filter(project=self.id)
+
+	def images(self):
+		return ProjectImage.objects.filter(project=self.id)
 
 	def highlight_keywords(self):
 		return ProjectKeyword.objects.filter(project=self.id)[0:7]
@@ -48,6 +52,13 @@ class ProjectKeyword(models.Model):
 	technology = models.CharField('Technology', max_length=50)
 	date_created = models.DateTimeField('Date Created', auto_now_add=True)
 	# project, technology,
+
+
+class ProjectImage(models.Model):
+	project = models.ForeignKey(Project, on_delete=models.CASCADE)
+	picture = models.ImageField(upload_to='image/project/multiple/', max_length=1000)
+	date_created = models.DateTimeField('Date Created', auto_now_add=True)
+	# project, image,
 
 
 class SocialLink(models.Model):

@@ -4,6 +4,7 @@ from profile_settings.models import Profile, SocialLink
 
 # Create your views here.
 import datetime as dt
+from calendar import monthrange
 
 
 def blog(request):
@@ -51,7 +52,6 @@ def article(request, slug, article_id):
 		# 4 Featured Posts (2 Most Viewed)
 		features = Article.objects.order_by('views').reverse()[0:2]
 
-
 	archives = generate_last_one_year_months()
 	return render(request, 'blog/article.html', ***REMOVED***'article': article, 'profile': profile, 
 		'categories': categories, 'series': series, 'archives': archives, 'features': features, 
@@ -61,19 +61,49 @@ def article(request, slug, article_id):
 def articles_category(request, slug, category_id):
 	category = ArticleCategory.objects.get(id=int(category_id))
 	articles = Article.objects.filter(category=category.id)
-	return render(request, 'blog/articles.html', ***REMOVED***'articles': articles, 'category': category***REMOVED***)
+	# Archive
+	archives = generate_last_one_year_months()
+	# All Categories
+	categories = ArticleCategory.objects.all()
+	# All Series
+	series = ArticleSeries.objects.all()
+	# Name
+	page_name = category.name + " Articles"
+	return render(request, 'blog/articles.html', ***REMOVED***'articles': articles, 'category': category, 
+		'categories': categories, 'series': series, 'archives': archives, 'page_name': page_name***REMOVED***)
 
 
 def articles_series(request, slug, series_id):
-	series = ArticleSeries.objects.get(id=int(series_id))
-	articles = Article.objects.filter(series=series.id)
-	return render(request, 'blog/articles.html', ***REMOVED***'series': series, 'articles': articles***REMOVED***)
+	my_series = ArticleSeries.objects.get(id=int(series_id))
+	articles = Article.objects.filter(series=my_series.id)
+	# Archive
+	archives = generate_last_one_year_months()
+	# All Categories
+	categories = ArticleCategory.objects.all()
+	# All Series
+	series = ArticleSeries.objects.all()
+	# Name
+	page_name = my_series.name + " Articles"
+	return render(request, 'blog/articles.html', ***REMOVED***'my_series': my_series, 'articles': articles, 
+		'categories': categories, 'series': series, 'archives': archives, 'page_name': page_name***REMOVED***)
 
 
 def articles_archives(request, slug, year, month):
-	# category = ArticleCategory.objects.get(id=int(archive_id))
-	today = dt.datetime.now()
-	return render(request, 'blog/articles.html', ***REMOVED***'today': today***REMOVED***)
+	month_days = monthrange(int(year), int(month))[1]
+	first_month_date = dt.date(int(year), int(month), 1)
+	last_month_date = dt.date(int(year), int(month), month_days)
+	articles = Article.objects.filter(
+		date_created__gte=first_month_date).filter(date_created__lte=last_month_date)
+	# Archive
+	archives = generate_last_one_year_months()
+	# All Categories
+	categories = ArticleCategory.objects.all()
+	# All Series
+	series = ArticleSeries.objects.all()
+	# Name
+	page_name = first_month_date.strftime("%B")+", " + str(year) + " Articles"
+	return render(request, 'blog/articles.html', ***REMOVED***'articles': articles, 
+		'categories': categories, 'series': series, 'archives': archives, 'page_name': page_name***REMOVED***)
 
 
 def articles(request):

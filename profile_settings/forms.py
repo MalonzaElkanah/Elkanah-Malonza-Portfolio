@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Profile, Project, Work, Education, AppSettings
+from .models import Profile, Project, Work, Education, AppSettings, ProjectImage
 
 
 class ProfileForm(ModelForm):
@@ -14,6 +14,12 @@ class ProjectForm(ModelForm):
 	class Meta:
 		model = Project
 		fields = ('profile', 'image', 'name', 'description', 'url', 'date')
+
+
+class ProjectImageForm(ModelForm):
+	class Meta:
+		model = ProjectImage
+		fields = ('project', 'picture')
 
 
 class WorkForm(ModelForm):
