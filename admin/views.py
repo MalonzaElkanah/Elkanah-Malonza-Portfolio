@@ -10,6 +10,7 @@ from django.utils.text import slugify
 from profile_settings.models import Profile, Project, SocialLink, Education, Work, Skill, Service
 from profile_settings.models import Testimony, Pricing, Message, AppSettings, ProjectImage
 from profile_settings.models import ProjectKeyword, WorkHighlight, SkillKeyword, PricingKeyword
+from profile_settings.models import TechnicalSkillHighlight, ProfessionalSkillHighlight
 from profile_settings.forms import ProfileForm, ProjectForm, WorkForm, EducationForm, AppSettingsForm
 from profile_settings.forms import ProjectImageForm
 from blog.models import ArticleSeries, ArticleCategory, Article, Comment
@@ -25,9 +26,6 @@ def check_settings(user):
 	return app.count()>=1
 
 
-
-
-
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
 @user_passes_test(check_settings, login_url='/admin/settings/')
@@ -35,6 +33,7 @@ def home(request):
 	app = AppSettings.objects.get(user=request.user.id)
 	profile = Profile.objects.get(user=request.user.id)
 	return render(request, 'admin/home.html', ***REMOVED***'profile': profile, 'app': app***REMOVED***)
+
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
@@ -173,27 +172,6 @@ def project_edit(request, slug, project_id):
 			new_keyword = ProjectKeyword(project=project, technology=keyword)
 			new_keyword.save()
 
-		# Update Project Images
-		images = request.FILES.getlist('picture')
-		print(images)
-		pictures = project.images()
-		count = 0
-		for image in images:
-			form_data = ***REMOVED***'project': project, 'picture': image***REMOVED***
-			image_form = ProjectImageForm(form_data, instance=pictures[count])
-			if image_form.has_changed():
-				print("=-----Changed")
-				if image_form.is_valid():
-					# image_form.save()
-					pictures[count].picture = image
-					pictures[count].save()
-					print("=-----valid")
-				else:
-					print(image_form.errors)
-			else:
-				print("=-----Not Changed")
-			count += 1
-
 		# Add New Project Images
 		new_images = request.FILES.getlist('new_images')
 		for image in new_images:
@@ -207,7 +185,8 @@ def project_edit(request, slug, project_id):
 
 		for img in project.images():
 			image_form = ProjectImageForm(instance=img)
-			form_set += [image_form]
+			[]
+			form_set += [[img, image_form]]
 		app = AppSettings.objects.get(user=request.user.id)
 		return render(request, 'admin/project-edit.html', ***REMOVED***'profile': profile, 'state': state, 
 			'project': project, 'form_set': form_set, 'form': form, 'app': app***REMOVED***)
@@ -246,6 +225,45 @@ def project_add(request):
 		app = AppSettings.objects.get(user=request.user.id)
 		return render(request, 'admin/project-edit.html', ***REMOVED***'profile': profile, 'state': state, 'form': form, 
 			'app': app***REMOVED***)
+
+
+@login_required(login_url='/login/')
+@user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
+def project_image_update(request, slug, image_id):
+	image = ProjectImage.objects.get(id=int(image_id))
+	if request.method == 'POST':
+		# Update Project Images
+		form = ProjectImageForm(request.POST, request.FILES, instance=image)
+		if form.has_changed():
+			if form.is_valid():
+				form.save()
+			else:
+				print(image_form.errors)
+		else:
+			print("=-----Not Changed")
+
+		return redirect('admin-project', slug, image.project.id)
+	else: 
+		print("check point-3")
+		return redirect('admin-project', slug, image.project.id)
+
+
+@login_required(login_url='/login/')
+@user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
+def project_image_delete(request, slug, image_id):
+	image = ProjectImage.objects.filter(id=int(image_id))
+	if image.count() > 0:
+		project = image[0].project
+		if image[0].project.profile.user.id == request.user.id:
+			image.delete()
+			return redirect('admin-project', slug, project.id)
+		else:
+			return HttpResponse("Access Denied")
+	else:
+		return HttpResponse("No Data to Remove")
+
 
 
 @login_required(login_url='/login/')
@@ -396,8 +414,11 @@ def add_education(request):
 def skills(request):
 	profile = Profile.objects.get(user=request.user.id)
 	skills = Skill.objects.filter(profile=profile.id)
+	tech_skills = TechnicalSkillHighlight.objects.all()
+	prof_skills = ProfessionalSkillHighlight.objects.all()
 	app = AppSettings.objects.get(user=request.user.id)
-	return render(request, 'admin/skills.html', ***REMOVED***'profile': profile, 'skills': skills, 'app': app***REMOVED***)
+	return render(request, 'admin/skills.html', ***REMOVED***'profile': profile, 'skills': skills, 'app': app, 
+		'tech_skills': tech_skills, 'prof_skills': prof_skills***REMOVED***)
 
 
 @login_required(login_url='/login/')
@@ -436,6 +457,51 @@ def skills_edit(request, slug, skill_id):
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
 @user_passes_test(check_settings, login_url='/admin/settings/')
+def skills_technical_add(request):
+	if request.method == 'POST':
+		# Get form data
+		percentage = int(request.POST['percentage'])
+		keyword_id = int(request.POST['skill_keyword'])
+		keyword = SkillKeyword.objects.get(id=keyword_id)
+		tech_skill = TechnicalSkillHighlight(skill_keyword=keyword, percentage=percentage)
+		tech_skill.save()
+		return redirect('admin-skills') 
+	else:
+		return redirect('admin-skills')
+
+
+@login_required(login_url='/login/')
+@user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
+def skills_technical_edit(request):
+	if request.method == 'POST':
+		# Get form data
+		percentage = int(request.POST['percentage'])
+		keyword_id = int(request.POST['skill_keyword'])
+		tech_skill_id = int(request.POST['tech_skill_id'])
+		# Update TechnicalSkillHighlight
+		keyword = SkillKeyword.objects.get(id=keyword_id)
+		tech_skill = TechnicalSkillHighlight.objects.get(id=tech_skill_id)
+		tech_skill.skill_keyword = keyword 
+		tech_skill.percentage = percentage
+		tech_skill.save()
+		return redirect('admin-skills') 
+	else:
+		return redirect('admin-skills')
+
+
+def skills_delete_edit(tech_id):
+	tech_skill = TechnicalSkillHighlight.objects.get(id=tech_id)
+	if tech_skill.skill_keyword.skill.profile.user.id == request.user.id:
+		tech_skill.delete()
+		return redirect('admin-skills')
+	else:
+		return HttpResponse("Request Denied.") 
+
+
+@login_required(login_url='/login/')
+@user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
 def skills_add(request):
 	profile = Profile.objects.get(user=request.user.id)
 	if request.method == 'POST':
@@ -455,6 +521,43 @@ def skills_add(request):
 		state = 'ADD_STATE'
 		app = AppSettings.objects.get(user=request.user.id)
 		return render(request, 'admin/skills-edit.html', ***REMOVED***'app': app, 'state': state, 'profile': profile***REMOVED***)
+
+
+@login_required(login_url='/login/')
+@user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
+def skills_professional_add(request):
+	if request.method == 'POST':
+		# Get form data
+		percentage = int(request.POST['percentage'])
+		name = request.POST['name']
+		profile = Profile.objects.get(user=request.user.id)
+		skill = ProfessionalSkillHighlight(profile=profile, name=name, percentage=percentage)
+		skill.save()
+		return redirect('admin-skills') 
+	else:
+		return redirect('admin-skills')
+
+
+@login_required(login_url='/login/')
+@user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
+def skills_professional_edit(request):
+	if request.method == 'POST':
+		# Get form data
+		percentage = int(request.POST['percentage'])
+		name = request.POST['name']
+		skill_id = int(request.POST['prof_skill_id'])
+		# Update TechnicalSkillHighlight
+		skill = ProfessionalSkillHighlight.objects.get(id=skill_id)
+		skill.name = name 
+		skill.percentage = percentage
+		skill.save()
+		return redirect('admin-skills') 
+	else:
+		return redirect('admin-skills')
+
+
 
 
 @login_required(login_url='/login/')

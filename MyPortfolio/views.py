@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 
 from profile_settings.models import Profile, Project, SocialLink, Education, Work, Skill, Service
 from profile_settings.models import Testimony, Pricing, Message
+from profile_settings.models import TechnicalSkillHighlight, ProfessionalSkillHighlight
 from blog.models import Article
 
 def index(request):
@@ -17,13 +18,16 @@ def index(request):
 	edu = Education.objects.filter(profile=profile.id)
 	work = Work.objects.filter(profile=profile.id)
 	skills = Skill.objects.filter(profile=profile.id)
+	tech_skills = TechnicalSkillHighlight.objects.all()
+	prof_skills = ProfessionalSkillHighlight.objects.all()
 	services = Service.objects.filter(profile=profile.id)
 	pricing = Pricing.objects.filter(profile=profile.id)
 	# 3 Recent Articles 
 	articles = Article.objects.filter(status='Publish').order_by('date_created').reverse()[0:3]
 	return render(request, "MyPortfolio/index.html", ***REMOVED***'profile': profile, 'socials': socials, 
 		'projects': projects, 'education_history': edu, 'work_history': work, 'skills': skills, 
-		'services': services, 'pricing': pricing, 'articles': articles***REMOVED***)
+		'services': services, 'pricing': pricing, 'articles': articles, 'tech_skills': tech_skills, 
+		'prof_skills': prof_skills***REMOVED***)
 
 
 def auth_login(request):

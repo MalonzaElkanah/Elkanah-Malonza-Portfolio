@@ -7,7 +7,7 @@ class ProfileForm(ModelForm):
 	class Meta:
 		model = Profile
 		fields = ( 'user', 'first_name', 'second_name', 'image', 'phone_number_1', 'phone_number_2', 
-			'email_1', 'email_2', 'description', 'address')
+			'email_1', 'email_2', 'description', 'address', 'cv_file')
 
 
 class ProjectForm(ModelForm):

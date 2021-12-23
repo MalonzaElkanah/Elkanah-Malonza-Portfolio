@@ -13,6 +13,8 @@ urlpatterns = [
 	path('project/<slug:slug>/<int:project_id>/', views.project, name='admin-project'),
 	path('edit/project/<slug:slug>/<int:project_id>/', views.project_edit, name='admin-project-edit'),
 	path('add/project/', views.project_add, name='admin-project-add'),
+    path('update/image/<slug:slug>/<int:image_id>/', views.project_image_update, name='project-image-update'),
+    path('remove/image/<slug:slug>/<int:image_id>/', views.project_image_delete, name='project-image-delete'),
 
 	path('work/', views.work, name='admin-work'),
 	path('edit/work/<slug:slug>/<int:work_id>/', views.edit_work, name='admin-work-edit'),
@@ -25,6 +27,11 @@ urlpatterns = [
 	path('skills/', views.skills, name='admin-skills'),
 	path('edit/skills/<slug:slug>/<int:skill_id>/', views.skills_edit, name='admin-skills-edit'),
 	path('add/skills/', views.skills_add, name='admin-skills-add'),
+	path('technical/add/skills/', views.skills_technical_add, name='admin-skills-technical-add'),
+	path('technical/edit/skills/', views.skills_technical_edit, name='admin-skills-technical-edit'),
+	path('technical/delete/<int:tech_id>/', views.skills_delete_edit, name='admin-skills-technical-delete'),
+	path('professional/add/skills/', views.skills_professional_add, name='admin-skills-professional-add'),
+	path('professional/edit/skills/', views.skills_professional_edit, name='admin-skills-professional-edit'),
 
 	path('services/', views.services, name='admin-services'),
 	path('edit/services/<slug:slug>/<int:service_id>/', views.services_edit, name='admin-services-edit'),

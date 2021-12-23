@@ -69,14 +69,19 @@
                                         ***REMOVED***% csrf_token %***REMOVED***
                                         <input type="hidden" name="user" value="***REMOVED******REMOVED***user.id***REMOVED******REMOVED***">
                                         <div class="form-row">
+                                        ***REMOVED***% for field in form %***REMOVED***
+                                            ***REMOVED***% if field.name == 'image' %***REMOVED***
                                             <div class="form-group col-md-6">
                                                 <label>Image</label>
-                                            ***REMOVED***% for field in form %***REMOVED***
-                                                ***REMOVED***% if field.name == 'image' %***REMOVED***
-                                                    ***REMOVED******REMOVED***field***REMOVED******REMOVED***
-                                                ***REMOVED***% endif %***REMOVED***
-                                            ***REMOVED***% endfor %***REMOVED***
+                                                ***REMOVED******REMOVED***field***REMOVED******REMOVED***
                                             </div>
+                                            ***REMOVED***% elif field.name == 'cv_file' %***REMOVED***
+                                            <div class="form-group col-md-6">
+                                                <label>CV File</label>
+                                                ***REMOVED******REMOVED***field***REMOVED******REMOVED***
+                                            </div>
+                                            ***REMOVED***% endif %***REMOVED***
+                                        ***REMOVED***% endfor %***REMOVED***
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">

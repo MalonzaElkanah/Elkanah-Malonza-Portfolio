@@ -117,6 +117,176 @@
                 	</div>
               	</div>
             </div>
+
+            <div class="row">
+              	<div class="col-12">
+                	<div class="card">
+		                <div class="card-header">
+		                    <h4>Technical Skills Proficiency</h4>
+		                </div>
+		                <div class="card-body">
+		                    <div class="table-responsive">
+				                <table class="table table-striped" id="table-1">
+				                    <thead>
+				                        <tr>
+				                            <th class="text-center pt-3">
+					                            <div class="custom-checkbox custom-checkbox-table custom-control">
+					                                <input type="checkbox" data-checkboxes="mygroup" data-checkbox-role="dad" class="custom-control-input" id="checkbox-all">
+					                                <label for="checkbox-all" class="custom-control-label">&nbsp;</label>
+					                            </div>
+				                            </th>
+				                            <th>Skill</th>
+				                            <th>Proficiency(%)</th>
+				                            <th>Action</th>
+				                            <th></th>
+				                        </tr>
+				                    </thead>
+			                        <tbody>
+			                        ***REMOVED***% for tech in tech_skills %***REMOVED***
+			                        	<form method="post" action="***REMOVED***% url 'admin-skills-technical-edit' %***REMOVED***">
+			                        	<tr>
+				                            <td class="text-center pt-2">
+					                            <div class="custom-checkbox custom-control">
+					                                <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-1">
+					                                <label for="checkbox-1" class="custom-control-label">&nbsp;</label>
+					                            </div>
+					                            ***REMOVED***% csrf_token %***REMOVED***
+					                            <input type="hidden" name="tech_skill_id" value="***REMOVED******REMOVED***tech.id***REMOVED******REMOVED***">
+				                            </td>
+				                            <td class="align-middle">
+						                        <select class="form-control" name="skill_keyword">
+						                        ***REMOVED***% for skill in skills %***REMOVED***
+				                              		***REMOVED***% for keyword in skill.keywords %***REMOVED***
+				                              			***REMOVED***% if tech.skill_keyword.id == keyword.id %***REMOVED***
+				                              		<option value="***REMOVED******REMOVED***keyword.id***REMOVED******REMOVED***" selected="">***REMOVED******REMOVED***keyword.name***REMOVED******REMOVED***</option> 
+				                              			***REMOVED***% else %***REMOVED***
+				                              		<option value="***REMOVED******REMOVED***keyword.id***REMOVED******REMOVED***">***REMOVED******REMOVED***keyword.name***REMOVED******REMOVED***</option>
+				                              			***REMOVED***% endif %***REMOVED***
+				                              		***REMOVED***% endfor %***REMOVED***
+				                              	***REMOVED***% endfor %***REMOVED***
+				                              	</select>
+					                        </td>
+					                        <td> 
+					                        	<input type="number" name="percentage" class="form-control" value="***REMOVED******REMOVED***tech.percentage***REMOVED******REMOVED***"> 
+					                        </td>
+					                        <td>
+					                        	<button type="submit" class="btn btn-primary">Update</button>
+					                        </td>
+					                        <td>
+					                        	<a href="***REMOVED***% url 'admin-skills-technical-delete' tech.id %***REMOVED***" class="btn btn-danger">Delete</a>
+					                        </td>
+					                    </tr>
+					                    </form>
+					                ***REMOVED***% endfor %***REMOVED***
+					                	<form method="post" action="***REMOVED***% url 'admin-skills-technical-add' %***REMOVED***">
+					                    <tr>
+				                            <td class="text-center pt-2">
+					                            <div class="custom-checkbox custom-control">
+					                                <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-1">
+					                                <label for="checkbox-1" class="custom-control-label">&nbsp;</label>
+					                            </div>
+					                                ***REMOVED***% csrf_token %***REMOVED***
+				                            </td>
+				                            <td class="align-middle">
+						                        <select class="form-control" name="skill_keyword">
+						                        ***REMOVED***% for skill in skills %***REMOVED***
+				                              		***REMOVED***% for keyword in skill.keywords %***REMOVED***
+				                              		<option value="***REMOVED******REMOVED***keyword.id***REMOVED******REMOVED***">***REMOVED******REMOVED***keyword.name***REMOVED******REMOVED***</option> 
+				                              		***REMOVED***% endfor %***REMOVED***
+				                              	***REMOVED***% endfor %***REMOVED***
+				                              	</select>
+					                        </td>
+					                        <td> <input type="number" name="percentage" class="form-control"> </td>
+					                        <td colspan="2">
+					                        	<button type="submit" class="btn btn-primary">ADD</a>
+					                        </td>
+					                    </tr>
+					                    </form>
+                        			</tbody>
+                      			</table>
+                    		</div>
+                  		</div>
+                	</div>
+              	</div>
+            </div>
+
+            <div class="row">
+              	<div class="col-12">
+                	<div class="card">
+		                <div class="card-header">
+		                    <h4>Professional Skills Proficiency</h4>
+		                </div>
+		                <div class="card-body">
+		                    <div class="table-responsive">
+				                <table class="table table-striped" id="table-3">
+				                    <thead>
+				                        <tr>
+				                            <th class="text-center pt-3">
+					                            <div class="custom-checkbox custom-checkbox-table custom-control">
+					                                <input type="checkbox" data-checkboxes="mygroup" data-checkbox-role="dad" class="custom-control-input" id="checkbox-all">
+					                                <label for="checkbox-all" class="custom-control-label">&nbsp;</label>
+					                            </div>
+				                            </th>
+				                            <th>Skill</th>
+				                            <th>Proficiency(%)</th>
+				                            <th>Action</th>
+				                            <th></th>
+				                        </tr>
+				                    </thead>
+			                        <tbody>
+			                        ***REMOVED***% for prof in prof_skills %***REMOVED***
+			                        	<form method="post" action="***REMOVED***% url 'admin-skills-professional-edit' %***REMOVED***">
+			                        	<tr>
+				                            <td class="text-center pt-2">
+					                            <div class="custom-checkbox custom-control">
+					                                <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-1">
+					                                <label for="checkbox-1" class="custom-control-label">&nbsp;</label>
+					                            </div>
+					                            ***REMOVED***% csrf_token %***REMOVED***
+					                            <input type="hidden" name="prof_skill_id" value="***REMOVED******REMOVED***prof.id***REMOVED******REMOVED***">
+				                            </td>
+				                            <td class="align-middle">
+						                        <input type="text" name="name" class="form-control" value="***REMOVED******REMOVED***prof.name***REMOVED******REMOVED***"> 
+					                        </td>
+					                        <td> 
+					                        	<input type="number" name="percentage" class="form-control" value="***REMOVED******REMOVED***prof.percentage***REMOVED******REMOVED***"> 
+					                        </td>
+					                        <td>
+					                        	<button type="submit" class="btn btn-primary">Update</button>
+					                        </td>
+					                        <td>
+					                        	<a href="#" class="btn btn-danger">Delete</a>
+					                        </td>
+					                    </tr>
+					                    </form>
+					                ***REMOVED***% endfor %***REMOVED***
+					                	<form method="post" action="***REMOVED***% url 'admin-skills-professional-add' %***REMOVED***">
+					                    <tr>
+				                            <td class="text-center pt-2">
+					                            <div class="custom-checkbox custom-control">
+					                                <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-1">
+					                                <label for="checkbox-1" class="custom-control-label">&nbsp;</label>
+					                            </div>
+					                                ***REMOVED***% csrf_token %***REMOVED***
+				                            </td>
+				                            <td class="align-middle">
+						                        <input type="text" name="name" class="form-control"> 
+					                        </td>
+					                        <td> <input type="number" name="percentage" class="form-control"> </td>
+					                        <td colspan="2">
+					                        	<button type="submit" class="btn btn-primary">ADD</a>
+					                        </td>
+					                    </tr>
+					                    </form>
+                        			</tbody>
+                      			</table>
+                    		</div>
+                  		</div>
+                	</div>
+              	</div>
+            </div>
+
+
         </div>
     </section>
 ***REMOVED***% endblock %***REMOVED***

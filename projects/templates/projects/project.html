@@ -128,6 +128,8 @@
                                           <img class="img-fluid thumbnail" src="***REMOVED******REMOVED***image.picture.url***REMOVED******REMOVED***" alt="">
                                         </a>
                                     </div>
+                                ***REMOVED***% empty %***REMOVED***
+                                <p class="text-center text-muted">Project Gallery Empty</p>
                                 ***REMOVED***% endfor %***REMOVED***
                                 </div>                            
                             </div>
@@ -160,7 +162,7 @@
                         <h4>Technologies</h4>
                         <ol class="list-unstyled text-decoration-none">
                         ***REMOVED***% for keyword in keywords %***REMOVED***
-                            <li><a href="***REMOVED***% url 'project-technology' keyword %***REMOVED***" class="text-decoration-none">***REMOVED******REMOVED***keyword***REMOVED******REMOVED***</a></li>
+                            <li><a href="***REMOVED***% url 'project-technology' keyword|slugify %***REMOVED***" class="text-decoration-none">***REMOVED******REMOVED***keyword***REMOVED******REMOVED***</a></li>
                         ***REMOVED***% endfor %***REMOVED***
                         </ol>
                     </div>

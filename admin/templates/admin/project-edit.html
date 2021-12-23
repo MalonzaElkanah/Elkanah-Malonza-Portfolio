@@ -113,19 +113,6 @@
                                         </div>
                                         
                                         <div class="form-row">
-                                        ***REMOVED***% for form in form_set %***REMOVED***
-                                            <div class="form-group col-md-6">
-                                                <label>Project Images</label>
-                                            ***REMOVED***% for field in form %***REMOVED***
-                                                ***REMOVED***% if field.name == 'picture' %***REMOVED***
-                                                ***REMOVED******REMOVED***field***REMOVED******REMOVED***
-                                                ***REMOVED***% endif %***REMOVED***
-                                            ***REMOVED***% endfor %***REMOVED***
-                                            </div>
-                                        ***REMOVED***% endfor %***REMOVED***
-                                        </div>
-                                        
-                                        <div class="form-row">
                                             <div class="form-group col-md-8">
                                                 <label>New Project Images</label>
                                                 <input type="file" class="form-control" name="new_images" multiple>
@@ -144,7 +131,33 @@
                                     </form>
                                 </div>
                             </div>
-
+                            ***REMOVED***% if state == 'EDIT_STATE' %***REMOVED***
+                            <div class="row pt-4">
+                                <div class="col-12 text-center"><h3>Update Project Images</h3></div>
+                                ***REMOVED***% for img, img_form in form_set %***REMOVED***
+                                <div class="col-12 pt-3">
+                                    <form method="post" action="***REMOVED***% url 'project-image-update' project.name|slugify img.id %***REMOVED***" enctype="multipart/form-data">
+                                        <div class="form-row">
+                                            ***REMOVED***% csrf_token %***REMOVED***
+                                            <input type="hidden" name="project" value="***REMOVED******REMOVED***project.id***REMOVED******REMOVED***">
+                                            <div class="form-group col-md-8">
+                                                <label>Image ***REMOVED******REMOVED***forloop.counter***REMOVED******REMOVED***</label>
+                                            ***REMOVED***% for field in img_form %***REMOVED***
+                                                ***REMOVED***% if field.name == 'picture' %***REMOVED***
+                                                    ***REMOVED******REMOVED***field***REMOVED******REMOVED***
+                                                ***REMOVED***% endif %***REMOVED***
+                                            ***REMOVED***% endfor %***REMOVED***
+                                            </div>
+                                            <div class="col-md-4">
+                                                <button type="submit" class="btn btn-primary">Update</button>
+                                                <a href="***REMOVED***% url 'project-image-delete' project.name|slugify img.id %***REMOVED***" class="btn btn-danger">Remove</a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                ***REMOVED***% endfor %***REMOVED***                                
+                            </div>
+                            ***REMOVED***% endif %***REMOVED***
                         </div>
                     </div>
                 </div>

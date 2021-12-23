@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from profile_settings.models import Project, ProjectKeyword
 # Create your views here.
 
@@ -19,7 +19,7 @@ def project(request, slug, project_id):
 
 def project_technology(request, slug):
 	keyword = slug
-	slug_keywords = ProjectKeyword.objects.filter(technology=slug)
+	slug_keywords = ProjectKeyword.objects.filter(technology__icontains=slug)
 	keywords = unique_project_keywords()
 	page_name = str(slug)+' Projects'
 	projects = []

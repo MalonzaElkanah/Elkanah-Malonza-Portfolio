@@ -109,6 +109,8 @@ AUTH_PASSWORD_VALIDATORS = [
     ***REMOVED***,
 ]
 
+# Security Settings
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/

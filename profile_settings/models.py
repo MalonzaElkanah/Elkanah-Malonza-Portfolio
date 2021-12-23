@@ -10,6 +10,8 @@ class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	image = models.ImageField(upload_to='image/profile/', max_length=1000, 
 		default='image/profile/default_profile.jpg')
+	cv_file = models.FileField(upload_to='file/profile/cv/', max_length=1000, 
+		default='file/profile/cv/default_cv.pdf')
 	first_name = models.CharField('First Name', max_length=50)
 	second_name = models.CharField('Second Name', max_length=50)
 	email_1 = models.CharField('Email 1', max_length=50)
@@ -123,6 +125,20 @@ class SkillKeyword(models.Model):
 	name = models.CharField('Keyword', max_length=200)
 	date_created = models.DateTimeField('Date Created', auto_now_add=True)
 	# skill, name,
+
+
+class TechnicalSkillHighlight(models.Model):
+	skill_keyword = models.ForeignKey(SkillKeyword, on_delete=models.CASCADE)
+	percentage = models.IntegerField('Percentage', default=0)
+	date_created = models.DateTimeField('Date Created', auto_now_add=True)
+	# skill_keyword, percentage
+
+
+class ProfessionalSkillHighlight(models.Model):
+	profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+	name = models.CharField('Name', max_length=50)
+	percentage = models.IntegerField('Percentage', default=0)
+	date_created = models.DateTimeField('Date Created', auto_now_add=True)
 
 
 class Service(models.Model):
