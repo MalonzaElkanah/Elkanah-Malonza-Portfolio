@@ -27,6 +27,7 @@ urlpatterns = [
     path('projects/', include('projects.urls')),
 
     path('', views.index, name='index'),
+    path('contact-me/', views.contact_me, name='contact-me'),
     path('login/', views.auth_login, name='login'),
     path('logout/', views.auth_logout, name='logout'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

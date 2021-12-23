@@ -1,11 +1,7 @@
-/*
-Author       : ElkanahMalonza
-App name     : Malone
-Version      : 1.0
-*/
 (function($) ***REMOVED***
 	$(".submit-form").submit(function(event) ***REMOVED***
        	event.preventDefault();
+       	alert('Data submitted.');
        	$.ajax(***REMOVED*** 
        		data: $(this).serialize(),
             type: $(this).attr('method'),

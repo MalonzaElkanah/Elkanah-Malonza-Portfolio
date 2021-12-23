@@ -69,6 +69,10 @@
                                       aria-selected="true">App Setting</a>
                                 </li>
                                 <li class="nav-item">
+                                    <a class="nav-link" id="email-tab2" data-toggle="tab" href="#email_settings" role="tab"
+                                      aria-selected="false">Email Settings</a>
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link" id="profile-tab2" data-toggle="tab" href="#layout_settings" role="tab"
                                       aria-selected="false">Layout Settings</a>
                                 </li>
@@ -76,7 +80,7 @@
                             <div class="tab-content tab-bordered" id="myTab3Content">
                                 <!-- Personal Details Tab -->
                                 <div class="tab-pane fade show active" id="app_settings" role="tabpanel" aria-labelledby="home-tab2">
-                                    <form enctype="multipart/form-data" method="post" action="#">
+                                    <form enctype="multipart/form-data" method="post" action="***REMOVED***% url 'admin-settings' %***REMOVED***">
                                         ***REMOVED***% csrf_token %***REMOVED***
                                         <input type="hidden" name="user" value="***REMOVED******REMOVED***user.id***REMOVED******REMOVED***">
                                         <div class="form-group">
@@ -117,6 +121,35 @@
                                     </form>
                                 </div>
                                 <!-- /Personal Details Tab -->
+
+                                <!-- Email app Tab -->
+                                <div class="tab-pane fade" id="email_settings" role="tabpanel" aria-labelledby="email-tab2">
+                                    <form method="post" action="***REMOVED***% url 'admin-email-settings' %***REMOVED***">
+                                        ***REMOVED***% csrf_token %***REMOVED***
+                                        <input type="hidden" name="profile" value="***REMOVED******REMOVED***profile.id***REMOVED******REMOVED***">
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            <input type="email" class="form-control" name="email" value="***REMOVED******REMOVED***app_email.email***REMOVED******REMOVED***">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Password</label>
+                                            <input type="password" class="form-control" name="password" value="***REMOVED******REMOVED***app_email.password***REMOVED******REMOVED***">
+                                        </div>
+                                        <div class="form-group mb-0">
+                                            <label>Port</label>
+                                            <input type="text" class="form-control" name="port" value="***REMOVED******REMOVED***app_email.port***REMOVED******REMOVED***">
+                                        </div>
+                                        <div class="form-group mb-0">
+                                            <label>SMTP Server</label>
+                                            <input type="text" class="form-control" name="smtp_server" value="***REMOVED******REMOVED***app_email.smtp_server***REMOVED******REMOVED***">
+                                        </div>
+                                        <div class="form-group pt-3 mb-0">
+                                            <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
+                                        </div>
+                                    
+                                    </form>
+                                </div>
+                                <!-- /Email app Tab -->
                     
                                 <!-- Change Password Tab -->
                                 <div class="tab-pane fade" id="layout_settings" role="tabpanel" aria-labelledby="profile-tab2">

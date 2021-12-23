@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.utils.text import slugify
 
 from profile_settings.models import Profile, Project, SocialLink, Education, Work, Skill, Service
-from profile_settings.models import Testimony, Pricing, Message, AppSettings, ProjectImage
+from profile_settings.models import Testimony, Pricing, Message, AppSettings, ProjectImage, EmailApp
 from profile_settings.models import ProjectKeyword, WorkHighlight, SkillKeyword, PricingKeyword
 from profile_settings.models import TechnicalSkillHighlight, ProfessionalSkillHighlight
 from profile_settings.forms import ProfileForm, ProjectForm, WorkForm, EducationForm, AppSettingsForm
@@ -812,6 +812,7 @@ def add_series(request):
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
 def settings(request):
 	app_settings = AppSettings.objects.filter(user=request.user.id)
+	# app_email = None
 	if app_settings.count() == 0: 
 		init_app_settings(request.user)
 	app = AppSettings.objects.get(user=request.user.id)
@@ -824,8 +825,36 @@ def settings(request):
 		return redirect('admin-settings') 
 	else:
 		profile = Profile.objects.get(user=request.user.id)
+		app_email = EmailApp.objects.filter(profile=profile.id)
+		if app_email.count() > 0:
+			app_email = app_email[0]
+		else:
+			app_email = None 
 		form = AppSettingsForm(instance=app)
-		return render(request, 'admin/settings.html', ***REMOVED***'app': app, 'form': form, 'profile': profile***REMOVED***)
+		return render(request, 'admin/settings.html', ***REMOVED***'app': app, 'form': form, 'profile': profile, 
+			'app_email': app_email***REMOVED***)
+
+
+@login_required(login_url='/login/')
+@user_passes_test(check_profile, login_url='/admin/edit/profile/')
+def email_settings(request):
+	if request.method == 'POST':
+		profile = Profile.objects.get(user=request.user.id)
+		app_email = EmailApp.objects.filter(profile=profile.id)
+		if app_email.count() > 0:
+			app_email = app_email[0]
+			app_email.smtp_server = request.POST['smtp_server']
+			app_email.port = request.POST['port']
+			app_email.email = request.POST['email']
+			app_email.password = request.POST['password']
+			app_email.save()
+		else:
+			app_email = EmailApp(profile=profile, smtp_server=request.POST['smtp_server'], 
+				port=request.POST['port'], email=request.POST['email'], password=request.POST['password'])
+			app_email.save() 
+		return redirect('admin-settings') 
+	else:
+		return redirect('admin-settings')
 
 
 @login_required(login_url='/login/')

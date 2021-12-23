@@ -7,9 +7,14 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required, user_passes_test
 
 from profile_settings.models import Profile, Project, SocialLink, Education, Work, Skill, Service
-from profile_settings.models import Testimony, Pricing, Message
+from profile_settings.models import Testimony, Pricing, Message, EmailApp
 from profile_settings.models import TechnicalSkillHighlight, ProfessionalSkillHighlight
 from blog.models import Article
+
+from validate_email import validate_email
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+import smtplib, ssl
 
 def index(request):
 	profile = Profile.objects.get(id=1) # Profile data
@@ -29,6 +34,66 @@ def index(request):
 		'services': services, 'pricing': pricing, 'articles': articles, 'tech_skills': tech_skills, 
 		'prof_skills': prof_skills***REMOVED***)
 
+
+def contact_me(request):
+	if request.is_ajax():
+		# Get form data and Save in DB (first_name, last_name, email, message, status)
+		message = Message(first_name = request.POST['first_name'], last_name = request.POST['last_name'], 
+			email = request.POST['email'], message = request.POST['message'], status = 'unsend')
+		message.save()
+		# Get Admin Email Details
+		profile = Profile.objects.get(id=1) # Profile data
+		email_settings = EmailApp.objects.filter(profile=profile.id)
+		if email_settings.count() > 0:
+			app_email = email_settings[0]
+			smtp_server = app_email.smtp_server
+			port = app_email.port  # For starttls
+			sender_email = app_email.email
+			password = app_email.password
+			receiver_email = app_email.profile.email_1
+
+			# Send Email to Admin
+			name = str(request.POST['first_name'])+" "+str(request.POST['last_name'])
+			email1 = request.POST['email']
+			message1 = request.POST['message']
+			subject = "Contact-Me Message from " + name
+			email_body = """***REMOVED***name***REMOVED***(***REMOVED***email1***REMOVED***) has Send you a message from From Your Portfolio. 
+				The message is : 
+				'***REMOVED***message1***REMOVED***'.
+				
+				Please Reply as soon as possible
+
+				Regards, 
+				Elkanah's portfolio. 
+			""" 
+			message = MIMEMultipart("alternative")
+			message["Subject"] = subject
+			message["From"] = sender_email
+			message["To"] = receiver_email
+			part = MIMEText(email_body.format(name=name, email1=email1, message1=message1), "plain")
+			# Add HTML/plain-text parts to MIMEMultipart message
+			message.attach(part)
+			# Create a secure SSL context
+			context = ssl.create_default_context()
+			# Try to log in to server and send email
+			try:
+				server = smtplib.SMTP(smtp_server,port)
+				server.ehlo() # Can be omitted
+				server.starttls(context=context) # Secure the connection
+				server.ehlo() # Can be omitted
+				server.login(sender_email, password)
+				# Send email
+				server.sendmail(sender_email, receiver_email, message.as_string())				
+			except Exception as e:
+				# Print any error messages to stdout
+				print(e)
+			finally:
+				server.quit()
+			return JsonResponse(***REMOVED***"success": "Message Sent"***REMOVED***, status=200)
+		else:
+			return JsonResponse(***REMOVED***"error": "An Error Occured"***REMOVED***, status=200)
+	else:
+		return redirect('index') 
 
 def auth_login(request):
 	if request.is_ajax():
@@ -51,3 +116,74 @@ def auth_login(request):
 def auth_logout(request):
 	logout(request)
 	return redirect('login')
+
+
+def validate_new_email(email):
+	is_valid = validate_email(email, verify=True)
+	return is_valid
+
+
+def send_to_email(email, name, message):
+	# Send the Code to User Email
+	subject = "Contact Me: " + name
+	send_emails = EmailApp.objects.all()
+	if send_emails.count() > 0:
+		app_email = send_emails[0]
+		smtp_server = app_email.smtp_server
+		port = app_email.port  # For starttls
+		sender_email = app_email.email
+		password = app_email.password
+		receiver_email = email
+		#message = email_body
+
+		message = MIMEMultipart("alternative")
+		message["Subject"] = subject
+		message["From"] = sender_email
+		message["To"] = email
+		
+		# Create the plain-text and HTML version of your message
+		html = """\
+		<html>
+		  <body>
+		    <p>Hi ***REMOVED***name***REMOVED***,<br>
+		       Thanks for signing up with BizReviews!<br>
+				Here’s the confirmation code you need to finish setting up your account: ***REMOVED***code***REMOVED***<br>
+				<br>
+				Thanks again,<br>
+				BizReviews.<br>
+		    </p>
+		  </body>
+		</html>
+		"""
+
+		# Turn these into plain/html MIMEText objects
+		part1 = MIMEText(email_body, "plain")
+		part2 = MIMEText(html.format(name= name, code=confirmation_code), "html")
+
+		# Add HTML/plain-text parts to MIMEMultipart message
+		# The email client will try to render the last part first
+		message.attach(part1)
+		message.attach(part2)
+
+		# Create a secure SSL context
+		context = ssl.create_default_context()
+
+		# Try to log in to server and send email
+		try:
+			server = smtplib.SMTP(smtp_server,port)
+			server.ehlo() # Can be omitted
+			server.starttls(context=context) # Secure the connection
+			server.ehlo() # Can be omitted
+			server.login(sender_email, password)
+			# Send email
+			server.sendmail(sender_email, receiver_email, message.as_string())
+		except Exception as e:
+			# Print any error messages to stdout
+			print(e)
+			return False
+		finally:
+			server.quit()
+		return True
+	else:
+		return False
+

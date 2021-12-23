@@ -182,11 +182,21 @@ class PricingKeyword(models.Model):
 
 class Message(models.Model):
 	first_name = models.CharField('First Name', max_length=50)
-	last_name = models.CharField('Last Name', max_length=50)
+	last_name = models.CharField('Last Name', max_length=50, null=True, blank=True)
 	email = models.CharField('Email', max_length=50)
 	message = models.CharField('Message', max_length=1500)
+	status = models.CharField('Status', max_length=50, default='unsend')
 	date_created = models.DateTimeField('Date Created', auto_now_add=True)
-	# first_name, last_name, email, message
+	# first_name, last_name, email, message, status
+
+
+class EmailApp(models.Model):
+	profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+	smtp_server = models.CharField('SMTP SERVER', max_length=100)
+	port = models.IntegerField('Port', default=587)
+	email = models.CharField('App Email', max_length=100, default='malonetechnologies101.com')
+	password = models.CharField('Password', max_length=200)
+	# profile, smtp_server, port, email, password
 
 
 class AppSettings(models.Model):

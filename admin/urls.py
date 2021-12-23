@@ -48,6 +48,7 @@ urlpatterns = [
 	path('add-series/', views.add_series, name = 'add-blog-series'),
 
 	path('settings/', views.settings, name='admin-settings'),
+	path('email/settings/', views.email_settings, name='admin-email-settings'),
 
 	path('layout/', views.layout_settings, name = 'layout-settings'),
 	path('sidebar-color/', views.sidebar_color_settings, name = 'sidebar-color-settings'),
