@@ -99,14 +99,15 @@ def edit_profile(request):
 
 		profile = Profile.objects.get(user=request.user.id)
 		# Update Social links
-		for social in socials:
-			name = request.POST['name-'+str(social.id)]
-			logo = request.POST['logo-'+str(social.id)]
-			url = request.POST['url-'+str(social.id)]
-			social.name =  name
-			social.logo = logo 
-			social.url = url
-			social.save() 
+		if socials != None:
+			for social in socials:
+				name = request.POST['name-'+str(social.id)]
+				logo = request.POST['logo-'+str(social.id)]
+				url = request.POST['url-'+str(social.id)]
+				social.name =  name
+				social.logo = logo 
+				social.url = url
+				social.save() 
 
 		# Add New Social Links
 		# Get the number of new social links
