@@ -54,13 +54,17 @@ def profile(request):
 
 
 @login_required(login_url='/login/')
-@user_passes_test(check_settings, login_url='/admin/settings/')
 def edit_profile(request):
 	# Get Profile data if exists
 	profile = None
 	form = None
 	profiles = Profile.objects.filter(user=request.user.id)
-	app = AppSettings.objects.get(user=request.user.id)
+	app = AppSettings.objects.filter(user=user.id)
+	if app.count()>=1:
+		app = app[0]
+	else:
+		app = init_app_settings(request.user)
+
 	socials = None
 	if profiles.count() > 0:
 		profile = profiles[0]
