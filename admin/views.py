@@ -59,7 +59,7 @@ def edit_profile(request):
 	profile = None
 	form = None
 	profiles = Profile.objects.filter(user=request.user.id)
-	app = AppSettings.objects.filter(user=user.id)
+	app = AppSettings.objects.filter(user=request.user.id)
 	if app.count()>=1:
 		app = app[0]
 	else:
