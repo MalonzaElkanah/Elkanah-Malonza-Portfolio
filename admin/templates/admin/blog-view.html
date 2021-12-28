@@ -1,6 +1,6 @@
 ***REMOVED***% extends "admin/base.html" %***REMOVED***
 
-***REMOVED***% block title %***REMOVED*** Admin - Home ***REMOVED***% endblock %***REMOVED***
+***REMOVED***% block title %***REMOVED*** Admin - Blog Articles ***REMOVED***% endblock %***REMOVED***
 
 ***REMOVED***% load static %***REMOVED***
 
@@ -33,6 +33,9 @@
     </li>
     <li class="dropdown">
         <a href="***REMOVED***% url 'admin-services' %***REMOVED***" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
+    </li>  
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-prices' %***REMOVED***" class="nav-link"><i data-feather="shopping-bag"></i><span>Pricing</span></a>
     </li> 
     <li class="dropdown active">
         <a href="***REMOVED***% url 'admin-blog' %***REMOVED***" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
@@ -41,13 +44,13 @@
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Settings</span></a>
         <ul class="dropdown-menu">
             <li><a class="nav-link" href="***REMOVED***% url 'admin-settings' %***REMOVED***">App Settings</a></li>
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-settings' %***REMOVED***">Profile Settings</a></li>
+            <li><a class="nav-link" href="***REMOVED***% url 'admin-profile-edit' %***REMOVED***">Profile Settings</a></li>
         </ul>
     </li>
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="unlock"></i><span>Authentication</span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href="#">New-password</a></li>
+            <li><a class="nav-link" href="***REMOVED***% url 'admin-change-password' %***REMOVED***">New-password</a></li>
             <li><a class="nav-link" href="***REMOVED***% url 'logout' %***REMOVED***">Logout</a></li>
         </ul>
     </li>                                   
@@ -61,18 +64,18 @@
                     <div class="card mb-0">
                         <div class="card-body">
                             <ul class="nav nav-pills">
-                              <li class="nav-item">
-                                <a class="nav-link active" href="#">All <span class="badge badge-white">10</span></a>
-                              </li>
-                              <li class="nav-item">
-                                <a class="nav-link" href="#">Draft <span class="badge badge-primary">2</span></a>
-                              </li>
-                              <li class="nav-item">
-                                <a class="nav-link" href="#">Pending <span class="badge badge-primary">3</span></a>
-                              </li>
-                              <li class="nav-item">
-                                <a class="nav-link" href="#">Trash <span class="badge badge-primary">0</span></a>
-                              </li>
+                                <li class="nav-item"> 
+                                    <a id="status-all" class="nav-link status-link active" href="#">All <span class="badge badge-white status-badge">***REMOVED******REMOVED***articles.count***REMOVED******REMOVED***</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a id="status-draft" class="nav-link status-link" href="#">Draft <span class="badge badge-primary status-badge">***REMOVED******REMOVED***status_count.draft***REMOVED******REMOVED***</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a id="status-pending" class="nav-link status-link" href="#">Pending <span class="badge badge-primary  status-badge">***REMOVED******REMOVED***status_count.pending***REMOVED******REMOVED***</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a id="status-trash" class="nav-link status-link" href="#">Trash <span class="badge badge-primary status-badge">***REMOVED******REMOVED***status_count.pending***REMOVED******REMOVED***</span></a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -129,7 +132,7 @@
                                             <th>Status</th>
                                         </tr>
                                         ***REMOVED***% for article in articles %***REMOVED***
-                                        <tr>
+                                        <tr class="article-all article-***REMOVED******REMOVED***article.status***REMOVED******REMOVED***"> 
                                             <td>
                                                 <div class="custom-checkbox custom-control">
                                                   <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input"
@@ -144,18 +147,22 @@
                                                   <span class="d-inline-block ml-1">***REMOVED******REMOVED***article.title***REMOVED******REMOVED***</span>
                                                 </a>
                                                 <div class="table-links">
-                                                  <a href="#">View</a>
+                                                  <a href="***REMOVED***% url 'article' article.title|slugify article.id %***REMOVED***">View</a>
                                                   <div class="bullet"></div>
                                                   <a href="***REMOVED***% url 'admin-blog-edit' article.title|slugify article.id %***REMOVED***">Edit</a>
                                                   <div class="bullet"></div>
-                                                  <a href="#" class="text-danger">Trash</a>
+                                                  <a href="***REMOVED***% url 'admin-blog-trash' article.title|slugify article.id %***REMOVED***" class="text-danger">Trash</a>
                                                 </div>
                                             </td>
                                             <td>
+                                            ***REMOVED***% if article.series.name == "" or article.series.name == None %***REMOVED***
+                                                [None]
+                                            ***REMOVED***% else %***REMOVED***
                                                 <a href="#">***REMOVED******REMOVED***article.series.name***REMOVED******REMOVED***</a>
+                                            ***REMOVED***% endif %***REMOVED***
                                             </td>
                                             <td>
-                                                <a href="#">***REMOVED******REMOVED***article.category.name***REMOVED******REMOVED***</a>
+                                                <a href="***REMOVED***% url 'articles-category' article.category.name|slugify article.category.id %***REMOVED***">***REMOVED******REMOVED***article.category.name***REMOVED******REMOVED***</a>
                                             </td>
                                             <td>***REMOVED******REMOVED***article.date_created***REMOVED******REMOVED***</td>
                                             <td>***REMOVED******REMOVED***article.tags***REMOVED******REMOVED***</td>
@@ -166,6 +173,8 @@
                                             ***REMOVED***% elif article.status == 'Publish' %***REMOVED***
                                                 <div class="badge badge-primary">***REMOVED******REMOVED***article.status***REMOVED******REMOVED***</div>
                                             ***REMOVED***% elif article.status == 'Draft' %***REMOVED***
+                                                <div class="badge badge-secondary">***REMOVED******REMOVED***article.status***REMOVED******REMOVED***</div>
+                                            ***REMOVED***% elif article.status == 'Trash' %***REMOVED***
                                                 <div class="badge badge-danger">***REMOVED******REMOVED***article.status***REMOVED******REMOVED***</div>
                                             ***REMOVED***% else %***REMOVED***
                                                 <div class="badge badge-primary">***REMOVED******REMOVED***article.status***REMOVED******REMOVED***</div>
@@ -219,11 +228,43 @@
     <script src="***REMOVED***% static 'admin/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js' %***REMOVED***"></script>
 
     <script type="text/javascript">
+
+        $(".status-link").click(function(event)***REMOVED***
+            event.preventDefault();
+            $(".status-link").removeClass('active');
+            $(this).addClass('active');
+            $(".status-badge").removeClass('badge-white').addClass('badge-primary');
+            $(this).children().removeClass('badge-primary').addClass('badge-white');
+            var my_id = $(this).attr('id');
+            if (my_id==="status-all")***REMOVED***
+                $(".article-all").show();
+            ***REMOVED*** else if(my_id==="status-draft")***REMOVED***
+                $(".article-all").hide();
+                $(".article-Draft").show();
+            ***REMOVED*** else if(my_id==="status-pending")***REMOVED***
+                $(".article-all").hide();
+                $(".article-Pending").show();
+            ***REMOVED*** else if(my_id==="status-trash")***REMOVED***
+                $(".article-all").hide();
+                $(".article-Trash").show();
+            ***REMOVED***else***REMOVED***
+                alert("no status");                
+                $(".article-all").show();
+            ***REMOVED***
+        ***REMOVED***);
+
         $("#table-1").dataTable(***REMOVED***
             "columnDefs": [
                 ***REMOVED*** "sortable": false, "targets": [0, 1] ***REMOVED***
             ],
             order: [[1, "asc"]] //column indexes is zero based
+        ***REMOVED***);
+
+        $("#status-pending").click(function(event)***REMOVED***
+            event.preventDefault();
+            $(".status-link").removeClass('active');
+            $(this).addClass('active');
+            alert("am workind");
         ***REMOVED***);
     </script>
 

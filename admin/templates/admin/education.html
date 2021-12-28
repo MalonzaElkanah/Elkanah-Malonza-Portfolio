@@ -1,6 +1,6 @@
 ***REMOVED***% extends "admin/base.html" %***REMOVED***
 
-***REMOVED***% block title %***REMOVED*** Admin - Home ***REMOVED***% endblock %***REMOVED***
+***REMOVED***% block title %***REMOVED*** Admin - Education History ***REMOVED***% endblock %***REMOVED***
 
 ***REMOVED***% load static %***REMOVED***
 
@@ -30,19 +30,22 @@
         <a href="***REMOVED***% url 'admin-services' %***REMOVED***" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
     </li> 
     <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-prices' %***REMOVED***" class="nav-link"><i data-feather="shopping-bag"></i><span>Pricing</span></a>
+    </li> 
+    <li class="dropdown">
         <a href="***REMOVED***% url 'admin-blog' %***REMOVED***" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
     </li>          
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Settings</span></a>
         <ul class="dropdown-menu">
             <li><a class="nav-link" href="***REMOVED***% url 'admin-settings' %***REMOVED***">App Settings</a></li>
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-settings' %***REMOVED***">Profile Settings</a></li>
+            <li><a class="nav-link" href="***REMOVED***% url 'admin-profile-edit' %***REMOVED***">Profile Settings</a></li>
         </ul>
     </li>
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="unlock"></i><span>Authentication</span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href="#">New-password</a></li>
+            <li><a class="nav-link" href="***REMOVED***% url 'admin-change-password' %***REMOVED***">New-password</a></li>
             <li><a class="nav-link" href="***REMOVED***% url 'logout' %***REMOVED***">Logout</a></li>
         </ul>
     </li>                                   
@@ -77,6 +80,8 @@
                                     <span class="text-job">***REMOVED******REMOVED***edu.institution***REMOVED******REMOVED***</span>
                                     <span class="bullet"></span>
                                     <a class="text-job" href="***REMOVED***% url 'admin-education-edit' edu.study_type|slugify edu.id %***REMOVED***">Edit</a>
+                                    <span class="bullet"></span>
+                                    <a class="text-job text-danger" href="#" data-toggle="modal" data-target="#deleteEduModal***REMOVED******REMOVED***edu.id***REMOVED******REMOVED***">Delete</a>
                                 </div>
                                 <div class="profile-widget-description pb-0">
                                     <div class="profile-widget-name">***REMOVED******REMOVED***edu.study_area***REMOVED******REMOVED***, ***REMOVED******REMOVED***edu.study_type***REMOVED******REMOVED***<div class="text-muted d-inline font-weight-normal"> <div class="slash"></div> ***REMOVED******REMOVED***edu.start_date***REMOVED******REMOVED*** - ***REMOVED******REMOVED***edu.end_date***REMOVED******REMOVED***</div></div>
@@ -98,4 +103,30 @@
 
         </div>
     </section>
+***REMOVED***% endblock %***REMOVED***
+
+***REMOVED***% block modal %***REMOVED***
+    ***REMOVED***% for edu in edu_history %***REMOVED***
+    <!--delete Work Modal ***REMOVED******REMOVED***edu.study_type***REMOVED******REMOVED***-->
+        <div class="modal fade" id="deleteEduModal***REMOVED******REMOVED***edu.id***REMOVED******REMOVED***" tabindex="-1" role="dialog"
+          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Delete ***REMOVED******REMOVED***edu.study_type***REMOVED******REMOVED***</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    ARE YOU SURE?
+                  </div>
+                  <div class="modal-footer bg-whitesmoke br">
+                    <a href="***REMOVED***% url 'admin-education-delete' edu.study_type|slugify edu.id %***REMOVED***" class="btn btn-danger deleteModal">Delete</a>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+            </div>
+        </div>
+    ***REMOVED***% endfor %***REMOVED***
 ***REMOVED***% endblock %***REMOVED***

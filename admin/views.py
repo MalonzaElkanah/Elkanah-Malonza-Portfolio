@@ -41,7 +41,8 @@ def home(request):
 def messages(request):
 	app = AppSettings.objects.get(user=request.user.id)
 	profile = Profile.objects.get(user=request.user.id)
-	return render(request, 'admin/messages.html', ***REMOVED***'profile': profile, 'app': app***REMOVED***)
+	messages = Message.objects.all().order_by('date_created').reverse()
+	return render(request, 'admin/messages.html', ***REMOVED***'profile': profile, 'app': app, 'messages': messages***REMOVED***)
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
@@ -127,6 +128,20 @@ def edit_profile(request):
 	else:
 		return render(request, 'admin/profile-edit.html', ***REMOVED***'profile': profile, 'form': form, 'app': app, 
 			'socials': socials***REMOVED***)
+
+@login_required(login_url='/login/')
+@user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
+def social_link_delete(request, slug, social_id):
+	social = SocialLink.objects.filter(id=int(social_id))
+	if social.count() > 0:
+		if social[0].profile.user.id == request.user.id:
+			social.delete()
+			return redirect('admin-profile')
+		else:
+			return HttpResponse("Access Denied")
+	else:
+		return HttpResponse("No Data to Remove")
 
 
 @login_required(login_url='/login/')
@@ -230,6 +245,21 @@ def project_add(request):
 		app = AppSettings.objects.get(user=request.user.id)
 		return render(request, 'admin/project-edit.html', ***REMOVED***'profile': profile, 'state': state, 'form': form, 
 			'app': app***REMOVED***)
+
+
+@login_required(login_url='/login/')
+@user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
+def project_delete(request, slug, project_id):
+	projects = Project.objects.filter(id=int(project_id))
+	if projects.count() > 0:
+		if projects[0].profile.user.id == request.user.id:
+			projects.delete()
+			return redirect('admin-projects')
+		else:
+			return HttpResponse("Access Denied")
+	else:
+		return HttpResponse("No Data to Remove")
 
 
 @login_required(login_url='/login/')
@@ -359,6 +389,35 @@ def add_work(request):
 			'state': state, 'app': app***REMOVED***)
 
 
+@login_required(login_url='/login/')
+@user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
+def delete_work(request, slug, work_id):
+	work = Work.objects.filter(id=int(work_id))
+	if work.count() > 0:
+		if work[0].profile.user.id == request.user.id:
+			work.delete()
+			return redirect('admin-work')
+		else:
+			return HttpResponse("Access Denied")
+	else:
+		return HttpResponse("No Data to Remove")
+
+
+@login_required(login_url='/login/')
+@user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
+def work_highlight_delete(request, slug, highlight_id):
+	highlights = WorkHighlight.objects.filter(id=int(highlight_id))
+	if highlights.count() > 0:
+		if highlights[0].work.profile.user.id == request.user.id:
+			highlights.delete()
+			return redirect('admin-work')
+		else:
+			return HttpResponse("Access Denied")
+	else:
+		return HttpResponse("No Data to Remove")
+
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
@@ -411,6 +470,21 @@ def add_education(request):
 		state = 'ADD_STATE'
 		app = AppSettings.objects.get(user=request.user.id)
 		return render(request, 'admin/education-edit.html', ***REMOVED***'profile': profile, 'state': state, 'app': app***REMOVED***)
+
+
+@login_required(login_url='/login/')
+@user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
+def delete_education(request, slug, edu_id):
+	edu = Education.objects.filter(id=int(edu_id))
+	if edu.count() > 0:
+		if edu[0].profile.user.id == request.user.id:
+			edu.delete()
+			return redirect('admin-education')
+		else:
+			return HttpResponse("Access Denied")
+	else:
+		return HttpResponse("No Data to Remove")
 
 
 @login_required(login_url='/login/')
@@ -495,7 +569,10 @@ def skills_technical_edit(request):
 		return redirect('admin-skills')
 
 
-def skills_delete_edit(tech_id):
+@login_required(login_url='/login/')
+@user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
+def skills_delete_edit(request, tech_id):
 	tech_skill = TechnicalSkillHighlight.objects.get(id=tech_id)
 	if tech_skill.skill_keyword.skill.profile.user.id == request.user.id:
 		tech_skill.delete()
@@ -526,6 +603,22 @@ def skills_add(request):
 		state = 'ADD_STATE'
 		app = AppSettings.objects.get(user=request.user.id)
 		return render(request, 'admin/skills-edit.html', ***REMOVED***'app': app, 'state': state, 'profile': profile***REMOVED***)
+
+
+@login_required(login_url='/login/')
+@user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
+def skills_delete(request, slug, skill_id):
+	skills = Skill.objects.filter(id=int(skill_id))
+	if skills.count() > 0:
+		if skills[0].profile.user.id == request.user.id:
+			skills.delete()
+			return redirect('admin-skills')
+		else:
+			return HttpResponse("Access Denied")
+	else:
+		return HttpResponse("No Data to Remove")
+
 
 
 @login_required(login_url='/login/')
@@ -563,6 +656,19 @@ def skills_professional_edit(request):
 		return redirect('admin-skills')
 
 
+@login_required(login_url='/login/')
+@user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
+def skills_professional_delete(request, prof_id):
+	skills = ProfessionalSkillHighlight.objects.filter(id=prof_id)
+	if skills.count() > 0:
+		if skills[0].profile.user.id == request.user.id:
+			skills.delete()
+			return redirect('admin-skills')
+		else:
+			return HttpResponse("Request Denied.") 
+	else:
+		return HttpResponse("No Data to Remove.") 
 
 
 @login_required(login_url='/login/')
@@ -618,6 +724,21 @@ def services_add(request):
 		state = 'ADD_STATE'
 		app = AppSettings.objects.get(user=request.user.id)
 		return render(request, 'admin/services-edit.html', ***REMOVED***'profile': profile, 'state': state, 'app': app***REMOVED***)
+
+
+@login_required(login_url='/login/')
+@user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
+def services_delete(request, slug, service_id):
+	services = Service.objects.filter(id=int(service_id))
+	if services.count() > 0:
+		if services[0].profile.user.id == request.user.id:
+			services.delete()
+			return redirect('admin-services')
+		else:
+			return HttpResponse("Access Denied")
+	else:
+		return HttpResponse("No Data to Remove")
 
 
 @login_required(login_url='/login/')
@@ -713,6 +834,20 @@ def price_add(request):
 		return render(request, 'admin/price-edit.html', ***REMOVED***'profile': profile, 'state': state, 'app': app***REMOVED***)
 
 
+@login_required(login_url='/login/')
+@user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
+def price_delete(request, slug, price_id):
+	prices = Pricing.objects.filter(id=int(price_id))
+	if prices.count() > 0:
+		if prices[0].profile.user.id == request.user.id:
+			prices.delete()
+			return redirect('admin-prices')
+		else:
+			return HttpResponse("Access Denied")
+	else:
+		return HttpResponse("No Data to Remove")
+
 
 @login_required(login_url='/login/')
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
@@ -722,9 +857,20 @@ def blog(request):
 	articles = Article.objects.all()
 	categories = ArticleCategory.objects.all()
 	series = ArticleSeries.objects.all()
+	# Publish, Draft, Pending, Trash
+	status_count = ***REMOVED*** ***REMOVED***
+	publish = articles.filter(status='Publish').count()
+	status_count.setdefault('publish', publish)
+	draft = articles.filter(status='Draft').count()
+	status_count.setdefault('draft', draft)
+	pending = articles.filter(status='Pending').count()
+	status_count.setdefault('pending', pending)
+	trash = articles.filter(status='Trash').count()
+	status_count.setdefault('trash', trash)
+
 	app = AppSettings.objects.get(user=request.user.id)
 	return render(request, 'admin/blog-view.html', ***REMOVED***'profile': profile, 'articles': articles, 
-		'series': series, 'categories': categories, 'app': app***REMOVED***) 
+		'series': series, 'categories': categories, 'app': app, 'status_count': status_count***REMOVED***) 
 
 
 @login_required(login_url='/login/')
@@ -751,6 +897,19 @@ def edit_blog(request, slug, article_id):
 		return render(request, 'admin/blog-edit.html', ***REMOVED***'state': state, 'form': form, 'article': article,
 			'profile': profile, 'categories': categories, 'series': series, 'app': app***REMOVED***) 
 
+
+def trash_blog(request, slug, article_id):
+	articles = Article.objects.filter(id=int(article_id))
+	if articles.count() > 0:
+		if articles[0].user.id == request.user.id:
+			article = articles[0]
+			article.status = 'Trash'
+			article.save()
+			return redirect('admin-blog')
+		else:
+			return HttpResponse("Access Denied")
+	else:
+		return HttpResponse("Article Does Not Exist")
 
 
 @login_required(login_url='/login/')
@@ -838,6 +997,43 @@ def settings(request):
 		form = AppSettingsForm(instance=app)
 		return render(request, 'admin/settings.html', ***REMOVED***'app': app, 'form': form, 'profile': profile, 
 			'app_email': app_email***REMOVED***)
+
+
+@login_required(login_url='/login/')
+def edit_password(request):
+	if request.method == 'POST':
+		if request.is_ajax():
+			usr = request.user
+			if usr.check_password(request.POST['old_password']):
+				if request.POST['new_password'] == request.POST['confirm_password']:
+					if not request.POST['new_password'] == request.POST['old_password']:
+						usr.set_password(request.POST['new_password'])
+						usr.save()
+						logout(request)
+						return redirect('login')
+					else:
+						return JsonResponse(***REMOVED***"error": "The Password Hasnot cHANGED"***REMOVED***, status=200)
+				else:
+					return JsonResponse(***REMOVED***"error": "The Confirm Password and the New Password dont Match"***REMOVED***, 
+						status=200)
+			else:
+				return JsonResponse(***REMOVED***"error": "Incorrect Old password"***REMOVED***, status=200)
+		else:
+			return redirect('admin-change-password')
+	else:
+		# App Settings
+		app_settings = AppSettings.objects.filter(user=request.user.id)
+		if app_settings.count() == 0: 
+			init_app_settings(request.user)
+		app = AppSettings.objects.get(user=request.user.id)
+		# Profile Settings
+		profile = Profile.objects.filter(user=request.user.id)
+		if profile.count() > 0:
+			profile = profile[0]
+		else:
+			profile = None
+
+		return render(request, 'admin/settings-password.html', ***REMOVED***'app': app, 'profile': profile***REMOVED***)
 
 
 @login_required(login_url='/login/')

@@ -1,13 +1,8 @@
 ***REMOVED***% extends "admin/base.html" %***REMOVED***
 
-***REMOVED***% block title %***REMOVED*** Admin - Home ***REMOVED***% endblock %***REMOVED***
+***REMOVED***% block title %***REMOVED*** Admin - My Profile ***REMOVED***% endblock %***REMOVED***
 
 ***REMOVED***% load static %***REMOVED***
-
-***REMOVED***% block css %***REMOVED***
-    <!-- Custom style CSS 
-    <link rel="stylesheet" href="***REMOVED***% static 'main/css/page/index.css' %***REMOVED***">-->
-***REMOVED***% endblock %***REMOVED***
 
 ***REMOVED***% block sidenav %***REMOVED***                              
     <li class="dropdown">
@@ -33,6 +28,9 @@
     </li>
     <li class="dropdown">
         <a href="***REMOVED***% url 'admin-services' %***REMOVED***" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
+    </li>  
+    <li class="dropdown">
+        <a href="***REMOVED***% url 'admin-prices' %***REMOVED***" class="nav-link"><i data-feather="shopping-bag"></i><span>Pricing</span></a>
     </li> 
     <li class="dropdown">
         <a href="***REMOVED***% url 'admin-blog' %***REMOVED***" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
@@ -41,13 +39,13 @@
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Settings</span></a>
         <ul class="dropdown-menu">
             <li><a class="nav-link" href="***REMOVED***% url 'admin-settings' %***REMOVED***">App Settings</a></li>
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-settings' %***REMOVED***">Profile Settings</a></li>
+            <li><a class="nav-link" href="***REMOVED***% url 'admin-profile-edit' %***REMOVED***">Profile Settings</a></li>
         </ul>
     </li>
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="unlock"></i><span>Authentication</span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href="#">New-password</a></li>
+            <li><a class="nav-link" href="***REMOVED***% url 'admin-change-password' %***REMOVED***">New-password</a></li>
             <li><a class="nav-link" href="***REMOVED***% url 'logout' %***REMOVED***">Logout</a></li>
         </ul>
     </li>                                   
@@ -136,8 +134,4 @@
             </div>
         </div>
     </section>
-***REMOVED***% endblock %***REMOVED***
-
-***REMOVED***% block javascript %***REMOVED***
-
 ***REMOVED***% endblock %***REMOVED***
