@@ -10,4 +10,5 @@ urlpatterns = [
     re_path(r'^posts/archives/(?P<slug>[\w-]+)/(?P<year>[0-9]***REMOVED***4***REMOVED***)/(?P<month>[0-9]***REMOVED***2***REMOVED***)/$', 
         views.articles_archives, name='articles-archives'),
     path('posts/', views.articles, name='articles'),
+    path('comment/post/<slug:slug>/<int:article_id>/', views.comment_article, name='comment-article'),
 ]

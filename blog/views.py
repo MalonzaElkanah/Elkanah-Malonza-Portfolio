@@ -1,5 +1,7 @@
-from django.shortcuts import render
-from .models import Article, ArticleCategory, ArticleSeries
+from django.shortcuts import render, redirect
+from django.utils.text import slugify
+
+from .models import Article, ArticleCategory, ArticleSeries, Comment
 from profile_settings.models import Profile, SocialLink
 
 # Create your views here.
@@ -30,9 +32,13 @@ def blog(request):
 
 def article(request, slug, article_id):
 	article = Article.objects.get(id=int(article_id))
+	# Update CLicks
 	view = article.views + 1
 	article.views =  view
 	article.save()
+	# Get Comments
+	comments = Comment.objects.filter(article=article.id)
+	# Get Author
 	profile = Profile.objects.get(user=article.user.id)
 	# All Category
 	categories = ArticleCategory.objects.all()
@@ -55,7 +61,7 @@ def article(request, slug, article_id):
 	archives = generate_last_one_year_months()
 	return render(request, 'blog/article.html', ***REMOVED***'article': article, 'profile': profile, 
 		'categories': categories, 'series': series, 'archives': archives, 'features': features, 
-		'my_series': my_series***REMOVED***)
+		'my_series': my_series, 'comments': comments***REMOVED***)
 
 
 def articles_category(request, slug, category_id):
@@ -108,6 +114,20 @@ def articles_archives(request, slug, year, month):
 
 def articles(request):
 	return render(request, 'blog/articles.html')
+
+
+def comment_article(request, slug, article_id):
+	if request.method == 'POST':
+		# Get Article
+		articles = Article.objects.filter(id=int(article_id))
+		if articles.count() > 0:
+			# Get Comment Form Data( article, name, email, message)
+			name = request.POST['name']
+			email = request.POST['email']
+			message = request.POST['message']
+			comment = Comment(article=articles[0], name=name, email=email, message=message)
+			comment.save()
+	return redirect('article', slug, int(article_id))
 
 
 def generate_last_one_year_months():

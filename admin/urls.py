@@ -58,6 +58,9 @@ urlpatterns = [
 	path('add/blog/', views.add_blog, name='admin-blog-add'),
 	path('add-category/', views.add_category, name = 'add-blog-category'),
 	path('add-series/', views.add_series, name = 'add-blog-series'),
+	path('comments/blog/<slug:slug>/<int:article_id>/', views.blog_comments, name='admin-blog-comments'),
+	path('delete/comment/<int:comment_id>/', views.delete_comment, name='admin-comment-delete'),
+	path('delete/reply/<int:reply_id>/', views.delete_reply, name='admin-reply-delete'),
 
 	path('settings/', views.settings, name='admin-settings'),
 	path('email/settings/', views.email_settings, name='admin-email-settings'),

@@ -46,6 +46,9 @@ class Article(models.Model):
 	def content_text(self):
 		return strip_tags(self.content)
 
+	def comments(self):
+		return Comment.objects.filter(article=self.id)
+
 
 class Comment(models.Model):
 	article = models.ForeignKey(Article, on_delete=models.CASCADE)
@@ -53,6 +56,10 @@ class Comment(models.Model):
 	email = models.CharField('Email', max_length=200)
 	message = models.CharField('Keyword', max_length=1200)
 	date_created = models.DateTimeField('Date Created', auto_now_add=True)
+	# article, name, email, message
+
+	def replies(self):
+		return CommentReply.objects.filter(comment=self.id)
 
 
 class CommentReply(models.Model):

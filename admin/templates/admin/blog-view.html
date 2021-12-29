@@ -130,6 +130,7 @@
                                             <th>Tags</th>
                                             <th>views</th>
                                             <th>Status</th>
+                                            <th>Action</th>
                                         </tr>
                                         ***REMOVED***% for article in articles %***REMOVED***
                                         <tr class="article-all article-***REMOVED******REMOVED***article.status***REMOVED******REMOVED***"> 
@@ -179,6 +180,9 @@
                                             ***REMOVED***% else %***REMOVED***
                                                 <div class="badge badge-primary">***REMOVED******REMOVED***article.status***REMOVED******REMOVED***</div>
                                             ***REMOVED***% endif %***REMOVED***
+                                            </td>
+                                            <td>
+                                                <a href="***REMOVED***% url 'admin-blog-comments' article.title|slugify article.id %***REMOVED***" class="btn btn-outline-primary">Comments(***REMOVED******REMOVED***article.comments.count***REMOVED******REMOVED***)</a>
                                             </td>
                                         </tr>
                                         ***REMOVED***% endfor %***REMOVED***

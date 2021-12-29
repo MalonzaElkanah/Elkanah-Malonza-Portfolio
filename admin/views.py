@@ -13,7 +13,7 @@ from profile_settings.models import ProjectKeyword, WorkHighlight, SkillKeyword,
 from profile_settings.models import TechnicalSkillHighlight, ProfessionalSkillHighlight
 from profile_settings.forms import ProfileForm, ProjectForm, WorkForm, EducationForm, AppSettingsForm
 from profile_settings.forms import ProjectImageForm
-from blog.models import ArticleSeries, ArticleCategory, Article, Comment
+from blog.models import ArticleSeries, ArticleCategory, Article, Comment, CommentReply
 from blog.forms import ArticleForm
 
 
@@ -970,6 +970,49 @@ def add_series(request):
 	else:
 		return redirect('admin-blog') 
 
+
+@login_required(login_url='/login/')
+@user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
+def blog_comments(request, slug, article_id):
+	# Get Comments - Comment, CommentReply
+	comments = Comment.objects.filter(article=int(article_id))
+	# Get Profile and App Settings
+	profile = Profile.objects.get(user=request.user.id)
+	app = AppSettings.objects.get(user=request.user.id)
+	return render(request, 'admin/blog-comments.html', ***REMOVED***'app': app, 'profile': profile, 'comments': comments***REMOVED***)
+
+
+@login_required(login_url='/login/')
+@user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
+def delete_comment(request, comment_id):
+	comments = Comment.objects.filter(id=int(comment_id))
+	if comments.count() > 0:
+		if request.user.is_superuser:
+			article = comments[0].article
+			comments.delete()
+			return redirect('admin-blog-comments', slugify(article.title), article.id)
+		else:
+			return HttpResponse("Acction Denied")
+	else:
+		return HttpResponse("No Such Comment")
+
+
+@login_required(login_url='/login/')
+@user_passes_test(check_profile, login_url='/admin/edit/profile/')
+@user_passes_test(check_settings, login_url='/admin/settings/')
+def delete_reply(request, reply_id):
+	comments = CommentReply.objects.filter(id=int(reply_id))
+	if comments.count() > 0:
+		if request.user.is_superuser:
+			article = comments[0].comment.article
+			comments.delete()
+			return redirect('admin-blog-comments', slugify(article.title), article.id)
+		else:
+			return HttpResponse("Acction Denied")
+	else:
+		return HttpResponse("No Such Comment")
 
 
 @login_required(login_url='/login/')
