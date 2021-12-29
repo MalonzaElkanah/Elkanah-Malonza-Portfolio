@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.utils.text import slugify
+from django.db.models import Q
 
 from .models import Article, ArticleCategory, ArticleSeries, Comment
 from profile_settings.models import Profile, SocialLink
@@ -110,6 +111,26 @@ def articles_archives(request, slug, year, month):
 	page_name = first_month_date.strftime("%B")+", " + str(year) + " Articles"
 	return render(request, 'blog/articles.html', ***REMOVED***'articles': articles, 
 		'categories': categories, 'series': series, 'archives': archives, 'page_name': page_name***REMOVED***)
+
+
+def articles_search(request):
+	word = request.GET.get('search', None)
+	articles = None
+	if word is not None and word.strip() != '':
+		# Search in Articles
+		articles = Article.objects.filter(
+			Q(title__icontains=word) | Q(series__name__icontains=word) | Q(category__name__icontains=word))
+		
+	# Archive
+	archives = generate_last_one_year_months()
+	# All Categories
+	categories = ArticleCategory.objects.all()
+	# All Series
+	series = ArticleSeries.objects.all()
+	# Name
+	page_name = "Search Results for '" + str(word) + "' Articles"
+	return render(request, 'blog/articles.html', ***REMOVED***'articles': articles, 'categories': categories, 
+		'series': series, 'archives': archives, 'page_name': page_name***REMOVED***)
 
 
 def articles(request):

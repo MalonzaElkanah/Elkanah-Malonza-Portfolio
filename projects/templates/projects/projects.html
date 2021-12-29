@@ -73,7 +73,7 @@
                 </div-->
                 <div class="row">
                 ***REMOVED***% for project in projects %***REMOVED***
-                    <div class="col-12">
+                    <div class="col-12 tech-all ***REMOVED***% for keyword in project.keywords %***REMOVED*** tech-***REMOVED******REMOVED***keyword.technology|cut:' '***REMOVED******REMOVED*** ***REMOVED***% endfor %***REMOVED***">
                         <div class="card shadow bg-body rounded mb-3">
                             <div class="row g-0">
                                 <div class="col-md-4 align-items-center">
@@ -127,7 +127,18 @@
 
                         <div class="row">
                             <div class="col-8">
-                                <h5>Filters</h5>
+                                <h5>Search Project</h5>
+                            </div>
+                            <div class="col-12 pb-5">
+                                <form method="get" action="***REMOVED***% url 'project-search' %***REMOVED***">
+                                <div class="mb3 pb-3">
+                                    <input class="form-control" type="text" name="search">
+                                </div>
+                                <button class="btn btn-outline-dark" type="submit">Search</button>
+                                </form>
+                            </div>
+                            <div class="col-8">
+                                <h5>Filter Tech Used</h5>
                             </div>
                             <div class="col-4">
                                 <p class="text-muted">
@@ -135,69 +146,16 @@
                                 </p>
                             </div>
                             <div class="col-12 pb-5">
-                                <div class="mb3 pb-3">
-                                    <label  for="region-input" class="form-label"> Search Project</label>
-                                    <input id="region-input" class="form-control" type="text" name="region">
-                                </div>
-                                <a id="filter-region-button" class="btn btn-outline-dark" href="#"> Apply</a>
-                            </div>
-                            <div class="col-12 pb-5">
                                 <div class="mb3">
-                                    <label  for="region-input" class="form-label">Filter by:</label>
+
+                                    ***REMOVED***% for keyword in keywords %***REMOVED***
                                     <div class="form-check pb-2">
-                                        <input class="form-check-input review-number" type="radio" name="reviewNumberRadio1" id="reviewNumberRadio1" value="0">
-                                        <label class="form-check-label text-muted" for="reviewNumberRadio1">
-                                            Most Recent
+                                        <input class="form-check-input filter-tech" type="checkbox" name="techKeywordcheckbox" id="techKeywordcheckbox***REMOVED******REMOVED***forloop.counter***REMOVED******REMOVED***" value="***REMOVED******REMOVED***keyword***REMOVED******REMOVED***" checked="">
+                                        <label class="form-check-label text-muted" for="techKeywordcheckbox***REMOVED******REMOVED***forloop.counter***REMOVED******REMOVED***">
+                                            ***REMOVED******REMOVED***keyword***REMOVED******REMOVED***
                                         </label>
                                     </div>
-                                    <div class="form-check pb-2">
-                                        <input class="form-check-input review-number" type="radio" name="reviewNumberRadio1" id="reviewNumberRadio2" value="16" checked>
-                                        <label class="form-check-label text-muted" for="reviewNumberRadio2">
-                                            Most Read
-                                        </label>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            <div class="col-12 pb-5">
-                                <div class="mb3">
-                                    <label  for="region-input" class="form-label">Technology Used</label>
-                                    <div class="form-check pb-2">
-                                        <input class="form-check-input review-number" type="radio" name="reviewNumberRadio" id="reviewNumberRadio1" value="0">
-                                        <label class="form-check-label text-muted" for="reviewNumberRadio1">
-                                            All
-                                        </label>
-                                    </div>
-                                    <div class="form-check pb-2">
-                                        <input class="form-check-input review-number" type="radio" name="reviewNumberRadio" id="reviewNumberRadio2" value="16" checked>
-                                        <label class="form-check-label text-muted" for="reviewNumberRadio2">
-                                            Java
-                                        </label>
-                                    </div>
-                                    <div class="form-check pb-2">
-                                        <input class="form-check-input review-number" type="radio" name="reviewNumberRadio" id="reviewNumberRadio1" value="27">
-                                        <label class="form-check-label text-muted" for="reviewNumberRadio1">
-                                            Python
-                                        </label>
-                                    </div>
-                                    <div class="form-check pb-2">
-                                        <input class="form-check-input review-number" type="radio" name="reviewNumberRadio" id="reviewNumberRadio1" value="57">
-                                        <label class="form-check-label text-muted" for="reviewNumberRadio1">
-                                            JS
-                                        </label>
-                                    </div>
-                                    <div class="form-check pb-2">
-                                        <input class="form-check-input review-number" type="radio" name="reviewNumberRadio" id="reviewNumberRadio1" value="108">
-                                        <label class="form-check-label text-muted" for="reviewNumberRadio1">
-                                            HTML
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input review-number" type="radio" name="reviewNumberRadio" id="reviewNumberRadio1" value="251">
-                                        <label class="form-check-label text-muted" for="reviewNumberRadio1">
-                                            CSS
-                                        </label>
-                                    </div>
+                                    ***REMOVED***% endfor %***REMOVED***
                                 </div>
                             </div>
 
@@ -245,5 +203,37 @@
     <!-- JS Libraies -->
     <script src="***REMOVED***% static 'main/js/jquery-3.6.0.min.js' %***REMOVED***"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        // Filter Project Technology
+        $("input[name=techKeywordcheckbox]").change(function()***REMOVED***
+            $(".tech-all").hide();
+            var num = 0;
+            $("input:checkbox[name=techKeywordcheckbox]:checked").each(function()***REMOVED***
+                var data = $(this).val();
+                var $items = $(".tech-"+data);
+                if ($items.length)***REMOVED***
+                    $(".tech-"+data).show();
+                    //num = num + parseInt($(".review-"+data).length);
+                ***REMOVED***
+            ***REMOVED***);
+            //$(".reviews-count").html(num);
+        ***REMOVED***);
+
+        // Load Default Filter on Load
+        $(function() ***REMOVED***
+            $(".tech-all").show();
+            $("input:checkbox[name=techKeywordcheckbox]").each(function()***REMOVED***
+                $(this).prop('checked', true);
+            ***REMOVED***);
+        ***REMOVED***)
+
+        //Reset Filters
+        $("#reset-filters").click(function(event)***REMOVED***
+            $(".tech-all").show();
+            $("input:checkbox[name=techKeywordcheckbox]").each(function()***REMOVED***
+                $(this).prop('checked', true);
+            ***REMOVED***);
+        ***REMOVED***);
+    </script>
 </body>
 </html>
