@@ -14,7 +14,7 @@ class Profile(models.Model):
 	image = models.ImageField(upload_to='image/profile/', max_length=1000, 
 		default='image/profile/default_profile.jpg', storage=gd_storage)
 	cv_file = models.FileField(upload_to='file/profile/cv/', max_length=1000, 
-		default='file/profile/cv/default_cv.pdf')
+		default='file/profile/cv/default_cv.pdf', storage=gd_storage)
 	first_name = models.CharField('First Name', max_length=50)
 	second_name = models.CharField('Second Name', max_length=50)
 	email_1 = models.CharField('Email 1', max_length=50)
@@ -33,7 +33,7 @@ class Profile(models.Model):
 class Project(models.Model):
 	profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
 	image = models.ImageField(upload_to='image/project/', max_length=1000, 
-		default='image/project/default_profile.jpg')
+		default='image/project/default_profile.jpg', storage=gd_storage)
 	name = models.CharField('Projects', max_length=200)
 	description = models.TextField()
 	url = models.URLField(null=True)
@@ -61,7 +61,7 @@ class ProjectKeyword(models.Model):
 
 class ProjectImage(models.Model):
 	project = models.ForeignKey(Project, on_delete=models.CASCADE)
-	picture = models.ImageField(upload_to='image/project/multiple/', max_length=1000)
+	picture = models.ImageField(upload_to='image/project/multiple/', max_length=1000, storage=gd_storage)
 	date_created = models.DateTimeField('Date Created', auto_now_add=True)
 	# project, image,
 
@@ -156,7 +156,7 @@ class Service(models.Model):
 class Testimony(models.Model):
 	profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
 	image = models.ImageField(upload_to='image/profile/', max_length=1000, 
-		default='image/profile/default_profile.jpg')
+		default='image/profile/default_profile.jpg', storage=gd_storage)
 	testimony = models.CharField('Testimony', max_length=5000)
 	name = models.CharField('Name', max_length=50)
 	title = models.CharField('Title', max_length=150)
@@ -206,9 +206,9 @@ class AppSettings(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	app_name = models.CharField('App Name', max_length=20)
 	logo = models.ImageField('Logo', upload_to='Image/Settings/Logo', default='logo.png', blank=True, 
-		null=True)
+		null=True, storage=gd_storage)
 	favicon = models.ImageField('Favicon', upload_to='Image/Settings/Logo', default='favicon.ico', 
-		blank=True, null=True)
+		blank=True, null=True, storage=gd_storage)
 	layout = models.CharField('layout', max_length=10)
 	sidebar_color = models.CharField('Sidebar Color', max_length=10)
 	color_theme = models.CharField('Color Theme', max_length=10)
