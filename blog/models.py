@@ -3,6 +3,10 @@ from django.contrib.auth.models import User
 from django.utils.html import strip_tags
 
 # Create your models here. 
+from  gdstorage.storage  import  GoogleDriveStorage
+
+# Define Google Drive Storage
+gd_storage = GoogleDriveStorage()
 
 class ArticleSeries(models.Model):
 	name = models.CharField('Keyword', max_length=200)
