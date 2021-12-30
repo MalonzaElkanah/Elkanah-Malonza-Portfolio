@@ -4,12 +4,15 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 import django.utils.timezone as tz
+from  gdstorage.storage  import  GoogleDriveStorage
 
+# Define Google Drive Storage
+gd_storage = GoogleDriveStorage()
 
 class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	image = models.ImageField(upload_to='image/profile/', max_length=1000, 
-		default='image/profile/default_profile.jpg')
+		default='image/profile/default_profile.jpg', storage=gd_storage)
 	cv_file = models.FileField(upload_to='file/profile/cv/', max_length=1000, 
 		default='file/profile/cv/default_cv.pdf')
 	first_name = models.CharField('First Name', max_length=50)

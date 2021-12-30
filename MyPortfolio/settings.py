@@ -34,6 +34,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+#
+# Google Drive Storage Settings
+#
+
+GOOGLE_DRIVE_STORAGE_SERVICE_EMAIL  =  "elkanahmalonza@gmail.com" 
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = os.path.join(BASE_DIR , "MyPortfolio/client_secret1.json")
+GOOGLE_DRIVE_STORAGE_MEDIA_ROOT = 'my-portfolio' # OPTIONAL
+
 
 # Application definition
 
@@ -48,6 +56,7 @@ INSTALLED_APPS = [
     'profile_settings.apps.ProfileSettingsConfig',
     'projects.apps.ProjectsConfig',
     'admin.apps.AdminConfig',
+    'gdstorage',
 ]
 
 MIDDLEWARE = [
