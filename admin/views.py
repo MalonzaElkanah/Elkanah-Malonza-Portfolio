@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, logout, login
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.utils.text import slugify
+from django.core.paginator import Paginator
 
 from profile_settings.models import Profile, Project, SocialLink, Education, Work, Skill, Service
 from profile_settings.models import Testimony, Pricing, Message, AppSettings, ProjectImage, EmailApp
@@ -853,11 +854,14 @@ def price_delete(request, slug, price_id):
 @user_passes_test(check_profile, login_url='/admin/edit/profile/')
 @user_passes_test(check_settings, login_url='/admin/settings/')
 def blog(request):
+	# Initialize Profile and app Data
 	profile = Profile.objects.get(user=request.user.id)
+	app = AppSettings.objects.get(user=request.user.id)
+	# Get Article Data
 	articles = Article.objects.all()
 	categories = ArticleCategory.objects.all()
 	series = ArticleSeries.objects.all()
-	# Publish, Draft, Pending, Trash
+	# Number of Publish, Draft, Pending, Trash
 	status_count = ***REMOVED*** ***REMOVED***
 	publish = articles.filter(status='Publish').count()
 	status_count.setdefault('publish', publish)
@@ -867,8 +871,11 @@ def blog(request):
 	status_count.setdefault('pending', pending)
 	trash = articles.filter(status='Trash').count()
 	status_count.setdefault('trash', trash)
+	# Set Up Pagination
+	paginator = Paginator(articles, 10)
+	page_number = request.GET.get('page', 1)
+	articles = paginator.get_page(page_number)
 
-	app = AppSettings.objects.get(user=request.user.id)
 	return render(request, 'admin/blog-view.html', ***REMOVED***'profile': profile, 'articles': articles, 
 		'series': series, 'categories': categories, 'app': app, 'status_count': status_count***REMOVED***) 
 

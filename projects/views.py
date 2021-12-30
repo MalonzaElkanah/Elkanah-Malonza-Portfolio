@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.core.paginator import Paginator
+
 from profile_settings.models import Project, ProjectKeyword
 # Create your views here.
 
@@ -7,6 +9,10 @@ def projects(request):
 	projects = Project.objects.all()
 	keywords = unique_project_keywords()
 	page_name = 'All Projects'
+	# Set Up Pagination
+	paginator = Paginator(projects, 10)
+	page_number = request.GET.get('page', 1)
+	projects = paginator.get_page(page_number)
 	return render(request, 'projects/projects.html', ***REMOVED***'projects': projects, 'keywords': keywords, 
 		'page_name': page_name***REMOVED***)
 
@@ -26,6 +32,10 @@ def project_technology(request, slug):
 	for keyword in slug_keywords:
 		if keyword.project not in projects:
 			projects += [keyword.project] 
+	# Set Up Pagination
+	paginator = Paginator(projects, 10)
+	page_number = request.GET.get('page', 1)
+	projects = paginator.get_page(page_number)
 	return render(request, 'projects/projects.html', ***REMOVED***'projects': projects, 'keywords': keywords, 
 		'page_name': page_name***REMOVED***)
 
@@ -47,8 +57,14 @@ def project_search(request):
 			if keyword.project not in projects:
 				projects += [keyword.project] 
 
+		# Set Up Pagination
+		paginator = Paginator(projects, 10)
+		page_number = request.GET.get('page', 1)
+		projects = paginator.get_page(page_number)
+
 	keywords = unique_project_keywords()
 	page_name = 'Search Results for "' + str(search) + '" Projects'
+
 	return render(request, 'projects/projects.html', ***REMOVED***'projects': projects, 'keywords': keywords, 
 		'page_name': page_name***REMOVED***)
 

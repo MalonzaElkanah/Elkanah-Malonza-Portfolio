@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.utils.text import slugify
 from django.db.models import Q
+from django.core.paginator import Paginator
 
 from .models import Article, ArticleCategory, ArticleSeries, Comment
 from profile_settings.models import Profile, SocialLink
@@ -20,11 +21,14 @@ def blog(request):
 	# 4 Featured Posts (2 latest, 2 Most Viewed)
 	viewed_articles = Article.objects.order_by('views').reverse()[0:2]
 	latest_articles = articles[0:2]
-
 	# main Featured Posts (Latest)
 	featured = latest_articles[0]
 	# Archive
 	archives = generate_last_one_year_months()
+	# Set Up Pagination
+	paginator = Paginator(articles, 10)
+	page_number = request.GET.get('page', 1)
+	articles = paginator.get_page(page_number)
 
 	return render(request, 'blog/blog.html', ***REMOVED***'articles': articles, 'categories': categories, 'series': series, 
 		'main_feature': featured, 'viewed_articles': viewed_articles, 'latest_articles': latest_articles, 
@@ -76,6 +80,10 @@ def articles_category(request, slug, category_id):
 	series = ArticleSeries.objects.all()
 	# Name
 	page_name = category.name + " Articles"
+	# Set Up Pagination
+	paginator = Paginator(articles, 10)
+	page_number = request.GET.get('page', 1)
+	articles = paginator.get_page(page_number)
 	return render(request, 'blog/articles.html', ***REMOVED***'articles': articles, 'category': category, 
 		'categories': categories, 'series': series, 'archives': archives, 'page_name': page_name***REMOVED***)
 
@@ -91,6 +99,10 @@ def articles_series(request, slug, series_id):
 	series = ArticleSeries.objects.all()
 	# Name
 	page_name = my_series.name + " Articles"
+	# Set Up Pagination
+	paginator = Paginator(articles, 10)
+	page_number = request.GET.get('page', 1)
+	articles = paginator.get_page(page_number)
 	return render(request, 'blog/articles.html', ***REMOVED***'my_series': my_series, 'articles': articles, 
 		'categories': categories, 'series': series, 'archives': archives, 'page_name': page_name***REMOVED***)
 
@@ -109,6 +121,10 @@ def articles_archives(request, slug, year, month):
 	series = ArticleSeries.objects.all()
 	# Name
 	page_name = first_month_date.strftime("%B")+", " + str(year) + " Articles"
+	# Set Up Pagination
+	paginator = Paginator(articles, 10)
+	page_number = request.GET.get('page', 1)
+	articles = paginator.get_page(page_number)
 	return render(request, 'blog/articles.html', ***REMOVED***'articles': articles, 
 		'categories': categories, 'series': series, 'archives': archives, 'page_name': page_name***REMOVED***)
 
@@ -129,12 +145,30 @@ def articles_search(request):
 	series = ArticleSeries.objects.all()
 	# Name
 	page_name = "Search Results for '" + str(word) + "' Articles"
+	# Set Up Pagination
+	paginator = Paginator(articles, 10)
+	page_number = request.GET.get('page', 1)
+	articles = paginator.get_page(page_number)
 	return render(request, 'blog/articles.html', ***REMOVED***'articles': articles, 'categories': categories, 
 		'series': series, 'archives': archives, 'page_name': page_name***REMOVED***)
 
 
 def articles(request):
-	return render(request, 'blog/articles.html')
+	articles = Article.objects.filter(status='Publish').order_by('date_created').reverse()
+	# Archive
+	archives = generate_last_one_year_months()
+	# All Categories
+	categories = ArticleCategory.objects.all()
+	# All Series
+	series = ArticleSeries.objects.all()
+	# Name
+	page_name = "All Articles"
+	# Set Up Pagination
+	paginator = Paginator(articles, 10)
+	page_number = request.GET.get('page', 1)
+	articles = paginator.get_page(page_number)
+	return render(request, 'blog/articles.html', ***REMOVED***'articles': articles, 'categories': categories, 
+		'series': series, 'archives': archives, 'page_name': page_name***REMOVED***)
 
 
 def comment_article(request, slug, article_id):

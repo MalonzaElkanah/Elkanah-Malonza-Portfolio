@@ -140,6 +140,9 @@
                 <div class="row text-center p-4">
                     <h3>All Posts</h3>
                 </div>
+                <div class="row pb-2 d-flex justify-content-between">
+                    <h5 class="col ms-2">Articles: <span class="reviews-count text-muted">Page ***REMOVED******REMOVED***articles.number***REMOVED******REMOVED*** of ***REMOVED******REMOVED***articles.paginator.num_pages***REMOVED******REMOVED***.</span></h5>
+                </div>
                 <div class="row">
                 ***REMOVED***% for article in articles %***REMOVED***
                     <div class="col-12">
@@ -162,15 +165,31 @@
                 <div class="row pt-3">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center">
+                        ***REMOVED***% if articles.has_previous %***REMOVED***
+                            <li class="page-item">
+                                <a href="?page=***REMOVED******REMOVED***articles.previous_page_number***REMOVED******REMOVED***" class="page-link">Previous</a>
+                            </li>
+                        ***REMOVED***% else %***REMOVED***
                             <li class="page-item disabled">
                                 <a class="page-link">Previous</a>
                             </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        ***REMOVED***% endif %***REMOVED***
+
+                        ***REMOVED***% for p in articles.paginator.page_range %***REMOVED***
+                            <li class="page-item ***REMOVED***% if articles.number == p %***REMOVED***active***REMOVED***% endif %***REMOVED***">
+                                <a class="page-link" href="?page=***REMOVED******REMOVED***p***REMOVED******REMOVED***">***REMOVED******REMOVED***p***REMOVED******REMOVED***</a>
+                            </li>
+                        ***REMOVED***% endfor %***REMOVED***
+
+                        ***REMOVED***% if articles.has_next %***REMOVED***
                             <li class="page-item">
+                                <a class="page-link" href="?page=***REMOVED******REMOVED***articles.next_page_number***REMOVED******REMOVED***">Next</a>
+                            </li>
+                        ***REMOVED***% else %***REMOVED***
+                            <li class="page-item disabled">
                                 <a class="page-link" href="#">Next</a>
                             </li>
+                        ***REMOVED***% endif %***REMOVED***
                         </ul>
                     </nav>
                 </div>
