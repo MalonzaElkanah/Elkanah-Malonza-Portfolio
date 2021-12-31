@@ -30,7 +30,7 @@ MEDIA_URL = '/Uploads/'
 SECRET_KEY = '(hacsofe)tiogb@_(k9h9_$w(lyw=d4u+0jy61pui(ur53h_lf'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 

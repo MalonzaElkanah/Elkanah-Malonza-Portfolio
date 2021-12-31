@@ -238,10 +238,14 @@ def project_add(request):
 			new_keyword.save()
 
 		# Update Project Images
-		images = request.FILES.getlist('images')
-		for image in images:
-			project_image = ProjectImage(project=project, picture=image)
-			project_image.save()
+		p = ***REMOVED***'project': project.id***REMOVED***
+		form_pic = ProjectImageForm(p, request.FILES)
+		new_images = request.FILES.getlist('picture')
+		if form_pic.is_valid():
+			for image in new_images:
+				project_image = ProjectImage(project=project, picture=image)
+				# ProjectImageForm(project=project.id, picture=image)
+				project_image.save()
 			
 		return redirect('admin-project', slugify(project.name), project.id)
 	else:
