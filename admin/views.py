@@ -888,7 +888,7 @@ def edit_blog(request, slug, article_id):
 	# Check if request is from a form
 	if request.method == 'POST':
 		# Update the Education data if request from a form
-		form = ArticleForm(request.POST, instance=article)
+		form = ArticleForm(request.POST, request.FILES, instance=article)
 		if form.is_valid():
 			form.save()
 		else:
