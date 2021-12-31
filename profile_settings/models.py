@@ -33,7 +33,7 @@ class Profile(models.Model):
 class Project(models.Model):
 	profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
 	image = models.ImageField(upload_to='image/project/', max_length=1000, 
-		default='image/project/default_profile.jpg', storage=gd_storage)
+		default='image/project/project.jpg', storage=gd_storage)
 	name = models.CharField('Projects', max_length=200)
 	description = models.TextField()
 	url = models.URLField(null=True)

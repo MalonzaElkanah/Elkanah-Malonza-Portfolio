@@ -174,9 +174,8 @@ def project_edit(request, slug, project_id):
 	project = Project.objects.get(id=int(project_id))
 	# Check if request is from a form
 	if request.method == 'POST':
-		print("check point1111--")
 		# Update the project data if request from a form
-		form = ProjectForm(request.POST, instance=project)
+		form = ProjectForm(request.POST, request.FILES, instance=project)
 		if form.is_valid():
 			form.save()
 		else:
@@ -190,7 +189,7 @@ def project_edit(request, slug, project_id):
 		project_keywords.delete()
 		# Add new keywords
 		for keyword in keywords_dic:
-			new_keyword = ProjectKeyword(project=project, technology=keyword)
+			new_keyword = ProjectKeyword(project=project, technology=keyword.strip())
 			new_keyword.save()
 
 		# Add New Project Images
@@ -230,7 +229,7 @@ def project_add(request):
 		keywords = request.POST['keywords']
 		keywords_dic = keywords.split(',')
 		for keyword in keywords_dic:
-			new_keyword = ProjectKeyword(project=project, technology=keyword)
+			new_keyword = ProjectKeyword(project=project, technology=keyword.strip())
 			new_keyword.save()
 
 		# Update Project Images
