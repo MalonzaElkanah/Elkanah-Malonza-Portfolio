@@ -1,62 +1,62 @@
-***REMOVED***% extends "admin/base.html" %***REMOVED***
+{% extends "admin/base.html" %}
 
-***REMOVED***% block title %***REMOVED*** Admin - Services ***REMOVED***% endblock %***REMOVED***
+{% block title %} Admin - Services {% endblock %}
 
-***REMOVED***% load static %***REMOVED***
+{% load static %}
 
-***REMOVED***% block css %***REMOVED***
-    <link rel="stylesheet" href="***REMOVED***% static 'admin/bundles/datatables/datatables.min.css' %***REMOVED***">
-    <link rel="stylesheet" href="***REMOVED***% static 'admin/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css' %***REMOVED***">
-***REMOVED***% endblock %***REMOVED***
+{% block css %}
+    <link rel="stylesheet" href="{% static 'admin/bundles/datatables/datatables.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css' %}">
+{% endblock %}
 
-***REMOVED***% block sidenav %***REMOVED***                              
+{% block sidenav %}                              
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-home' %***REMOVED***" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
+        <a href="{% url 'admin-home' %}" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-messages' %***REMOVED***" class="nav-link"><i data-feather="message-square"></i><span>Messages</span></a>
+        <a href="{% url 'admin-messages' %}" class="nav-link"><i data-feather="message-square"></i><span>Messages</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-profile' %***REMOVED***" class="nav-link"><i data-feather="user"></i><span>Profile</span></a>
+        <a href="{% url 'admin-profile' %}" class="nav-link"><i data-feather="user"></i><span>Profile</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-projects' %***REMOVED***" class="nav-link"><i data-feather="codepen"></i><span>Project</span></a>
+        <a href="{% url 'admin-projects' %}" class="nav-link"><i data-feather="codepen"></i><span>Project</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-work' %***REMOVED***" class="nav-link"><i data-feather="clipboard"></i><span>Work</span></a>
+        <a href="{% url 'admin-work' %}" class="nav-link"><i data-feather="clipboard"></i><span>Work</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-education' %***REMOVED***" class="nav-link"><i data-feather="book-open"></i><span>Education</span></a>
+        <a href="{% url 'admin-education' %}" class="nav-link"><i data-feather="book-open"></i><span>Education</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-skills' %***REMOVED***" class="nav-link"><i data-feather="sliders"></i><span>Skills</span></a>
+        <a href="{% url 'admin-skills' %}" class="nav-link"><i data-feather="sliders"></i><span>Skills</span></a>
     </li>
     <li class="dropdown active">
-        <a href="***REMOVED***% url 'admin-services' %***REMOVED***" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
+        <a href="{% url 'admin-services' %}" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
     </li>       
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-prices' %***REMOVED***" class="nav-link"><i data-feather="shopping-bag"></i><span>Pricing</span></a>
+        <a href="{% url 'admin-prices' %}" class="nav-link"><i data-feather="shopping-bag"></i><span>Pricing</span></a>
     </li>  
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-blog' %***REMOVED***" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
+        <a href="{% url 'admin-blog' %}" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
     </li>    
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Settings</span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-settings' %***REMOVED***">App Settings</a></li>
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-profile-edit' %***REMOVED***">Profile Settings</a></li>
+            <li><a class="nav-link" href="{% url 'admin-settings' %}">App Settings</a></li>
+            <li><a class="nav-link" href="{% url 'admin-profile-edit' %}">Profile Settings</a></li>
         </ul>
     </li>
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="unlock"></i><span>Authentication</span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-change-password' %***REMOVED***">New-password</a></li>
-            <li><a class="nav-link" href="***REMOVED***% url 'logout' %***REMOVED***">Logout</a></li>
+            <li><a class="nav-link" href="{% url 'admin-change-password' %}">New-password</a></li>
+            <li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
         </ul>
     </li>                                   
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}
 
-***REMOVED***% block content %***REMOVED***
+{% block content %}
     <section class="section">
         <div class="section-body"> 
             <div class="row">
@@ -65,7 +65,7 @@
 		                <div class="card-header">
 		                    <h4>My Services</h4>
 		                    <div class="card-header-action">
-                              	<a href="***REMOVED***% url 'admin-services-add' %***REMOVED***" class="btn btn-primary">
+                              	<a href="{% url 'admin-services-add' %}" class="btn btn-primary">
 	                                <i class="fas fa-plus"></i>
 	                                Add Service
 	                            </a>
@@ -85,20 +85,20 @@
 				                        </tr>
 			                        </thead>
 			                        <tbody>
-			                        ***REMOVED***% for service in services %***REMOVED***
+			                        {% for service in services %}
 				                        <tr>
-				                            <td class="text-center">***REMOVED******REMOVED***forloop.counter***REMOVED******REMOVED***</td>
-				                            <td>***REMOVED******REMOVED***service.name***REMOVED******REMOVED***</td>
-				                            <td class="align-middle">***REMOVED******REMOVED***service.logo***REMOVED******REMOVED***</td>
-				                            <td>***REMOVED******REMOVED***service.description***REMOVED******REMOVED***</td>
+				                            <td class="text-center">{{forloop.counter}}</td>
+				                            <td>{{service.name}}</td>
+				                            <td class="align-middle">{{service.logo}}</td>
+				                            <td>{{service.description}}</td>
 				                            <td>
-				                            	<a href="***REMOVED***% url 'admin-services-edit' service.name|slugify service.id %***REMOVED***" class="btn btn-primary">Edit</a>
+				                            	<a href="{% url 'admin-services-edit' service.name|slugify service.id %}" class="btn btn-primary">Edit</a>
 				                            </td>
                                             <td>
-                                                <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#deleteServiceModal***REMOVED******REMOVED***service.id***REMOVED******REMOVED***">Delete</a>
+                                                <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#deleteServiceModal{{service.id}}">Delete</a>
                                             </td>
 				                        </tr>
-				                    ***REMOVED***% endfor %***REMOVED***
+				                    {% endfor %}
                         			</tbody>
                       			</table>
                     		</div>
@@ -109,17 +109,17 @@
 
         </div>
     </section>
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}
 
-***REMOVED***% block modal %***REMOVED***
-    ***REMOVED***% for service in services %***REMOVED***
-    <!--delete Project Modal ***REMOVED******REMOVED***service.name***REMOVED******REMOVED***-->
-        <div class="modal fade" id="deleteServiceModal***REMOVED******REMOVED***service.id***REMOVED******REMOVED***" tabindex="-1" role="dialog"
+{% block modal %}
+    {% for service in services %}
+    <!--delete Project Modal {{service.name}}-->
+        <div class="modal fade" id="deleteServiceModal{{service.id}}" tabindex="-1" role="dialog"
           aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Delete ***REMOVED******REMOVED***service.name***REMOVED******REMOVED***</h5>
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Delete {{service.name}}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -128,26 +128,26 @@
                     ARE YOU SURE?
                   </div>
                   <div class="modal-footer bg-whitesmoke br">
-                    <a href="***REMOVED***% url 'admin-services-delete' service.name|slugify service.id %***REMOVED***" class="btn btn-danger deleteModal">Delete</a>
+                    <a href="{% url 'admin-services-delete' service.name|slugify service.id %}" class="btn btn-danger deleteModal">Delete</a>
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                   </div>
                 </div>
             </div>
         </div>
-    ***REMOVED***% endfor %***REMOVED***
-***REMOVED***% endblock %***REMOVED***
+    {% endfor %}
+{% endblock %}
 
-***REMOVED***% block javascript %***REMOVED***
-    <script src="***REMOVED***% static 'admin/bundles/datatables/datatables.min.js' %***REMOVED***"></script>
-    <script src="***REMOVED***% static 'admin/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js' %***REMOVED***"></script>
+{% block javascript %}
+    <script src="{% static 'admin/bundles/datatables/datatables.min.js' %}"></script>
+    <script src="{% static 'admin/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js' %}"></script>
 
     <script type="text/javascript">
-        $("#table-2").dataTable(***REMOVED***
+        $("#table-2").dataTable({
             "columnDefs": [
-                ***REMOVED*** "sortable": false, "targets": [0, 1] ***REMOVED***
+                { "sortable": false, "targets": [0, 1] }
             ],
             order: [[1, "asc"]] //column indexes is zero based
-        ***REMOVED***);
+        });
     </script>
 
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}

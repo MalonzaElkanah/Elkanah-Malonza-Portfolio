@@ -1,57 +1,57 @@
-***REMOVED***% extends "admin/base.html" %***REMOVED***
+{% extends "admin/base.html" %}
 
-***REMOVED***% block title %***REMOVED*** Admin - Price Update ***REMOVED***% endblock %***REMOVED***
+{% block title %} Admin - Price Update {% endblock %}
 
-***REMOVED***% load static %***REMOVED***
+{% load static %}
 
-***REMOVED***% block sidenav %***REMOVED***                              
+{% block sidenav %}                              
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-home' %***REMOVED***" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
+        <a href="{% url 'admin-home' %}" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-messages' %***REMOVED***" class="nav-link"><i data-feather="message-square"></i><span>Messages</span></a>
+        <a href="{% url 'admin-messages' %}" class="nav-link"><i data-feather="message-square"></i><span>Messages</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-profile' %***REMOVED***" class="nav-link"><i data-feather="user"></i><span>Profile</span></a>
+        <a href="{% url 'admin-profile' %}" class="nav-link"><i data-feather="user"></i><span>Profile</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-projects' %***REMOVED***" class="nav-link"><i data-feather="codepen"></i><span>Projects</span></a>
+        <a href="{% url 'admin-projects' %}" class="nav-link"><i data-feather="codepen"></i><span>Projects</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-work' %***REMOVED***" class="nav-link"><i data-feather="clipboard"></i><span>Work</span></a>
+        <a href="{% url 'admin-work' %}" class="nav-link"><i data-feather="clipboard"></i><span>Work</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-education' %***REMOVED***" class="nav-link"><i data-feather="book-open"></i><span>Education</span></a>
+        <a href="{% url 'admin-education' %}" class="nav-link"><i data-feather="book-open"></i><span>Education</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-skills' %***REMOVED***" class="nav-link"><i data-feather="sliders"></i><span>Skills</span></a>
+        <a href="{% url 'admin-skills' %}" class="nav-link"><i data-feather="sliders"></i><span>Skills</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-services' %***REMOVED***" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
+        <a href="{% url 'admin-services' %}" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
     </li>     
     <li class="dropdown active">
-        <a href="***REMOVED***% url 'admin-prices' %***REMOVED***" class="nav-link"><i data-feather="briefcase"></i><span>Pricing</span></a>
+        <a href="{% url 'admin-prices' %}" class="nav-link"><i data-feather="briefcase"></i><span>Pricing</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-blog' %***REMOVED***" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
+        <a href="{% url 'admin-blog' %}" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
     </li>       
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Settings</span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-settings' %***REMOVED***">App Settings</a></li>
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-profile-edit' %***REMOVED***">Profile Settings</a></li>
+            <li><a class="nav-link" href="{% url 'admin-settings' %}">App Settings</a></li>
+            <li><a class="nav-link" href="{% url 'admin-profile-edit' %}">Profile Settings</a></li>
         </ul>
     </li>
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="unlock"></i><span>Authentication</span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-change-password' %***REMOVED***">New-password</a></li>
-            <li><a class="nav-link" href="***REMOVED***% url 'logout' %***REMOVED***">Logout</a></li>
+            <li><a class="nav-link" href="{% url 'admin-change-password' %}">New-password</a></li>
+            <li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
         </ul>
     </li>                                   
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}
 
-***REMOVED***% block content %***REMOVED***
+{% block content %}
     <section class="section">
         <div class="section-body"> 
 
@@ -62,55 +62,55 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12">
-                                    ***REMOVED***% if state == 'ADD_STATE' %***REMOVED***
-                                    <form method="post" action="***REMOVED***% url 'admin-price-add' %***REMOVED***">
-                                    ***REMOVED***% elif state == 'EDIT_STATE' %***REMOVED***
-                                    <form method="post" action="***REMOVED***% url 'admin-price-edit' price.name|slugify price.id %***REMOVED***">
-                                    ***REMOVED***% else %***REMOVED***
-                                    <form method="post" action="***REMOVED***% url 'admin-price-add' %***REMOVED***">
-                                    ***REMOVED***% endif %***REMOVED***
-                                        ***REMOVED***% csrf_token %***REMOVED***
-                                        <input type="hidden" name="profile" value="***REMOVED******REMOVED***profile.id***REMOVED******REMOVED***">
+                                    {% if state == 'ADD_STATE' %}
+                                    <form method="post" action="{% url 'admin-price-add' %}">
+                                    {% elif state == 'EDIT_STATE' %}
+                                    <form method="post" action="{% url 'admin-price-edit' price.name|slugify price.id %}">
+                                    {% else %}
+                                    <form method="post" action="{% url 'admin-price-add' %}">
+                                    {% endif %}
+                                        {% csrf_token %}
+                                        <input type="hidden" name="profile" value="{{profile.id}}">
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Name</label>
-                                                <input type="text" class="form-control" name="name" value="***REMOVED******REMOVED***price.name***REMOVED******REMOVED***" required>
+                                                <input type="text" class="form-control" name="name" value="{{price.name}}" required>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Price</label>
-                                                <input type="text" class="form-control" name="price" value="***REMOVED******REMOVED***price.price***REMOVED******REMOVED***" required>
+                                                <input type="text" class="form-control" name="price" value="{{price.price}}" required>
                                             </div>
                                         </div>
 
                                         <div class="form-row">
                                             <div class="form-group col-md-10">
                                                 <label>Description</label>
-                                                <textarea class="form-control" name="description">***REMOVED******REMOVED***price.description***REMOVED******REMOVED***</textarea>
+                                                <textarea class="form-control" name="description">{{price.description}}</textarea>
                                             </div>
                                         </div>
-                                        ***REMOVED***% for keyword in price.keywords %***REMOVED***
+                                        {% for keyword in price.keywords %}
                                         <div class="edit-keyword-info">
                                             <div class="row form-row keyword-cont">
                                                 <div class="col-md-5">
                                                     <div class="form-group">
                                                         <label>Keywords</label>
-                                                        <input type="text" class="form-control" name="name-***REMOVED******REMOVED***keyword.id***REMOVED******REMOVED***" value="***REMOVED******REMOVED***keyword.name***REMOVED******REMOVED***" required>
+                                                        <input type="text" class="form-control" name="name-{{keyword.id}}" value="{{keyword.name}}" required>
                                                     </div> 
                                                 </div>
                                                 <div class="col-md-5">
                                                     <div class="form-group">
                                                         <label>Status</label>
-                                                        <select class="form-control" name="status-***REMOVED******REMOVED***keyword.id***REMOVED******REMOVED***">
-                                                        ***REMOVED***% if keyword.status == 'active'  %***REMOVED***
+                                                        <select class="form-control" name="status-{{keyword.id}}">
+                                                        {% if keyword.status == 'active'  %}
                                                             <option value="active" selected="">Active</option>
                                                             <option value="not_active">Not Active</option>
-                                                        ***REMOVED***% elif keyword.status == 'not_active'  %***REMOVED***
+                                                        {% elif keyword.status == 'not_active'  %}
                                                             <option value="not_active" selected="">Not Active</option> 
                                                             <option value="active">Active</option>
-                                                        ***REMOVED***% else %***REMOVED***
+                                                        {% else %}
                                                             <option value="active">Active</option>
                                                             <option value="not_active">Not Active</option>
-                                                        ***REMOVED***% endif %***REMOVED***
+                                                        {% endif %}
                                                         </select>
                                                     </div> 
                                                 </div>
@@ -120,7 +120,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        ***REMOVED***% endfor %***REMOVED***
+                                        {% endfor %}
                                         <div class="keyword-info">
                                             <div class="row form-row keyword-cont">
                                                 <div class="col-md-5">
@@ -154,11 +154,11 @@
                                             <div>
                                                 <button type="submit" class="btn btn-primary">Update Work</button>
                                             </div>
-                                            ***REMOVED***% if state == 'EDIT_STATE' %***REMOVED***
+                                            {% if state == 'EDIT_STATE' %}
                                             <div class="px-4">
                                             <a href="#" class="btn btn-danger px-4" data-toggle="modal" data-target="#deleteModal">Delete</a>
                                             </div>
-                                            ***REMOVED***% endif %***REMOVED***
+                                            {% endif %}
                                         </div>
 
                                     </form>
@@ -173,17 +173,17 @@
 
         </div>
     </section>   
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}
 
 
-***REMOVED***% block modal %***REMOVED***
-    ***REMOVED***% if state == 'EDIT_STATE' %***REMOVED***
+{% block modal %}
+    {% if state == 'EDIT_STATE' %}
         <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
           aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Delete ***REMOVED******REMOVED***price.name***REMOVED******REMOVED***</h5>
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Delete {{price.name}}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -192,19 +192,19 @@
                     ARE YOU SURE?
                   </div>
                   <div class="modal-footer bg-whitesmoke br">
-                    <a href="***REMOVED***% url 'admin-price-delete' price.name|slugify price.id %***REMOVED***" class="btn btn-danger deleteModal">Delete</a>
+                    <a href="{% url 'admin-price-delete' price.name|slugify price.id %}" class="btn btn-danger deleteModal">Delete</a>
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                   </div>
                 </div>
             </div>
         </div>
-    ***REMOVED***% endif %***REMOVED***
-***REMOVED***% endblock %***REMOVED***
+    {% endif %}
+{% endblock %}
 
-***REMOVED***% block javascript %***REMOVED***
+{% block javascript %}
     <script type="text/javascript">
-        $(function()***REMOVED***
-            $(".add-keyword").click(function(event)***REMOVED***
+        $(function(){
+            $(".add-keyword").click(function(event){
                 var input_num = parseInt($("#count").text());
                 input_num = input_num + 1;
                 $("#count").text(''+input_num+'');
@@ -233,13 +233,13 @@
                 
                 $(".keyword-info").append(content);
                 return false;
-            ***REMOVED***);
+            });
 
-            $(".keyword-info").on('click','.trash', function () ***REMOVED***
+            $(".keyword-info").on('click','.trash', function () {
                 $(this).closest('.keyword-cont').remove();
                 return false;
-            ***REMOVED***);
-        ***REMOVED***);
+            });
+        });
     </script>
 
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}

@@ -30,7 +30,7 @@ MEDIA_URL = '/Uploads/'
 SECRET_KEY = '(hacsofe)tiogb@_(k9h9_$w(lyw=d4u+0jy61pui(ur53h_lf'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -72,19 +72,19 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'MyPortfolio.urls'
 
 TEMPLATES = [
-    ***REMOVED***
+    {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
         'APP_DIRS': True,
-        'OPTIONS': ***REMOVED***
+        'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-        ***REMOVED***,
-    ***REMOVED***,
+        },
+    },
 ]
 
 WSGI_APPLICATION = 'MyPortfolio.wsgi.application'
@@ -93,30 +93,30 @@ WSGI_APPLICATION = 'MyPortfolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = ***REMOVED***
-    'default': ***REMOVED***
+DATABASES = {
+    'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    ***REMOVED***
-***REMOVED***
+    }
+}
 
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    ***REMOVED***
+    {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    ***REMOVED***,
-    ***REMOVED***
+    },
+    {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    ***REMOVED***,
-    ***REMOVED***
+    },
+    {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    ***REMOVED***,
-    ***REMOVED***
+    },
+    {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    ***REMOVED***,
+    },
 ]
 
 # Security Settings

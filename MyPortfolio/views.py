@@ -29,10 +29,10 @@ def index(request):
 	pricing = Pricing.objects.filter(profile=profile.id)
 	# 3 Recent Articles 
 	articles = Article.objects.filter(status='Publish').order_by('date_created').reverse()[0:3]
-	return render(request, "MyPortfolio/index.html", ***REMOVED***'profile': profile, 'socials': socials, 
+	return render(request, "MyPortfolio/index.html", {'profile': profile, 'socials': socials, 
 		'projects': projects, 'education_history': edu, 'work_history': work, 'skills': skills, 
 		'services': services, 'pricing': pricing, 'articles': articles, 'tech_skills': tech_skills, 
-		'prof_skills': prof_skills***REMOVED***)
+		'prof_skills': prof_skills})
 
 
 def contact_me(request):
@@ -57,9 +57,9 @@ def contact_me(request):
 			email1 = request.POST['email']
 			message1 = request.POST['message']
 			subject = "Contact-Me Message from " + name
-			email_body = """***REMOVED***name***REMOVED***(***REMOVED***email1***REMOVED***) has Send you a message from From Your Portfolio. 
+			email_body = """{name}({email1}) has Send you a message from From Your Portfolio. 
 				The message is : 
-				'***REMOVED***message1***REMOVED***'.
+				'{message1}'.
 				
 				Please Reply as soon as possible
 
@@ -89,9 +89,9 @@ def contact_me(request):
 				print(e)
 			finally:
 				server.quit()
-			return JsonResponse(***REMOVED***"success": "Message Sent"***REMOVED***, status=200)
+			return JsonResponse({"success": "Message Sent"}, status=200)
 		else:
-			return JsonResponse(***REMOVED***"error": "An Error Occured"***REMOVED***, status=200)
+			return JsonResponse({"error": "An Error Occured"}, status=200)
 	else:
 		return redirect('index') 
 
@@ -102,12 +102,12 @@ def auth_login(request):
 			login(request, user)
 			user = User.objects.get(username=request.POST['username'])
 			try:
-				return JsonResponse(***REMOVED***"success": "User logged in", "redirect": request.GET['next']***REMOVED***, status=200)
+				return JsonResponse({"success": "User logged in", "redirect": request.GET['next']}, status=200)
 			except Exception:
-				return JsonResponse(***REMOVED***"success": "User logged in"***REMOVED***, status=200)
+				return JsonResponse({"success": "User logged in"}, status=200)
 				# return HttpResponse("logged in")
 		else:
-			return JsonResponse(***REMOVED***"error": "Invalid username or password"***REMOVED***, status=200)
+			return JsonResponse({"error": "Invalid username or password"}, status=200)
 	else:
 		return render(request, "MyPortfolio/login.html")
 

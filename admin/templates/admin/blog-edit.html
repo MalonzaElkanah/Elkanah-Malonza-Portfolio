@@ -1,64 +1,64 @@
-***REMOVED***% extends "admin/base.html" %***REMOVED***
+{% extends "admin/base.html" %}
 
-***REMOVED***% block title %***REMOVED*** Admin - Blog Article Update ***REMOVED***% endblock %***REMOVED***
+{% block title %} Admin - Blog Article Update {% endblock %}
 
-***REMOVED***% load static %***REMOVED***
+{% load static %}
 
-***REMOVED***% block css %***REMOVED***
+{% block css %}
     <script src="https://kit.fontawesome.com/00b6dc780b.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="***REMOVED***% static 'admin/bundles/summernote/summernote-bs4.css' %***REMOVED***">
-    <link rel="stylesheet" href="***REMOVED***% static 'admin/bundles/jquery-selectric/selectric.css' %***REMOVED***">
-    <link rel="stylesheet" href="***REMOVED***% static 'admin/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.css' %***REMOVED***">
-***REMOVED***% endblock %***REMOVED***
+    <link rel="stylesheet" href="{% static 'admin/bundles/summernote/summernote-bs4.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/bundles/jquery-selectric/selectric.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.css' %}">
+{% endblock %}
 
-***REMOVED***% block sidenav %***REMOVED***                              
+{% block sidenav %}                              
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-home' %***REMOVED***" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
+        <a href="{% url 'admin-home' %}" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-messages' %***REMOVED***" class="nav-link"><i data-feather="message-square"></i><span>Messages</span></a>
+        <a href="{% url 'admin-messages' %}" class="nav-link"><i data-feather="message-square"></i><span>Messages</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-profile' %***REMOVED***" class="nav-link"><i data-feather="user"></i><span>Profile</span></a>
+        <a href="{% url 'admin-profile' %}" class="nav-link"><i data-feather="user"></i><span>Profile</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-projects' %***REMOVED***" class="nav-link"><i data-feather="codepen"></i><span>Projects</span></a>
+        <a href="{% url 'admin-projects' %}" class="nav-link"><i data-feather="codepen"></i><span>Projects</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-work' %***REMOVED***" class="nav-link"><i data-feather="clipboard"></i><span>Work</span></a>
+        <a href="{% url 'admin-work' %}" class="nav-link"><i data-feather="clipboard"></i><span>Work</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-education' %***REMOVED***" class="nav-link"><i data-feather="book-open"></i><span>Education</span></a>
+        <a href="{% url 'admin-education' %}" class="nav-link"><i data-feather="book-open"></i><span>Education</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-skills' %***REMOVED***" class="nav-link"><i data-feather="sliders"></i><span>Skills</span></a>
+        <a href="{% url 'admin-skills' %}" class="nav-link"><i data-feather="sliders"></i><span>Skills</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-services' %***REMOVED***" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
+        <a href="{% url 'admin-services' %}" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
     </li> 
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-prices' %***REMOVED***" class="nav-link"><i data-feather="shopping-bag"></i><span>Pricing</span></a>
+        <a href="{% url 'admin-prices' %}" class="nav-link"><i data-feather="shopping-bag"></i><span>Pricing</span></a>
     </li> 
     <li class="dropdown active">
-        <a href="***REMOVED***% url 'admin-blog' %***REMOVED***" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
+        <a href="{% url 'admin-blog' %}" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
     </li>          
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Settings</span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-settings' %***REMOVED***">App Settings</a></li>
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-profile-edit' %***REMOVED***">Profile Settings</a></li>
+            <li><a class="nav-link" href="{% url 'admin-settings' %}">App Settings</a></li>
+            <li><a class="nav-link" href="{% url 'admin-profile-edit' %}">Profile Settings</a></li>
         </ul>
     </li>
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="unlock"></i><span>Authentication</span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-change-password' %***REMOVED***">New-password</a></li>
-            <li><a class="nav-link" href="***REMOVED***% url 'logout' %***REMOVED***">Logout</a></li>
+            <li><a class="nav-link" href="{% url 'admin-change-password' %}">New-password</a></li>
+            <li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
         </ul>
     </li>                                   
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}
 
-***REMOVED***% block content %***REMOVED***
+{% block content %}
     <section class="section">
         <div class="section-body">
             <div class="row">
@@ -68,19 +68,19 @@
                             <h4>BLog Entry</h4>
                         </div>
                         <div class="card-body">
-                        ***REMOVED***% if state == 'ADD_STATE' %***REMOVED***
-                        <form action="***REMOVED***% url 'admin-blog-add' %***REMOVED***" method="POST" enctype="multipart/form-data">
-                        ***REMOVED***% elif state == 'EDIT_STATE' %***REMOVED***
-                        <form action="***REMOVED***% url 'admin-blog-edit' article.title|slugify article.id %***REMOVED***" method="POST" enctype="multipart/form-data">
-                        ***REMOVED***% else %***REMOVED***
-                        <form action="***REMOVED***% url 'admin-blog-add' %***REMOVED***" method="POST" enctype="multipart/form-data">
-                        ***REMOVED***% endif %***REMOVED***
-                            ***REMOVED***% csrf_token %***REMOVED***    
-                            <input type="hidden" name="user" value="***REMOVED******REMOVED***user.id***REMOVED******REMOVED***">
+                        {% if state == 'ADD_STATE' %}
+                        <form action="{% url 'admin-blog-add' %}" method="POST" enctype="multipart/form-data">
+                        {% elif state == 'EDIT_STATE' %}
+                        <form action="{% url 'admin-blog-edit' article.title|slugify article.id %}" method="POST" enctype="multipart/form-data">
+                        {% else %}
+                        <form action="{% url 'admin-blog-add' %}" method="POST" enctype="multipart/form-data">
+                        {% endif %}
+                            {% csrf_token %}    
+                            <input type="hidden" name="user" value="{{user.id}}">
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Title</label>
                                 <div class="col-sm-12 col-md-7">
-                                    <input type="text" class="form-control" name="title" value="***REMOVED******REMOVED***article.title***REMOVED******REMOVED***" required="">
+                                    <input type="text" class="form-control" name="title" value="{{article.title}}" required="">
                                 </div>
                             </div>
                             <div class="form-group row mb-4">
@@ -89,18 +89,18 @@
                                     <div class="row">
                                         <div class="col-10">
                                             <select class="form-control selectric" name="series">
-                                            ***REMOVED***% if state == 'EDIT_STATE' %***REMOVED***
-                                                ***REMOVED***% if article.series.name == "" %***REMOVED***
+                                            {% if state == 'EDIT_STATE' %}
+                                                {% if article.series.name == "" %}
                                                     <option value="" selected="">[None]</option>
-                                                ***REMOVED***% else %***REMOVED***
-                                                    <option value="***REMOVED******REMOVED***article.series.id***REMOVED******REMOVED***" selected="">***REMOVED******REMOVED***article.series.name***REMOVED******REMOVED***</option>
-                                                ***REMOVED***% endif %***REMOVED***
-                                            ***REMOVED***% else %***REMOVED***
+                                                {% else %}
+                                                    <option value="{{article.series.id}}" selected="">{{article.series.name}}</option>
+                                                {% endif %}
+                                            {% else %}
                                                 <option value="" selected="">[None]</option>
-                                            ***REMOVED***% endif %***REMOVED***
-                                            ***REMOVED***% for entity in series %***REMOVED***
-                                                <option value="***REMOVED******REMOVED***entity.id***REMOVED******REMOVED***">***REMOVED******REMOVED***entity.name***REMOVED******REMOVED***</option>
-                                            ***REMOVED***% endfor %***REMOVED***
+                                            {% endif %}
+                                            {% for entity in series %}
+                                                <option value="{{entity.id}}">{{entity.name}}</option>
+                                            {% endfor %}
                                             </select>
                                         </div>
                                         <div class="add-more col-2">
@@ -117,12 +117,12 @@
                                     <div class="row">
                                         <div class="col-10">
                                             <select class="form-control selectric" name="category">
-                                            ***REMOVED***% if state == 'EDIT_STATE' %***REMOVED***
-                                                <option value="***REMOVED******REMOVED***article.category.id***REMOVED******REMOVED***" selected="">***REMOVED******REMOVED***article.category.name***REMOVED******REMOVED***</option>
-                                            ***REMOVED***% endif %***REMOVED***
-                                            ***REMOVED***% for category in categories %***REMOVED***
-                                                <option value="***REMOVED******REMOVED***category.id***REMOVED******REMOVED***">***REMOVED******REMOVED***category.name***REMOVED******REMOVED***</option>
-                                            ***REMOVED***% endfor %***REMOVED***
+                                            {% if state == 'EDIT_STATE' %}
+                                                <option value="{{article.category.id}}" selected="">{{article.category.name}}</option>
+                                            {% endif %}
+                                            {% for category in categories %}
+                                                <option value="{{category.id}}">{{category.name}}</option>
+                                            {% endfor %}
                                             </select>
                                         </div>
                                         <div class="add-more col-2">
@@ -136,39 +136,39 @@
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Content</label>
                                 <div class="col-sm-12 col-md-7">
-                                    <textarea class="summernote" name="content" required="">***REMOVED******REMOVED***article.content***REMOVED******REMOVED***</textarea>
+                                    <textarea class="summernote" name="content" required="">{{article.content}}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Thumbnail</label>
                                 <div class="col-sm-12 col-md-7">
-                                ***REMOVED***% if state == 'EDIT_STATE' %***REMOVED***
-                                    ***REMOVED***% for field in form %***REMOVED***
-                                        ***REMOVED***% if field.name == 'image' %***REMOVED***
-                                            ***REMOVED******REMOVED***field***REMOVED******REMOVED***
-                                        ***REMOVED***% endif %***REMOVED***
-                                    ***REMOVED***% endfor %***REMOVED***
-                                ***REMOVED***% else %***REMOVED***
+                                {% if state == 'EDIT_STATE' %}
+                                    {% for field in form %}
+                                        {% if field.name == 'image' %}
+                                            {{field}}
+                                        {% endif %}
+                                    {% endfor %}
+                                {% else %}
                                     <div id="image-preview" class="image-preview">
                                         <label for="image-upload" id="image-label">Choose File</label>
                                         <input type="file" name="image" id="image-upload" required=""/>
                                     </div>
-                                ***REMOVED***% endif %***REMOVED***
+                                {% endif %}
                                 </div>
                             </div>
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Tags</label>
                                 <div class="col-sm-12 col-md-7">
-                                    <input type="text" class="form-control inputtags" value="***REMOVED******REMOVED***article.tags***REMOVED******REMOVED***" name="tags">
+                                    <input type="text" class="form-control inputtags" value="{{article.tags}}" name="tags">
                                 </div>
                             </div>
                             <div class="form-group row mb-4">
                                 <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Status</label>
                                 <div class="col-sm-12 col-md-7">
                                     <select class="form-control selectric" name="status">
-                                    ***REMOVED***% if state == 'EDIT_STATE' %***REMOVED***
-                                        <option selected="">***REMOVED******REMOVED***article.status***REMOVED******REMOVED***</option>
-                                    ***REMOVED***% endif %***REMOVED***
+                                    {% if state == 'EDIT_STATE' %}
+                                        <option selected="">{{article.status}}</option>
+                                    {% endif %}
                                         <option>Publish</option>
                                         <option>Draft</option>
                                         <option>Pending</option>
@@ -188,9 +188,9 @@
             </div>
         </div>
     </section>
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}
 
-***REMOVED***% block modal %***REMOVED***
+{% block modal %}
     <!-- Modal with form -->
     <div class="modal fade bd-example-modal-lg" id="addCategoryModal" tabindex="-1" role="dialog" aria-labelledby="formModal" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -202,8 +202,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="addForm" action="***REMOVED***% url 'add-blog-category' %***REMOVED***" method="POST">
-                        ***REMOVED***% csrf_token %***REMOVED***
+                    <form class="addForm" action="{% url 'add-blog-category' %}" method="POST">
+                        {% csrf_token %}
                         <div class="category-info">
                             <div class="row form-row category-cont">
                                 <div class="col-10">
@@ -242,8 +242,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="addForm" action="***REMOVED***% url 'add-blog-series' %***REMOVED***" method="POST">
-                        ***REMOVED***% csrf_token %***REMOVED***
+                    <form class="addForm" action="{% url 'add-blog-series' %}" method="POST">
+                        {% csrf_token %}
                         <div class="series-info">
                             <div class="row form-row category-cont">
                                 <div class="col-10">
@@ -270,25 +270,25 @@
             </div>
         </div>
     </div>
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}
 
-***REMOVED***% block javascript %***REMOVED***
+{% block javascript %}
     <!-- JS Libraies -->
-    <script src="***REMOVED***% static 'admin/bundles/summernote/summernote-bs4.js' %***REMOVED***"></script>
-  <script src="***REMOVED***% static 'admin/bundles/jquery-selectric/jquery.selectric.min.js' %***REMOVED***"></script>
-  <script src="***REMOVED***% static 'admin/bundles/upload-preview/assets/js/jquery.uploadPreview.min.js' %***REMOVED***"></script>
-  <script src="***REMOVED***% static 'admin/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js' %***REMOVED***"></script>
+    <script src="{% static 'admin/bundles/summernote/summernote-bs4.js' %}"></script>
+  <script src="{% static 'admin/bundles/jquery-selectric/jquery.selectric.min.js' %}"></script>
+  <script src="{% static 'admin/bundles/upload-preview/assets/js/jquery.uploadPreview.min.js' %}"></script>
+  <script src="{% static 'admin/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js' %}"></script>
     <script type="text/javascript">
-        (function($) ***REMOVED***
+        (function($) {
             "use strict";
 
             // Add Category Add More
-            $(".category-info").on('click','.trash', function () ***REMOVED***
+            $(".category-info").on('click','.trash', function () {
                 $(this).closest('.category-cont').remove();
                 return false;
-            ***REMOVED***);
+            });
 
-            $(".add-category").on('click', function () ***REMOVED***
+            $(".add-category").on('click', function () {
                 var input_num = parseInt($("#count").text());
                 input_num = input_num + 1;
                 $("#count").text(''+input_num+'');
@@ -308,15 +308,15 @@
                 
                 $(".category-info").append(listcontent);
                 return false;
-            ***REMOVED***);
+            });
 
             // Add Series Fields
-            $(".series-info").on('click','.trash', function () ***REMOVED***
+            $(".series-info").on('click','.trash', function () {
                 $(this).closest('.series-cont').remove();
                 return false;
-            ***REMOVED***);
+            });
 
-            $(".add-series").on('click', function () ***REMOVED***
+            $(".add-series").on('click', function () {
                 var input_num = parseInt($("#count").text());
                 input_num = input_num + 1;
                 $("#count-series").text(''+input_num+'');
@@ -336,35 +336,35 @@
                 
                 $(".series-info").append(listcontent);
                 return false;
-            ***REMOVED***);
+            });
 
 
-            $(".addForm").submit(function(event) ***REMOVED***
+            $(".addForm").submit(function(event) {
                 event.preventDefault();
-                $.ajax(***REMOVED*** 
+                $.ajax({ 
                     data: $(this).serialize(),
                     type: $(this).attr('method'),
                     url: $(this).attr('action'),
-                    success: function(response) ***REMOVED***
+                    success: function(response) {
                         console.log(response);
-                        if(response['success']) ***REMOVED***
+                        if(response['success']) {
                             alert(response['success']);
                             window.location.reload();
-                        ***REMOVED***
-                        if(response['error']) ***REMOVED***
+                        }
+                        if(response['error']) {
                             alert(response['error']);
                             //$("#id_error-text").html("Error: "+response['error']+"");
-                        ***REMOVED***
-                    ***REMOVED***,
-                    error: function (request, status, error) ***REMOVED***
+                        }
+                    },
+                    error: function (request, status, error) {
                         console.log(request.responseText);
-                    ***REMOVED***
-                ***REMOVED***);
-            ***REMOVED***);
+                    }
+                });
+            });
 
 
             $("select").selectric();
-            $.uploadPreview(***REMOVED***
+            $.uploadPreview({
               input_field: "#image-upload",   // Default: .image-upload
               preview_box: "#image-preview",  // Default: .image-preview
               label_field: "#image-label",    // Default: .image-label
@@ -372,10 +372,10 @@
               label_selected: "Change File",  // Default: Change File
               no_label: false,                // Default: false
               success_callback: null          // Default: null
-            ***REMOVED***);
+            });
             $(".inputtags").tagsinput('items');
 
-        ***REMOVED***)(jQuery);
+        })(jQuery);
     </script>
 
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}

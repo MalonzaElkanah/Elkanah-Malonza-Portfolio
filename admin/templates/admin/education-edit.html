@@ -1,57 +1,57 @@
-***REMOVED***% extends "admin/base.html" %***REMOVED***
+{% extends "admin/base.html" %}
 
-***REMOVED***% block title %***REMOVED*** Admin - Education Update ***REMOVED***% endblock %***REMOVED***
+{% block title %} Admin - Education Update {% endblock %}
 
-***REMOVED***% load static %***REMOVED***
+{% load static %}
 
-***REMOVED***% block sidenav %***REMOVED***                              
+{% block sidenav %}                              
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-home' %***REMOVED***" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
+        <a href="{% url 'admin-home' %}" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-messages' %***REMOVED***" class="nav-link"><i data-feather="message-square"></i><span>Messages</span></a>
+        <a href="{% url 'admin-messages' %}" class="nav-link"><i data-feather="message-square"></i><span>Messages</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-profile' %***REMOVED***" class="nav-link"><i data-feather="user"></i><span>Profile</span></a>
+        <a href="{% url 'admin-profile' %}" class="nav-link"><i data-feather="user"></i><span>Profile</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-projects' %***REMOVED***" class="nav-link"><i data-feather="codepen"></i><span>Projects</span></a>
+        <a href="{% url 'admin-projects' %}" class="nav-link"><i data-feather="codepen"></i><span>Projects</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-work' %***REMOVED***" class="nav-link"><i data-feather="clipboard"></i><span>Work</span></a>
+        <a href="{% url 'admin-work' %}" class="nav-link"><i data-feather="clipboard"></i><span>Work</span></a>
     </li>
     <li class="dropdown active">
-        <a href="***REMOVED***% url 'admin-education' %***REMOVED***" class="nav-link"><i data-feather="book-open"></i><span>Education</span></a>
+        <a href="{% url 'admin-education' %}" class="nav-link"><i data-feather="book-open"></i><span>Education</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-skills' %***REMOVED***" class="nav-link"><i data-feather="sliders"></i><span>Skills</span></a>
+        <a href="{% url 'admin-skills' %}" class="nav-link"><i data-feather="sliders"></i><span>Skills</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-services' %***REMOVED***" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
+        <a href="{% url 'admin-services' %}" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
     </li> 
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-prices' %***REMOVED***" class="nav-link"><i data-feather="shopping-bag"></i><span>Pricing</span></a>
+        <a href="{% url 'admin-prices' %}" class="nav-link"><i data-feather="shopping-bag"></i><span>Pricing</span></a>
     </li> 
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-blog' %***REMOVED***" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
+        <a href="{% url 'admin-blog' %}" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
     </li>          
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Settings</span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-settings' %***REMOVED***">App Settings</a></li>
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-profile-edit' %***REMOVED***">Profile Settings</a></li>
+            <li><a class="nav-link" href="{% url 'admin-settings' %}">App Settings</a></li>
+            <li><a class="nav-link" href="{% url 'admin-profile-edit' %}">Profile Settings</a></li>
         </ul>
     </li>
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="unlock"></i><span>Authentication</span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-change-password' %***REMOVED***">New-password</a></li>
-            <li><a class="nav-link" href="***REMOVED***% url 'logout' %***REMOVED***">Logout</a></li>
+            <li><a class="nav-link" href="{% url 'admin-change-password' %}">New-password</a></li>
+            <li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
         </ul>
     </li>                                   
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}
 
-***REMOVED***% block content %***REMOVED***
+{% block content %}
     <section class="section">
         <div class="section-body"> 
 
@@ -62,56 +62,56 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12">
-                                    ***REMOVED***% if state == 'ADD_STATE' %***REMOVED***
-                                    <form method="post" action="***REMOVED***% url 'admin-education-add' %***REMOVED***">
-                                    ***REMOVED***% elif state == 'EDIT_STATE' %***REMOVED***
-                                    <form method="post" action="***REMOVED***% url 'admin-education-edit' edu.study_type|slugify edu.id %***REMOVED***">
-                                    ***REMOVED***% else %***REMOVED***
-                                    <form method="post" action="***REMOVED***% url 'admin-education-add' %***REMOVED***">
-                                    ***REMOVED***% endif %***REMOVED***
-                                        ***REMOVED***% csrf_token %***REMOVED***
-                                        <input type="hidden" name="profile" value="***REMOVED******REMOVED***profile.id***REMOVED******REMOVED***"> 
+                                    {% if state == 'ADD_STATE' %}
+                                    <form method="post" action="{% url 'admin-education-add' %}">
+                                    {% elif state == 'EDIT_STATE' %}
+                                    <form method="post" action="{% url 'admin-education-edit' edu.study_type|slugify edu.id %}">
+                                    {% else %}
+                                    <form method="post" action="{% url 'admin-education-add' %}">
+                                    {% endif %}
+                                        {% csrf_token %}
+                                        <input type="hidden" name="profile" value="{{profile.id}}"> 
                                         <div class="form-row">
                                             <div class="form-group col-md-10">
                                                 <label>Institution</label>
-                                                <input type="text" class="form-control" name="institution" value="***REMOVED******REMOVED***edu.institution***REMOVED******REMOVED***" required>
+                                                <input type="text" class="form-control" name="institution" value="{{edu.institution}}" required>
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Study Area</label>
-                                                <input type="text" class="form-control" name="study_area" value="***REMOVED******REMOVED***edu.study_area***REMOVED******REMOVED***" required>
+                                                <input type="text" class="form-control" name="study_area" value="{{edu.study_area}}" required>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Study Type</label>
-                                                <input type="text" class="form-control" name="study_type" value="***REMOVED******REMOVED***edu.study_type***REMOVED******REMOVED***" required>
+                                                <input type="text" class="form-control" name="study_type" value="{{edu.study_type}}" required>
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>GPA</label>
-                                                <input type="text" class="form-control" name="gpa" value="***REMOVED******REMOVED***edu.gpa***REMOVED******REMOVED***" required>
+                                                <input type="text" class="form-control" name="gpa" value="{{edu.gpa}}" required>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Location</label>
-                                                <input type="text" class="form-control" name="location" value="***REMOVED******REMOVED***edu.location***REMOVED******REMOVED***" required>
+                                                <input type="text" class="form-control" name="location" value="{{edu.location}}" required>
                                             </div>
                                         </div>
 
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Start Date</label>
-                                                <input type="text" class="form-control" name="start_date" value="***REMOVED******REMOVED***edu.start_date|date:'Y-m-d'***REMOVED******REMOVED***" required>
+                                                <input type="text" class="form-control" name="start_date" value="{{edu.start_date|date:'Y-m-d'}}" required>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>End Date</label>
-                                                 <input type="text" class="form-control" name="end_date" value="***REMOVED******REMOVED***edu.end_date|date:'Y-m-d'***REMOVED******REMOVED***" required>
+                                                 <input type="text" class="form-control" name="end_date" value="{{edu.end_date|date:'Y-m-d'}}" required>
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Description</label>
-                                                <textarea class="form-control" name="description">***REMOVED******REMOVED***edu.description***REMOVED******REMOVED***</textarea>
+                                                <textarea class="form-control" name="description">{{edu.description}}</textarea>
                                             </div>
                                         </div>
 
@@ -131,8 +131,8 @@
 
         </div>
     </section>   
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}
 
-***REMOVED***% block javascript %***REMOVED***
+{% block javascript %}
 
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}

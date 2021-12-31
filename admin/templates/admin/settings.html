@@ -1,57 +1,57 @@
-***REMOVED***% extends "admin/base.html" %***REMOVED***
+{% extends "admin/base.html" %}
 
-***REMOVED***% block title %***REMOVED*** Admin - App Settings ***REMOVED***% endblock %***REMOVED***
+{% block title %} Admin - App Settings {% endblock %}
 
-***REMOVED***% load static %***REMOVED***
+{% load static %}
 
-***REMOVED***% block sidenav %***REMOVED***                              
+{% block sidenav %}                              
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-home' %***REMOVED***" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
+        <a href="{% url 'admin-home' %}" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-messages' %***REMOVED***" class="nav-link"><i data-feather="message-square"></i><span>Messages</span></a>
+        <a href="{% url 'admin-messages' %}" class="nav-link"><i data-feather="message-square"></i><span>Messages</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-profile' %***REMOVED***" class="nav-link"><i data-feather="user"></i><span>Profile</span></a>
+        <a href="{% url 'admin-profile' %}" class="nav-link"><i data-feather="user"></i><span>Profile</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-projects' %***REMOVED***" class="nav-link"><i data-feather="codepen"></i><span>Projects</span></a>
+        <a href="{% url 'admin-projects' %}" class="nav-link"><i data-feather="codepen"></i><span>Projects</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-work' %***REMOVED***" class="nav-link"><i data-feather="clipboard"></i><span>Work</span></a>
+        <a href="{% url 'admin-work' %}" class="nav-link"><i data-feather="clipboard"></i><span>Work</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-education' %***REMOVED***" class="nav-link"><i data-feather="book-open"></i><span>Education</span></a>
+        <a href="{% url 'admin-education' %}" class="nav-link"><i data-feather="book-open"></i><span>Education</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-skills' %***REMOVED***" class="nav-link"><i data-feather="sliders"></i><span>Skills</span></a>
+        <a href="{% url 'admin-skills' %}" class="nav-link"><i data-feather="sliders"></i><span>Skills</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-services' %***REMOVED***" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
+        <a href="{% url 'admin-services' %}" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
     </li> 
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-prices' %***REMOVED***" class="nav-link"><i data-feather="shopping-bag"></i><span>Pricing</span></a>
+        <a href="{% url 'admin-prices' %}" class="nav-link"><i data-feather="shopping-bag"></i><span>Pricing</span></a>
     </li> 
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-blog' %***REMOVED***" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
+        <a href="{% url 'admin-blog' %}" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
     </li>           
     <li class="dropdown active">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Settings</span></a>
         <ul class="dropdown-menu">
-            <li class="active"><a class="nav-link" href="***REMOVED***% url 'admin-settings' %***REMOVED***">App Settings</a></li>
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-profile-edit' %***REMOVED***">Profile Settings</a></li>
+            <li class="active"><a class="nav-link" href="{% url 'admin-settings' %}">App Settings</a></li>
+            <li><a class="nav-link" href="{% url 'admin-profile-edit' %}">Profile Settings</a></li>
         </ul>
     </li>
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="unlock"></i><span>Authentication</span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-change-password' %***REMOVED***">New-password</a></li>
-            <li><a class="nav-link" href="***REMOVED***% url 'logout' %***REMOVED***">Logout</a></li>
+            <li><a class="nav-link" href="{% url 'admin-change-password' %}">New-password</a></li>
+            <li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
         </ul>
     </li>                                   
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}
 
-***REMOVED***% block content %***REMOVED***
+{% block content %}
     <section class="section">
         <div class="section-body"> 
             <div class="row">
@@ -78,42 +78,42 @@
                             <div class="tab-content tab-bordered" id="myTab3Content">
                                 <!-- Personal Details Tab -->
                                 <div class="tab-pane fade show active" id="app_settings" role="tabpanel" aria-labelledby="home-tab2">
-                                    <form enctype="multipart/form-data" method="post" action="***REMOVED***% url 'admin-settings' %***REMOVED***">
-                                        ***REMOVED***% csrf_token %***REMOVED***
-                                        <input type="hidden" name="user" value="***REMOVED******REMOVED***user.id***REMOVED******REMOVED***">
+                                    <form enctype="multipart/form-data" method="post" action="{% url 'admin-settings' %}">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="user" value="{{user.id}}">
                                         <div class="form-group">
                                             <label>Website Name</label>
-                                            <input type="text" class="form-control" name="app_name" value="***REMOVED******REMOVED***app.app_name***REMOVED******REMOVED***">
+                                            <input type="text" class="form-control" name="app_name" value="{{app.app_name}}">
                                         </div>
-                                    ***REMOVED***% for field in form %***REMOVED***
-                                        ***REMOVED***% if field.name == 'logo' %***REMOVED***
+                                    {% for field in form %}
+                                        {% if field.name == 'logo' %}
                                         <div class="form-group">
                                             <label>Logo</label>
-                                            ***REMOVED******REMOVED***field***REMOVED******REMOVED***
+                                            {{field}}
                                             <small class="text-secondary">Recommended image size is <b>150px x 150px</b></small>
                                         </div>
-                                        ***REMOVED***% elif field.name == 'favicon' %***REMOVED***
+                                        {% elif field.name == 'favicon' %}
                                         <div class="form-group mb-0">
                                             <label>Favicon</label>
-                                            ***REMOVED******REMOVED***field***REMOVED******REMOVED***
+                                            {{field}}
                                             <small class="text-secondary">Recommended image size is <b>16px x 16px</b> or <b>32px x 32px</b></small><br>
                                             <small class="text-secondary">Accepted formats : only png and ico</small>
                                         </div>
-                                        ***REMOVED***% endif %***REMOVED***
-                                    ***REMOVED***% endfor %***REMOVED***
-                                    ***REMOVED***% if app == None %***REMOVED***
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if app == None %}
                                         <input type="hidden" name="layout" value="1">
                                         <input type="hidden" name="sidebar_color" value="1">
                                         <input type="hidden" name="color_theme" value="white">
                                         <input type="hidden" name="mini_sidebar" value="off">
                                         <input type="hidden" name="sticky_header" value="on">
-                                    ***REMOVED***% else %***REMOVED***
-                                        <input type="hidden" name="layout" value="***REMOVED******REMOVED***app.layout***REMOVED******REMOVED***">
-                                        <input type="hidden" name="sidebar_color" value="***REMOVED******REMOVED***app.sidebar_color***REMOVED******REMOVED***">
-                                        <input type="hidden" name="color_theme" value="***REMOVED******REMOVED***app.color_theme***REMOVED******REMOVED***">
-                                        <input type="hidden" name="mini_sidebar" value="***REMOVED******REMOVED***app.mini_sidebar***REMOVED******REMOVED***">
-                                        <input type="hidden" name="sticky_header" value="***REMOVED******REMOVED***app.sticky_header***REMOVED******REMOVED***">
-                                    ***REMOVED***% endif %***REMOVED***
+                                    {% else %}
+                                        <input type="hidden" name="layout" value="{{app.layout}}">
+                                        <input type="hidden" name="sidebar_color" value="{{app.sidebar_color}}">
+                                        <input type="hidden" name="color_theme" value="{{app.color_theme}}">
+                                        <input type="hidden" name="mini_sidebar" value="{{app.mini_sidebar}}">
+                                        <input type="hidden" name="sticky_header" value="{{app.sticky_header}}">
+                                    {% endif %}
                                         <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
                                     
                                     </form>
@@ -122,24 +122,24 @@
 
                                 <!-- Email app Tab -->
                                 <div class="tab-pane fade" id="email_settings" role="tabpanel" aria-labelledby="email-tab2">
-                                    <form method="post" action="***REMOVED***% url 'admin-email-settings' %***REMOVED***">
-                                        ***REMOVED***% csrf_token %***REMOVED***
-                                        <input type="hidden" name="profile" value="***REMOVED******REMOVED***profile.id***REMOVED******REMOVED***">
+                                    <form method="post" action="{% url 'admin-email-settings' %}">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="profile" value="{{profile.id}}">
                                         <div class="form-group">
                                             <label>Email</label>
-                                            <input type="email" class="form-control" name="email" value="***REMOVED******REMOVED***app_email.email***REMOVED******REMOVED***">
+                                            <input type="email" class="form-control" name="email" value="{{app_email.email}}">
                                         </div>
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input type="password" class="form-control" name="password" value="***REMOVED******REMOVED***app_email.password***REMOVED******REMOVED***">
+                                            <input type="password" class="form-control" name="password" value="{{app_email.password}}">
                                         </div>
                                         <div class="form-group mb-0">
                                             <label>Port</label>
-                                            <input type="text" class="form-control" name="port" value="***REMOVED******REMOVED***app_email.port***REMOVED******REMOVED***">
+                                            <input type="text" class="form-control" name="port" value="{{app_email.port}}">
                                         </div>
                                         <div class="form-group mb-0">
                                             <label>SMTP Server</label>
-                                            <input type="text" class="form-control" name="smtp_server" value="***REMOVED******REMOVED***app_email.smtp_server***REMOVED******REMOVED***">
+                                            <input type="text" class="form-control" name="smtp_server" value="{{app_email.smtp_server}}">
                                         </div>
                                         <div class="form-group pt-3 mb-0">
                                             <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
@@ -243,4 +243,4 @@
         </div>
         </div>
     </section>
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}

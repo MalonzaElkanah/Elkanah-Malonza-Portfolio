@@ -4,17 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    ***REMOVED***% load static %***REMOVED***
+    {% load static %}
     <title>Elkanah Malonza | Messages</title>
-    <link rel='shortcut icon' type='image/x-icon' href="***REMOVED***% static 'main/img/favicon.ico' %***REMOVED***" />
+    <link rel='shortcut icon' type='image/x-icon' href="{% static 'main/img/favicon.ico' %}" />
 
     <!-- General CSS Files -->
-    <link rel="stylesheet" href="***REMOVED***% static 'admin/css/app.min.css' %***REMOVED***">
-    <link rel="stylesheet" href="***REMOVED***% static 'admin/bundles/bootstrap-social/bootstrap-social.css' %***REMOVED***">
+    <link rel="stylesheet" href="{% static 'admin/css/app.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/bundles/bootstrap-social/bootstrap-social.css' %}">
     <script src="https://kit.fontawesome.com/00b6dc780b.js" crossorigin="anonymous"></script>
     <!-- Template CSS -->
-    <link rel="stylesheet" href="***REMOVED***% static 'admin/css/style.css' %***REMOVED***">
-    <link rel="stylesheet" href="***REMOVED***% static 'admin/css/components.css' %***REMOVED***">
+    <link rel="stylesheet" href="{% static 'admin/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/css/components.css' %}">
 </head>
 
 <body>
@@ -36,16 +36,16 @@
 	                      				<div class="m-b-20">
 	                        				<div id="chat-scroll">
 	                          					<ul class="chat-list list-unstyled m-b-0">
-	                          					***REMOVED***% for message in messages %***REMOVED***
-						                            <li id="message-***REMOVED******REMOVED***message.id***REMOVED******REMOVED***" class="clearfix message-sender ***REMOVED***% if forloop.first %***REMOVED***active***REMOVED***% endif %***REMOVED***">
+	                          					{% for message in messages %}
+						                            <li id="message-{{message.id}}" class="clearfix message-sender {% if forloop.first %}active{% endif %}">
 							                            <div class="about">
-							                                <div class="name">***REMOVED******REMOVED***message.first_name***REMOVED******REMOVED*** ***REMOVED******REMOVED***message.last_name***REMOVED******REMOVED***</div>
+							                                <div class="name">{{message.first_name}} {{message.last_name}}</div>
 							                                <div class="status">
 							                                  <i class="material-icons online">fiber_manual_record</i>
-							                                  ***REMOVED******REMOVED***message.email***REMOVED******REMOVED***</div>
+							                                  {{message.email}}</div>
 							                            </div>
 						                            </li>
-						                        ***REMOVED***% endfor %***REMOVED***
+						                        {% endfor %}
 	                          					</ul>
 	                        				</div>
 	                      				</div>
@@ -57,32 +57,32 @@
 			                <div class="card">
 				                <div class="chat">
 				                    <div class="chat-header clearfix">
-				                    ***REMOVED***% for message in messages %***REMOVED***
-				                    	***REMOVED***% if forloop.first %***REMOVED***
+				                    {% for message in messages %}
+				                    	{% if forloop.first %}
 				                      	<img src="assets/img/users/user-1.png" alt="avatar">
 					                    <div class="chat-about">
-					                        <div class="chat-with">***REMOVED******REMOVED***message.first_name***REMOVED******REMOVED*** ***REMOVED******REMOVED***message.last_name***REMOVED******REMOVED***</div>
-					                        <div class="chat-num-messages">***REMOVED******REMOVED***message.email***REMOVED******REMOVED***</div>
+					                        <div class="chat-with">{{message.first_name}} {{message.last_name}}</div>
+					                        <div class="chat-num-messages">{{message.email}}</div>
 					                    </div>
-					                	***REMOVED***% endif %***REMOVED***
-					                ***REMOVED***% endfor %***REMOVED***
+					                	{% endif %}
+					                {% endfor %}
 				                    </div>
 				                </div>
 			                  	<div class="chat-box" id="mychatbox">
 				                    <div class="card-body chat-content">
-				                    ***REMOVED***% for message in messages %***REMOVED***
-				                    	***REMOVED***% if forloop.first %***REMOVED***
-				                    	<div class="chat-item chat-left chat-***REMOVED******REMOVED***message.id***REMOVED******REMOVED***">
-				                    	***REMOVED***% else %***REMOVED***
-				                    	<div class="chat-item chat-left chat-***REMOVED******REMOVED***message.id***REMOVED******REMOVED***" style="display: none;">
-				                    	***REMOVED***% endif %***REMOVED***
+				                    {% for message in messages %}
+				                    	{% if forloop.first %}
+				                    	<div class="chat-item chat-left chat-{{message.id}}">
+				                    	{% else %}
+				                    	<div class="chat-item chat-left chat-{{message.id}}" style="display: none;">
+				                    	{% endif %}
       										<img src="">
       										<div class="chat-details">
-      											<div class="chat-text">***REMOVED******REMOVED***message.message***REMOVED******REMOVED***</div>
-      											<div class="chat-time">***REMOVED******REMOVED***message.date_created***REMOVED******REMOVED***</div>
+      											<div class="chat-text">{{message.message}}</div>
+      											<div class="chat-time">{{message.date_created}}</div>
       										</div>
       									</div>
-      								***REMOVED***% endfor %***REMOVED***
+      								{% endfor %}
 				                    </div>
 				                    <div class="card-footer chat-form">
 					                    <form id="chat-form">
@@ -101,20 +101,20 @@
       	</div>
     </div>
     <!-- General JS Scripts -->
-    <script src="***REMOVED***% static 'admin/js/app.min.js' %***REMOVED***"></script>
+    <script src="{% static 'admin/js/app.min.js' %}"></script>
 
     <!-- Template JS File -->
-    <script src="***REMOVED***% static 'admin/js/scripts.js' %***REMOVED***"></script>
+    <script src="{% static 'admin/js/scripts.js' %}"></script>
     <script type="text/javascript">
-    	***REMOVED***% for message in messages %***REMOVED***
-    	$("#message-***REMOVED******REMOVED***message.id***REMOVED******REMOVED***").click(function(event)***REMOVED***
-    		//alert("***REMOVED******REMOVED***message.first_name***REMOVED******REMOVED***");
-    		$(".chat-with").html("***REMOVED******REMOVED***message.first_name***REMOVED******REMOVED*** ***REMOVED******REMOVED***message.last_name***REMOVED******REMOVED***");
+    	{% for message in messages %}
+    	$("#message-{{message.id}}").click(function(event){
+    		//alert("{{message.first_name}}");
+    		$(".chat-with").html("{{message.first_name}} {{message.last_name}}");
     		$(".message-sender").removeClass("active");
     		$(this).addClass("active");
     		$(".chat-item").hide();
-    		$(".chat-***REMOVED******REMOVED***message.id***REMOVED******REMOVED***").show(); 		
-    	***REMOVED***);
-    	***REMOVED***% endfor %***REMOVED***
+    		$(".chat-{{message.id}}").show(); 		
+    	});
+    	{% endfor %}
     </script>
 </body>

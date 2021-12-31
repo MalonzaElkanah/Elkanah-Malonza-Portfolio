@@ -1,101 +1,101 @@
-***REMOVED***% extends "admin/base.html" %***REMOVED***
+{% extends "admin/base.html" %}
 
-***REMOVED***% block title %***REMOVED*** Admin - Prices ***REMOVED***% endblock %***REMOVED***
+{% block title %} Admin - Prices {% endblock %}
 
-***REMOVED***% load static %***REMOVED***
+{% load static %}
 
-***REMOVED***% block sidenav %***REMOVED***                              
+{% block sidenav %}                              
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-home' %***REMOVED***" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
+        <a href="{% url 'admin-home' %}" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-messages' %***REMOVED***" class="nav-link"><i data-feather="message-square"></i><span>Messages</span></a>
+        <a href="{% url 'admin-messages' %}" class="nav-link"><i data-feather="message-square"></i><span>Messages</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-profile' %***REMOVED***" class="nav-link"><i data-feather="user"></i><span>Profile</span></a>
+        <a href="{% url 'admin-profile' %}" class="nav-link"><i data-feather="user"></i><span>Profile</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-projects' %***REMOVED***" class="nav-link"><i data-feather="codepen"></i><span>Projects</span></a>
+        <a href="{% url 'admin-projects' %}" class="nav-link"><i data-feather="codepen"></i><span>Projects</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-work' %***REMOVED***" class="nav-link"><i data-feather="clipboard"></i><span>Work</span></a>
+        <a href="{% url 'admin-work' %}" class="nav-link"><i data-feather="clipboard"></i><span>Work</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-education' %***REMOVED***" class="nav-link"><i data-feather="book-open"></i><span>Education</span></a>
+        <a href="{% url 'admin-education' %}" class="nav-link"><i data-feather="book-open"></i><span>Education</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-skills' %***REMOVED***" class="nav-link"><i data-feather="sliders"></i><span>Skills</span></a>
+        <a href="{% url 'admin-skills' %}" class="nav-link"><i data-feather="sliders"></i><span>Skills</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-services' %***REMOVED***" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
+        <a href="{% url 'admin-services' %}" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
     </li> 
     <li class="dropdown active">
-        <a href="***REMOVED***% url 'admin-prices' %***REMOVED***" class="nav-link"><i data-feather="shopping-bag"></i><span>Pricing</span></a>
+        <a href="{% url 'admin-prices' %}" class="nav-link"><i data-feather="shopping-bag"></i><span>Pricing</span></a>
     </li> 
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-blog' %***REMOVED***" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
+        <a href="{% url 'admin-blog' %}" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
     </li>          
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Settings</span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-settings' %***REMOVED***">App Settings</a></li>
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-profile-edit' %***REMOVED***">Profile Settings</a></li>
+            <li><a class="nav-link" href="{% url 'admin-settings' %}">App Settings</a></li>
+            <li><a class="nav-link" href="{% url 'admin-profile-edit' %}">Profile Settings</a></li>
         </ul>
     </li>
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="unlock"></i><span>Authentication</span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-change-password' %***REMOVED***">New-password</a></li>
-            <li><a class="nav-link" href="***REMOVED***% url 'logout' %***REMOVED***">Logout</a></li>
+            <li><a class="nav-link" href="{% url 'admin-change-password' %}">New-password</a></li>
+            <li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
         </ul>
     </li>                                   
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}
 
-***REMOVED***% block content %***REMOVED***
+{% block content %}
     <section class="section">
         <div class="section-body"> 
 
         <!-- Edit/Add Profile Form Body  -->
             <div class="row p-3">
-                <a href="***REMOVED***% url 'admin-price-add' %***REMOVED***" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Add Pricing</a>
+                <a href="{% url 'admin-price-add' %}" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Add Pricing</a>
             </div>
             <div class="row">
-            ***REMOVED***% for price in prices %***REMOVED***
+            {% for price in prices %}
                 <div class="col-12 col-md-4 col-lg-4">
                     <div class="pricing">
-                        <div class="pricing-title">***REMOVED******REMOVED***price.name***REMOVED******REMOVED***</div>
+                        <div class="pricing-title">{{price.name}}</div>
                         <div class="pricing-padding">
                             <div class="pricing-price">
-                                <div>kSh ***REMOVED******REMOVED***price.price***REMOVED******REMOVED***</div>
+                                <div>kSh {{price.price}}</div>
                                 <div>per month</div>
                             </div>
                             <div class="pricing-details">
-                            ***REMOVED***% for keyword in price.keywords %***REMOVED***
+                            {% for keyword in price.keywords %}
                                 <div class="pricing-item">
-                                ***REMOVED***% if keyword.status == 'active'  %***REMOVED***
+                                {% if keyword.status == 'active'  %}
                                     <div class="pricing-item-icon"><i class="fas fa-check"></i></div>
-                                ***REMOVED***% elif keyword.status == 'not_active'  %***REMOVED***
+                                {% elif keyword.status == 'not_active'  %}
                                     <div class="pricing-item-icon bg-danger text-white"><i class="fas fa-times"></i></div>
-                                ***REMOVED***% else %***REMOVED***
+                                {% else %}
                                     <div class="pricing-item-icon bg-danger text-white"><i class="fas fa-times"></i></div>
-                                ***REMOVED***% endif %***REMOVED***
+                                {% endif %}
                                     
-                                    <div class="pricing-item-label">***REMOVED******REMOVED***keyword.name***REMOVED******REMOVED***</div>
+                                    <div class="pricing-item-label">{{keyword.name}}</div>
                                 </div>
-                            ***REMOVED***% endfor %***REMOVED***
+                            {% endfor %}
                             </div>
                         </div>
                         <div class="pricing-cta">
-                            <a href="***REMOVED***% url 'admin-price-edit' price.name|slugify price.id %***REMOVED***">Edit <i class="fas fa-pencil-alt"></i></a>
+                            <a href="{% url 'admin-price-edit' price.name|slugify price.id %}">Edit <i class="fas fa-pencil-alt"></i></a>
                         </div>
                     </div>
                 </div>
-            ***REMOVED***% empty %***REMOVED***
-                <div class="text-center"><p>No Prices Available. Click <a href="***REMOVED***% url 'admin-price-add' %***REMOVED***">Here</a> to Add.</p></div>
-            ***REMOVED***% endfor %***REMOVED***
+            {% empty %}
+                <div class="text-center"><p>No Prices Available. Click <a href="{% url 'admin-price-add' %}">Here</a> to Add.</p></div>
+            {% endfor %}
             </div>
         <!-- /Add Letter Form Body  -->
 
         </div>
     </section>   
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}

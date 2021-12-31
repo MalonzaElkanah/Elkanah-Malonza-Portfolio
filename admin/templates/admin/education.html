@@ -1,57 +1,57 @@
-***REMOVED***% extends "admin/base.html" %***REMOVED***
+{% extends "admin/base.html" %}
 
-***REMOVED***% block title %***REMOVED*** Admin - Education History ***REMOVED***% endblock %***REMOVED***
+{% block title %} Admin - Education History {% endblock %}
 
-***REMOVED***% load static %***REMOVED***
+{% load static %}
 
-***REMOVED***% block sidenav %***REMOVED***                              
+{% block sidenav %}                              
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-home' %***REMOVED***" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
+        <a href="{% url 'admin-home' %}" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-messages' %***REMOVED***" class="nav-link"><i data-feather="message-square"></i><span>Messages</span></a>
+        <a href="{% url 'admin-messages' %}" class="nav-link"><i data-feather="message-square"></i><span>Messages</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-profile' %***REMOVED***" class="nav-link"><i data-feather="user"></i><span>Profile</span></a>
+        <a href="{% url 'admin-profile' %}" class="nav-link"><i data-feather="user"></i><span>Profile</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-projects' %***REMOVED***" class="nav-link"><i data-feather="codepen"></i><span>Projects</span></a>
+        <a href="{% url 'admin-projects' %}" class="nav-link"><i data-feather="codepen"></i><span>Projects</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-work' %***REMOVED***" class="nav-link"><i data-feather="clipboard"></i><span>Work</span></a>
+        <a href="{% url 'admin-work' %}" class="nav-link"><i data-feather="clipboard"></i><span>Work</span></a>
     </li>
     <li class="dropdown active">
-        <a href="***REMOVED***% url 'admin-education' %***REMOVED***" class="nav-link"><i data-feather="book-open"></i><span>Education</span></a>
+        <a href="{% url 'admin-education' %}" class="nav-link"><i data-feather="book-open"></i><span>Education</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-skills' %***REMOVED***" class="nav-link"><i data-feather="sliders"></i><span>Skills</span></a>
+        <a href="{% url 'admin-skills' %}" class="nav-link"><i data-feather="sliders"></i><span>Skills</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-services' %***REMOVED***" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
+        <a href="{% url 'admin-services' %}" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
     </li> 
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-prices' %***REMOVED***" class="nav-link"><i data-feather="shopping-bag"></i><span>Pricing</span></a>
+        <a href="{% url 'admin-prices' %}" class="nav-link"><i data-feather="shopping-bag"></i><span>Pricing</span></a>
     </li> 
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-blog' %***REMOVED***" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
+        <a href="{% url 'admin-blog' %}" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
     </li>          
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Settings</span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-settings' %***REMOVED***">App Settings</a></li>
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-profile-edit' %***REMOVED***">Profile Settings</a></li>
+            <li><a class="nav-link" href="{% url 'admin-settings' %}">App Settings</a></li>
+            <li><a class="nav-link" href="{% url 'admin-profile-edit' %}">Profile Settings</a></li>
         </ul>
     </li>
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="unlock"></i><span>Authentication</span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-change-password' %***REMOVED***">New-password</a></li>
-            <li><a class="nav-link" href="***REMOVED***% url 'logout' %***REMOVED***">Logout</a></li>
+            <li><a class="nav-link" href="{% url 'admin-change-password' %}">New-password</a></li>
+            <li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
         </ul>
     </li>                                   
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}
 
-***REMOVED***% block content %***REMOVED***
+{% block content %}
     <section class="section">
         <div class="section-body">     
             <h2 class="section-title">Education History</h2>
@@ -65,55 +65,55 @@
                             </div>
                             <div class="activity-detail">
                                 <div class="mb-2">
-                                <a href="***REMOVED***% url 'admin-education-add' %***REMOVED***" class="btn btn-primary">Add Education</a>
+                                <a href="{% url 'admin-education-add' %}" class="btn btn-primary">Add Education</a>
                                 </div>
                             </div>
                         </div>
 
-                    ***REMOVED***% for edu in edu_history %***REMOVED***
+                    {% for edu in edu_history %}
                         <div class="activity">
                             <div class="activity-icon bg-primary text-white">
                                 <i class="fas fa-award"></i>
                             </div>
                             <div class="activity-detail">
                                 <div class="mb-2">
-                                    <span class="text-job">***REMOVED******REMOVED***edu.institution***REMOVED******REMOVED***</span>
+                                    <span class="text-job">{{edu.institution}}</span>
                                     <span class="bullet"></span>
-                                    <a class="text-job" href="***REMOVED***% url 'admin-education-edit' edu.study_type|slugify edu.id %***REMOVED***">Edit</a>
+                                    <a class="text-job" href="{% url 'admin-education-edit' edu.study_type|slugify edu.id %}">Edit</a>
                                     <span class="bullet"></span>
-                                    <a class="text-job text-danger" href="#" data-toggle="modal" data-target="#deleteEduModal***REMOVED******REMOVED***edu.id***REMOVED******REMOVED***">Delete</a>
+                                    <a class="text-job text-danger" href="#" data-toggle="modal" data-target="#deleteEduModal{{edu.id}}">Delete</a>
                                 </div>
                                 <div class="profile-widget-description pb-0">
-                                    <div class="profile-widget-name">***REMOVED******REMOVED***edu.study_area***REMOVED******REMOVED***, ***REMOVED******REMOVED***edu.study_type***REMOVED******REMOVED***<div class="text-muted d-inline font-weight-normal"> <div class="slash"></div> ***REMOVED******REMOVED***edu.start_date***REMOVED******REMOVED*** - ***REMOVED******REMOVED***edu.end_date***REMOVED******REMOVED***</div></div>
+                                    <div class="profile-widget-name">{{edu.study_area}}, {{edu.study_type}}<div class="text-muted d-inline font-weight-normal"> <div class="slash"></div> {{edu.start_date}} - {{edu.end_date}}</div></div>
                                     <p>
                                         <i class="fas fa-medal px-2"></i>
-                                        <a href="mailto:elkanahmalonza@gmail.com">***REMOVED******REMOVED***edu.gpa***REMOVED******REMOVED***</a>
+                                        <a href="mailto:elkanahmalonza@gmail.com">{{edu.gpa}}</a>
                                         <br>
                                         <i class="fas fa-map-marker-alt px-2"></i>
-                                        <a href="#">***REMOVED******REMOVED***edu.location***REMOVED******REMOVED***</a>
+                                        <a href="#">{{edu.location}}</a>
                                     </p>
-                                    <p>***REMOVED******REMOVED***edu.description***REMOVED******REMOVED***</p>
+                                    <p>{{edu.description}}</p>
                                 </div>
                             </div>
                         </div>
-                    ***REMOVED***% endfor %***REMOVED***
+                    {% endfor %}
                     </div>
                 </div>
             </div>
 
         </div>
     </section>
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}
 
-***REMOVED***% block modal %***REMOVED***
-    ***REMOVED***% for edu in edu_history %***REMOVED***
-    <!--delete Work Modal ***REMOVED******REMOVED***edu.study_type***REMOVED******REMOVED***-->
-        <div class="modal fade" id="deleteEduModal***REMOVED******REMOVED***edu.id***REMOVED******REMOVED***" tabindex="-1" role="dialog"
+{% block modal %}
+    {% for edu in edu_history %}
+    <!--delete Work Modal {{edu.study_type}}-->
+        <div class="modal fade" id="deleteEduModal{{edu.id}}" tabindex="-1" role="dialog"
           aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Delete ***REMOVED******REMOVED***edu.study_type***REMOVED******REMOVED***</h5>
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Delete {{edu.study_type}}</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -122,11 +122,11 @@
                     ARE YOU SURE?
                   </div>
                   <div class="modal-footer bg-whitesmoke br">
-                    <a href="***REMOVED***% url 'admin-education-delete' edu.study_type|slugify edu.id %***REMOVED***" class="btn btn-danger deleteModal">Delete</a>
+                    <a href="{% url 'admin-education-delete' edu.study_type|slugify edu.id %}" class="btn btn-danger deleteModal">Delete</a>
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                   </div>
                 </div>
             </div>
         </div>
-    ***REMOVED***% endfor %***REMOVED***
-***REMOVED***% endblock %***REMOVED***
+    {% endfor %}
+{% endblock %}

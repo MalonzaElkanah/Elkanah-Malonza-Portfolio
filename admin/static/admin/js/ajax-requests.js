@@ -1,54 +1,54 @@
-(function($) ***REMOVED***
-	$(".form-request").submit(function(event) ***REMOVED***
+(function($) {
+	$(".form-request").submit(function(event) {
        	event.preventDefault();
-       	$.ajax(***REMOVED*** 
+       	$.ajax({ 
        		data: $(this).serialize(),
             type: $(this).attr('method'),
             url: $(this).attr('action'),
-            success: function(response) ***REMOVED***
+            success: function(response) {
 	            console.log(response);
-	            if(response['success']) ***REMOVED***
+	            if(response['success']) {
 	            	alert(response['success']);
-	            	if(response['redirect'])***REMOVED***
+	            	if(response['redirect']){
 	            		window.location.href = response['redirect'];
-	            	***REMOVED***else***REMOVED***
+	            	}else{
 		            	window.location.href = "../";
-	            	***REMOVED***
-	            ***REMOVED***
-	            if(response['error']) ***REMOVED***
+	            	}
+	            }
+	            if(response['error']) {
 	            	alert(response['error']);
 	            	$("#id_error-text").html("Error: "+response['error']+"");
-	            ***REMOVED***
-        	***REMOVED***,
-	        error: function (request, status, error) ***REMOVED***
+	            }
+        	},
+	        error: function (request, status, error) {
 	            console.log(request.responseText);
-	        ***REMOVED***
-       	***REMOVED***);
-   	***REMOVED***);
+	        }
+       	});
+   	});
 
-   	$(".link-request").click(function(event)***REMOVED***
+   	$(".link-request").click(function(event){
    		event.preventDefault();
-   		$.ajax(***REMOVED***
+   		$.ajax({
    			url: $(this).attr('href'),
-   			success: function(response)***REMOVED***
+   			success: function(response){
    				console.log(response);
-	            if(response['success']) ***REMOVED***
+	            if(response['success']) {
 	            	alert(response['success']);
-	            	if(response['redirect'])***REMOVED***
+	            	if(response['redirect']){
 	            		window.location.href = response['redirect'];
-	            	***REMOVED***else***REMOVED***
+	            	}else{
 		            	window.location.href = "../";
-	            	***REMOVED***
-	            ***REMOVED***
-	            if(response['error']) ***REMOVED***
+	            	}
+	            }
+	            if(response['error']) {
 	            	alert(response['error']);
 	            	$("#id_error-text").html("Error: "+response['error']+"");
-	            ***REMOVED***
-   			***REMOVED***,
-	        error: function (request, status, error) ***REMOVED***
+	            }
+   			},
+	        error: function (request, status, error) {
 	            console.log(request.responseText);
-	        ***REMOVED***
-   		***REMOVED***);
-   	***REMOVED***);
+	        }
+   		});
+   	});
 
-***REMOVED***)(jQuery);
+})(jQuery);

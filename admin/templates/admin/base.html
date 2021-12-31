@@ -4,19 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    ***REMOVED***% load static %***REMOVED***
-    <title>Elkanah Malonza | ***REMOVED***% block title %***REMOVED*** ***REMOVED***% endblock %***REMOVED***</title>
-    <link rel='shortcut icon' type='image/x-icon' href="***REMOVED***% static 'main/img/favicon.ico' %***REMOVED***" />
+    {% load static %}
+    <title>Elkanah Malonza | {% block title %} {% endblock %}</title>
+    <link rel='shortcut icon' type='image/x-icon' href="{% static 'main/img/favicon.ico' %}" />
 
     <!-- General CSS Files -->
-    <link rel="stylesheet" href="***REMOVED***% static 'admin/css/app.min.css' %***REMOVED***">
-    <link rel="stylesheet" href="***REMOVED***% static 'admin/bundles/bootstrap-social/bootstrap-social.css' %***REMOVED***">
+    <link rel="stylesheet" href="{% static 'admin/css/app.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/bundles/bootstrap-social/bootstrap-social.css' %}">
     <script src="https://kit.fontawesome.com/00b6dc780b.js" crossorigin="anonymous"></script>
     <!-- Template CSS -->
-    <link rel="stylesheet" href="***REMOVED***% static 'admin/css/style.css' %***REMOVED***">
-    <link rel="stylesheet" href="***REMOVED***% static 'admin/css/components.css' %***REMOVED***">
-    ***REMOVED***% block css %***REMOVED***
-    ***REMOVED***% endblock %***REMOVED***
+    <link rel="stylesheet" href="{% static 'admin/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/css/components.css' %}">
+    {% block css %}
+    {% endblock %}
 </head>
 
 <body>
@@ -50,15 +50,15 @@
                                 </div>
                             </div>
                             <div class="dropdown-list-content dropdown-list-icons">
-                            ***REMOVED***% for notification in notifications %***REMOVED***
-                                <a href="***REMOVED******REMOVED***notification.url***REMOVED******REMOVED***" class="dropdown-item dropdown-item-unread"> 
-                                    <span class="dropdown-item-icon ***REMOVED******REMOVED***notification.icon_color***REMOVED******REMOVED*** text-white"> <i class="***REMOVED******REMOVED***notification.icon***REMOVED******REMOVED***"></i></span> 
+                            {% for notification in notifications %}
+                                <a href="{{notification.url}}" class="dropdown-item dropdown-item-unread"> 
+                                    <span class="dropdown-item-icon {{notification.icon_color}} text-white"> <i class="{{notification.icon}}"></i></span> 
                                     <span class="dropdown-item-desc"> 
-                                        ***REMOVED******REMOVED***notification.name***REMOVED******REMOVED*** 
-                                        <span class="time">***REMOVED******REMOVED***notification.time_difference***REMOVED******REMOVED***</span>
+                                        {{notification.name}} 
+                                        <span class="time">{{notification.time_difference}}</span>
                                     </span>
                                 </a> 
-                            ***REMOVED***% endfor %***REMOVED***
+                            {% endfor %}
                             </div>
                             <div class="dropdown-footer text-center">
                                 <a href="#">View All <i class="fas fa-chevron-right"></i></a>
@@ -67,11 +67,11 @@
                     </li>
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user"> 
-                            <img alt="image" src="***REMOVED******REMOVED***profile.image.url***REMOVED******REMOVED***" class="user-img-radious-style"> 
+                            <img alt="image" src="{{profile.image.url}}" class="user-img-radious-style"> 
                             <span class="d-sm-none d-lg-inline-block"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right pullDown">
-                            <div class="dropdown-title">Hello ***REMOVED******REMOVED***user.first_name***REMOVED******REMOVED*** ***REMOVED******REMOVED***user.second_name***REMOVED******REMOVED***</div>
+                            <div class="dropdown-title">Hello {{user.first_name}} {{user.second_name}}</div>
                             <a href="#" class="dropdown-item has-icon"> 
                                 <i class="far fa-user"></i> Profile
                             </a> 
@@ -92,26 +92,26 @@
             <div class="main-sidebar sidebar-style-2">
                 <aside id="sidebar-wrapper">
                     <div class="sidebar-brand">
-                        <a href="***REMOVED***% url 'index' %***REMOVED***"> <img alt="image" src="***REMOVED******REMOVED***app.logo.url***REMOVED******REMOVED***" class="header-logo" /> <span class="logo-name">***REMOVED******REMOVED***app.app_name***REMOVED******REMOVED***</span> </a>
+                        <a href="{% url 'index' %}"> <img alt="image" src="{{app.logo.url}}" class="header-logo" /> <span class="logo-name">{{app.app_name}}</span> </a>
                     </div>
                     <ul class="sidebar-menu">
                         <li class="menu-header">Main</li>
                         
-                        ***REMOVED***% block sidenav %***REMOVED***
+                        {% block sidenav %}
                                                 
-                        ***REMOVED***% endblock %***REMOVED***
+                        {% endblock %}
                     </ul>
                 </aside>
             </div>
             <!-- Main Content -->
             <div class="main-content">
-                ***REMOVED***% block content %***REMOVED***
+                {% block content %}
                                 
-                ***REMOVED***% endblock %***REMOVED***
+                {% endblock %}
 
-                ***REMOVED***% block modal %***REMOVED***
+                {% block modal %}
 
-                ***REMOVED***% endblock %***REMOVED***
+                {% endblock %}
                 
                 <div class="settingSidebar">
                     <a href="javascript:void(0)" class="settingPanelToggle"> 
@@ -208,259 +208,259 @@
     </div>
 
     <!-- General JS Scripts -->
-    <script src="***REMOVED***% static 'admin/js/app.min.js' %***REMOVED***"></script>
+    <script src="{% static 'admin/js/app.min.js' %}"></script>
 
     <!-- Template JS File -->
-    <script src="***REMOVED***% static 'admin/js/scripts.js' %***REMOVED***"></script>
+    <script src="{% static 'admin/js/scripts.js' %}"></script>
 
-    ***REMOVED***% block javascript %***REMOVED*** ***REMOVED***% endblock %***REMOVED***
+    {% block javascript %} {% endblock %}
 
 
     <script type="text/javascript">
-        $(window).on("load", function () ***REMOVED***
+        $(window).on("load", function () {
             //add class on body tag
-            jQuery("body").addClass("***REMOVED******REMOVED***app.layout_class***REMOVED******REMOVED***");
-            jQuery("body").addClass("***REMOVED******REMOVED***app.sidebar_color_class***REMOVED******REMOVED***");
-            jQuery("body").addClass("***REMOVED******REMOVED***app.color_theme_class***REMOVED******REMOVED***");
+            jQuery("body").addClass("{{app.layout_class}}");
+            jQuery("body").addClass("{{app.sidebar_color_class}}");
+            jQuery("body").addClass("{{app.color_theme_class}}");
             // set theme color
             $(".choose-theme li").removeClass("active");
-            $(".choose-theme li[title|='***REMOVED******REMOVED***app.color_theme***REMOVED******REMOVED***']").addClass("active");
+            $(".choose-theme li[title|='{{app.color_theme}}']").addClass("active");
             // set dark or light layout(1=light, 2=dark)
-            $(".select-layout[value|='***REMOVED******REMOVED***app.layout***REMOVED******REMOVED***']").prop("checked", true);
+            $(".select-layout[value|='{{app.layout}}']").prop("checked", true);
             // set dark or light sidebar(1=light, 2=dark)
-            $(".select-sidebar[value|='***REMOVED******REMOVED***app.sidebar_color***REMOVED******REMOVED***']").prop("checked", true);
+            $(".select-sidebar[value|='{{app.sidebar_color}}']").prop("checked", true);
             // set sticky header 
-            $("#sticky_header_setting").prop("checked", ***REMOVED******REMOVED***app.sticky_header***REMOVED******REMOVED***);
-            if (!***REMOVED******REMOVED***app.sticky_header***REMOVED******REMOVED***)***REMOVED***
-                $(".main-navbar")[0].classList.remove("***REMOVED******REMOVED***app.sticky_header_class***REMOVED******REMOVED***");
-            ***REMOVED***
+            $("#sticky_header_setting").prop("checked", {{app.sticky_header}});
+            if (!{{app.sticky_header}}){
+                $(".main-navbar")[0].classList.remove("{{app.sticky_header_class}}");
+            }
             // set mini sidebar 
-            $("#mini_sidebar_setting").prop("checked", ***REMOVED******REMOVED***app.mini_sidebar***REMOVED******REMOVED***);
-            if (***REMOVED******REMOVED***app.mini_sidebar***REMOVED******REMOVED***)***REMOVED***
+            $("#mini_sidebar_setting").prop("checked", {{app.mini_sidebar}});
+            if ({{app.mini_sidebar}}){
                 let body = $("body");
                 sidebar_nicescroll = $(".main-sidebar").getNiceScroll();
                 body.addClass("sidebar-mini");
                 body.removeClass("sidebar-show");
                 sidebar_nicescroll.remove();
                 sidebar_nicescroll = null;
-                $(".main-sidebar .sidebar-menu > li").each(function () ***REMOVED***
+                $(".main-sidebar .sidebar-menu > li").each(function () {
                     let me = $(this);
 
-                    if (me.find("> .dropdown-menu").length) ***REMOVED***
+                    if (me.find("> .dropdown-menu").length) {
                         me.find("> .dropdown-menu").hide();
                         me.find("> .dropdown-menu").prepend(
                             '<li class="dropdown-title pt-3">' + me.find("> a").text() + "</li>"
                         );
-                    ***REMOVED*** else ***REMOVED***
+                    } else {
                         me.find("> a").attr("data-toggle", "tooltip");
                         me.find("> a").attr("data-original-title", me.find("> a").text());
-                        $("[data-toggle='tooltip']").tooltip(***REMOVED***
+                        $("[data-toggle='tooltip']").tooltip({
                             placement: "right"
-                        ***REMOVED***);
-                    ***REMOVED***
-              ***REMOVED***);
-            ***REMOVED***
+                        });
+                    }
+              });
+            }
 
-        ***REMOVED***);
-        $(function () ***REMOVED***
-            $('#restore_default').click(function(event)***REMOVED***
+        });
+        $(function () {
+            $('#restore_default').click(function(event){
                 event.preventDefault();
                 var id = 0;
-                var update_data = ***REMOVED***
+                var update_data = {
                     update_id: id
-                ***REMOVED***;
-                $.ajax(***REMOVED*** 
+                };
+                $.ajax({ 
                     data: update_data,
                     type: 'GET',
-                    url: "***REMOVED***% url 'restore-default' %***REMOVED***", //restore-default
-                    success: function(response) ***REMOVED***
+                    url: "{% url 'restore-default' %}", //restore-default
+                    success: function(response) {
                         console.log(response);
-                        if(response['success']) ***REMOVED***
+                        if(response['success']) {
                             console.log(response['success']);
-                        ***REMOVED***
-                        if(response['error']) ***REMOVED***
+                        }
+                        if(response['error']) {
                             console.log(response['error']);
-                        ***REMOVED***
-                    ***REMOVED***,
-                    error: function (request, status, error) ***REMOVED***
+                        }
+                    },
+                    error: function (request, status, error) {
                         console.log(request.response);
-                    ***REMOVED***
-                ***REMOVED***);
+                    }
+                });
                 return false;    
-            ***REMOVED***);
+            });
 
-            $("#sticky_header_setting").on("change", function () ***REMOVED***
+            $("#sticky_header_setting").on("change", function () {
                 var id = "on";
-                if ($(".main-navbar")[0].classList.contains("sticky")) ***REMOVED***
+                if ($(".main-navbar")[0].classList.contains("sticky")) {
                     sticky_header(true);
-                ***REMOVED*** else ***REMOVED***
+                } else {
                     sticky_header(false);
-                ***REMOVED***
-            ***REMOVED***);
+                }
+            });
 
-            $("#mini_sidebar_setting").on("change", function () ***REMOVED***
+            $("#mini_sidebar_setting").on("change", function () {
                 var _val = $(this).is(":checked") ? "checked" : "unchecked";
-                if (_val === "checked") ***REMOVED***
+                if (_val === "checked") {
                   sidebar_mini(true);
-                ***REMOVED*** else ***REMOVED***
+                } else {
                   sidebar_mini(false);
-                ***REMOVED***
-            ***REMOVED***);
+                }
+            });
 
             // theme change event
-            $(".choose-theme li").on("click", function () ***REMOVED***
+            $(".choose-theme li").on("click", function () {
                 var selectedTheme = $(this).attr("title");
-                var update_data = ***REMOVED***
+                var update_data = {
                     theme: selectedTheme
-                ***REMOVED***;
-                $.ajax(***REMOVED*** 
+                };
+                $.ajax({ 
                     data: update_data,
                     type: 'GET',
-                    url: "***REMOVED***% url 'color-theme-settings' %***REMOVED***",
-                    success: function(response) ***REMOVED***
+                    url: "{% url 'color-theme-settings' %}",
+                    success: function(response) {
                         console.log(response);
-                        if(response['success']) ***REMOVED***
+                        if(response['success']) {
                             console.log(response['success'] + selectedTheme);
-                        ***REMOVED***
-                        if(response['error']) ***REMOVED***
+                        }
+                        if(response['error']) {
                             console.log(response['error']);
-                        ***REMOVED***
-                    ***REMOVED***,
-                    error: function (request, status, error) ***REMOVED***
+                        }
+                    },
+                    error: function (request, status, error) {
                         console.log(request.response);
-                    ***REMOVED***
-                ***REMOVED***);
+                    }
+                });
                 return false;
-            ***REMOVED***);
+            });
 
             // dark light sidebar button setting
-            $(".sidebar-color input:radio").change(function () ***REMOVED***
-                if ($(this).val() == "1") ***REMOVED***
+            $(".sidebar-color input:radio").change(function () {
+                if ($(this).val() == "1") {
                     sidebar_color("1");
-                ***REMOVED*** else ***REMOVED***
+                } else {
                     sidebar_color("2");
-                ***REMOVED***
-            ***REMOVED***);
+                }
+            });
 
             // dark light layout button setting
-            $(".select-layout").click(function(event)***REMOVED***
+            $(".select-layout").click(function(event){
                 var k = $(this).val()
-                if (k == "1") ***REMOVED***
+                if (k == "1") {
                     layout_color("1");
-                ***REMOVED*** else ***REMOVED***
+                } else {
                     layout_color("2");
-                ***REMOVED***
-            ***REMOVED***);
+                }
+            });
 
-            var sticky_header = function (sticky) ***REMOVED***
+            var sticky_header = function (sticky) {
                 id = "true";
-                if (!sticky) ***REMOVED***
+                if (!sticky) {
                     id = "false";
-                ***REMOVED*** else ***REMOVED***
+                } else {
                     id = "true";
-                ***REMOVED***
-                var update_data = ***REMOVED***
+                }
+                var update_data = {
                     header: id
-                ***REMOVED***;
-                $.ajax(***REMOVED*** 
+                };
+                $.ajax({ 
                     data: update_data,
                     type: 'GET',
-                    url: "***REMOVED***% url 'sticky-header' %***REMOVED***",
-                    success: function(response) ***REMOVED***
+                    url: "{% url 'sticky-header' %}",
+                    success: function(response) {
                         console.log(response);
-                        if(response['success']) ***REMOVED***
+                        if(response['success']) {
                             console.log(response['success'] + id);
-                        ***REMOVED***
-                        if(response['error']) ***REMOVED***
+                        }
+                        if(response['error']) {
                             console.log(response['error']);
-                        ***REMOVED***
-                    ***REMOVED***,
-                    error: function (request, status, error) ***REMOVED***
+                        }
+                    },
+                    error: function (request, status, error) {
                         console.log(request.response);
-                    ***REMOVED***
-                ***REMOVED***);
+                    }
+                });
                 return false;
-            ***REMOVED***;
+            };
 
-            var sidebar_mini = function (mini) ***REMOVED***
+            var sidebar_mini = function (mini) {
                 var id = "false";
-                if (!mini) ***REMOVED***
+                if (!mini) {
                     id = "false";
-                ***REMOVED***else ***REMOVED***
+                }else {
                     id = "true";
-                ***REMOVED***
-                var update_data = ***REMOVED***
+                }
+                var update_data = {
                     sidebar: id
-                ***REMOVED***;
-                $.ajax(***REMOVED*** 
+                };
+                $.ajax({ 
                     data: update_data,
                     type: 'GET',
-                    url: "***REMOVED***% url 'sidebar-toggle' %***REMOVED***",
-                    success: function(response) ***REMOVED***
+                    url: "{% url 'sidebar-toggle' %}",
+                    success: function(response) {
                         console.log(response);
-                        if(response['success']) ***REMOVED***
+                        if(response['success']) {
                             console.log(response['success'] + id);
-                        ***REMOVED***
-                        if(response['error']) ***REMOVED***
+                        }
+                        if(response['error']) {
                             console.log(response['error']);
-                        ***REMOVED***
-                    ***REMOVED***,
-                    error: function (request, status, error) ***REMOVED***
+                        }
+                    },
+                    error: function (request, status, error) {
                         console.log(request.response);
-                    ***REMOVED***
-                ***REMOVED***);
+                    }
+                });
                 return false;
-            ***REMOVED***;
+            };
 
-            var sidebar_color = function (color) ***REMOVED***
-                var update_data = ***REMOVED***
+            var sidebar_color = function (color) {
+                var update_data = {
                     sidebar: color
-                ***REMOVED***;
-                $.ajax(***REMOVED*** 
+                };
+                $.ajax({ 
                     data: update_data,
                     type: 'GET',
-                    url: "***REMOVED***% url 'sidebar-color-settings' %***REMOVED***",
-                    success: function(response) ***REMOVED***
+                    url: "{% url 'sidebar-color-settings' %}",
+                    success: function(response) {
                         console.log(response);
-                        if(response['success']) ***REMOVED***
+                        if(response['success']) {
                             console.log(response['success'] + color);
-                        ***REMOVED***
-                        if(response['error']) ***REMOVED***
+                        }
+                        if(response['error']) {
                             console.log(response['error']);
-                        ***REMOVED***
-                    ***REMOVED***,
-                    error: function (request, status, error) ***REMOVED***
+                        }
+                    },
+                    error: function (request, status, error) {
                         console.log(request.response);
-                    ***REMOVED***
-                ***REMOVED***);
+                    }
+                });
                 return false;
-            ***REMOVED***;
+            };
 
-            var layout_color = function(color)***REMOVED***
-                var update_data = ***REMOVED***
+            var layout_color = function(color){
+                var update_data = {
                     layout: color
-                ***REMOVED***;
-                $.ajax(***REMOVED*** 
+                };
+                $.ajax({ 
                     data: update_data,
                     type: 'GET',
-                    url: "***REMOVED***% url 'layout-settings' %***REMOVED***",
-                    success: function(response) ***REMOVED***
+                    url: "{% url 'layout-settings' %}",
+                    success: function(response) {
                         console.log(response);
-                        if(response['success']) ***REMOVED***
+                        if(response['success']) {
                             console.log(response['success'] + color);
-                        ***REMOVED***
-                        if(response['error']) ***REMOVED***
+                        }
+                        if(response['error']) {
                             console.log(response['error']);
-                        ***REMOVED***
-                    ***REMOVED***,
-                    error: function (request, status, error) ***REMOVED***
+                        }
+                    },
+                    error: function (request, status, error) {
                         console.log(request.response);
-                    ***REMOVED***
-                ***REMOVED***);
+                    }
+                });
                 return false;
-            ***REMOVED***
+            }
             
-        ***REMOVED***);
+        });
 
     </script>
 </body>

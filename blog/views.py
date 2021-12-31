@@ -30,9 +30,9 @@ def blog(request):
 	page_number = request.GET.get('page', 1)
 	articles = paginator.get_page(page_number)
 
-	return render(request, 'blog/blog.html', ***REMOVED***'articles': articles, 'categories': categories, 'series': series, 
+	return render(request, 'blog/blog.html', {'articles': articles, 'categories': categories, 'series': series, 
 		'main_feature': featured, 'viewed_articles': viewed_articles, 'latest_articles': latest_articles, 
-		'archives': archives***REMOVED***)
+		'archives': archives})
 
 
 def article(request, slug, article_id):
@@ -64,9 +64,9 @@ def article(request, slug, article_id):
 		features = Article.objects.order_by('views').reverse()[0:2]
 
 	archives = generate_last_one_year_months()
-	return render(request, 'blog/article.html', ***REMOVED***'article': article, 'profile': profile, 
+	return render(request, 'blog/article.html', {'article': article, 'profile': profile, 
 		'categories': categories, 'series': series, 'archives': archives, 'features': features, 
-		'my_series': my_series, 'comments': comments***REMOVED***)
+		'my_series': my_series, 'comments': comments})
 
 
 def articles_category(request, slug, category_id):
@@ -84,8 +84,8 @@ def articles_category(request, slug, category_id):
 	paginator = Paginator(articles, 10)
 	page_number = request.GET.get('page', 1)
 	articles = paginator.get_page(page_number)
-	return render(request, 'blog/articles.html', ***REMOVED***'articles': articles, 'category': category, 
-		'categories': categories, 'series': series, 'archives': archives, 'page_name': page_name***REMOVED***)
+	return render(request, 'blog/articles.html', {'articles': articles, 'category': category, 
+		'categories': categories, 'series': series, 'archives': archives, 'page_name': page_name})
 
 
 def articles_series(request, slug, series_id):
@@ -103,8 +103,8 @@ def articles_series(request, slug, series_id):
 	paginator = Paginator(articles, 10)
 	page_number = request.GET.get('page', 1)
 	articles = paginator.get_page(page_number)
-	return render(request, 'blog/articles.html', ***REMOVED***'my_series': my_series, 'articles': articles, 
-		'categories': categories, 'series': series, 'archives': archives, 'page_name': page_name***REMOVED***)
+	return render(request, 'blog/articles.html', {'my_series': my_series, 'articles': articles, 
+		'categories': categories, 'series': series, 'archives': archives, 'page_name': page_name})
 
 
 def articles_archives(request, slug, year, month):
@@ -125,8 +125,8 @@ def articles_archives(request, slug, year, month):
 	paginator = Paginator(articles, 10)
 	page_number = request.GET.get('page', 1)
 	articles = paginator.get_page(page_number)
-	return render(request, 'blog/articles.html', ***REMOVED***'articles': articles, 
-		'categories': categories, 'series': series, 'archives': archives, 'page_name': page_name***REMOVED***)
+	return render(request, 'blog/articles.html', {'articles': articles, 
+		'categories': categories, 'series': series, 'archives': archives, 'page_name': page_name})
 
 
 def articles_search(request):
@@ -149,8 +149,8 @@ def articles_search(request):
 	paginator = Paginator(articles, 10)
 	page_number = request.GET.get('page', 1)
 	articles = paginator.get_page(page_number)
-	return render(request, 'blog/articles.html', ***REMOVED***'articles': articles, 'categories': categories, 
-		'series': series, 'archives': archives, 'page_name': page_name***REMOVED***)
+	return render(request, 'blog/articles.html', {'articles': articles, 'categories': categories, 
+		'series': series, 'archives': archives, 'page_name': page_name})
 
 
 def articles(request):
@@ -167,8 +167,8 @@ def articles(request):
 	paginator = Paginator(articles, 10)
 	page_number = request.GET.get('page', 1)
 	articles = paginator.get_page(page_number)
-	return render(request, 'blog/articles.html', ***REMOVED***'articles': articles, 'categories': categories, 
-		'series': series, 'archives': archives, 'page_name': page_name***REMOVED***)
+	return render(request, 'blog/articles.html', {'articles': articles, 'categories': categories, 
+		'series': series, 'archives': archives, 'page_name': page_name})
 
 
 def comment_article(request, slug, article_id):
@@ -200,10 +200,10 @@ def generate_last_one_year_months():
 			int_year =  loop_time.year
 			str_month = loop_time.strftime("%B")
 			name = str_month + ", " + str(int_year)
-			value = ***REMOVED******REMOVED*** 
+			value = {} 
 			value.setdefault('year', int_year)
 			value.setdefault('month', int_month)
-			archive = ***REMOVED******REMOVED***
+			archive = {}
 
 			archive.setdefault(name, value)
 			archives = archives + [archive]

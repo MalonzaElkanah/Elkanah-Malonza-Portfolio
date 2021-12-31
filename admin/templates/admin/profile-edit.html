@@ -1,57 +1,57 @@
-***REMOVED***% extends "admin/base.html" %***REMOVED***
+{% extends "admin/base.html" %}
 
-***REMOVED***% block title %***REMOVED*** Admin - Update Profile ***REMOVED***% endblock %***REMOVED***
+{% block title %} Admin - Update Profile {% endblock %}
 
-***REMOVED***% load static %***REMOVED***
+{% load static %}
 
-***REMOVED***% block sidenav %***REMOVED***                              
+{% block sidenav %}                              
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-home' %***REMOVED***" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
+        <a href="{% url 'admin-home' %}" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-messages' %***REMOVED***" class="nav-link"><i data-feather="message-square"></i><span>Messages</span></a>
+        <a href="{% url 'admin-messages' %}" class="nav-link"><i data-feather="message-square"></i><span>Messages</span></a>
     </li>
     <li class="dropdown active">
-        <a href="***REMOVED***% url 'admin-profile' %***REMOVED***" class="nav-link"><i data-feather="user"></i><span>Profile</span></a>
+        <a href="{% url 'admin-profile' %}" class="nav-link"><i data-feather="user"></i><span>Profile</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-projects' %***REMOVED***" class="nav-link"><i data-feather="codepen"></i><span>Projects</span></a>
+        <a href="{% url 'admin-projects' %}" class="nav-link"><i data-feather="codepen"></i><span>Projects</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-work' %***REMOVED***" class="nav-link"><i data-feather="clipboard"></i><span>Work</span></a>
+        <a href="{% url 'admin-work' %}" class="nav-link"><i data-feather="clipboard"></i><span>Work</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-education' %***REMOVED***" class="nav-link"><i data-feather="book-open"></i><span>Education</span></a>
+        <a href="{% url 'admin-education' %}" class="nav-link"><i data-feather="book-open"></i><span>Education</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-skills' %***REMOVED***" class="nav-link"><i data-feather="sliders"></i><span>Skills</span></a>
+        <a href="{% url 'admin-skills' %}" class="nav-link"><i data-feather="sliders"></i><span>Skills</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-services' %***REMOVED***" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
+        <a href="{% url 'admin-services' %}" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
     </li>  
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-prices' %***REMOVED***" class="nav-link"><i data-feather="shopping-bag"></i><span>Pricing</span></a>
+        <a href="{% url 'admin-prices' %}" class="nav-link"><i data-feather="shopping-bag"></i><span>Pricing</span></a>
     </li> 
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-blog' %***REMOVED***" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
+        <a href="{% url 'admin-blog' %}" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
     </li>          
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Settings</span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-settings' %***REMOVED***">App Settings</a></li>
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-profile-edit' %***REMOVED***">Profile Settings</a></li>
+            <li><a class="nav-link" href="{% url 'admin-settings' %}">App Settings</a></li>
+            <li><a class="nav-link" href="{% url 'admin-profile-edit' %}">Profile Settings</a></li>
         </ul>
     </li>
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="unlock"></i><span>Authentication</span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-change-password' %***REMOVED***">New-password</a></li>
-            <li><a class="nav-link" href="***REMOVED***% url 'logout' %***REMOVED***">Logout</a></li>
+            <li><a class="nav-link" href="{% url 'admin-change-password' %}">New-password</a></li>
+            <li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
         </ul>
     </li>                                   
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}
 
-***REMOVED***% block content %***REMOVED***
+{% block content %}
     <section class="section">
         <div class="section-body"> 
 
@@ -63,95 +63,95 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12 pt-2">
-                                    <form method="post" action="***REMOVED***% url 'admin-profile-edit' %***REMOVED***" enctype="multipart/form-data">
-                                        ***REMOVED***% csrf_token %***REMOVED***
-                                        <input type="hidden" name="user" value="***REMOVED******REMOVED***user.id***REMOVED******REMOVED***">
+                                    <form method="post" action="{% url 'admin-profile-edit' %}" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="user" value="{{user.id}}">
                                         <div class="form-row">
-                                        ***REMOVED***% for field in form %***REMOVED***
-                                            ***REMOVED***% if field.name == 'image' %***REMOVED***
+                                        {% for field in form %}
+                                            {% if field.name == 'image' %}
                                             <div class="form-group col-md-6">
                                                 <label>Image</label>
-                                                ***REMOVED******REMOVED***field***REMOVED******REMOVED***
+                                                {{field}}
                                             </div>
-                                            ***REMOVED***% elif field.name == 'cv_file' %***REMOVED***
+                                            {% elif field.name == 'cv_file' %}
                                             <div class="form-group col-md-6">
                                                 <label>CV File</label>
-                                                ***REMOVED******REMOVED***field***REMOVED******REMOVED***
+                                                {{field}}
                                             </div>
-                                            ***REMOVED***% endif %***REMOVED***
-                                        ***REMOVED***% endfor %***REMOVED***
+                                            {% endif %}
+                                        {% endfor %}
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>First Name</label>
-                                                <input type="text" class="form-control" name="first_name" value="***REMOVED******REMOVED***profile.first_name***REMOVED******REMOVED***" required>
+                                                <input type="text" class="form-control" name="first_name" value="{{profile.first_name}}" required>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Second Name</label>
-                                                <input type="text" class="form-control" name="second_name" value="***REMOVED******REMOVED***profile.second_name***REMOVED******REMOVED***" required>
+                                                <input type="text" class="form-control" name="second_name" value="{{profile.second_name}}" required>
                                             </div>
                                         </div>
 
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Phone 1</label>
-                                                <input type="text" class="form-control" name="phone_number_1" value="***REMOVED******REMOVED***profile.phone_number_1***REMOVED******REMOVED***" required>
+                                                <input type="text" class="form-control" name="phone_number_1" value="{{profile.phone_number_1}}" required>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Phone 2</label>
-                                                 <input type="text" class="form-control" name="phone_number_2" value="***REMOVED******REMOVED***profile.phone_number_2***REMOVED******REMOVED***" required>
+                                                 <input type="text" class="form-control" name="phone_number_2" value="{{profile.phone_number_2}}" required>
                                             </div>
                                         </div>
 
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Email 1</label>
-                                                <input type="text" class="form-control" name="email_1" value="***REMOVED******REMOVED***profile.email_1***REMOVED******REMOVED***" required>
+                                                <input type="text" class="form-control" name="email_1" value="{{profile.email_1}}" required>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Email 2</label>
-                                                 <input type="text" class="form-control" name="email_2" value="***REMOVED******REMOVED***profile.email_2***REMOVED******REMOVED***" required>
+                                                 <input type="text" class="form-control" name="email_2" value="{{profile.email_2}}" required>
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Address</label>
-                                                <input type="text" class="form-control" name="address" value="***REMOVED******REMOVED***profile.address***REMOVED******REMOVED***" required>
+                                                <input type="text" class="form-control" name="address" value="{{profile.address}}" required>
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Description</label>
-                                                <textarea class="form-control" name="description">***REMOVED******REMOVED***profile.description***REMOVED******REMOVED***</textarea>
+                                                <textarea class="form-control" name="description">{{profile.description}}</textarea>
                                             </div>
                                         </div>
                                         <div class="form-row pt-4 pb-2">
                                             <h4 class="text-center">Social LInks</h4>
                                         </div>
-                                        ***REMOVED***% for social in socials %***REMOVED***
+                                        {% for social in socials %}
                                         <div class="row form-row social-cont">
                                             <div class="col-10">
                                                 <div class="row">
                                                 <div class="form-group col-md-6">
                                                     <label>Name</label>
-                                                    <input type="text" class="form-control" name="name-***REMOVED******REMOVED***social.id***REMOVED******REMOVED***" value="***REMOVED******REMOVED***social.name***REMOVED******REMOVED***" required="">
+                                                    <input type="text" class="form-control" name="name-{{social.id}}" value="{{social.name}}" required="">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label>FA Logo</label>
-                                                    <input type="text" class="form-control" name="logo-***REMOVED******REMOVED***social.id***REMOVED******REMOVED***" value="***REMOVED******REMOVED***social.logo***REMOVED******REMOVED***" required="">
+                                                    <input type="text" class="form-control" name="logo-{{social.id}}" value="{{social.logo}}" required="">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label>Url</label>
-                                                    <input type="text" class="form-control" name="url-***REMOVED******REMOVED***social.id***REMOVED******REMOVED***" value="***REMOVED******REMOVED***social.url***REMOVED******REMOVED***" required="">
+                                                    <input type="text" class="form-control" name="url-{{social.id}}" value="{{social.url}}" required="">
                                                 </div> 
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-2">
                                                 <label class="d-md-block d-sm-none d-none">&nbsp;</label>
-                                                <a href="***REMOVED***% url 'social-delete' social.name|slugify social.id %***REMOVED***" class="btn btn-danger trash"><i class="far fa-trash-alt"></i></a>
+                                                <a href="{% url 'social-delete' social.name|slugify social.id %}" class="btn btn-danger trash"><i class="far fa-trash-alt"></i></a>
                                             </div>
                                         </div>
-                                        ***REMOVED***% endfor %***REMOVED***
+                                        {% endfor %}
                                         <div class="social-info">
                                             <div class="row form-row social-cont">
                                                 <div class="col-10">
@@ -199,12 +199,12 @@
 
         </div>
     </section>   
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}
 
-***REMOVED***% block javascript %***REMOVED***
+{% block javascript %}
     <script type="text/javascript">
-        $(function()***REMOVED***
-            $(".add-social").click(function(event)***REMOVED***
+        $(function(){
+            $(".add-social").click(function(event){
                 var input_num = parseInt($("#count").text());
                 input_num = input_num + 1;
                 $("#count").text(''+input_num+'');
@@ -234,12 +234,12 @@
                 
                 $(".social-info").append(content);
                 return false;
-            ***REMOVED***);
+            });
 
-            $(".social-info").on('click','.trash', function () ***REMOVED***
+            $(".social-info").on('click','.trash', function () {
                 $(this).closest('.social-cont').remove();
                 return false;
-            ***REMOVED***);
-        ***REMOVED***);
+            });
+        });
     </script>
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}

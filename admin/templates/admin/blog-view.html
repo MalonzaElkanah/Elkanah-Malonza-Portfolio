@@ -1,62 +1,62 @@
-***REMOVED***% extends "admin/base.html" %***REMOVED***
+{% extends "admin/base.html" %}
 
-***REMOVED***% block title %***REMOVED*** Admin - Blog Articles ***REMOVED***% endblock %***REMOVED***
+{% block title %} Admin - Blog Articles {% endblock %}
 
-***REMOVED***% load static %***REMOVED***
+{% load static %}
 
-***REMOVED***% block css %***REMOVED***
-    <link rel="stylesheet" href="***REMOVED***% static 'admin/bundles/datatables/datatables.min.css' %***REMOVED***">
-    <link rel="stylesheet" href="***REMOVED***% static 'admin/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css' %***REMOVED***">
-***REMOVED***% endblock %***REMOVED***
+{% block css %}
+    <link rel="stylesheet" href="{% static 'admin/bundles/datatables/datatables.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css' %}">
+{% endblock %}
 
-***REMOVED***% block sidenav %***REMOVED***                              
+{% block sidenav %}                              
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-home' %***REMOVED***" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
+        <a href="{% url 'admin-home' %}" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-messages' %***REMOVED***" class="nav-link"><i data-feather="message-square"></i><span>Messages</span></a>
+        <a href="{% url 'admin-messages' %}" class="nav-link"><i data-feather="message-square"></i><span>Messages</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-profile' %***REMOVED***" class="nav-link"><i data-feather="user"></i><span>Profile</span></a>
+        <a href="{% url 'admin-profile' %}" class="nav-link"><i data-feather="user"></i><span>Profile</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-projects' %***REMOVED***" class="nav-link"><i data-feather="codepen"></i><span>Projects</span></a>
+        <a href="{% url 'admin-projects' %}" class="nav-link"><i data-feather="codepen"></i><span>Projects</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-work' %***REMOVED***" class="nav-link"><i data-feather="clipboard"></i><span>Work</span></a>
+        <a href="{% url 'admin-work' %}" class="nav-link"><i data-feather="clipboard"></i><span>Work</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-education' %***REMOVED***" class="nav-link"><i data-feather="book-open"></i><span>Education</span></a>
+        <a href="{% url 'admin-education' %}" class="nav-link"><i data-feather="book-open"></i><span>Education</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-skills' %***REMOVED***" class="nav-link"><i data-feather="sliders"></i><span>Skills</span></a>
+        <a href="{% url 'admin-skills' %}" class="nav-link"><i data-feather="sliders"></i><span>Skills</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-services' %***REMOVED***" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
+        <a href="{% url 'admin-services' %}" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
     </li>  
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-prices' %***REMOVED***" class="nav-link"><i data-feather="shopping-bag"></i><span>Pricing</span></a>
+        <a href="{% url 'admin-prices' %}" class="nav-link"><i data-feather="shopping-bag"></i><span>Pricing</span></a>
     </li> 
     <li class="dropdown active">
-        <a href="***REMOVED***% url 'admin-blog' %***REMOVED***" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
+        <a href="{% url 'admin-blog' %}" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
     </li>          
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Settings</span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-settings' %***REMOVED***">App Settings</a></li>
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-profile-edit' %***REMOVED***">Profile Settings</a></li>
+            <li><a class="nav-link" href="{% url 'admin-settings' %}">App Settings</a></li>
+            <li><a class="nav-link" href="{% url 'admin-profile-edit' %}">Profile Settings</a></li>
         </ul>
     </li>
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="unlock"></i><span>Authentication</span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-change-password' %***REMOVED***">New-password</a></li>
-            <li><a class="nav-link" href="***REMOVED***% url 'logout' %***REMOVED***">Logout</a></li>
+            <li><a class="nav-link" href="{% url 'admin-change-password' %}">New-password</a></li>
+            <li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
         </ul>
     </li>                                   
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}
 
-***REMOVED***% block content %***REMOVED***
+{% block content %}
     <section class="section">
         <div class="section-body">
             <div class="row">
@@ -65,19 +65,19 @@
                         <div class="card-body">
                             <ul class="nav nav-pills">
                                 <li class="nav-item"> 
-                                    <a id="status-all" class="nav-link status-link active" href="#">All <span class="badge badge-white status-badge">***REMOVED******REMOVED***articles.paginator.count***REMOVED******REMOVED***</span></a>
+                                    <a id="status-all" class="nav-link status-link active" href="#">All <span class="badge badge-white status-badge">{{articles.paginator.count}}</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a id="status-draft" class="nav-link status-link" href="#">Publish <span class="badge badge-primary status-badge">***REMOVED******REMOVED***status_count.publish***REMOVED******REMOVED***</span></a>
+                                    <a id="status-draft" class="nav-link status-link" href="#">Publish <span class="badge badge-primary status-badge">{{status_count.publish}}</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a id="status-draft" class="nav-link status-link" href="#">Draft <span class="badge badge-primary status-badge">***REMOVED******REMOVED***status_count.draft***REMOVED******REMOVED***</span></a>
+                                    <a id="status-draft" class="nav-link status-link" href="#">Draft <span class="badge badge-primary status-badge">{{status_count.draft}}</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a id="status-pending" class="nav-link status-link" href="#">Pending <span class="badge badge-primary  status-badge">***REMOVED******REMOVED***status_count.pending***REMOVED******REMOVED***</span></a>
+                                    <a id="status-pending" class="nav-link status-link" href="#">Pending <span class="badge badge-primary  status-badge">{{status_count.pending}}</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a id="status-trash" class="nav-link status-link" href="#">Trash <span class="badge badge-primary status-badge">***REMOVED******REMOVED***status_count.trash***REMOVED******REMOVED***</span></a>
+                                    <a id="status-trash" class="nav-link status-link" href="#">Trash <span class="badge badge-primary status-badge">{{status_count.trash}}</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -90,7 +90,7 @@
                         <div class="card-header">
                             <h4>All Posts</h4>
                             <div class="card-header-action">
-                                <a href="***REMOVED***% url 'admin-blog-add' %***REMOVED***" class="btn btn-primary">
+                                <a href="{% url 'admin-blog-add' %}" class="btn btn-primary">
                                     <i class="fas fa-plus"></i>
                                     Add Post
                                  </a>
@@ -135,8 +135,8 @@
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
-                                        ***REMOVED***% for article in articles %***REMOVED***
-                                        <tr class="article-all article-***REMOVED******REMOVED***article.status***REMOVED******REMOVED***"> 
+                                        {% for article in articles %}
+                                        <tr class="article-all article-{{article.status}}"> 
                                             <td>
                                                 <div class="custom-checkbox custom-control">
                                                   <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input"
@@ -146,49 +146,49 @@
                                             </td>
                                             <td>
                                                 <a href="#">
-                                                  <img alt="image" src="***REMOVED******REMOVED***article.image.url***REMOVED******REMOVED***" class="rounded-circle" width="35"
+                                                  <img alt="image" src="{{article.image.url}}" class="rounded-circle" width="35"
                                                     data-toggle="title" title="">
-                                                  <span class="d-inline-block ml-1">***REMOVED******REMOVED***article.title***REMOVED******REMOVED***</span>
+                                                  <span class="d-inline-block ml-1">{{article.title}}</span>
                                                 </a>
                                                 <div class="table-links">
-                                                  <a href="***REMOVED***% url 'article' article.title|slugify article.id %***REMOVED***">View</a>
+                                                  <a href="{% url 'article' article.title|slugify article.id %}">View</a>
                                                   <div class="bullet"></div>
-                                                  <a href="***REMOVED***% url 'admin-blog-edit' article.title|slugify article.id %***REMOVED***">Edit</a>
+                                                  <a href="{% url 'admin-blog-edit' article.title|slugify article.id %}">Edit</a>
                                                   <div class="bullet"></div>
-                                                  <a href="***REMOVED***% url 'admin-blog-trash' article.title|slugify article.id %***REMOVED***" class="text-danger">Trash</a>
+                                                  <a href="{% url 'admin-blog-trash' article.title|slugify article.id %}" class="text-danger">Trash</a>
                                                 </div>
                                             </td>
                                             <td>
-                                            ***REMOVED***% if article.series.name == "" or article.series.name == None %***REMOVED***
+                                            {% if article.series.name == "" or article.series.name == None %}
                                                 [None]
-                                            ***REMOVED***% else %***REMOVED***
-                                                <a href="#">***REMOVED******REMOVED***article.series.name***REMOVED******REMOVED***</a>
-                                            ***REMOVED***% endif %***REMOVED***
+                                            {% else %}
+                                                <a href="#">{{article.series.name}}</a>
+                                            {% endif %}
                                             </td>
                                             <td>
-                                                <a href="***REMOVED***% url 'articles-category' article.category.name|slugify article.category.id %***REMOVED***">***REMOVED******REMOVED***article.category.name***REMOVED******REMOVED***</a>
+                                                <a href="{% url 'articles-category' article.category.name|slugify article.category.id %}">{{article.category.name}}</a>
                                             </td>
-                                            <td>***REMOVED******REMOVED***article.date_created***REMOVED******REMOVED***</td>
-                                            <td>***REMOVED******REMOVED***article.tags***REMOVED******REMOVED***</td>
-                                            <td>***REMOVED******REMOVED***article.views***REMOVED******REMOVED***</td>
+                                            <td>{{article.date_created}}</td>
+                                            <td>{{article.tags}}</td>
+                                            <td>{{article.views}}</td>
                                             <td> 
-                                            ***REMOVED***% if article.status == 'Pending' %***REMOVED***
-                                                <div class="badge badge-warning">***REMOVED******REMOVED***article.status***REMOVED******REMOVED***</div>
-                                            ***REMOVED***% elif article.status == 'Publish' %***REMOVED***
-                                                <div class="badge badge-primary">***REMOVED******REMOVED***article.status***REMOVED******REMOVED***</div>
-                                            ***REMOVED***% elif article.status == 'Draft' %***REMOVED***
-                                                <div class="badge badge-secondary">***REMOVED******REMOVED***article.status***REMOVED******REMOVED***</div>
-                                            ***REMOVED***% elif article.status == 'Trash' %***REMOVED***
-                                                <div class="badge badge-danger">***REMOVED******REMOVED***article.status***REMOVED******REMOVED***</div>
-                                            ***REMOVED***% else %***REMOVED***
-                                                <div class="badge badge-primary">***REMOVED******REMOVED***article.status***REMOVED******REMOVED***</div>
-                                            ***REMOVED***% endif %***REMOVED***
+                                            {% if article.status == 'Pending' %}
+                                                <div class="badge badge-warning">{{article.status}}</div>
+                                            {% elif article.status == 'Publish' %}
+                                                <div class="badge badge-primary">{{article.status}}</div>
+                                            {% elif article.status == 'Draft' %}
+                                                <div class="badge badge-secondary">{{article.status}}</div>
+                                            {% elif article.status == 'Trash' %}
+                                                <div class="badge badge-danger">{{article.status}}</div>
+                                            {% else %}
+                                                <div class="badge badge-primary">{{article.status}}</div>
+                                            {% endif %}
                                             </td>
                                             <td>
-                                                <a href="***REMOVED***% url 'admin-blog-comments' article.title|slugify article.id %***REMOVED***" class="btn btn-outline-primary">Comments(***REMOVED******REMOVED***article.comments.count***REMOVED******REMOVED***)</a>
+                                                <a href="{% url 'admin-blog-comments' article.title|slugify article.id %}" class="btn btn-outline-primary">Comments({{article.comments.count}})</a>
                                             </td>
                                         </tr>
-                                        ***REMOVED***% endfor %***REMOVED***
+                                        {% endfor %}
                                     </table>
                                 </div>
                                 <div class="float-left">
@@ -197,31 +197,31 @@
                                 <div class="float-right">
                                     <nav>
                                         <ul class="pagination">
-                                            ***REMOVED***% if articles.has_previous %***REMOVED***
+                                            {% if articles.has_previous %}
                                             <li class="page-item">
-                                                <a class="page-link" href="?page=***REMOVED******REMOVED***articles.previous_page_number***REMOVED******REMOVED***" aria-label="Previous">
-                                            ***REMOVED***% else %***REMOVED***
+                                                <a class="page-link" href="?page={{articles.previous_page_number}}" aria-label="Previous">
+                                            {% else %}
                                             <li class="page-item disabled">
                                                 <a class="page-link" href="#" aria-label="Previous">
-                                            ***REMOVED***% endif %***REMOVED***
+                                            {% endif %}
                                                     <span aria-hidden="true">&laquo;</span>
                                                     <span class="sr-only">Previous</span>
                                                 </a>
                                             </li>
 
-                                            ***REMOVED***% for p in articles.paginator.page_range %***REMOVED***
-                                            <li class="page-item ***REMOVED***% if articles.number == p %***REMOVED***active***REMOVED***% endif %***REMOVED***">
-                                                <a class="page-link" href="?page=***REMOVED******REMOVED***p***REMOVED******REMOVED***">***REMOVED******REMOVED***p***REMOVED******REMOVED***</a>
+                                            {% for p in articles.paginator.page_range %}
+                                            <li class="page-item {% if articles.number == p %}active{% endif %}">
+                                                <a class="page-link" href="?page={{p}}">{{p}}</a>
                                             </li>
-                                            ***REMOVED***% endfor %***REMOVED***
+                                            {% endfor %}
 
-                                            ***REMOVED***% if articles.has_next %***REMOVED***
+                                            {% if articles.has_next %}
                                             <li class="page-item">
-                                                <a class="page-link" href="?page=***REMOVED******REMOVED***articles.next_page_number***REMOVED******REMOVED***" aria-label="Next">
-                                            ***REMOVED***% else %***REMOVED***
+                                                <a class="page-link" href="?page={{articles.next_page_number}}" aria-label="Next">
+                                            {% else %}
                                              <li class="page-item disabled">
                                                 <a class="page-link" href="#" aria-label="Next">
-                                            ***REMOVED***% endif %***REMOVED***
+                                            {% endif %}
                                                     <span aria-hidden="true">&raquo;</span>
                                                     <span class="sr-only">Next</span>
                                                 </a>
@@ -235,51 +235,51 @@
                 </div>
             </div>
         </section>
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}
 
-***REMOVED***% block javascript %***REMOVED***
-    <script src="***REMOVED***% static 'admin/bundles/datatables/datatables.min.js' %***REMOVED***"></script>
-    <script src="***REMOVED***% static 'admin/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js' %***REMOVED***"></script>
+{% block javascript %}
+    <script src="{% static 'admin/bundles/datatables/datatables.min.js' %}"></script>
+    <script src="{% static 'admin/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js' %}"></script>
 
     <script type="text/javascript">
 
-        $(".status-link").click(function(event)***REMOVED***
+        $(".status-link").click(function(event){
             event.preventDefault();
             $(".status-link").removeClass('active');
             $(this).addClass('active');
             $(".status-badge").removeClass('badge-white').addClass('badge-primary');
             $(this).children().removeClass('badge-primary').addClass('badge-white');
             var my_id = $(this).attr('id');
-            if (my_id==="status-all")***REMOVED***
+            if (my_id==="status-all"){
                 $(".article-all").show();
-            ***REMOVED*** else if(my_id==="status-draft")***REMOVED***
+            } else if(my_id==="status-draft"){
                 $(".article-all").hide();
                 $(".article-Draft").show();
-            ***REMOVED*** else if(my_id==="status-pending")***REMOVED***
+            } else if(my_id==="status-pending"){
                 $(".article-all").hide();
                 $(".article-Pending").show();
-            ***REMOVED*** else if(my_id==="status-trash")***REMOVED***
+            } else if(my_id==="status-trash"){
                 $(".article-all").hide();
                 $(".article-Trash").show();
-            ***REMOVED***else***REMOVED***
+            }else{
                 alert("no status");                
                 $(".article-all").show();
-            ***REMOVED***
-        ***REMOVED***);
+            }
+        });
 
-        $("#table-1").dataTable(***REMOVED***
+        $("#table-1").dataTable({
             "columnDefs": [
-                ***REMOVED*** "sortable": false, "targets": [0, 1] ***REMOVED***
+                { "sortable": false, "targets": [0, 1] }
             ],
             order: [[1, "asc"]] //column indexes is zero based
-        ***REMOVED***);
+        });
 
-        $("#status-pending").click(function(event)***REMOVED***
+        $("#status-pending").click(function(event){
             event.preventDefault();
             $(".status-link").removeClass('active');
             $(this).addClass('active');
             alert("am workind");
-        ***REMOVED***);
+        });
     </script>
 
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}

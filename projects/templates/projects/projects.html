@@ -3,13 +3,13 @@
 <head>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    ***REMOVED***% load static %***REMOVED***
+    {% load static %}
 	<!-- Frameworks CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/00b6dc780b.js" crossorigin="anonymous"></script>
 
     <!-- Custom CSS -->
-    <link href="***REMOVED***% static 'main/css/style.css' %***REMOVED***" rel="stylesheet">
+    <link href="{% static 'main/css/style.css' %}" rel="stylesheet">
 
 	<title>Elkanah Malonza | My Projects</title>
 </head>
@@ -23,28 +23,28 @@
             <div class="collapse navbar-collapse" id="navbarMain">
                 <ul class="navbar-nav mb-2 mb-lg-0 w-100 justify-content-around">
                     <li class="nav-item">
-                        <a class="nav-link fs-5" aria-current="page" href="***REMOVED***% url 'index' %***REMOVED***">Home</a>
+                        <a class="nav-link fs-5" aria-current="page" href="{% url 'index' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-5" href="***REMOVED***% url 'index' %***REMOVED***#section-about">About</a>
+                        <a class="nav-link fs-5" href="{% url 'index' %}#section-about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-5" href="***REMOVED***% url 'index' %***REMOVED***#section-skills">Skills</a>
+                        <a class="nav-link fs-5" href="{% url 'index' %}#section-skills">Skills</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-5" href="***REMOVED***% url 'index' %***REMOVED***#section-experiences">Experiences</a>
+                        <a class="nav-link fs-5" href="{% url 'index' %}#section-experiences">Experiences</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-5 active" href="***REMOVED***% url 'projects' %***REMOVED***">Project</a>
+                        <a class="nav-link fs-5 active" href="{% url 'projects' %}">Project</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-5" href="***REMOVED***% url 'index' %***REMOVED***#section-pricing">Pricing</a>
+                        <a class="nav-link fs-5" href="{% url 'index' %}#section-pricing">Pricing</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-5" href="***REMOVED***% url 'blog' %***REMOVED***">Blog</a>
+                        <a class="nav-link fs-5" href="{% url 'blog' %}">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-5" href="***REMOVED***% url 'index' %***REMOVED***#section-contact">Contact</a>
+                        <a class="nav-link fs-5" href="{% url 'index' %}#section-contact">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -61,13 +61,13 @@
             <!-- Article-Post Section Start -->
             <div class="col-md-8">
                 <div class="row text-center p-4">
-                    <h3>***REMOVED******REMOVED***page_name***REMOVED******REMOVED***</h3>
+                    <h3>{{page_name}}</h3>
                 </div>
                 <div class="row pb-2 d-flex justify-content-between">
-                    <h5 class="col ms-2">Projects: <span class="reviews-count text-muted">Page ***REMOVED******REMOVED***projects.number***REMOVED******REMOVED*** of ***REMOVED******REMOVED***projects.paginator.num_pages***REMOVED******REMOVED***.</span></h5>
+                    <h5 class="col ms-2">Projects: <span class="reviews-count text-muted">Page {{projects.number}} of {{projects.paginator.num_pages}}.</span></h5>
                 </div>
                 <!---div class="row pb-2 d-flex justify-content-between">
-                    <h5 class="col ms-2">Projects <span class="reviews-count text-muted">***REMOVED******REMOVED***page_name***REMOVED******REMOVED***</span></h5>
+                    <h5 class="col ms-2">Projects <span class="reviews-count text-muted">{{page_name}}</span></h5>
                     <div class="col d-flex align-items-center">
                         <label>Filter by: </label>
                         <a href="#" class="btn btn-outline-dark ms-2">Rating <i class="fas fa-plus-circle"></i></a>
@@ -75,25 +75,25 @@
                     </div>
                 </div-->
                 <div class="row">
-                ***REMOVED***% for project in projects %***REMOVED***
-                    <div class="col-12 tech-all ***REMOVED***% for keyword in project.keywords %***REMOVED*** tech-***REMOVED******REMOVED***keyword.technology|cut:' '***REMOVED******REMOVED*** ***REMOVED***% endfor %***REMOVED***">
+                {% for project in projects %}
+                    <div class="col-12 tech-all {% for keyword in project.keywords %} tech-{{keyword.technology|cut:' '}} {% endfor %}">
                         <div class="card shadow bg-body rounded mb-3">
                             <div class="row g-0">
                                 <div class="col-md-4 align-items-center">
-                                    <img src="***REMOVED******REMOVED***project.image.url***REMOVED******REMOVED***" class="bd-placeholder-img border rounded" width="100%" height="200" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <img src="{{project.image.url}}" class="bd-placeholder-img border rounded" width="100%" height="200" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
-                                        <h5 class="card-title">***REMOVED******REMOVED***project.name***REMOVED******REMOVED***</h5>
+                                        <h5 class="card-title">{{project.name}}</h5>
                                         <p class="card-text text-success">
-                                        ***REMOVED***% for keyword in project.highlight_keywords %***REMOVED***
-                                            ***REMOVED******REMOVED***keyword.technology***REMOVED******REMOVED***, 
-                                        ***REMOVED***% endfor %***REMOVED***
+                                        {% for keyword in project.highlight_keywords %}
+                                            {{keyword.technology}}, 
+                                        {% endfor %}
                                         </p>
-                                        <p class="mb-auto">***REMOVED******REMOVED***project.description|truncatechars_html:130|safe***REMOVED******REMOVED***</p>
+                                        <p class="mb-auto">{{project.description|truncatechars_html:130|safe}}</p>
                                         <div class="row justify-content-between">
-                                            <div class="col"><small class="text-muted">***REMOVED******REMOVED***project.date***REMOVED******REMOVED***</small></div>
-                                            <div class="col text-end"><a href="***REMOVED***% url 'project' project.name|slugify project.id %***REMOVED***" class="btn btn-primary">Details</a></div>
+                                            <div class="col"><small class="text-muted">{{project.date}}</small></div>
+                                            <div class="col text-end"><a href="{% url 'project' project.name|slugify project.id %}" class="btn btn-primary">Details</a></div>
                                         </div>
 
                                     </div>
@@ -101,36 +101,36 @@
                             </div>
                         </div>
                     </div>
-                ***REMOVED***% endfor %***REMOVED***
+                {% endfor %}
                 </div>
                 <div class="row pt-3">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center">
-                        ***REMOVED***% if projects.has_previous %***REMOVED***
+                        {% if projects.has_previous %}
                             <li class="page-item">
-                                <a href="?page=***REMOVED******REMOVED***projects.previous_page_number***REMOVED******REMOVED***" class="page-link">Previous</a>
+                                <a href="?page={{projects.previous_page_number}}" class="page-link">Previous</a>
                             </li>
-                        ***REMOVED***% else %***REMOVED***
+                        {% else %}
                             <li class="page-item disabled">
                                 <a class="page-link">Previous</a>
                             </li>
-                        ***REMOVED***% endif %***REMOVED***
+                        {% endif %}
 
-                        ***REMOVED***% for p in projects.paginator.page_range %***REMOVED***
-                            <li class="page-item ***REMOVED***% if projects.number == p %***REMOVED***active***REMOVED***% endif %***REMOVED***">
-                                <a class="page-link" href="?page=***REMOVED******REMOVED***p***REMOVED******REMOVED***">***REMOVED******REMOVED***p***REMOVED******REMOVED***</a>
+                        {% for p in projects.paginator.page_range %}
+                            <li class="page-item {% if projects.number == p %}active{% endif %}">
+                                <a class="page-link" href="?page={{p}}">{{p}}</a>
                             </li>
-                        ***REMOVED***% endfor %***REMOVED***
+                        {% endfor %}
 
-                        ***REMOVED***% if projects.has_next %***REMOVED***
+                        {% if projects.has_next %}
                             <li class="page-item">
-                                <a class="page-link" href="?page=***REMOVED******REMOVED***projects.next_page_number***REMOVED******REMOVED***">Next</a>
+                                <a class="page-link" href="?page={{projects.next_page_number}}">Next</a>
                             </li>
-                        ***REMOVED***% else %***REMOVED***
+                        {% else %}
                             <li class="page-item disabled">
                                 <a class="page-link" href="#">Next</a>
                             </li>
-                        ***REMOVED***% endif %***REMOVED***
+                        {% endif %}
                         </ul>
                     </nav>
                 </div>
@@ -149,7 +149,7 @@
                                 <h5>Search Project</h5>
                             </div>
                             <div class="col-12 pb-5">
-                                <form method="get" action="***REMOVED***% url 'project-search' %***REMOVED***">
+                                <form method="get" action="{% url 'project-search' %}">
                                 <div class="mb3 pb-3">
                                     <input class="form-control" type="text" name="search">
                                 </div>
@@ -167,14 +167,14 @@
                             <div class="col-12 pb-5">
                                 <div class="mb3">
 
-                                    ***REMOVED***% for keyword in keywords %***REMOVED***
+                                    {% for keyword in keywords %}
                                     <div class="form-check pb-2">
-                                        <input class="form-check-input filter-tech" type="checkbox" name="techKeywordcheckbox" id="techKeywordcheckbox***REMOVED******REMOVED***forloop.counter***REMOVED******REMOVED***" value="***REMOVED******REMOVED***keyword***REMOVED******REMOVED***" checked="">
-                                        <label class="form-check-label text-muted" for="techKeywordcheckbox***REMOVED******REMOVED***forloop.counter***REMOVED******REMOVED***">
-                                            ***REMOVED******REMOVED***keyword***REMOVED******REMOVED***
+                                        <input class="form-check-input filter-tech" type="checkbox" name="techKeywordcheckbox" id="techKeywordcheckbox{{forloop.counter}}" value="{{keyword}}" checked="">
+                                        <label class="form-check-label text-muted" for="techKeywordcheckbox{{forloop.counter}}">
+                                            {{keyword}}
                                         </label>
                                     </div>
-                                    ***REMOVED***% endfor %***REMOVED***
+                                    {% endfor %}
                                 </div>
                             </div>
 
@@ -186,9 +186,9 @@
                     <div class="p-4">
                         <h4>Technologies</h4>
                         <ol class="list-unstyled text-decoration-none">
-                        ***REMOVED***% for keyword in keywords %***REMOVED***
-                            <li><a href="***REMOVED***% url 'project-technology' keyword|slugify %***REMOVED***" class="text-decoration-none">***REMOVED******REMOVED***keyword***REMOVED******REMOVED***</a></li>
-                        ***REMOVED***% endfor %***REMOVED***
+                        {% for keyword in keywords %}
+                            <li><a href="{% url 'project-technology' keyword|slugify %}" class="text-decoration-none">{{keyword}}</a></li>
+                        {% endfor %}
                         </ol>
                     </div>                    
                 </div>
@@ -205,14 +205,14 @@
     <div class="container">
         <footer class="py-3 my-4">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="***REMOVED***% url 'index' %***REMOVED***" class="nav-link px-2 text-muted">Home</a></li>
-                <li class="nav-item"><a href="***REMOVED***% url 'index' %***REMOVED***#section-about" class="nav-link px-2 text-muted">About</a></li>
-                <li class="nav-item"><a href="***REMOVED***% url 'index' %***REMOVED***#section-skills" class="nav-link px-2 text-muted">Skills</a></li>
-                <li class="nav-item"><a href="***REMOVED***% url 'index' %***REMOVED***#section-experiences" class="nav-link px-2 text-muted">Experiences</a></li>
-                <li class="nav-item"><a href="***REMOVED***% url 'projects' %***REMOVED***" class="nav-link px-2 text-muted">Project</a></li>
-                <li class="nav-item"><a href="***REMOVED***% url 'index' %***REMOVED***#section-pricing" class="nav-link px-2 text-muted">Pricing</a></li>
-                <li class="nav-item"><a href="***REMOVED***% url 'blog' %***REMOVED***" class="nav-link px-2 text-muted">Blog</a></li>
-                <li class="nav-item"><a href="***REMOVED***% url 'index' %***REMOVED***#section-contact" class="nav-link px-2 text-muted">Contact</a></li>
+                <li class="nav-item"><a href="{% url 'index' %}" class="nav-link px-2 text-muted">Home</a></li>
+                <li class="nav-item"><a href="{% url 'index' %}#section-about" class="nav-link px-2 text-muted">About</a></li>
+                <li class="nav-item"><a href="{% url 'index' %}#section-skills" class="nav-link px-2 text-muted">Skills</a></li>
+                <li class="nav-item"><a href="{% url 'index' %}#section-experiences" class="nav-link px-2 text-muted">Experiences</a></li>
+                <li class="nav-item"><a href="{% url 'projects' %}" class="nav-link px-2 text-muted">Project</a></li>
+                <li class="nav-item"><a href="{% url 'index' %}#section-pricing" class="nav-link px-2 text-muted">Pricing</a></li>
+                <li class="nav-item"><a href="{% url 'blog' %}" class="nav-link px-2 text-muted">Blog</a></li>
+                <li class="nav-item"><a href="{% url 'index' %}#section-contact" class="nav-link px-2 text-muted">Contact</a></li>
             </ul>
             <p class="text-center text-muted">&copy; 2021 Elkanah-Malonza, Inc</p>
         </footer>
@@ -220,39 +220,39 @@
     <!-- /Footer Section Ends-->
 
     <!-- JS Libraies -->
-    <script src="***REMOVED***% static 'main/js/jquery-3.6.0.min.js' %***REMOVED***"></script>
+    <script src="{% static 'main/js/jquery-3.6.0.min.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script type="text/javascript">
         // Filter Project Technology
-        $("input[name=techKeywordcheckbox]").change(function()***REMOVED***
+        $("input[name=techKeywordcheckbox]").change(function(){
             $(".tech-all").hide();
             var num = 0;
-            $("input:checkbox[name=techKeywordcheckbox]:checked").each(function()***REMOVED***
+            $("input:checkbox[name=techKeywordcheckbox]:checked").each(function(){
                 var data = $(this).val();
                 var $items = $(".tech-"+data);
-                if ($items.length)***REMOVED***
+                if ($items.length){
                     $(".tech-"+data).show();
                     //num = num + parseInt($(".review-"+data).length);
-                ***REMOVED***
-            ***REMOVED***);
+                }
+            });
             //$(".reviews-count").html(num);
-        ***REMOVED***);
+        });
 
         // Load Default Filter on Load
-        $(function() ***REMOVED***
+        $(function() {
             $(".tech-all").show();
-            $("input:checkbox[name=techKeywordcheckbox]").each(function()***REMOVED***
+            $("input:checkbox[name=techKeywordcheckbox]").each(function(){
                 $(this).prop('checked', true);
-            ***REMOVED***);
-        ***REMOVED***)
+            });
+        })
 
         //Reset Filters
-        $("#reset-filters").click(function(event)***REMOVED***
+        $("#reset-filters").click(function(event){
             $(".tech-all").show();
-            $("input:checkbox[name=techKeywordcheckbox]").each(function()***REMOVED***
+            $("input:checkbox[name=techKeywordcheckbox]").each(function(){
                 $(this).prop('checked', true);
-            ***REMOVED***);
-        ***REMOVED***);
+            });
+        });
     </script>
 </body>
 </html>

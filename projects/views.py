@@ -13,14 +13,14 @@ def projects(request):
 	paginator = Paginator(projects, 10)
 	page_number = request.GET.get('page', 1)
 	projects = paginator.get_page(page_number)
-	return render(request, 'projects/projects.html', ***REMOVED***'projects': projects, 'keywords': keywords, 
-		'page_name': page_name***REMOVED***)
+	return render(request, 'projects/projects.html', {'projects': projects, 'keywords': keywords, 
+		'page_name': page_name})
 
 
 def project(request, slug, project_id):
 	project = Project.objects.get(id=project_id)
 	keywords = unique_project_keywords()
-	return render(request, 'projects/project.html', ***REMOVED***'project': project, 'keywords': keywords***REMOVED***)
+	return render(request, 'projects/project.html', {'project': project, 'keywords': keywords})
 
 
 def project_technology(request, slug):
@@ -36,8 +36,8 @@ def project_technology(request, slug):
 	paginator = Paginator(projects, 10)
 	page_number = request.GET.get('page', 1)
 	projects = paginator.get_page(page_number)
-	return render(request, 'projects/projects.html', ***REMOVED***'projects': projects, 'keywords': keywords, 
-		'page_name': page_name***REMOVED***)
+	return render(request, 'projects/projects.html', {'projects': projects, 'keywords': keywords, 
+		'page_name': page_name})
 
 
 def project_search(request):
@@ -65,8 +65,8 @@ def project_search(request):
 	keywords = unique_project_keywords()
 	page_name = 'Search Results for "' + str(search) + '" Projects'
 
-	return render(request, 'projects/projects.html', ***REMOVED***'projects': projects, 'keywords': keywords, 
-		'page_name': page_name***REMOVED***)
+	return render(request, 'projects/projects.html', {'projects': projects, 'keywords': keywords, 
+		'page_name': page_name})
 
 
 def unique_project_keywords():

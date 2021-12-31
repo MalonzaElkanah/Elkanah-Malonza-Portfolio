@@ -1,57 +1,57 @@
-***REMOVED***% extends "admin/base.html" %***REMOVED***
+{% extends "admin/base.html" %}
 
-***REMOVED***% block title %***REMOVED*** Admin - Work Update ***REMOVED***% endblock %***REMOVED***
+{% block title %} Admin - Work Update {% endblock %}
 
-***REMOVED***% load static %***REMOVED***
+{% load static %}
 
-***REMOVED***% block sidenav %***REMOVED***                              
+{% block sidenav %}                              
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-home' %***REMOVED***" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
+        <a href="{% url 'admin-home' %}" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-messages' %***REMOVED***" class="nav-link"><i data-feather="message-square"></i><span>Messages</span></a>
+        <a href="{% url 'admin-messages' %}" class="nav-link"><i data-feather="message-square"></i><span>Messages</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-profile' %***REMOVED***" class="nav-link"><i data-feather="user"></i><span>Profile</span></a>
+        <a href="{% url 'admin-profile' %}" class="nav-link"><i data-feather="user"></i><span>Profile</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-projects' %***REMOVED***" class="nav-link"><i data-feather="codepen"></i><span>Projects</span></a>
+        <a href="{% url 'admin-projects' %}" class="nav-link"><i data-feather="codepen"></i><span>Projects</span></a>
     </li>
     <li class="dropdown active">
-        <a href="***REMOVED***% url 'admin-work' %***REMOVED***" class="nav-link"><i data-feather="clipboard"></i><span>Work</span></a>
+        <a href="{% url 'admin-work' %}" class="nav-link"><i data-feather="clipboard"></i><span>Work</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-education' %***REMOVED***" class="nav-link"><i data-feather="book-open"></i><span>Education</span></a>
+        <a href="{% url 'admin-education' %}" class="nav-link"><i data-feather="book-open"></i><span>Education</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-skills' %***REMOVED***" class="nav-link"><i data-feather="sliders"></i><span>Skills</span></a>
+        <a href="{% url 'admin-skills' %}" class="nav-link"><i data-feather="sliders"></i><span>Skills</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-services' %***REMOVED***" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
+        <a href="{% url 'admin-services' %}" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
     </li>  
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-prices' %***REMOVED***" class="nav-link"><i data-feather="shopping-bag"></i><span>Pricing</span></a>
+        <a href="{% url 'admin-prices' %}" class="nav-link"><i data-feather="shopping-bag"></i><span>Pricing</span></a>
     </li> 
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-blog' %***REMOVED***" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
+        <a href="{% url 'admin-blog' %}" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
     </li>          
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Settings</span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-settings' %***REMOVED***">App Settings</a></li>
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-profile-edit' %***REMOVED***">Profile Settings</a></li>
+            <li><a class="nav-link" href="{% url 'admin-settings' %}">App Settings</a></li>
+            <li><a class="nav-link" href="{% url 'admin-profile-edit' %}">Profile Settings</a></li>
         </ul>
     </li>
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="unlock"></i><span>Authentication</span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-change-password' %***REMOVED***">New-password</a></li>
-            <li><a class="nav-link" href="***REMOVED***% url 'logout' %***REMOVED***">Logout</a></li>
+            <li><a class="nav-link" href="{% url 'admin-change-password' %}">New-password</a></li>
+            <li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
         </ul>
     </li>                                   
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}
 
-***REMOVED***% block content %***REMOVED***
+{% block content %}
     <section class="section">
         <div class="section-body"> 
 
@@ -62,62 +62,62 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12">
-                                    ***REMOVED***% if state == 'ADD_STATE' %***REMOVED***
-                                    <form method="post" action="***REMOVED***% url 'admin-work-add' %***REMOVED***">
-                                    ***REMOVED***% elif state == 'EDIT_STATE' %***REMOVED***
-                                    <form method="post" action="***REMOVED***% url 'admin-work-edit' work.position|slugify work.id %***REMOVED***">
-                                    ***REMOVED***% else %***REMOVED***
-                                    <form method="post" action="***REMOVED***% url 'admin-work-add' %***REMOVED***">
-                                    ***REMOVED***% endif %***REMOVED***
-                                        ***REMOVED***% csrf_token %***REMOVED***
-                                        <input type="hidden" name="profile" value="***REMOVED******REMOVED***profile.id***REMOVED******REMOVED***">
+                                    {% if state == 'ADD_STATE' %}
+                                    <form method="post" action="{% url 'admin-work-add' %}">
+                                    {% elif state == 'EDIT_STATE' %}
+                                    <form method="post" action="{% url 'admin-work-edit' work.position|slugify work.id %}">
+                                    {% else %}
+                                    <form method="post" action="{% url 'admin-work-add' %}">
+                                    {% endif %}
+                                        {% csrf_token %}
+                                        <input type="hidden" name="profile" value="{{profile.id}}">
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Company</label>
-                                                <input type="text" class="form-control" name="company" value="***REMOVED******REMOVED***work.company***REMOVED******REMOVED***" required>
+                                                <input type="text" class="form-control" name="company" value="{{work.company}}" required>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Position</label>
-                                                <input type="text" class="form-control" name="position" value="***REMOVED******REMOVED***work.position***REMOVED******REMOVED***" required>
+                                                <input type="text" class="form-control" name="position" value="{{work.position}}" required>
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Location</label>
-                                                <input type="text" class="form-control" name="location" value="***REMOVED******REMOVED***work.location***REMOVED******REMOVED***" required>
+                                                <input type="text" class="form-control" name="location" value="{{work.location}}" required>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>Website</label>
-                                                <input type="text" class="form-control" name="website" value="***REMOVED******REMOVED***work.website***REMOVED******REMOVED***" required>
+                                                <input type="text" class="form-control" name="website" value="{{work.website}}" required>
                                             </div>
                                         </div>
 
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label>Start Date</label>
-                                                <input type="text" class="form-control" name="start_date" placeholder="YYYY-MM-DD" value="***REMOVED******REMOVED***work.start_date|date:"Y-m-d"***REMOVED******REMOVED***" required>
+                                                <input type="text" class="form-control" name="start_date" placeholder="YYYY-MM-DD" value="{{work.start_date|date:"Y-m-d"}}" required>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label>End Date</label>
-                                                 <input type="text" class="form-control" name="end_date" value="***REMOVED******REMOVED***work.end_date|date:"Y-m-d"***REMOVED******REMOVED***" required>
+                                                 <input type="text" class="form-control" name="end_date" value="{{work.end_date|date:"Y-m-d"}}" required>
                                             </div>
                                         </div>
-                                        ***REMOVED***% for highlight in work.highlights %***REMOVED***
+                                        {% for highlight in work.highlights %}
                                         <div class="edit-highlight-info">
                                             <div class="row form-row highlight-cont">
                                                 <div class="col-10">
                                                     <div class="form-group">
                                                         <label>Highlight</label>
-                                                        <input type="text" class="form-control" name="name-***REMOVED******REMOVED***highlight.id***REMOVED******REMOVED***" value="***REMOVED******REMOVED***highlight.name***REMOVED******REMOVED***" required>
+                                                        <input type="text" class="form-control" name="name-{{highlight.id}}" value="{{highlight.name}}" required>
                                                     </div> 
                                                 </div>
                                                 <div class="col-12 col-md-2">
                                                     <label class="d-md-block d-sm-none d-none">&nbsp;</label>
-                                                    <a href="***REMOVED***% url 'work-highlight-delete' highlight.name|slugify highlight.id %***REMOVED***" class="btn btn-danger trash"><i class="far fa-trash-alt"></i></a>
+                                                    <a href="{% url 'work-highlight-delete' highlight.name|slugify highlight.id %}" class="btn btn-danger trash"><i class="far fa-trash-alt"></i></a>
                                                 </div>
                                             </div>
                                         </div>
-                                        ***REMOVED***% endfor %***REMOVED***
+                                        {% endfor %}
                                         <div class="highlight-info">
                                             <div class="row form-row highlight-cont">
                                                 <div class="col-10">
@@ -154,12 +154,12 @@
 
         </div>
     </section>   
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}
 
-***REMOVED***% block javascript %***REMOVED***
+{% block javascript %}
     <script type="text/javascript">
-        $(function()***REMOVED***
-            $(".add-highlight").click(function(event)***REMOVED***
+        $(function(){
+            $(".add-highlight").click(function(event){
                 var input_num = parseInt($("#count").text());
                 input_num = input_num + 1;
                 $("#count").text(''+input_num+'');
@@ -179,13 +179,13 @@
                 
                 $(".highlight-info").append(content);
                 return false;
-            ***REMOVED***);
+            });
 
-            $(".highlight-info").on('click','.trash', function () ***REMOVED***
+            $(".highlight-info").on('click','.trash', function () {
                 $(this).closest('.highlight-cont').remove();
                 return false;
-            ***REMOVED***);
-        ***REMOVED***);
+            });
+        });
     </script>
 
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}

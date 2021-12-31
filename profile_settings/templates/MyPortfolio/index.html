@@ -3,17 +3,17 @@
 <head>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    ***REMOVED***% load static %***REMOVED***
+    {% load static %}
 	<!-- Frameworks CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/00b6dc780b.js" crossorigin="anonymous"></script>
 
     <!-- Custom CSS -->
-    <link href="***REMOVED***% static 'main/css/style.css' %***REMOVED***" rel="stylesheet">
+    <link href="{% static 'main/css/style.css' %}" rel="stylesheet">
 
-    <link rel="stylesheet" href="***REMOVED***% static 'main/bundles/apexcharts/apexcharts.css' %***REMOVED***">
+    <link rel="stylesheet" href="{% static 'main/bundles/apexcharts/apexcharts.css' %}">
 
-	<title>***REMOVED******REMOVED***profile.first_name***REMOVED******REMOVED*** ***REMOVED******REMOVED***profile.second_name***REMOVED******REMOVED***</title>
+	<title>{{profile.first_name}} {{profile.second_name}}</title>
 </head>
 <body data-bs-spy="scroll" data-bs-target="#scroll-navbar" data-bs-offset="5">
 	<!-- Naviigation Section -->
@@ -65,28 +65,28 @@
         		
         		<div class="row">
         			<p><span id="intro-pill" class="fs-5 badge bg-primary">Hello, I'm </span></p>
-        			<h1 class="display-3">***REMOVED******REMOVED***profile.first_name***REMOVED******REMOVED*** ***REMOVED******REMOVED***profile.second_name***REMOVED******REMOVED***</h1>
+        			<h1 class="display-3">{{profile.first_name}} {{profile.second_name}}</h1>
         			<h3>Web Developer</h3>
         		</div>
         		<div class="row pt-3">
         			<p>
 						<i class="fas fa-at"></i> 
-						<a href="mailto:***REMOVED******REMOVED***profile.email_1***REMOVED******REMOVED***" class="ms-3 text-decoration-none text-dark" target="_blank" rel="noopener noreferrer">***REMOVED******REMOVED***profile.email_1***REMOVED******REMOVED***</a>
+						<a href="mailto:{{profile.email_1}}" class="ms-3 text-decoration-none text-dark" target="_blank" rel="noopener noreferrer">{{profile.email_1}}</a>
 					</p>
 					<p>
 						<i class="fas fa-phone-alt"></i> 
-						<a href="telto:***REMOVED******REMOVED***profile.phone_number_1***REMOVED******REMOVED***" class="ms-3 text-decoration-none text-dark">***REMOVED******REMOVED***profile.phone_number_1***REMOVED******REMOVED***</a>
+						<a href="telto:{{profile.phone_number_1}}" class="ms-3 text-decoration-none text-dark">{{profile.phone_number_1}}</a>
 					</p>
 					<p>
 						<i class="fas fa-map-marker-alt"></i> 
-						<a href="#" class="ms-3 text-decoration-none text-dark">***REMOVED******REMOVED***profile.address***REMOVED******REMOVED***</a>
+						<a href="#" class="ms-3 text-decoration-none text-dark">{{profile.address}}</a>
 					</p>
         		</div>
         		<div class="row pt-3">
         			<div class="col-12">
-        			***REMOVED***% for social in socials %***REMOVED***
-        				<a href="***REMOVED******REMOVED***social.url***REMOVED******REMOVED***" class="btn btn-outline-dark"><i class="***REMOVED******REMOVED***social.logo***REMOVED******REMOVED***"></i></a>
-        			***REMOVED***% endfor %***REMOVED***
+        			{% for social in socials %}
+        				<a href="{{social.url}}" class="btn btn-outline-dark"><i class="{{social.logo}}"></i></a>
+        			{% endfor %}
         			</div>
         		</div>
         	</div>
@@ -94,7 +94,7 @@
         		<div class="row text-center pb-4">
         			<div class="ratio ratio-1x1 rounded-circle w-75 banner-profile-div">
 					<!--malonza.JPG  -->
-					<img src="***REMOVED******REMOVED***profile.image.url***REMOVED******REMOVED***" class="ratio ratio-1x1 rounded-circle banner-profile-img" alt="...">  
+					<img src="{{profile.image.url}}" class="ratio ratio-1x1 rounded-circle banner-profile-img" alt="...">  
 					</div>   			
         		</div>
         	</div>
@@ -104,25 +104,25 @@
         <!-- About-Me Section -->
         <div id="section-about" class="row align-items-center section-height">
         	<div class="col-md-6">
-        		<img src="***REMOVED***% static 'main/images/canvas.png' %***REMOVED***" class="ratio ratio-1x1 w-75">
+        		<img src="{% static 'main/images/canvas.png' %}" class="ratio ratio-1x1 w-75">
         	</div>
         	<div class="col-md-6">
         		<div class="row">
         			<h3>About Me</h3>
-        			<p>***REMOVED******REMOVED***profile.description***REMOVED******REMOVED*** I am good at</p>        			
+        			<p>{{profile.description}} I am good at</p>        			
         		</div>
         		<div class="row">
         			<div class="col-12">
-        			***REMOVED***% for skill in skills %***REMOVED***
-        				***REMOVED***% for keyword in skill.keywords %***REMOVED***
-    					<a href="#" class="btn btn-outline-primary disabled my-1">***REMOVED******REMOVED***keyword.name***REMOVED******REMOVED***</a>
-        				***REMOVED***% endfor %***REMOVED***
-    				***REMOVED***% endfor %***REMOVED***
+        			{% for skill in skills %}
+        				{% for keyword in skill.keywords %}
+    					<a href="#" class="btn btn-outline-primary disabled my-1">{{keyword.name}}</a>
+        				{% endfor %}
+    				{% endfor %}
     				</div>
         		</div>
         		<div class="row pt-3">
         			<div class="col-12">
-        				<a href="***REMOVED******REMOVED***profile.cv_file.url***REMOVED******REMOVED***" class="btn btn-primary">Download CV <i class="fas fa-file-download"></i></a>
+        				<a href="{{profile.cv_file.url}}" class="btn btn-primary">Download CV <i class="fas fa-file-download"></i></a>
         			</div>
         		</div>
         	</div>
@@ -136,19 +136,19 @@
         			<h2>What I DO</h2>
         		</div>
 	        	<div class="row">
-	        	***REMOVED***% for service in services %***REMOVED***
+	        	{% for service in services %}
 		        	<div class="col-md-4 pb-3">
 		        		<div class="card shadow bg-body rounded">
 		        			<div class="card-body">
 		        			 	<div class="row py-3">
-		        			 		<i class="***REMOVED******REMOVED***service.logo***REMOVED******REMOVED*** fa-2x ***REMOVED***% cycle 'text-success' 'text-primary' 'text-danger' %***REMOVED***"></i>
+		        			 		<i class="{{service.logo}} fa-2x {% cycle 'text-success' 'text-primary' 'text-danger' %}"></i>
 		        			 	</div>
-							    <h3 class="card-title">***REMOVED******REMOVED***service.name***REMOVED******REMOVED***</h3>
-							    <p class="card-text">***REMOVED******REMOVED***service.description***REMOVED******REMOVED***</p>
+							    <h3 class="card-title">{{service.name}}</h3>
+							    <p class="card-text">{{service.description}}</p>
 							</div>
 		        		</div>
 		        	</div>
-		        ***REMOVED***% endfor %***REMOVED***
+		        {% endfor %}
 	        	</div>
 	        </div>
         </div>
@@ -163,17 +163,17 @@
 		        			<h3>Technical Skills</h3>
 		        		</div>
 		        		<div class="row">
-		        		***REMOVED***% for tech in tech_skills %***REMOVED***
+		        		{% for tech in tech_skills %}
 		        			<div class="col-12 pb-5">
 		        				<div class="row justify-content-between">
-		        					<div class="col">***REMOVED******REMOVED***tech.skill_keyword.name***REMOVED******REMOVED***</div>
-		        					<div class="col text-end">***REMOVED******REMOVED***tech.percentage***REMOVED******REMOVED***%</div>
+		        					<div class="col">{{tech.skill_keyword.name}}</div>
+		        					<div class="col text-end">{{tech.percentage}}%</div>
 		        				</div>
 		        				<div class="progress" style="height: 7px;">
-								  	<div class="progress-bar" style="width: ***REMOVED******REMOVED***tech.percentage***REMOVED******REMOVED***%" role="progressbar" aria-valuenow="***REMOVED******REMOVED***tech.percentage***REMOVED******REMOVED***" aria-valuemin="0" aria-valuemax="100"></div>
+								  	<div class="progress-bar" style="width: {{tech.percentage}}%" role="progressbar" aria-valuenow="{{tech.percentage}}" aria-valuemin="0" aria-valuemax="100"></div>
 								</div>
 		        			</div>
-		        		***REMOVED***% endfor %***REMOVED***
+		        		{% endfor %}
 		        		</div>
 		        	</div>
 		        	<div class="col-md-6">
@@ -181,11 +181,11 @@
 		        			<h3>Professional Skills</h3>
 		        		</div>
 		        		<div class="row">
-		        		***REMOVED***% for prof in prof_skills %***REMOVED***
+		        		{% for prof in prof_skills %}
 		        			<div class="col-6">
-		        				<div id="chart***REMOVED******REMOVED***forloop.counter***REMOVED******REMOVED***" class="align-self-center"></div>
+		        				<div id="chart{{forloop.counter}}" class="align-self-center"></div>
 		        			</div>
-		        		***REMOVED***% endfor %***REMOVED***
+		        		{% endfor %}
 		        		</div>
 		        	</div>
 		        </div>
@@ -202,17 +202,17 @@
         					<h3>Education</h3>
         				</div>
         				<div class="row">
-        				***REMOVED***% for education in education_history %***REMOVED***
+        				{% for education in education_history %}
         					<div class="col-12 pb-3">
         						<div class="card shadow bg-body rounded">
         							<div class="card-body">
-        								<div class="card-title h5">***REMOVED******REMOVED***education.study_area***REMOVED******REMOVED***, ***REMOVED******REMOVED***education.study_type***REMOVED******REMOVED*** From <a href="javascript:void(0);" class="text-decoration-none text-primary"><em>***REMOVED******REMOVED***education.institution***REMOVED******REMOVED***</em></a></div>
-        								<p class="text-primary">***REMOVED******REMOVED***education.start_date***REMOVED******REMOVED***-***REMOVED******REMOVED***education.end_date***REMOVED******REMOVED***</p>
-        								<div class="card-text">***REMOVED******REMOVED***education.description***REMOVED******REMOVED***</div>
+        								<div class="card-title h5">{{education.study_area}}, {{education.study_type}} From <a href="javascript:void(0);" class="text-decoration-none text-primary"><em>{{education.institution}}</em></a></div>
+        								<p class="text-primary">{{education.start_date}}-{{education.end_date}}</p>
+        								<div class="card-text">{{education.description}}</div>
         							</div>
         						</div>
         					</div>
-        				***REMOVED***% endfor %***REMOVED***
+        				{% endfor %}
         				</div>
         			</div>
         			<div class="col-md-6 pt-4">
@@ -220,24 +220,24 @@
         					<h3>Work Experience</h3>
         				</div>
         				<div class="row">
-        				***REMOVED***% for work in work_history %***REMOVED***
+        				{% for work in work_history %}
         					<div class="col-12 pb-3">
         						<div class="card shadow bg-body rounded">
         							<div class="card-body">
-        								<div class="card-title h5">***REMOVED******REMOVED***work.position***REMOVED******REMOVED***<a href="***REMOVED******REMOVED***work.website***REMOVED******REMOVED***" class="text-decoration-none text-primary"> <em>***REMOVED******REMOVED***work.company***REMOVED******REMOVED***</em></a></div>
-        								<p class="text-primary">***REMOVED******REMOVED***work.start_date***REMOVED******REMOVED***-***REMOVED******REMOVED***work.end_date***REMOVED******REMOVED***</p>
+        								<div class="card-title h5">{{work.position}}<a href="{{work.website}}" class="text-decoration-none text-primary"> <em>{{work.company}}</em></a></div>
+        								<p class="text-primary">{{work.start_date}}-{{work.end_date}}</p>
         								<div class="card-text">
         									<em class="small">Responsibility</em>
         									<ul class="small">
-        									***REMOVED***% for highlight in work.highlights %***REMOVED***
-											    <li>***REMOVED******REMOVED***highlight.name***REMOVED******REMOVED***</li>
-											***REMOVED***% endfor %***REMOVED***
+        									{% for highlight in work.highlights %}
+											    <li>{{highlight.name}}</li>
+											{% endfor %}
 											</ul>
         								</div>
         							</div>
         						</div>
         					</div>
-        				***REMOVED***% endfor %***REMOVED***
+        				{% endfor %}
         				</div>
         			</div>
         		</div>
@@ -253,24 +253,24 @@
 	        	</div>
         	
         		<div class="row">
-        		***REMOVED***% for project in projects %***REMOVED***
+        		{% for project in projects %}
         			<div class="col-md-6">
         				<div class="card shadow bg-body rounded mb-3" style="max-width: 540px;">
 							<div class="row g-0">
 								<div class="col-md-4 align-items-center">
-									<img src="***REMOVED******REMOVED***project.image.url***REMOVED******REMOVED***" class="bd-placeholder-img border rounded" width="100%" height="160" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+									<img src="{{project.image.url}}" class="bd-placeholder-img border rounded" width="100%" height="160" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
 								</div>
 								<div class="col-md-8">
 									<div class="card-body">
-									    <h5 class="card-title">***REMOVED******REMOVED***project.name***REMOVED******REMOVED***</h5>
+									    <h5 class="card-title">{{project.name}}</h5>
 									    <p class="card-text text-success">
-									    ***REMOVED***% for keyword in project.highlight_keywords %***REMOVED***
-                                            ***REMOVED******REMOVED***keyword.technology***REMOVED******REMOVED***, 
-                                        ***REMOVED***% endfor %***REMOVED***
+									    {% for keyword in project.highlight_keywords %}
+                                            {{keyword.technology}}, 
+                                        {% endfor %}
                                         </p>
 									    <div class="row justify-content-between">
-									    	<div class="col"><small class="text-muted">***REMOVED******REMOVED***project.date***REMOVED******REMOVED***</small></div>
-									    	<div class="col text-end"><a href="***REMOVED***% url 'project' project.name|slugify project.id %***REMOVED***" class="btn btn-primary">Details</a></div>
+									    	<div class="col"><small class="text-muted">{{project.date}}</small></div>
+									    	<div class="col text-end"><a href="{% url 'project' project.name|slugify project.id %}" class="btn btn-primary">Details</a></div>
 									    </div>
 
 									</div>
@@ -278,7 +278,7 @@
 							</div>
 						</div>
         			</div>
-        		***REMOVED***% endfor %***REMOVED***
+        		{% endfor %}
         		</div>
         	</div>
         </div>
@@ -291,7 +291,7 @@
 	        		<h3>Pricing</h3>
 	        	</div>
         		<div class="row text-center">
-        		***REMOVED***% for price in pricing %***REMOVED***
+        		{% for price in pricing %}
         			<div class="col-12 col-md-4 pb-3">
         				<div class="card shadow bg-body rounded">
         					<div class="card-body">
@@ -299,29 +299,29 @@
 		        					<i class="fas fa-file fa-2x text-primary"></i>
 		        				</div>
 		        				<div class="row pb-3">
-		        					<h4>***REMOVED******REMOVED***price.name***REMOVED******REMOVED***</h4>
-		        					<small>***REMOVED******REMOVED***price.description***REMOVED******REMOVED***</small>
+		        					<h4>{{price.name}}</h4>
+		        					<small>{{price.description}}</small>
 		        				</div>
 		        				<div class="row pb-3">
-		        					<h4 class="display-6 text-primary">kSH ***REMOVED******REMOVED***price.price***REMOVED******REMOVED***</h4>
+		        					<h4 class="display-6 text-primary">kSH {{price.price}}</h4>
 		        				</div>
 		        				<div class="row pb-3">
 		        					<p>
-		        					***REMOVED***% for keyword in price.keywords %***REMOVED***
-								    	***REMOVED******REMOVED***keyword.name***REMOVED******REMOVED***<br>
-								    ***REMOVED***% endfor %***REMOVED***
+		        					{% for keyword in price.keywords %}
+								    	{{keyword.name}}<br>
+								    {% endfor %}
 									</p>
 								</div>
 								<div class="row pb-3">
 									<div class="col-12">
-										<a href="#"  data-bs-toggle="modal" data-bs-target="#hiremeModal***REMOVED******REMOVED***forloop.counter***REMOVED******REMOVED***" class="btn btn-primary">Hire Me</a>
+										<a href="#"  data-bs-toggle="modal" data-bs-target="#hiremeModal{{forloop.counter}}" class="btn btn-primary">Hire Me</a>
 									</div>
 								</div>
 
         					</div>
         				</div>
         			</div>
-        		***REMOVED***% endfor %***REMOVED***
+        		{% endfor %}
         		</div>
         	</div>
         </div>
@@ -334,24 +334,24 @@
 	        		<h3>Featured Posts</h3>
 	        	</div>
         		<div class="row">
-        		***REMOVED***% for article in articles %***REMOVED***
+        		{% for article in articles %}
 			        <div class="col-12 col-md-4 pb-3">
 			            <div class="card shadow bg-body rounded" style="">
-						  	<img src="***REMOVED******REMOVED***article.image.url***REMOVED******REMOVED***" class="card-img-top" width="100%" height="200" preserveAspectRatio="xMidYMid slice" alt="...">
+						  	<img src="{{article.image.url}}" class="card-img-top" width="100%" height="200" preserveAspectRatio="xMidYMid slice" alt="...">
 							<div class="card-body">
-							    <h4 class="card-title"><a href="***REMOVED***% url 'article' article.title|slugify article.id %***REMOVED***" class="text-decoration-none text-muted">***REMOVED******REMOVED***article.title***REMOVED******REMOVED***</a></h4>
+							    <h4 class="card-title"><a href="{% url 'article' article.title|slugify article.id %}" class="text-decoration-none text-muted">{{article.title}}</a></h4>
 							    <p class="small">
 							    	<strong>Posted on </strong>
-							    	<a href="#" class="text-decoration-none">***REMOVED******REMOVED***article.date_created.date***REMOVED******REMOVED***</a> 
+							    	<a href="#" class="text-decoration-none">{{article.date_created.date}}</a> 
 							    	<strong>By</strong> 
-							    	<a href="#" class="text-decoration-none"> ***REMOVED******REMOVED***article.user.first_name***REMOVED******REMOVED*** ***REMOVED******REMOVED***article.user.last_name***REMOVED******REMOVED***</a>
+							    	<a href="#" class="text-decoration-none"> {{article.user.first_name}} {{article.user.last_name}}</a>
 							    </p>
-							    <p class="card-text">***REMOVED******REMOVED***article.content_text|truncatechars_html:100|safe ***REMOVED******REMOVED***</p>
-							    <a href="***REMOVED***% url 'article' article.title|slugify article.id %***REMOVED***" class="text-decoration-none">Read More...</a>
+							    <p class="card-text">{{article.content_text|truncatechars_html:100|safe }}</p>
+							    <a href="{% url 'article' article.title|slugify article.id %}" class="text-decoration-none">Read More...</a>
 							</div>
 						</div>
 			        </div>
-			    ***REMOVED***% endfor %***REMOVED***
+			    {% endfor %}
         		</div>
         	</div>
         </div>
@@ -368,7 +368,7 @@
 			            <div class="card shadow bg-body rounded" style="">
 			            	<div class="row justify-content-center p-4">
 			            		<div class="col-5">
-			            			<img src="***REMOVED***% static 'main/images/malonza.JPG' %***REMOVED***" class="ratio ratio-1x1 rounded-circle border border-info border-5" alt="...">
+			            			<img src="{% static 'main/images/malonza.JPG' %}" class="ratio ratio-1x1 rounded-circle border border-info border-5" alt="...">
 			            		</div>
 			            	</div>
 			            	<div class="row px-4">
@@ -387,7 +387,7 @@
 			            <div class="card shadow bg-body rounded" style="">
 			            	<div class="row justify-content-center p-4">
 			            		<div class="col-5">
-			            			<img src="***REMOVED***% static 'main/images/malonza.JPG' %***REMOVED***" class="ratio ratio-1x1 rounded-circle border border-info border-5" alt="...">
+			            			<img src="{% static 'main/images/malonza.JPG' %}" class="ratio ratio-1x1 rounded-circle border border-info border-5" alt="...">
 			            		</div>
 			            	</div>
 			            	<div class="row px-4">
@@ -406,7 +406,7 @@
 			            <div class="card shadow bg-body rounded" style="">
 			            	<div class="row justify-content-center p-4">
 			            		<div class="col-5">
-			            			<img src="***REMOVED***% static 'main/images/malonza.JPG' %***REMOVED***" class="ratio ratio-1x1 rounded-circle border border-info border-5" alt="...">
+			            			<img src="{% static 'main/images/malonza.JPG' %}" class="ratio ratio-1x1 rounded-circle border border-info border-5" alt="...">
 			            		</div>
 			            	</div>
 			            	<div class="row px-4">
@@ -447,7 +447,7 @@
 			        					</div>
 			        					<div class="col-9 col-md-8">
 			        						<div class="row"><h5>Address</h5></div>
-			        						<div class="row"><p>***REMOVED******REMOVED***profile.address***REMOVED******REMOVED***<br><a href="map view"></a> </p></div>
+			        						<div class="row"><p>{{profile.address}}<br><a href="map view"></a> </p></div>
 			        						
 			        					</div>
 			        				</div>
@@ -468,7 +468,7 @@
 			        					</div>
 			        					<div class="col-9 col-md-8">
 			        						<div class="row"><h5>Email</h5></div>
-			        						<div class="row"><p>***REMOVED******REMOVED***profile.email_1***REMOVED******REMOVED***<br>***REMOVED******REMOVED***profile.email_2***REMOVED******REMOVED***</p></div>
+			        						<div class="row"><p>{{profile.email_1}}<br>{{profile.email_2}}</p></div>
 			        						
 			        					</div>
 			        				</div>
@@ -489,7 +489,7 @@
 			        					</div>
 			        					<div class="col-9 col-md-8">
 			        						<div class="row"><h5>Phone</h5></div>
-			        						<div class="row"><p>***REMOVED******REMOVED***profile.phone_number_1***REMOVED******REMOVED***<br>***REMOVED******REMOVED***profile.phone_number_2***REMOVED******REMOVED***</p></div>
+			        						<div class="row"><p>{{profile.phone_number_1}}<br>{{profile.phone_number_2}}</p></div>
 			        						
 			        					</div>
 			        				</div>
@@ -502,8 +502,8 @@
 
         			<div class="col-md-6">
         				<div class="row">
-        					<form class="submit-form" method="post" action="***REMOVED***% url 'contact-me' %***REMOVED***">
-	                            ***REMOVED***% csrf_token %***REMOVED***
+        					<form class="submit-form" method="post" action="{% url 'contact-me' %}">
+	                            {% csrf_token %}
 	        					<div class="mb-3">
 								 	<input type="text" class="form-control form-control-lg" name="first_name" placeholder="First Name">
 								</div>
@@ -539,13 +539,13 @@
     <div class="container">
 		<footer class="py-3 my-4">
 		    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-		      	<li class="nav-item"><a href="***REMOVED***% url 'index' %***REMOVED***" class="nav-link px-2 text-muted">Home</a></li>
+		      	<li class="nav-item"><a href="{% url 'index' %}" class="nav-link px-2 text-muted">Home</a></li>
 		      	<li class="nav-item"><a href="#section-about" class="nav-link px-2 text-muted">About</a></li>
 		      	<li class="nav-item"><a href="#section-skills" class="nav-link px-2 text-muted">Skills</a></li>
     			<li class="nav-item"><a href="#section-experiences" class="nav-link px-2 text-muted">Experiences</a></li>
-		      	<li class="nav-item"><a href="***REMOVED***% url 'projects' %***REMOVED***" class="nav-link px-2 text-muted">Project</a></li>
+		      	<li class="nav-item"><a href="{% url 'projects' %}" class="nav-link px-2 text-muted">Project</a></li>
 		      	<li class="nav-item"><a href="#section-pricing" class="nav-link px-2 text-muted">Pricing</a></li>
-		      	<li class="nav-item"><a href="***REMOVED***% url 'blog' %***REMOVED***" class="nav-link px-2 text-muted">Blog</a></li>
+		      	<li class="nav-item"><a href="{% url 'blog' %}" class="nav-link px-2 text-muted">Blog</a></li>
 		     	<li class="nav-item"><a href="#section-contact" class="nav-link px-2 text-muted">Contact</a></li>
 		    </ul>
 		    <p class="text-center text-muted">&copy; 2022 Elkanah-Malonza, Inc</p>
@@ -555,18 +555,18 @@
 
 
     <!-- Modal Section start --->
-	***REMOVED***% for price in pricing %***REMOVED***  
+	{% for price in pricing %}  
 	    <!-- Modal -->
-		<div class="modal fade" id="hiremeModal***REMOVED******REMOVED***forloop.counter***REMOVED******REMOVED***" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal fade" id="hiremeModal{{forloop.counter}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  	<div class="modal-dialog">
 			    <div class="modal-content">
-			    	<form class="submit-form" action="***REMOVED***% url 'contact-me' %***REMOVED***" method="POST">
+			    	<form class="submit-form" action="{% url 'contact-me' %}" method="POST">
 				    <div class="modal-header">
-				        <h5 class="modal-title" id="exampleModalLabel">***REMOVED******REMOVED***price.name***REMOVED******REMOVED***</h5>
+				        <h5 class="modal-title" id="exampleModalLabel">{{price.name}}</h5>
 				        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				    </div>
 			      	<div class="modal-body">
-                            ***REMOVED***% csrf_token %***REMOVED***
+                            {% csrf_token %}
                             <div class="form-row">
                                 <div class="form-group col-md-12 pt-4">
                                     <label for="id_due-date">First Name</label>
@@ -577,7 +577,7 @@
                                     <input type="email" class="form-control" name="email" required="">
                                 </div>
                                 <input type="hidden" name="last_name" value=" ">
-                                <input type="hidden" name="message" value="***REMOVED******REMOVED***price.name***REMOVED******REMOVED***">
+                                <input type="hidden" name="message" value="{{price.name}}">
                             </div>
                         
 			      	</div>
@@ -590,91 +590,91 @@
 		  	</div>
 		</div>
 
-	***REMOVED***% endfor %***REMOVED***
+	{% endfor %}
     <!-- /Modal Section Ends-->
 
     <!-- JS Libraies -->
-    <script src="***REMOVED***% static 'main/js/jquery-3.6.0.min.js' %***REMOVED***"></script>
+    <script src="{% static 'main/js/jquery-3.6.0.min.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="***REMOVED***% static 'main/js/ajax.js' %***REMOVED***"></script>
-    <script src="***REMOVED***% static 'main/bundles/apexcharts/apexcharts.js' %***REMOVED***"></script>
+    <script src="{% static 'main/js/ajax.js' %}"></script>
+    <script src="{% static 'main/bundles/apexcharts/apexcharts.js' %}"></script>
     <script type="text/javascript">
-    	/*$(function () ***REMOVED***
+    	/*$(function () {
             chart1();
             chart2();
             chart3();
             chart4();
-        ***REMOVED***);*/
-    ***REMOVED***% for prof in prof_skills %***REMOVED***
-        $(function () ***REMOVED***
-        	var options = ***REMOVED***
-			  	chart: ***REMOVED***
+        });*/
+    {% for prof in prof_skills %}
+        $(function () {
+        	var options = {
+			  	chart: {
 				    height: 180,
 				    type: "radialBar",
-			  	***REMOVED***,
+			  	},
 
-			  	series: [***REMOVED******REMOVED***prof.percentage***REMOVED******REMOVED***],
+			  	series: [{{prof.percentage}}],
 			  	colors: ["#20E647"],
-			  	plotOptions: ***REMOVED***
-			    	radialBar: ***REMOVED***
-			      		hollow: ***REMOVED***
+			  	plotOptions: {
+			    	radialBar: {
+			      		hollow: {
 					        margin: 0,
 					        size: "70%",
 					        background: "#293450"
-				      	***REMOVED***,
-					    track: ***REMOVED***
-					        dropShadow: ***REMOVED***
+				      	},
+					    track: {
+					        dropShadow: {
 						        enabled: true,
 						        top: 2,
 						        left: 0,
 						        blur: 4,
 						        opacity: 0.15
-						    ***REMOVED***
-				      	***REMOVED***,
-					    dataLabels: ***REMOVED***
-					        name: ***REMOVED***
+						    }
+				      	},
+					    dataLabels: {
+					        name: {
 					          offsetY: -10,
 					          color: "#fff",
 					          fontSize: "13px"
-					        ***REMOVED***,
-					        value: ***REMOVED***
+					        },
+					        value: {
 					          color: "#fff",
 					          fontSize: "25px",
 					          show: true
-					        ***REMOVED***
-					    ***REMOVED***
-			    	***REMOVED***
-			  	***REMOVED***,
-				fill: ***REMOVED***
+					        }
+					    }
+			    	}
+			  	},
+				fill: {
 				    type: "gradient",
-				    gradient: ***REMOVED***
+				    gradient: {
 				      shade: "dark",
 				      type: "vertical",
 				      gradientToColors: ["#87D4F9"],
 				      stops: [0, 100]
-				    ***REMOVED***
-				***REMOVED***,
-				stroke: ***REMOVED***
+				    }
+				},
+				stroke: {
 				    lineCap: "round"
-				***REMOVED***,
-				labels: ["***REMOVED******REMOVED***prof.name***REMOVED******REMOVED***"]
-			***REMOVED***;
+				},
+				labels: ["{{prof.name}}"]
+			};
 
-			var chart = new ApexCharts(document.querySelector("#chart***REMOVED******REMOVED***forloop.counter***REMOVED******REMOVED***"), options);
+			var chart = new ApexCharts(document.querySelector("#chart{{forloop.counter}}"), options);
 			chart.render();
-        ***REMOVED***);
-    ***REMOVED***% endfor %***REMOVED***
+        });
+    {% endfor %}
 
-        $(document).ready(function()***REMOVED***
-        	$(this).scroll(function()***REMOVED***
+        $(document).ready(function(){
+        	$(this).scroll(function(){
         		$("#scroll-navbar").addClass('border-bottom');
         		clearTimeout($.data(this, 'scrollTimer'));
-				$.data(this, 'scrollTimer', setTimeout(function() ***REMOVED***
+				$.data(this, 'scrollTimer', setTimeout(function() {
 				      $("#scroll-navbar").removeClass('border-bottom');
 				      console.log("Haven't scrolled in 250ms!");
-				***REMOVED***, 500));
-        	***REMOVED***);
-        ***REMOVED***);
+				}, 500));
+        	});
+        });
     	
     </script>
 </body>

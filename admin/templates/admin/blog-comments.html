@@ -1,62 +1,62 @@
-***REMOVED***% extends "admin/base.html" %***REMOVED***
+{% extends "admin/base.html" %}
 
-***REMOVED***% block title %***REMOVED*** Admin - Blog Comments ***REMOVED***% endblock %***REMOVED***
+{% block title %} Admin - Blog Comments {% endblock %}
 
-***REMOVED***% load static %***REMOVED***
+{% load static %}
 
-***REMOVED***% block css %***REMOVED***
-    <link rel="stylesheet" href="***REMOVED***% static 'admin/bundles/datatables/datatables.min.css' %***REMOVED***">
-    <link rel="stylesheet" href="***REMOVED***% static 'admin/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css' %***REMOVED***">
-***REMOVED***% endblock %***REMOVED***
+{% block css %}
+    <link rel="stylesheet" href="{% static 'admin/bundles/datatables/datatables.min.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css' %}">
+{% endblock %}
 
-***REMOVED***% block sidenav %***REMOVED***                              
+{% block sidenav %}                              
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-home' %***REMOVED***" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
+        <a href="{% url 'admin-home' %}" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-messages' %***REMOVED***" class="nav-link"><i data-feather="message-square"></i><span>Messages</span></a>
+        <a href="{% url 'admin-messages' %}" class="nav-link"><i data-feather="message-square"></i><span>Messages</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-profile' %***REMOVED***" class="nav-link"><i data-feather="user"></i><span>Profile</span></a>
+        <a href="{% url 'admin-profile' %}" class="nav-link"><i data-feather="user"></i><span>Profile</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-projects' %***REMOVED***" class="nav-link"><i data-feather="codepen"></i><span>Projects</span></a>
+        <a href="{% url 'admin-projects' %}" class="nav-link"><i data-feather="codepen"></i><span>Projects</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-work' %***REMOVED***" class="nav-link"><i data-feather="clipboard"></i><span>Work</span></a>
+        <a href="{% url 'admin-work' %}" class="nav-link"><i data-feather="clipboard"></i><span>Work</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-education' %***REMOVED***" class="nav-link"><i data-feather="book-open"></i><span>Education</span></a>
+        <a href="{% url 'admin-education' %}" class="nav-link"><i data-feather="book-open"></i><span>Education</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-skills' %***REMOVED***" class="nav-link"><i data-feather="sliders"></i><span>Skills</span></a>
+        <a href="{% url 'admin-skills' %}" class="nav-link"><i data-feather="sliders"></i><span>Skills</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-services' %***REMOVED***" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
+        <a href="{% url 'admin-services' %}" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
     </li>  
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-prices' %***REMOVED***" class="nav-link"><i data-feather="shopping-bag"></i><span>Pricing</span></a>
+        <a href="{% url 'admin-prices' %}" class="nav-link"><i data-feather="shopping-bag"></i><span>Pricing</span></a>
     </li> 
     <li class="dropdown active">
-        <a href="***REMOVED***% url 'admin-blog' %***REMOVED***" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
+        <a href="{% url 'admin-blog' %}" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
     </li>          
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Settings</span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-settings' %***REMOVED***">App Settings</a></li>
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-profile-edit' %***REMOVED***">Profile Settings</a></li>
+            <li><a class="nav-link" href="{% url 'admin-settings' %}">App Settings</a></li>
+            <li><a class="nav-link" href="{% url 'admin-profile-edit' %}">Profile Settings</a></li>
         </ul>
     </li>
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="unlock"></i><span>Authentication</span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-change-password' %***REMOVED***">New-password</a></li>
-            <li><a class="nav-link" href="***REMOVED***% url 'logout' %***REMOVED***">Logout</a></li>
+            <li><a class="nav-link" href="{% url 'admin-change-password' %}">New-password</a></li>
+            <li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
         </ul>
     </li>                                   
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}
 
-***REMOVED***% block content %***REMOVED***
+{% block content %}
     <section class="section">
         <div class="section-body">
             <div class="row">
@@ -81,34 +81,34 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    ***REMOVED***% for comment in comments %***REMOVED***
+                                    {% for comment in comments %}
                                         <tr>
-                                            <td class="text-center">***REMOVED******REMOVED***forloop.counter***REMOVED******REMOVED***</td>
+                                            <td class="text-center">{{forloop.counter}}</td>
                                             <td> 
-                                                <a href="#">***REMOVED******REMOVED***comment.article.title***REMOVED******REMOVED***</a>
+                                                <a href="#">{{comment.article.title}}</a>
                                             </td>
-                                            <td>***REMOVED******REMOVED***comment.name***REMOVED******REMOVED***</td>
-                                            <td>***REMOVED******REMOVED***comment.email***REMOVED******REMOVED***</td>
-                                            <td>***REMOVED******REMOVED***comment.message***REMOVED******REMOVED***</td>
-                                            <td>***REMOVED******REMOVED***comment.date_created***REMOVED******REMOVED***</td>
+                                            <td>{{comment.name}}</td>
+                                            <td>{{comment.email}}</td>
+                                            <td>{{comment.message}}</td>
+                                            <td>{{comment.date_created}}</td>
                                             <td><a href="#" class="btn btn-primary">Reply</a></td>
-                                            <td><a href="***REMOVED***% url 'admin-comment-delete' comment.id %***REMOVED***" class="btn btn-danger">Delete</a></td>
+                                            <td><a href="{% url 'admin-comment-delete' comment.id %}" class="btn btn-danger">Delete</a></td>
                                         </tr>
-                                        ***REMOVED***% for reply in comment.replies %***REMOVED***
+                                        {% for reply in comment.replies %}
                                         <tr>
-                                            <td class="text-center">Reply-***REMOVED******REMOVED***forloop.counter***REMOVED******REMOVED***</td>
+                                            <td class="text-center">Reply-{{forloop.counter}}</td>
                                             <td> 
-                                                <a href="#">***REMOVED******REMOVED***reply.article.title***REMOVED******REMOVED***</a>
+                                                <a href="#">{{reply.article.title}}</a>
                                             </td>
-                                            <td>***REMOVED******REMOVED***reply.name***REMOVED******REMOVED***</td>
-                                            <td>***REMOVED******REMOVED***reply.email***REMOVED******REMOVED***</td>
-                                            <td>***REMOVED******REMOVED***reply.message***REMOVED******REMOVED***</td>
-                                            <td>***REMOVED******REMOVED***reply.date_created***REMOVED******REMOVED***</td>
+                                            <td>{{reply.name}}</td>
+                                            <td>{{reply.email}}</td>
+                                            <td>{{reply.message}}</td>
+                                            <td>{{reply.date_created}}</td>
                                             <td>[reply]</td>
-                                            <td><a href="***REMOVED***% url 'admin-reply-delete' reply.id %***REMOVED***" class="btn btn-danger">Delete</a></td>
+                                            <td><a href="{% url 'admin-reply-delete' reply.id %}" class="btn btn-danger">Delete</a></td>
                                         </tr>
-                                        ***REMOVED***% endfor %***REMOVED***
-                                    ***REMOVED***% endfor %***REMOVED***
+                                        {% endfor %}
+                                    {% endfor %}
                                     </tbody>
                                 </table>
                             </div>
@@ -118,19 +118,19 @@
             </div>
         </div>
     </section>
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}
 
-***REMOVED***% block javascript %***REMOVED***
-    <script src="***REMOVED***% static 'admin/bundles/datatables/datatables.min.js' %***REMOVED***"></script>
-    <script src="***REMOVED***% static 'admin/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js' %***REMOVED***"></script>
+{% block javascript %}
+    <script src="{% static 'admin/bundles/datatables/datatables.min.js' %}"></script>
+    <script src="{% static 'admin/bundles/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js' %}"></script>
 
     <script type="text/javascript">
-        $("#table-1").dataTable(***REMOVED***
+        $("#table-1").dataTable({
             "columnDefs": [
-                ***REMOVED*** "sortable": false, "targets": [0, 1] ***REMOVED***
+                { "sortable": false, "targets": [0, 1] }
             ],
             order: [[1, "asc"]] //column indexes is zero based
-        ***REMOVED***);
+        });
     </script>
 
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}

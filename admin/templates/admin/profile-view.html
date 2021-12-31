@@ -1,57 +1,57 @@
-***REMOVED***% extends "admin/base.html" %***REMOVED***
+{% extends "admin/base.html" %}
 
-***REMOVED***% block title %***REMOVED*** Admin - My Profile ***REMOVED***% endblock %***REMOVED***
+{% block title %} Admin - My Profile {% endblock %}
 
-***REMOVED***% load static %***REMOVED***
+{% load static %}
 
-***REMOVED***% block sidenav %***REMOVED***                              
+{% block sidenav %}                              
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-home' %***REMOVED***" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
+        <a href="{% url 'admin-home' %}" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-messages' %***REMOVED***" class="nav-link"><i data-feather="message-square"></i><span>Messages</span></a>
+        <a href="{% url 'admin-messages' %}" class="nav-link"><i data-feather="message-square"></i><span>Messages</span></a>
     </li>
     <li class="dropdown active">
-        <a href="***REMOVED***% url 'admin-profile' %***REMOVED***" class="nav-link"><i data-feather="user"></i><span>Profile</span></a>
+        <a href="{% url 'admin-profile' %}" class="nav-link"><i data-feather="user"></i><span>Profile</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-projects' %***REMOVED***" class="nav-link"><i data-feather="codepen"></i><span>Projects</span></a>
+        <a href="{% url 'admin-projects' %}" class="nav-link"><i data-feather="codepen"></i><span>Projects</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-work' %***REMOVED***" class="nav-link"><i data-feather="clipboard"></i><span>Work</span></a>
+        <a href="{% url 'admin-work' %}" class="nav-link"><i data-feather="clipboard"></i><span>Work</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-education' %***REMOVED***" class="nav-link"><i data-feather="book-open"></i><span>Education</span></a>
+        <a href="{% url 'admin-education' %}" class="nav-link"><i data-feather="book-open"></i><span>Education</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-skills' %***REMOVED***" class="nav-link"><i data-feather="sliders"></i><span>Skills</span></a>
+        <a href="{% url 'admin-skills' %}" class="nav-link"><i data-feather="sliders"></i><span>Skills</span></a>
     </li>
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-services' %***REMOVED***" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
+        <a href="{% url 'admin-services' %}" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
     </li>  
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-prices' %***REMOVED***" class="nav-link"><i data-feather="shopping-bag"></i><span>Pricing</span></a>
+        <a href="{% url 'admin-prices' %}" class="nav-link"><i data-feather="shopping-bag"></i><span>Pricing</span></a>
     </li> 
     <li class="dropdown">
-        <a href="***REMOVED***% url 'admin-blog' %***REMOVED***" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
+        <a href="{% url 'admin-blog' %}" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
     </li>          
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Settings</span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-settings' %***REMOVED***">App Settings</a></li>
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-profile-edit' %***REMOVED***">Profile Settings</a></li>
+            <li><a class="nav-link" href="{% url 'admin-settings' %}">App Settings</a></li>
+            <li><a class="nav-link" href="{% url 'admin-profile-edit' %}">Profile Settings</a></li>
         </ul>
     </li>
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="unlock"></i><span>Authentication</span></a>
         <ul class="dropdown-menu">
-            <li><a class="nav-link" href="***REMOVED***% url 'admin-change-password' %***REMOVED***">New-password</a></li>
-            <li><a class="nav-link" href="***REMOVED***% url 'logout' %***REMOVED***">Logout</a></li>
+            <li><a class="nav-link" href="{% url 'admin-change-password' %}">New-password</a></li>
+            <li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
         </ul>
     </li>                                   
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}
 
-***REMOVED***% block content %***REMOVED***
+{% block content %}
     <section class="section">
         <div class="section-body">
             <div class="row">
@@ -59,63 +59,63 @@
                     <div class="card author-box card-primary">
                         <div class="card-body">
                             <div class="author-box-left">
-                                <img alt="image" src="***REMOVED******REMOVED***profile.image.url***REMOVED******REMOVED***" class="rounded-circle author-box-picture">
+                                <img alt="image" src="{{profile.image.url}}" class="rounded-circle author-box-picture">
                                 <div class="clearfix"></div>
-                                <a href="***REMOVED***% url 'admin-profile-edit' %***REMOVED***" class="btn btn-primary mt-3 follow-btn">Update</a>
+                                <a href="{% url 'admin-profile-edit' %}" class="btn btn-primary mt-3 follow-btn">Update</a>
                             </div>
                             <div class="author-box-details">
                                 <div class="author-box-name">
-                                    <a href="#">***REMOVED******REMOVED***profile.first_name***REMOVED******REMOVED*** ***REMOVED******REMOVED***profile.second_name***REMOVED******REMOVED***</a>
+                                    <a href="#">{{profile.first_name}} {{profile.second_name}}</a>
                                 </div>
                                 <div class="author-box-job">Web Developer</div>
                                 <div class="author-box-description">
-                                    <p>***REMOVED******REMOVED***profile.description***REMOVED******REMOVED***</p>
+                                    <p>{{profile.description}}</p>
                                 </div>
 
                                 <div class="author-box-description">
                                     <p>
                                         <i class="fas fa-envelope px-2"></i>
-                                        <a href="mailto:***REMOVED******REMOVED***profile.email_1***REMOVED******REMOVED***">***REMOVED******REMOVED***profile.email_1***REMOVED******REMOVED***</a>, <a href="mailto:***REMOVED******REMOVED***profile.email_2***REMOVED******REMOVED***">***REMOVED******REMOVED***profile.email_2***REMOVED******REMOVED***</a>
+                                        <a href="mailto:{{profile.email_1}}">{{profile.email_1}}</a>, <a href="mailto:{{profile.email_2}}">{{profile.email_2}}</a>
                                         <br>
 
                                         <i class="fas fa-phone-alt px-2"></i>
-                                        <a href="#">***REMOVED******REMOVED***profile.phone_number_1***REMOVED******REMOVED***</a>, <a href="#">***REMOVED******REMOVED***profile.phone_number_2***REMOVED******REMOVED***</a>
+                                        <a href="#">{{profile.phone_number_1}}</a>, <a href="#">{{profile.phone_number_2}}</a>
                                         <br>
 
                                         <i class="fas fa-paper-plane px-2"></i>
-                                        <a href="#">***REMOVED******REMOVED***profile.address***REMOVED******REMOVED***</a>
+                                        <a href="#">{{profile.address}}</a>
                                     </p>
                                 </div>
 
                                 <div class="mb-2 mt-3">
                                     <div class="text-small font-weight-bold">My Links</div>
                                 </div>
-                                ***REMOVED***% for social in socials %***REMOVED***
-                                    ***REMOVED***% if social.name == 'Facebook' %***REMOVED***
-                                    <a href="***REMOVED******REMOVED***social.url***REMOVED******REMOVED***" class="btn btn-social-icon mr-1 btn-facebook">
+                                {% for social in socials %}
+                                    {% if social.name == 'Facebook' %}
+                                    <a href="{{social.url}}" class="btn btn-social-icon mr-1 btn-facebook">
                                         <i class="fab fa-facebook-f"></i>
                                     </a>
-                                    ***REMOVED***% elif social.name == 'Twitter' %***REMOVED***  
-                                    <a href="***REMOVED******REMOVED***social.url***REMOVED******REMOVED***" class="btn btn-social-icon mr-1 btn-twitter">
+                                    {% elif social.name == 'Twitter' %}  
+                                    <a href="{{social.url}}" class="btn btn-social-icon mr-1 btn-twitter">
                                         <i class="fab fa-twitter"></i>
                                     </a>
-                                    ***REMOVED***% elif social.name == 'Github' %***REMOVED***
-                                    <a href="***REMOVED******REMOVED***social.url***REMOVED******REMOVED***" class="btn btn-social-icon mr-1 btn-github">
+                                    {% elif social.name == 'Github' %}
+                                    <a href="{{social.url}}" class="btn btn-social-icon mr-1 btn-github">
                                         <i class="fab fa-github"></i>
                                     </a>
-                                    ***REMOVED***% elif social.name == 'Instagram' %***REMOVED***
-                                    <a href="***REMOVED******REMOVED***social.url***REMOVED******REMOVED***" class="btn btn-social-icon mr-1 btn-instagram">
+                                    {% elif social.name == 'Instagram' %}
+                                    <a href="{{social.url}}" class="btn btn-social-icon mr-1 btn-instagram">
                                         <i class="fab fa-instagram"></i>
                                     </a>
-                                    ***REMOVED***% else %***REMOVED***
-                                    <a href="***REMOVED******REMOVED***social.url***REMOVED******REMOVED***" class="btn btn-social-icon mr-1 btn-instagram">
-                                        <i class="***REMOVED******REMOVED***social.logo***REMOVED******REMOVED***"></i>
+                                    {% else %}
+                                    <a href="{{social.url}}" class="btn btn-social-icon mr-1 btn-instagram">
+                                        <i class="{{social.logo}}"></i>
                                     </a>
-                                    ***REMOVED***% endif %***REMOVED***
-                                ***REMOVED***% endfor %***REMOVED***
+                                    {% endif %}
+                                {% endfor %}
                                 <div class="w-100 d-sm-none"></div>
                                 <div class="float-right mt-sm-0 mt-3">
-                                    <a href="***REMOVED***% url 'admin-profile-edit' %***REMOVED***" class="btn">Edit Profile <i class="fas fa-edit"></i></a>
+                                    <a href="{% url 'admin-profile-edit' %}" class="btn">Edit Profile <i class="fas fa-edit"></i></a>
                                 </div>
                             </div>
                             <div class="row pt-4">
@@ -123,7 +123,7 @@
                                     <h4>My CV/Resume </h4>
                                 </div>
                                 <div class="col-12">
-                                    <iframe class=" w-100" src="***REMOVED******REMOVED***profile.cv_file.url***REMOVED******REMOVED***" width="100%" height="720px"></iframe>
+                                    <iframe class=" w-100" src="{{profile.cv_file.url}}" width="100%" height="720px"></iframe>
                                 </div>
                             </div>
 
@@ -134,4 +134,4 @@
             </div>
         </div>
     </section>
-***REMOVED***% endblock %***REMOVED***
+{% endblock %}

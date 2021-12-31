@@ -1,38 +1,38 @@
-#navbarMain ***REMOVED***
+#navbarMain {
 	padding-inline: 150px;
 	padding-top: 20px;
-***REMOVED***
+}
 
-.nav-link:hover ***REMOVED***
+.nav-link:hover {
 	color: cyan !important;
-***REMOVED***
+}
 
-.navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show > .nav-link ***REMOVED***
+.navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show > .nav-link {
     color: rgba(0,0,0,.9);
     border-color: #212529 !important;
 	border-bottom: 1px solid;
-***REMOVED***
-#intro-pill ***REMOVED***
+}
+#intro-pill {
 	border-top-left-radius: 20px;
 	border-top-right-radius: 20px;
 	border-bottom-right-radius: 20px;
 	border-bottom-left-radius: 0px;
-***REMOVED***
+}
 
-.section-height ***REMOVED***
+.section-height {
 	min-height: 680px;
-***REMOVED***
+}
 
-.banner-profile-div ***REMOVED***
+.banner-profile-div {
 	border: 20px solid rgba(0, 0, 0, 0.07);
 	margin: 0 auto;
-***REMOVED***
+}
 
-.banner-profile-img ***REMOVED***
+.banner-profile-img {
 	text-align: center;
 	border: 20px solid rgba(0, 0, 0, 0.17);
-***REMOVED***
+}
 
-.shadow-1 ***REMOVED***
+.shadow-1 {
   	box-shadow: 0px 10px 20px 4px #00000015;
-***REMOVED***
+}
