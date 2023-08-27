@@ -2,4 +2,5 @@ from django.apps import AppConfig
 
 
 class AdminConfig(AppConfig):
-    name = 'admin'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "admin"

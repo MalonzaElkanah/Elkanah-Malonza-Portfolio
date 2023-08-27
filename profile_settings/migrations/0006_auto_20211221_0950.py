@@ -7,22 +7,46 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('profile_settings', '0005_appsettings'),
+        ("profile_settings", "0005_appsettings"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='project',
-            name='video_url',
+            model_name="project",
+            name="video_url",
             field=models.URLField(blank=True, null=True),
         ),
         migrations.CreateModel(
-            name='ProjectImage',
+            name="ProjectImage",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(max_length=1000, upload_to='image/project/multiple/')),
-                ('date_created', models.DateTimeField(auto_now_add=True, verbose_name='Date Created')),
-                ('project', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='profile_settings.project')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        max_length=1000, upload_to="image/project/multiple/"
+                    ),
+                ),
+                (
+                    "date_created",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Date Created"
+                    ),
+                ),
+                (
+                    "project",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="profile_settings.project",
+                    ),
+                ),
             ],
         ),
     ]

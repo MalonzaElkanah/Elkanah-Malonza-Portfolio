@@ -54,7 +54,7 @@
 	</nav>
 	<!-- /Naviigation Section Ends  -->
 	<div class="row pb-3 pt-3"> <div class="clearfix">
-		
+
 	</div></div>
 	<!-- Content Section -->
 	<main class="container main-index pt-4">
@@ -62,7 +62,7 @@
         <!-- Banner Section Start -->
         <div id="profile-banner" class="row align-items-center section-height">
         	<div class="col-md-6">
-        		
+
         		<div class="row">
         			<p><span id="intro-pill" class="fs-5 badge bg-primary">Hello, I'm </span></p>
         			<h1 class="display-3">{{profile.first_name}} {{profile.second_name}}</h1>
@@ -70,15 +70,15 @@
         		</div>
         		<div class="row pt-3">
         			<p>
-						<i class="fas fa-at"></i> 
+						<i class="fas fa-at"></i>
 						<a href="mailto:{{profile.email_1}}" class="ms-3 text-decoration-none text-dark" target="_blank" rel="noopener noreferrer">{{profile.email_1}}</a>
 					</p>
 					<p>
-						<i class="fas fa-phone-alt"></i> 
+						<i class="fas fa-phone-alt"></i>
 						<a href="telto:{{profile.phone_number_1}}" class="ms-3 text-decoration-none text-dark">{{profile.phone_number_1}}</a>
 					</p>
 					<p>
-						<i class="fas fa-map-marker-alt"></i> 
+						<i class="fas fa-map-marker-alt"></i>
 						<a href="#" class="ms-3 text-decoration-none text-dark">{{profile.address}}</a>
 					</p>
         		</div>
@@ -94,8 +94,8 @@
         		<div class="row text-center pb-4">
         			<div class="ratio ratio-1x1 rounded-circle w-75 banner-profile-div">
 					<!--malonza.JPG  -->
-					<img src="{{profile.image.url}}" class="ratio ratio-1x1 rounded-circle banner-profile-img" alt="...">  
-					</div>   			
+					<img src="{{profile.image.url}}" class="ratio ratio-1x1 rounded-circle banner-profile-img" alt="...">
+					</div>
         		</div>
         	</div>
         </div>
@@ -109,7 +109,7 @@
         	<div class="col-md-6">
         		<div class="row">
         			<h3>About Me</h3>
-        			<p>{{profile.description}} I am good at</p>        			
+        			<p>{{profile.description}} I am good at</p>
         		</div>
         		<div class="row">
         			<div class="col-12">
@@ -251,7 +251,7 @@
         		<div class="row text-center pb-2">
 	        		<h3>Recent Projects</h3>
 	        	</div>
-        	
+
         		<div class="row">
         		{% for project in projects %}
         			<div class="col-md-6">
@@ -265,7 +265,7 @@
 									    <h5 class="card-title">{{project.name}}</h5>
 									    <p class="card-text text-success">
 									    {% for keyword in project.highlight_keywords %}
-                                            {{keyword.technology}}, 
+                                            {{keyword.technology}},
                                         {% endfor %}
                                         </p>
 									    <div class="row justify-content-between">
@@ -342,8 +342,8 @@
 							    <h4 class="card-title"><a href="{% url 'article' article.title|slugify article.id %}" class="text-decoration-none text-muted">{{article.title}}</a></h4>
 							    <p class="small">
 							    	<strong>Posted on </strong>
-							    	<a href="#" class="text-decoration-none">{{article.date_created.date}}</a> 
-							    	<strong>By</strong> 
+							    	<a href="#" class="text-decoration-none">{{article.date_created.date}}</a>
+							    	<strong>By</strong>
 							    	<a href="#" class="text-decoration-none"> {{article.user.first_name}} {{article.user.last_name}}</a>
 							    </p>
 							    <p class="card-text">{{article.content_text|truncatechars_html:100|safe }}</p>
@@ -357,7 +357,7 @@
         </div>
         <!-- /Blog Section Ends -->
 
-        <!-- Client-Review Section 
+        <!-- Client-Review Section
         <div class="row align-items-center section-height">
         	<div class="col-12">
         		<div class="row text-center pb-4">
@@ -448,7 +448,7 @@
 			        					<div class="col-9 col-md-8">
 			        						<div class="row"><h5>Address</h5></div>
 			        						<div class="row"><p>{{profile.address}}<br><a href="map view"></a> </p></div>
-			        						
+
 			        					</div>
 			        				</div>
 			        			</div>
@@ -469,7 +469,7 @@
 			        					<div class="col-9 col-md-8">
 			        						<div class="row"><h5>Email</h5></div>
 			        						<div class="row"><p>{{profile.email_1}}<br>{{profile.email_2}}</p></div>
-			        						
+
 			        					</div>
 			        				</div>
 			        			</div>
@@ -490,7 +490,7 @@
 			        					<div class="col-9 col-md-8">
 			        						<div class="row"><h5>Phone</h5></div>
 			        						<div class="row"><p>{{profile.phone_number_1}}<br>{{profile.phone_number_2}}</p></div>
-			        						
+
 			        					</div>
 			        				</div>
 			        			</div>
@@ -517,12 +517,12 @@
 								<div class="mb-3">
 								  	<textarea class="form-control" name="message" rows="5" placeholder="Message Here"></textarea>
 								</div>
-								<div class="col-12 d-grid gap-2"> 
+								<div class="col-12 d-grid gap-2">
 									<button type="submit" class="btn btn-primary">SEND MESSAGE</button>
 								</div>
 							</form>
         				</div>
-        				
+
         			</div>
 
         		</div>
@@ -555,7 +555,7 @@
 
 
     <!-- Modal Section start --->
-	{% for price in pricing %}  
+	{% for price in pricing %}
 	    <!-- Modal -->
 		<div class="modal fade" id="hiremeModal{{forloop.counter}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  	<div class="modal-dialog">
@@ -579,7 +579,7 @@
                                 <input type="hidden" name="last_name" value=" ">
                                 <input type="hidden" name="message" value="{{price.name}}">
                             </div>
-                        
+
 			      	</div>
 			      	<div class="modal-footer">
 			        	<a href="javascript:void(0);" class="btn btn-secondary" data-bs-dismiss="modal">Close</a>
@@ -675,7 +675,7 @@
 				}, 500));
         	});
         });
-    	
+
     </script>
 </body>
 </html>

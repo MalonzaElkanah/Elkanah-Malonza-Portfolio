@@ -7,7 +7,7 @@
 {% block css %}
 {% endblock %}
 
-{% block sidenav %}                              
+{% block sidenav %}
     <li class="dropdown">
         <a href="{% url 'admin-home' %}" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
     </li>
@@ -31,13 +31,13 @@
     </li>
     <li class="dropdown">
         <a href="{% url 'admin-services' %}" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
-    </li>  
+    </li>
     <li class="dropdown">
         <a href="{% url 'admin-prices' %}" class="nav-link"><i data-feather="shopping-bag"></i><span>Pricing</span></a>
-    </li> 
+    </li>
     <li class="dropdown">
         <a href="{% url 'admin-blog' %}" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
-    </li>          
+    </li>
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Settings</span></a>
         <ul class="dropdown-menu">
@@ -51,7 +51,7 @@
             <li><a class="nav-link" href="{% url 'admin-change-password' %}">New-password</a></li>
             <li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
         </ul>
-    </li>                                   
+    </li>
 {% endblock %}
 
 {% block content %}
@@ -74,7 +74,7 @@
 			                                	<span>{{keyword.technology}}</span> |
 			                               	{% endfor %}
 			                                </p>
-			                                
+
 			                            </div>
 			                        </div>
 			                    </div>
@@ -88,7 +88,7 @@
 			                            </li>
 			                        </ul>
 			                    </div>
-			                    
+
 			                </div>
 			                <hr>
 
@@ -106,7 +106,7 @@
 						                </div>
 						                <div class="col-12 pt-4">
 						                    <iframe width="100%" height="500"  src="{{project.video_url}}">
-						                    </iframe> 
+						                    </iframe>
 						                </div>
 						                <div class="col-12 py-4">
 						                    <h4>Project Gallery</h4>
@@ -120,7 +120,7 @@
 						                                    </a>
 						                                </div>
 						                            {% endfor %}
-						                            </div>                            
+						                            </div>
 						                        </div>
 						                    </div>
 						                </div>

@@ -7,27 +7,71 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('profile_settings', '0009_profile_cv_file'),
+        ("profile_settings", "0009_profile_cv_file"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='TechnicalSkillHighlight',
+            name="TechnicalSkillHighlight",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('percentage', models.IntegerField(default=0, verbose_name='Percentage')),
-                ('date_created', models.DateTimeField(auto_now_add=True, verbose_name='Date Created')),
-                ('skill_keyword', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='profile_settings.skillkeyword')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "percentage",
+                    models.IntegerField(default=0, verbose_name="Percentage"),
+                ),
+                (
+                    "date_created",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Date Created"
+                    ),
+                ),
+                (
+                    "skill_keyword",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="profile_settings.skillkeyword",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='ProfessionalSkillHighlight',
+            name="ProfessionalSkillHighlight",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=50, verbose_name='Name')),
-                ('percentage', models.IntegerField(default=0, verbose_name='Percentage')),
-                ('date_created', models.DateTimeField(auto_now_add=True, verbose_name='Date Created')),
-                ('profile', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='profile_settings.profile')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=50, verbose_name="Name")),
+                (
+                    "percentage",
+                    models.IntegerField(default=0, verbose_name="Percentage"),
+                ),
+                (
+                    "date_created",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Date Created"
+                    ),
+                ),
+                (
+                    "profile",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="profile_settings.profile",
+                    ),
+                ),
             ],
         ),
     ]

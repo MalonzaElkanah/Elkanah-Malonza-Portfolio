@@ -2,4 +2,6 @@ from django.apps import AppConfig
 
 
 class ProjectsConfig(AppConfig):
-    name = 'projects'
+    name = "projects"
+    # default_auto_field = 'django.db.models.UUIDField'
+    default_auto_field = "django.db.models.BigAutoField"

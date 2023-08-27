@@ -4,7 +4,7 @@
 
 {% load static %}
 
-{% block sidenav %}                              
+{% block sidenav %}
     <li class="dropdown">
         <a href="{% url 'admin-home' %}" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
     </li>
@@ -28,13 +28,13 @@
     </li>
     <li class="dropdown">
         <a href="{% url 'admin-services' %}" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
-    </li>  
+    </li>
     <li class="dropdown">
         <a href="{% url 'admin-prices' %}" class="nav-link"><i data-feather="shopping-bag"></i><span>Pricing</span></a>
-    </li> 
+    </li>
     <li class="dropdown">
         <a href="{% url 'admin-blog' %}" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
-    </li>          
+    </li>
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Settings</span></a>
         <ul class="dropdown-menu">
@@ -48,12 +48,12 @@
             <li><a class="nav-link" href="{% url 'admin-change-password' %}">New-password</a></li>
             <li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
         </ul>
-    </li>                                   
+    </li>
 {% endblock %}
 
 {% block content %}
     <section class="section">
-        <div class="section-body"> 
+        <div class="section-body">
 
         <!-- Edit/Add Profile Form Body  -->
             <div class="row">
@@ -109,7 +109,7 @@
                                                     <div class="form-group">
                                                         <label>Highlight</label>
                                                         <input type="text" class="form-control" name="name-{{highlight.id}}" value="{{highlight.name}}" required>
-                                                    </div> 
+                                                    </div>
                                                 </div>
                                                 <div class="col-12 col-md-2">
                                                     <label class="d-md-block d-sm-none d-none">&nbsp;</label>
@@ -124,7 +124,7 @@
                                                     <div class="form-group">
                                                         <label>Highlight</label>
                                                         <input type="text" class="form-control" name="name_1" required>
-                                                    </div> 
+                                                    </div>
                                                 </div>
                                                 <div class="col-12 col-md-2">
                                                     <label class="d-md-block d-sm-none d-none">&nbsp;</label>
@@ -153,7 +153,7 @@
         <!-- /Add Letter Form Body  -->
 
         </div>
-    </section>   
+    </section>
 {% endblock %}
 
 {% block javascript %}
@@ -169,14 +169,14 @@
                         '<div class="form-group">' +
                             '<label>Highlight</label>' +
                             '<input type="text" class="form-control" name="name_'+input_num+'" required>' +
-                        '</div>' + 
+                        '</div>' +
                     '</div>' +
                     '<div class="col-12 col-md-2">' +
                         '<label class="d-md-block d-sm-none d-none">&nbsp;</label>' +
                        ' <a href="#" class="btn btn-danger trash"><i class="far fa-trash-alt"></i></a>' +
                     '</div>' +
                 '</div>';
-                
+
                 $(".highlight-info").append(content);
                 return false;
             });

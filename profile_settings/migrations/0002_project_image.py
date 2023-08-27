@@ -6,13 +6,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('profile_settings', '0001_initial'),
+        ("profile_settings", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='project',
-            name='image',
-            field=models.ImageField(default='image/project/default_profile.jpg', max_length=1000, upload_to='image/project/'),
+            model_name="project",
+            name="image",
+            field=models.ImageField(
+                default="image/project/default_profile.jpg",
+                max_length=1000,
+                upload_to="image/project/",
+            ),
         ),
     ]

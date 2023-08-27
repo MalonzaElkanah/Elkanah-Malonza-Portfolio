@@ -15,19 +15,50 @@ Including another URLconf
 """
 # from django.contrib import admin
 from django.urls import path, include
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 from django.conf import settings
 
+from rest_framework.authtoken import views as authtoken_views
+from rest_framework.schemas import get_schema_view
+
 from . import views
 
-urlpatterns = [
-    # path('admin/', admin.site.urls),
-    path('admin/', include('admin.urls')),
-    path('blog/', include('blog.urls')),
-    path('projects/', include('projects.urls')),
 
-    path('', views.index, name='index'),
-    path('contact-me/', views.contact_me, name='contact-me'),
-    path('login/', views.auth_login, name='login'),
-    path('logout/', views.auth_logout, name='logout'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+schema_view = get_schema_view(
+    title="Portfolio APIs",
+    description="API Docs for Portfolio APIs",
+    url="http://127.0.0.1:8000/",
+    version="1.0.0",
+)
+
+urlpatterns_v1 = [
+    path("auth/", include("rest_framework.urls")),
+    path("token-auth/", authtoken_views.obtain_auth_token, name="api-token"),
+    path("", schema_view),
+    path("blog/", include("blog.api.urls")),
+    path("admin/", include("admin.api.urls")),
+    path("projects/", include("projects.api.urls")),
+    path("profile/", include("profile_settings.api.urls")),
+]
+
+# versions from the Apis(v1,v2)
+apiversions_urlsparterns = [
+    path("v1/", include(urlpatterns_v1)),
+]
+
+urlpatterns = [
+    path("admin/", include("admin.urls")),
+    path("blog/", include("blog.urls")),
+    path("projects/", include("projects.urls")),
+    path("", views.index, name="index"),
+    path("contact-me/", views.contact_me, name="contact-me"),
+    path("login/", views.auth_login, name="login"),
+    path("logout/", views.auth_logout, name="logout"),
+    # api urls
+    path("api/", include(apiversions_urlsparterns)),
+]
+
+urlpatterns += staticfiles_urlpatterns()
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

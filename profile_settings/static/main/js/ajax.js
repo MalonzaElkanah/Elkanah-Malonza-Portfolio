@@ -2,7 +2,7 @@
 	$(".submit-form").submit(function(event) {
        	event.preventDefault();
        	alert('Data submitted.');
-       	$.ajax({ 
+       	$.ajax({
        		data: $(this).serialize(),
             type: $(this).attr('method'),
             url: $(this).attr('action'),

@@ -16,167 +16,480 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Message',
+            name="Message",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('first_name', models.CharField(max_length=50, verbose_name='First Name')),
-                ('last_name', models.CharField(max_length=50, verbose_name='Last Name')),
-                ('email', models.CharField(max_length=50, verbose_name='Email')),
-                ('message', models.CharField(max_length=1500, verbose_name='Message')),
-                ('date_created', models.DateTimeField(auto_now_add=True, verbose_name='Date Created')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "first_name",
+                    models.CharField(max_length=50, verbose_name="First Name"),
+                ),
+                (
+                    "last_name",
+                    models.CharField(max_length=50, verbose_name="Last Name"),
+                ),
+                ("email", models.CharField(max_length=50, verbose_name="Email")),
+                ("message", models.CharField(max_length=1500, verbose_name="Message")),
+                (
+                    "date_created",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Date Created"
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Pricing',
+            name="Pricing",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('price', models.FloatField(verbose_name='Price')),
-                ('name', models.CharField(max_length=200, verbose_name='Name')),
-                ('description', models.CharField(max_length=1000, verbose_name='Description')),
-                ('date_created', models.DateTimeField(auto_now_add=True, verbose_name='Date Created')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("price", models.FloatField(verbose_name="Price")),
+                ("name", models.CharField(max_length=200, verbose_name="Name")),
+                (
+                    "description",
+                    models.CharField(max_length=1000, verbose_name="Description"),
+                ),
+                (
+                    "date_created",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Date Created"
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Profile',
+            name="Profile",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(default='image/profile/default_profile.jpg', max_length=1000, upload_to='image/profile/')),
-                ('first_name', models.CharField(max_length=50, verbose_name='First Name')),
-                ('second_name', models.CharField(max_length=50, verbose_name='Second Name')),
-                ('email_1', models.CharField(max_length=50, verbose_name='Email 1')),
-                ('email_2', models.CharField(max_length=50, null=True, verbose_name='Email 2')),
-                ('phone_number_1', models.CharField(max_length=50, verbose_name='Phone Number 1')),
-                ('phone_number_2', models.CharField(max_length=50, verbose_name='Phone Number 2')),
-                ('description', models.CharField(max_length=1000, null=True, verbose_name='Description')),
-                ('address', models.CharField(max_length=50, verbose_name='Address')),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        default="image/profile/default_profile.jpg",
+                        max_length=1000,
+                        upload_to="image/profile/",
+                    ),
+                ),
+                (
+                    "first_name",
+                    models.CharField(max_length=50, verbose_name="First Name"),
+                ),
+                (
+                    "second_name",
+                    models.CharField(max_length=50, verbose_name="Second Name"),
+                ),
+                ("email_1", models.CharField(max_length=50, verbose_name="Email 1")),
+                (
+                    "email_2",
+                    models.CharField(max_length=50, null=True, verbose_name="Email 2"),
+                ),
+                (
+                    "phone_number_1",
+                    models.CharField(max_length=50, verbose_name="Phone Number 1"),
+                ),
+                (
+                    "phone_number_2",
+                    models.CharField(max_length=50, verbose_name="Phone Number 2"),
+                ),
+                (
+                    "description",
+                    models.CharField(
+                        max_length=1000, null=True, verbose_name="Description"
+                    ),
+                ),
+                ("address", models.CharField(max_length=50, verbose_name="Address")),
+                (
+                    "user",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Project',
+            name="Project",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200, verbose_name='Projects')),
-                ('description', models.TextField()),
-                ('url', models.URLField(null=True)),
-                ('date', models.DateField(default=django.utils.timezone.now)),
-                ('date_created', models.DateTimeField(auto_now_add=True, verbose_name='Date Created')),
-                ('profile', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='profile_settings.profile')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200, verbose_name="Projects")),
+                ("description", models.TextField()),
+                ("url", models.URLField(null=True)),
+                ("date", models.DateField(default=django.utils.timezone.now)),
+                (
+                    "date_created",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Date Created"
+                    ),
+                ),
+                (
+                    "profile",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="profile_settings.profile",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Skill',
+            name="Skill",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200, verbose_name='Skill')),
-                ('description', models.CharField(max_length=1000, verbose_name='Description')),
-                ('date_created', models.DateTimeField(auto_now_add=True, verbose_name='Date Created')),
-                ('profile', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='profile_settings.profile')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200, verbose_name="Skill")),
+                (
+                    "description",
+                    models.CharField(max_length=1000, verbose_name="Description"),
+                ),
+                (
+                    "date_created",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Date Created"
+                    ),
+                ),
+                (
+                    "profile",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="profile_settings.profile",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Work',
+            name="Work",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('company', models.CharField(max_length=50, verbose_name='Company')),
-                ('location', models.CharField(max_length=50, verbose_name='Location')),
-                ('position', models.CharField(max_length=50, verbose_name='Position')),
-                ('website', models.URLField(null=True, verbose_name='Website')),
-                ('start_date', models.DateField()),
-                ('end_date', models.DateField()),
-                ('date_created', models.DateTimeField(auto_now_add=True, verbose_name='Date Created')),
-                ('profile', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='profile_settings.profile')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("company", models.CharField(max_length=50, verbose_name="Company")),
+                ("location", models.CharField(max_length=50, verbose_name="Location")),
+                ("position", models.CharField(max_length=50, verbose_name="Position")),
+                ("website", models.URLField(null=True, verbose_name="Website")),
+                ("start_date", models.DateField()),
+                ("end_date", models.DateField()),
+                (
+                    "date_created",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Date Created"
+                    ),
+                ),
+                (
+                    "profile",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="profile_settings.profile",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='WorkHighlight',
+            name="WorkHighlight",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=500, verbose_name='Highlight')),
-                ('date_created', models.DateTimeField(auto_now_add=True, verbose_name='Date Created')),
-                ('work', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='profile_settings.work')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=500, verbose_name="Highlight")),
+                (
+                    "date_created",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Date Created"
+                    ),
+                ),
+                (
+                    "work",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="profile_settings.work",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Testimony',
+            name="Testimony",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(default='image/profile/default_profile.jpg', max_length=1000, upload_to='image/profile/')),
-                ('testimony', models.CharField(max_length=5000, verbose_name='Testimony')),
-                ('name', models.CharField(max_length=50, verbose_name='Name')),
-                ('title', models.CharField(max_length=150, verbose_name='Title')),
-                ('link', models.URLField(null=True)),
-                ('profile', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='profile_settings.profile')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        default="image/profile/default_profile.jpg",
+                        max_length=1000,
+                        upload_to="image/profile/",
+                    ),
+                ),
+                (
+                    "testimony",
+                    models.CharField(max_length=5000, verbose_name="Testimony"),
+                ),
+                ("name", models.CharField(max_length=50, verbose_name="Name")),
+                ("title", models.CharField(max_length=150, verbose_name="Title")),
+                ("link", models.URLField(null=True)),
+                (
+                    "profile",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="profile_settings.profile",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='SocialLink',
+            name="SocialLink",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=50, verbose_name='Website Name')),
-                ('logo', models.CharField(max_length=50, verbose_name='Logo')),
-                ('url', models.URLField()),
-                ('date_created', models.DateTimeField(auto_now_add=True, verbose_name='Date Created')),
-                ('profile', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='profile_settings.profile')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=50, verbose_name="Website Name")),
+                ("logo", models.CharField(max_length=50, verbose_name="Logo")),
+                ("url", models.URLField()),
+                (
+                    "date_created",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Date Created"
+                    ),
+                ),
+                (
+                    "profile",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="profile_settings.profile",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='SkillKeyword',
+            name="SkillKeyword",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200, verbose_name='Keyword')),
-                ('date_created', models.DateTimeField(auto_now_add=True, verbose_name='Date Created')),
-                ('skill', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='profile_settings.skill')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200, verbose_name="Keyword")),
+                (
+                    "date_created",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Date Created"
+                    ),
+                ),
+                (
+                    "skill",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="profile_settings.skill",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Service',
+            name="Service",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200, verbose_name='Service')),
-                ('description', models.CharField(max_length=1000, verbose_name='Description')),
-                ('date_created', models.DateTimeField(auto_now_add=True, verbose_name='Date Created')),
-                ('profile', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='profile_settings.profile')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200, verbose_name="Service")),
+                (
+                    "description",
+                    models.CharField(max_length=1000, verbose_name="Description"),
+                ),
+                (
+                    "date_created",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Date Created"
+                    ),
+                ),
+                (
+                    "profile",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="profile_settings.profile",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='ProjectKeyword',
+            name="ProjectKeyword",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('technology', models.CharField(max_length=50, verbose_name='Technology')),
-                ('date_created', models.DateTimeField(auto_now_add=True, verbose_name='Date Created')),
-                ('project', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='profile_settings.project')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "technology",
+                    models.CharField(max_length=50, verbose_name="Technology"),
+                ),
+                (
+                    "date_created",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Date Created"
+                    ),
+                ),
+                (
+                    "project",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="profile_settings.project",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='PricingKeyword',
+            name="PricingKeyword",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200, verbose_name='Keyword')),
-                ('status', models.CharField(default='ACTIVE', max_length=200, verbose_name='Status')),
-                ('date_created', models.DateTimeField(auto_now_add=True, verbose_name='Date Created')),
-                ('pricing', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='profile_settings.pricing')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200, verbose_name="Keyword")),
+                (
+                    "status",
+                    models.CharField(
+                        default="ACTIVE", max_length=200, verbose_name="Status"
+                    ),
+                ),
+                (
+                    "date_created",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Date Created"
+                    ),
+                ),
+                (
+                    "pricing",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="profile_settings.pricing",
+                    ),
+                ),
             ],
         ),
         migrations.AddField(
-            model_name='pricing',
-            name='profile',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='profile_settings.profile'),
+            model_name="pricing",
+            name="profile",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                to="profile_settings.profile",
+            ),
         ),
         migrations.CreateModel(
-            name='Education',
+            name="Education",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('institution', models.CharField(max_length=200, verbose_name='Institution')),
-                ('location', models.CharField(max_length=50, verbose_name='Location')),
-                ('study_area', models.CharField(max_length=200, verbose_name='Major')),
-                ('study_type', models.CharField(max_length=200, verbose_name='Field')),
-                ('start_date', models.DateField()),
-                ('end_date', models.DateField()),
-                ('gpa', models.CharField(max_length=50, verbose_name='GPA')),
-                ('description', models.CharField(max_length=200, verbose_name='Description')),
-                ('date_created', models.DateTimeField(auto_now_add=True, verbose_name='Date Created')),
-                ('profile', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='profile_settings.profile')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "institution",
+                    models.CharField(max_length=200, verbose_name="Institution"),
+                ),
+                ("location", models.CharField(max_length=50, verbose_name="Location")),
+                ("study_area", models.CharField(max_length=200, verbose_name="Major")),
+                ("study_type", models.CharField(max_length=200, verbose_name="Field")),
+                ("start_date", models.DateField()),
+                ("end_date", models.DateField()),
+                ("gpa", models.CharField(max_length=50, verbose_name="GPA")),
+                (
+                    "description",
+                    models.CharField(max_length=200, verbose_name="Description"),
+                ),
+                (
+                    "date_created",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Date Created"
+                    ),
+                ),
+                (
+                    "profile",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="profile_settings.profile",
+                    ),
+                ),
             ],
         ),
     ]

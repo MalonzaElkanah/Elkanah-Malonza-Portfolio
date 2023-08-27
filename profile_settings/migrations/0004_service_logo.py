@@ -6,13 +6,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('profile_settings', '0003_auto_20211215_1530'),
+        ("profile_settings", "0003_auto_20211215_1530"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='service',
-            name='logo',
-            field=models.CharField(default='fas fa-object-group', max_length=200, verbose_name='Favicon Logo'),
+            model_name="service",
+            name="logo",
+            field=models.CharField(
+                default="fas fa-object-group",
+                max_length=200,
+                verbose_name="Favicon Logo",
+            ),
         ),
     ]

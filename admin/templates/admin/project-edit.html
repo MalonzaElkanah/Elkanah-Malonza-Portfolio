@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{% static 'admin/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.css' %}">
 {% endblock %}
 
-{% block sidenav %}                              
+{% block sidenav %}
     <li class="dropdown">
         <a href="{% url 'admin-home' %}" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
     </li>
@@ -32,13 +32,13 @@
     </li>
     <li class="dropdown">
         <a href="{% url 'admin-services' %}" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
-    </li>  
+    </li>
     <li class="dropdown">
         <a href="{% url 'admin-prices' %}" class="nav-link"><i data-feather="shopping-bag"></i><span>Pricing</span></a>
-    </li> 
+    </li>
     <li class="dropdown">
         <a href="{% url 'admin-blog' %}" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
-    </li>          
+    </li>
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Settings</span></a>
         <ul class="dropdown-menu">
@@ -52,12 +52,12 @@
             <li><a class="nav-link" href="{% url 'admin-change-password' %}">New-password</a></li>
             <li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
         </ul>
-    </li>                                   
+    </li>
 {% endblock %}
 
 {% block content %}
     <section class="section">
-        <div class="section-body"> 
+        <div class="section-body">
 
         <!-- Edit/Add Profile Form Body  -->
             <div class="row">
@@ -110,11 +110,11 @@
                                             <div class="form-group col-md-8">
                                                 <label>Technologies</label>
                                                 <input type="text" class="form-control inputtags" name="keywords" value="{% for keyword in project.keywords %}
-                                              {{keyword.technology}}, 
+                                              {{keyword.technology}},
                                             {% endfor %}" required>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="form-row">
                                             <div class="form-group col-md-8">
                                                 <label>New Project Images</label>
@@ -158,7 +158,7 @@
                                         </div>
                                     </form>
                                 </div>
-                                {% endfor %}                                
+                                {% endfor %}
                             </div>
                             {% endif %}
                         </div>
@@ -168,7 +168,7 @@
         <!-- /Add Letter Form Body  -->
 
         </div>
-    </section>   
+    </section>
 {% endblock %}
 
 {% block javascript %}

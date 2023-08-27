@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{% static 'admin/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css' %}">
 {% endblock %}
 
-{% block sidenav %}                              
+{% block sidenav %}
     <li class="dropdown">
         <a href="{% url 'admin-home' %}" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
     </li>
@@ -33,13 +33,13 @@
     </li>
     <li class="dropdown">
         <a href="{% url 'admin-services' %}" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
-    </li>  
+    </li>
     <li class="dropdown">
         <a href="{% url 'admin-prices' %}" class="nav-link"><i data-feather="shopping-bag"></i><span>Pricing</span></a>
-    </li> 
+    </li>
     <li class="dropdown">
         <a href="{% url 'admin-blog' %}" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
-    </li>          
+    </li>
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Settings</span></a>
         <ul class="dropdown-menu">
@@ -53,13 +53,13 @@
             <li><a class="nav-link" href="{% url 'admin-change-password' %}">New-password</a></li>
             <li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
         </ul>
-    </li>                                   
+    </li>
 {% endblock %}
 
 {% block content %}
     <section class="section">
         <div class="section-body">
-            
+
             <div class="row">
               	<div class="col-12">
                 	<div class="card">
@@ -104,7 +104,7 @@
 			                              		<div class="badge badge-info badge-shadow">{{keyword.name}}</div>
 			                              	{% endfor %}
 					                        </td>
-					                            
+
 					                        <td>
 					                        	<a href="{% url 'admin-skills-edit' skill.name|slugify skill.id %}" class="btn btn-warning">Edit</a>
 					                        </td>
@@ -161,7 +161,7 @@
 						                        {% for skill in skills %}
 				                              		{% for keyword in skill.keywords %}
 				                              			{% if tech.skill_keyword.id == keyword.id %}
-				                              		<option value="{{keyword.id}}" selected="">{{keyword.name}}</option> 
+				                              		<option value="{{keyword.id}}" selected="">{{keyword.name}}</option>
 				                              			{% else %}
 				                              		<option value="{{keyword.id}}">{{keyword.name}}</option>
 				                              			{% endif %}
@@ -169,8 +169,8 @@
 				                              	{% endfor %}
 				                              	</select>
 					                        </td>
-					                        <td> 
-					                        	<input type="number" name="percentage" class="form-control" value="{{tech.percentage}}"> 
+					                        <td>
+					                        	<input type="number" name="percentage" class="form-control" value="{{tech.percentage}}">
 					                        </td>
 					                        <td>
 					                        	<button type="submit" class="btn btn-primary">Update</button>
@@ -194,7 +194,7 @@
 						                        <select class="form-control" name="skill_keyword">
 						                        {% for skill in skills %}
 				                              		{% for keyword in skill.keywords %}
-				                              		<option value="{{keyword.id}}">{{keyword.name}}</option> 
+				                              		<option value="{{keyword.id}}">{{keyword.name}}</option>
 				                              		{% endfor %}
 				                              	{% endfor %}
 				                              	</select>
@@ -249,10 +249,10 @@
 					                            <input type="hidden" name="prof_skill_id" value="{{prof.id}}">
 				                            </td>
 				                            <td class="align-middle">
-						                        <input type="text" name="name" class="form-control" value="{{prof.name}}"> 
+						                        <input type="text" name="name" class="form-control" value="{{prof.name}}">
 					                        </td>
-					                        <td> 
-					                        	<input type="number" name="percentage" class="form-control" value="{{prof.percentage}}"> 
+					                        <td>
+					                        	<input type="number" name="percentage" class="form-control" value="{{prof.percentage}}">
 					                        </td>
 					                        <td>
 					                        	<button type="submit" class="btn btn-primary">Update</button>
@@ -273,7 +273,7 @@
 					                                {% csrf_token %}
 				                            </td>
 				                            <td class="align-middle">
-						                        <input type="text" name="name" class="form-control"> 
+						                        <input type="text" name="name" class="form-control">
 					                        </td>
 					                        <td> <input type="number" name="percentage" class="form-control"> </td>
 					                        <td colspan="2">

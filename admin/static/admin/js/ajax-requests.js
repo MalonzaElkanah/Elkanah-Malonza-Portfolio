@@ -1,7 +1,7 @@
 (function($) {
 	$(".form-request").submit(function(event) {
        	event.preventDefault();
-       	$.ajax({ 
+       	$.ajax({
        		data: $(this).serialize(),
             type: $(this).attr('method'),
             url: $(this).attr('action'),

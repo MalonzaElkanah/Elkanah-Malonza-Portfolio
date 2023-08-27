@@ -15,35 +15,105 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='ArticleCategory',
+            name="ArticleCategory",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200, verbose_name='Keyword')),
-                ('date_created', models.DateTimeField(auto_now_add=True, verbose_name='Date Created')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200, verbose_name="Keyword")),
+                (
+                    "date_created",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Date Created"
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='ArticleSeries',
+            name="ArticleSeries",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200, verbose_name='Keyword')),
-                ('date_created', models.DateTimeField(auto_now_add=True, verbose_name='Date Created')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200, verbose_name="Keyword")),
+                (
+                    "date_created",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Date Created"
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Article',
+            name="Article",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(default='image/blog/blog_default.jpg', max_length=1000, upload_to='image/blog/')),
-                ('title', models.CharField(max_length=50, verbose_name='Title')),
-                ('content', models.TextField()),
-                ('tags', models.CharField(max_length=50, verbose_name='Tags')),
-                ('status', models.CharField(default='PRIVATE', max_length=50, verbose_name='Status')),
-                ('views', models.IntegerField(verbose_name='Views')),
-                ('date_created', models.DateTimeField(auto_now_add=True, verbose_name='Date Created')),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='blog.articlecategory')),
-                ('series', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='blog.articleseries')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        default="image/blog/blog_default.jpg",
+                        max_length=1000,
+                        upload_to="image/blog/",
+                    ),
+                ),
+                ("title", models.CharField(max_length=50, verbose_name="Title")),
+                ("content", models.TextField()),
+                ("tags", models.CharField(max_length=50, verbose_name="Tags")),
+                (
+                    "status",
+                    models.CharField(
+                        default="PRIVATE", max_length=50, verbose_name="Status"
+                    ),
+                ),
+                ("views", models.IntegerField(verbose_name="Views")),
+                (
+                    "date_created",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Date Created"
+                    ),
+                ),
+                (
+                    "category",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="blog.articlecategory",
+                    ),
+                ),
+                (
+                    "series",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="blog.articleseries",
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]

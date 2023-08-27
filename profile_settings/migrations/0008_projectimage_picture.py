@@ -6,14 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('profile_settings', '0007_remove_projectimage_image'),
+        ("profile_settings", "0007_remove_projectimage_image"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='projectimage',
-            name='picture',
-            field=models.ImageField(default='default.jpg', max_length=1000, upload_to='image/project/multiple/'),
+            model_name="projectimage",
+            name="picture",
+            field=models.ImageField(
+                default="default.jpg",
+                max_length=1000,
+                upload_to="image/project/multiple/",
+            ),
             preserve_default=False,
         ),
     ]

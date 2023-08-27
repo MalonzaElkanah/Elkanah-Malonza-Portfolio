@@ -12,22 +12,27 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
-import django_heroku
+from dotenv import load_dotenv
+
+
+# import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-LOCAL_FILE_DIR = os.path.join(BASE_DIR, 'MyPortfolio')
+LOCAL_FILE_DIR = os.path.join(BASE_DIR, "MyPortfolio")
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'MyPortfolio/Uploads')
+MEDIA_ROOT = os.path.join(BASE_DIR, "MyPortfolio/Uploads")
 
-MEDIA_URL = '/Uploads/'
+MEDIA_URL = "/Uploads/"
+
+load_dotenv(os.path.join(BASE_DIR, ".env"))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '(hacsofe)tiogb@_(k9h9_$w(lyw=d4u+0jy61pui(ur53h_lf'
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,65 +43,92 @@ ALLOWED_HOSTS = []
 # Google Drive Storage Settings
 #
 
-GOOGLE_DRIVE_STORAGE_SERVICE_EMAIL  =  "elkanahmalonza@gmail.com" 
-GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = os.path.join(BASE_DIR , "MyPortfolio/client_secret1.json")
-GOOGLE_DRIVE_STORAGE_MEDIA_ROOT = 'my-portfolio' # OPTIONAL
+GOOGLE_DRIVE_STORAGE_SERVICE_EMAIL = "elkanahmalonza@gmail.com"
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = os.path.join(
+    BASE_DIR, "MyPortfolio/client_secret1.json"
+)
+GOOGLE_DRIVE_STORAGE_MEDIA_ROOT = "my-portfolio"  # OPTIONAL
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    #'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'blog.apps.BlogConfig',
-    'profile_settings.apps.ProfileSettingsConfig',
-    'projects.apps.ProjectsConfig',
-    'admin.apps.AdminConfig',
-    'gdstorage',
+    # 'django.contrib.admin',
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "blog.apps.BlogConfig",
+    "profile_settings.apps.ProfileSettingsConfig",
+    "projects.apps.ProjectsConfig",
+    "admin.apps.AdminConfig",
+    "gdstorage",
+    "rest_framework",
+    "rest_framework.authtoken",
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = 'MyPortfolio.urls'
+ROOT_URLCONF = "MyPortfolio.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'MyPortfolio.wsgi.application'
+REST_FRAMEWORK = {
+    # 'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        # 'rest_framework.authentication.TokenAuthentication',
+        "MyPortfolio.api.authentication.BearerAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+    ),
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10,
+}
+
+WSGI_APPLICATION = "MyPortfolio.wsgi.application"
 
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
+"""DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}"""
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "portfolio_test",
+        "USER": "malone",
+        "PASSWORD": "Pass1234",
+        "HOST": "localhost",
+        "PORT": "5432",
     }
 }
 
@@ -106,28 +138,28 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
 # Security Settings
-X_FRAME_OPTIONS = 'SAMEORIGIN'
+X_FRAME_OPTIONS = "SAMEORIGIN"
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "UTC"
 
 USE_I18N = True
 
@@ -138,19 +170,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'profile_settings/static')
-STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'profile_settings/static')
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_URL = "/static/"
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'profile_settings/static'),
-    os.path.join(BASE_DIR, 'admin/static'),
+    os.path.join(BASE_DIR, "profile_settings/static"),
+    os.path.join(BASE_DIR, "admin/static"),
 )
-
-django_heroku.settings(locals())
-
-
-try:
-    from .local_settings import *
-except ImportError:
-    pass

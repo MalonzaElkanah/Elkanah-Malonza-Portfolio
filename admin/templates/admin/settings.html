@@ -4,7 +4,7 @@
 
 {% load static %}
 
-{% block sidenav %}                              
+{% block sidenav %}
     <li class="dropdown">
         <a href="{% url 'admin-home' %}" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
     </li>
@@ -28,13 +28,13 @@
     </li>
     <li class="dropdown">
         <a href="{% url 'admin-services' %}" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
-    </li> 
+    </li>
     <li class="dropdown">
         <a href="{% url 'admin-prices' %}" class="nav-link"><i data-feather="shopping-bag"></i><span>Pricing</span></a>
-    </li> 
+    </li>
     <li class="dropdown">
         <a href="{% url 'admin-blog' %}" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
-    </li>           
+    </li>
     <li class="dropdown active">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Settings</span></a>
         <ul class="dropdown-menu">
@@ -48,12 +48,12 @@
             <li><a class="nav-link" href="{% url 'admin-change-password' %}">New-password</a></li>
             <li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
         </ul>
-    </li>                                   
+    </li>
 {% endblock %}
 
 {% block content %}
     <section class="section">
-        <div class="section-body"> 
+        <div class="section-body">
             <div class="row">
             <div class="col-12 col-sm-12 col-lg-12">
                 <div class="card">
@@ -115,7 +115,7 @@
                                         <input type="hidden" name="sticky_header" value="{{app.sticky_header}}">
                                     {% endif %}
                                         <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
-                                    
+
                                     </form>
                                 </div>
                                 <!-- /Personal Details Tab -->
@@ -144,14 +144,14 @@
                                         <div class="form-group pt-3 mb-0">
                                             <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
                                         </div>
-                                    
+
                                     </form>
                                 </div>
                                 <!-- /Email app Tab -->
-                    
+
                                 <!-- Change Password Tab -->
                                 <div class="tab-pane fade" id="layout_settings" role="tabpanel" aria-labelledby="profile-tab2">
-                                    
+
                                     <div class="setting-panel-header">Setting Panel </div>
                                     <div class="p-15 border-bottom">
                                         <h6 class="font-medium m-b-10">Select Layout</h6>

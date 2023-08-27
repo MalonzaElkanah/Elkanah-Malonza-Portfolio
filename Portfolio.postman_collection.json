@@ -1,0 +1,2797 @@
+{
+	"info": {
+		"_postman_id": "58305924-e6eb-4a44-8fa3-8647767d8963",
+		"name": "Portfolio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"elkanahmalonza@gmail.com\",\n    \"password\": \"Pass1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/token-auth/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"token-auth",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "blog",
+			"item": [
+				{
+					"name": "Category",
+					"item": [
+						{
+							"name": "Category - List",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/blog/categories/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"blog",
+										"categories",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Category - Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"AI, ML and DL\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/blog/categories/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"blog",
+										"categories",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Category - Retrieve",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/blog/categories/7/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"blog",
+										"categories",
+										"7",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Category - Update",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Artificial Inteligence\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/blog/categories/7/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"blog",
+										"categories",
+										"7",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Category - Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/blog/categories/7/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"blog",
+										"categories",
+										"7",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Series",
+					"item": [
+						{
+							"name": "Series - List",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/blog/series/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"blog",
+										"series",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Series - Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Database 101\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/blog/series/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"blog",
+										"series",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Series - Retrieve",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/blog/series/5/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"blog",
+										"series",
+										"5",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Series - Update",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Database\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/blog/series/5/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"blog",
+										"series",
+										"5",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Series - Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/blog/series/5/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"blog",
+										"series",
+										"5",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Articles",
+					"item": [
+						{
+							"name": "Article - List",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/blog/articles/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"blog",
+										"articles",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Article - Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"category\": {\n        \"name\": \"Test\"\n    },\n    \"title\": \"This is a second Test\",\n    \"content\": \"64 bytes from 172.217.170.174: icmp_seq=262 ttl=55 time=139 ms\",\n    \"tags\": \"Python, pytest\",\n    \"status\": \"Draft\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/blog/articles/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"blog",
+										"articles",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Article - Details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/blog/articles/1/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"blog",
+										"articles",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Article - Update",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"category\": {\n        \"name\": \"Networking\"\n    },\n    \"series\": {\n        \"name\": \"Netorking CLI Tools\"\n    },\n    \"title\": \"The ping network Test\",\n    \"content\": \"<pre>64 bytes from 172.217.170.174: icmp_seq=600 ttl=55 time=198 ms 64 bytes from 172.217.170.174: icmp_seq=601 ttl=55 time=439 ms 64 bytes from 172.217.170.174: icmp_seq=602 ttl=55 time=259 ms 64 bytes from 172.217.170.174: icmp_seq=603 ttl=55 time=275 ms 64 bytes from 172.217.170.174: icmp_seq=604 ttl=55 time=102 ms 64 bytes from 172.217.170.174: icmp_seq=605 ttl=55 time=108 ms 64 bytes from 172.217.170.174: icmp_seq=606 ttl=55 time=143 ms 64 bytes from 172.217.170.174: icmp_seq=607 ttl=55 time=152 ms 64 bytes from 172.217.170.174: icmp_seq=608 ttl=55 time=195 ms 64 bytes from 172.217.170.174: icmp_seq=609 ttl=55 time=197 ms 64 bytes from 172.217.170.174: icmp_seq=610 ttl=55 time=232 ms</pre>\",\n    \"tags\": \"Ping, network-test\",\n    \"status\": \"Draft\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/blog/articles/7/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"blog",
+										"articles",
+										"7",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Article - Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/blog/articles/6/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"blog",
+										"articles",
+										"6",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Project",
+			"item": [
+				{
+					"name": "Keywords",
+					"item": [
+						{
+							"name": "Keywords - List",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/projects/1/keywords/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"projects",
+										"1",
+										"keywords",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Keywords - Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"technology\": \"to-be-deleted\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/projects/1/keywords/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"projects",
+										"1",
+										"keywords",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Keywords - Retrieve",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/projects/1/keywords/1/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"projects",
+										"1",
+										"keywords",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Keywords - Update",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"technology\": \"Test\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/projects/1/keywords/120/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"projects",
+										"1",
+										"keywords",
+										"120",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Keywords - Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/projects/1/keywords/121/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"projects",
+										"1",
+										"keywords",
+										"121",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Images",
+					"item": [
+						{
+							"name": "Images - List",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/projects/1/images/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"projects",
+										"1",
+										"images",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Images - Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "picture",
+											"type": "file",
+											"src": "/home/malone/Pictures/pandas-image.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/projects/1/images/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"projects",
+										"1",
+										"images",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Images - Retrieve",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/projects/1/images/9/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"projects",
+										"1",
+										"images",
+										"9",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Images - Update",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "picture",
+											"type": "file",
+											"src": "/home/malone/Pictures/linked-list.PNG"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/projects/1/images/9/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"projects",
+										"1",
+										"images",
+										"9",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Images - Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/projects/1/images/9/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"projects",
+										"1",
+										"images",
+										"9",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Project - Lists",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/projects/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"projects",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Project - Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Flask Auth Template\",\n    \"description\": \"A Web app that will help make list of tasks that need to be completed. A user will be able to make multiple list which would be organized in order of priority. Manage your to-do's from home, the office, the car, the grocery store - Anywhere.\",\n    \"url\": \"https://test.com/\",\n    \"video_url\": null,\n    \"date\": \"2022-12-21\",\n    \"images\": [],\n    \"keywords\": [\n        {\n            \"technology\": \"Python\"\n        },\n        {\n            \"technology\": \"Flask\"\n        },\n        {\n            \"technology\": \"SQLite\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/projects/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"projects",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Project - Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/projects/1/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"projects",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Project - Update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Django Auth-Template\",\n    \"description\": \"A Web app that will help make list of tasks that need to be completed. A user will be able to make multiple list which would be organized in order of priority. Manage your to-do's from home, the office, the car, the grocery store - Anywhere.\",\n    \"url\": \"https://test.com/\",\n    \"video_url\": null,\n    \"date\": \"2022-12-21\",\n    \"images\": [],\n    \"keywords\": [\n        {\n            \"id\": 114,\n            \"technology\": \"Python\"\n        },\n        {\n            \"id\": 115,\n            \"technology\": \"Django\"\n        },\n        {\n            \"id\": 116,\n            \"technology\": \"SQLite\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/projects/5/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"projects",
+								"5",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Project - Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/projects/6/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"projects",
+								"6",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "SocialLinks",
+					"item": [
+						{
+							"name": "Social-Link - List",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profile/1/social-links/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"social-links",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Social-Link - Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Linked-IN\",\n    \"logo\": \"fab fa-linkedin\",\n    \"url\": \"https://linkedin.com/MalonzaElkanah/\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/profile/1/social-links/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"social-links",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Social-Link - Retrieve",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profile/1/social-links/4/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"social-links",
+										"4",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Social-Link - Update",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Linked-IN\",\n    \"logo\": \"fab fa-linkedin\",\n    \"url\": \"https://linkedin.com/ElkanahMalonza/\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/profile/1/social-links/4/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"social-links",
+										"4",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Social-Link - Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profile/1/social-links/4/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"social-links",
+										"4",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Education",
+					"item": [
+						{
+							"name": "Education - List",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profile/1/education/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"education",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Education - Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"institution\": \"Test university\",\n    \"location\": \"Nairobi, Kenya\",\n    \"study_area\": \"Bachelor of Science\",\n    \"study_type\": \"Test Computer Technology\",\n    \"start_date\": \"2015-09-02\",\n    \"end_date\": \"2019-10-18\",\n    \"gpa\": \"second class, upper division\",\n    \"description\": \"Core subjects Included: Systems Analysis & Design, Network Design, Database Design, Object Oriented Design, Network Security, Firewall Design, Logistics, General Management and Accounting. Participated in leadership and team Activities including being a member Computer & Information Technology Club.\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/profile/1/education/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"education",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Education - Retrieve",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profile/1/education/1/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"education",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Education - Update",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"institution\": \"To be deleted\",\n    \"location\": \"Nairobi, Kenya\",\n    \"study_area\": \"Bachelor of Science\",\n    \"study_type\": \"Test Computer Technology\",\n    \"start_date\": \"2015-09-02\",\n    \"end_date\": \"2019-10-18\",\n    \"gpa\": \"second class, upper division\",\n    \"description\": \"Core subjects Included: Systems Analysis & Design, Network Design, Database Design, Object Oriented Design, Network Security, Firewall Design, Logistics, General Management and Accounting. Participated in leadership and team Activities including being a member Computer & Information Technology Club.\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/profile/1/education/3/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"education",
+										"3",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Education - Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profile/1/education/3/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"education",
+										"3",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Work",
+					"item": [
+						{
+							"name": "Highlights",
+							"item": [
+								{
+									"name": "Highlights - List",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/profile/1/work/1/highlights/",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"profile",
+												"1",
+												"work",
+												"1",
+												"highlights",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Highlights - Create",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"Test anything, Test Everything .\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/profile/1/work/1/highlights/",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"profile",
+												"1",
+												"work",
+												"1",
+												"highlights",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Highlights - Retrieve",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/profile/1/work/1/highlights/1/",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"profile",
+												"1",
+												"work",
+												"1",
+												"highlights",
+												"1",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "HIghlights - Update",
+									"request": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"Test! Test! Test! Test anything, Test Everything .\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/profile/1/work/1/highlights/29/",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"profile",
+												"1",
+												"work",
+												"1",
+												"highlights",
+												"29",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Highights - Delete",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/profile/1/work/1/highlights/29/",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"profile",
+												"1",
+												"work",
+												"1",
+												"highlights",
+												"29",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Work - List",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profile/1/work/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"work",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Work - Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"company\": \"Test Organization\",\n    \"location\": \"Savannah, Kenya\",\n    \"position\": \"IT INTERNSHIP\",\n    \"website\": \"https://some.business.site/\",\n    \"start_date\": \"2019-05-07\",\n    \"end_date\": \"2019-08-24\",\n    \"highlights\": [\n        {\n            \"name\": \"Maintained and troubleshot the Local Area Network to ensure that the Hospital Information Management system (HIMS) is up and running with minimal or no down times.\"\n        },\n        {\n            \"name\": \"Installed softwares and performed upgrades to all computers and ICT gadgets.\"\n        },\n        {\n            \"name\": \"Repaired and maintained all ICT hardware and associated peripherals.\"\n        },\n        {\n            \"name\": \"Performed server, networks and database administration.\"\n        },\n        {\n            \"name\": \"Ensured optimum security of the hospital by tracking, maintenance of CCTV cameras in the facility and retrieval of footage when needed by the Management.\"\n        },\n        {\n            \"name\": \"Assisted in retrieval of reports from the HIMS for decision making by the Hospital management.\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/profile/1/work/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"work",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Work - Retrieve",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profile/1/work/1/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"work",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Work - Update",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"company\": \"To be deleted\",\n    \"location\": \"Savannah, Kenya\",\n    \"position\": \"IT INTERNSHIP\",\n    \"website\": \"https://some.business.site/\",\n    \"start_date\": \"2019-05-07\",\n    \"end_date\": \"2019-08-24\",\n    \"highlights\": [\n        {\n            \"name\": \"Maintained and troubleshot the Local Area Network to ensure that the Hospital Information Management system (HIMS) is up and running with minimal or no down times.\"\n        },\n        {\n            \"name\": \"Installed softwares and performed upgrades to all computers and ICT gadgets.\"\n        },\n        {\n            \"name\": \"Repaired and maintained all ICT hardware and associated peripherals.\"\n        },\n        {\n            \"name\": \"Performed server, networks and database administration.\"\n        },\n        {\n            \"name\": \"Ensured optimum security of the hospital by tracking, maintenance of CCTV cameras in the facility and retrieval of footage when needed by the Management.\"\n        },\n        {\n            \"name\": \"Assisted in retrieval of reports from the HIMS for decision making by the Hospital management.\"\n        }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/profile/1/work/7/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"work",
+										"7",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Work - Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profile/1/work/6/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"work",
+										"6",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Skills",
+					"item": [
+						{
+							"name": "Keywords",
+							"item": [
+								{
+									"name": "Keywords - List",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/profile/1/skills/1/keywords/",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"profile",
+												"1",
+												"skills",
+												"1",
+												"keywords",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Keywords - Create",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"test to be deleted\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/profile/1/skills/1/keywords/",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"profile",
+												"1",
+												"skills",
+												"1",
+												"keywords",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Keywords - Retrieve",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/profile/1/skills/1/keywords/35/",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"profile",
+												"1",
+												"skills",
+												"1",
+												"keywords",
+												"35",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Keywords - Update",
+									"request": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"delete\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/profile/1/skills/1/keywords/39/",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"profile",
+												"1",
+												"skills",
+												"1",
+												"keywords",
+												"39",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Keywords - Delete",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/profile/1/skills/1/keywords/39/",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"profile",
+												"1",
+												"skills",
+												"1",
+												"keywords",
+												"39",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Keywords - Highlight retrieve",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/profile/1/skills/1/keywords/24/highlights/",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"profile",
+												"1",
+												"skills",
+												"1",
+												"keywords",
+												"24",
+												"highlights",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Keywords - Highlight create",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"percentage\": 95\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/profile/1/skills/1/keywords/24/highlights/",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"profile",
+												"1",
+												"skills",
+												"1",
+												"keywords",
+												"24",
+												"highlights",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Skills - List",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profile/1/skills/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"skills",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Skills - Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"keywords\": [\n        {\n            \"name\": \"Python\"\n        },\n        {\n            \"name\": \"Django\"\n        },\n        {\n            \"name\": \"Flask\"\n        },\n        {\n            \"name\": \"php\"\n        },\n        {\n            \"name\": \"SQLite\"\n        }\n    ],\n    \"name\": \"To deleted Backend\",\n    \"description\": \",HTML,Bootstrap,CSS,Javascript,JQuery,SQLite,DjangoORM,Google-Api\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/profile/1/skills/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"skills",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Skills - Details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profile/1/skills/1/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"skills",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Skills - Update",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"keywords\": [\n        {\n            \"name\": \"Python\"\n        },\n        {\n            \"name\": \"Django\"\n        },\n        {\n            \"name\": \"Flask\"\n        },\n        {\n            \"name\": \"php\"\n        },\n        {\n            \"name\": \"SQLite\"\n        }\n    ],\n    \"name\": \"Backend\",\n    \"description\": \",HTML,Bootstrap,CSS,Javascript,JQuery,SQLite,DjangoORM,Google-Api\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/profile/1/skills/1/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"skills",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Skill - Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profile/1/skills/3/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"skills",
+										"3",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Technical Skill - Lists",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profile/1/technical-skills/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"technical-skills",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Services",
+					"item": [
+						{
+							"name": "Services - List",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profile/1/services/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"services",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Services - Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"logo\": \"fas fa-object-group\",\n    \"name\": \"Test 101\",\n    \"description\": \"I create programs to make work easier and desirable by write computer scripts to automates the execution of varies tasks, tweak applications and OS. \"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/profile/1/services/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"services",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Services - Details",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profile/1/services/1/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"services",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Service - Update",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"logo\": \"fas fa-object-group\",\n    \"name\": \"To be Axed\",\n    \"description\": \"I create programs to make work easier and desirable by write computer scripts to automates the execution of varies tasks, tweak applications and OS. \"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/profile/1/services/4/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"services",
+										"4",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Service - Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profile/1/services/4/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"services",
+										"4",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Testimonies",
+					"item": [
+						{
+							"name": "Testimonies - List",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profile/1/testimonies/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"testimonies",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Testimonies - Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"testimony\": \"Testimony1\",\n    \"name\": \"Name1\",\n    \"title\": \"Title1\",\n    \"link\": \"http://127.0.0.1:8000/api/v1/profile/1/testimonies/\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/profile/1/testimonies/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"testimonies",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Testimonies - Retrieve",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profile/1/testimonies/1/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"testimonies",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Testimonies - Update",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"testimony\": \"Testimony2\",\n    \"name\": \"Name2\",\n    \"title\": \"Title2\",\n    \"link\": \"http://127.0.0.1:8000/api/v1/profile/1/testimonies/\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/profile/1/testimonies/1/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"testimonies",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Testimonies - Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profile/1/testimonies/1/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"testimonies",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Pricing",
+					"item": [
+						{
+							"name": "Keywords",
+							"item": [
+								{
+									"name": "Keywords - List",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/profile/1/pricing/1/keywords/",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"profile",
+												"1",
+												"pricing",
+												"1",
+												"keywords",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Keywords - Create",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"Test Delete\",\n    \"status\": \"active\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/profile/1/pricing/1/keywords/",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"profile",
+												"1",
+												"pricing",
+												"1",
+												"keywords",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Keywords - Retrieve",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/profile/1/pricing/1/keywords/1/",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"profile",
+												"1",
+												"pricing",
+												"1",
+												"keywords",
+												"1",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Keywords - Update",
+									"request": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"To be Deleted\",\n    \"status\": \"active\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/profile/1/pricing/1/keywords/17/",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"profile",
+												"1",
+												"pricing",
+												"1",
+												"keywords",
+												"17",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Keywords - Delete",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}/profile/1/pricing/1/keywords/17/",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"profile",
+												"1",
+												"pricing",
+												"1",
+												"keywords",
+												"17",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Pricing - List",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profile/1/pricing/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"pricing",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Pricing - Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"keywords\": [\n        {\n            \"name\": \"Web Development\",\n            \"status\": \"active\"\n        },\n        {\n            \"name\": \"Advetising\",\n            \"status\": \"active\"\n        },\n        {\n            \"name\": \"Game Development\",\n            \"status\": \"active\"\n        },\n        {\n            \"name\": \"Music Writing\",\n            \"status\": \"active\"\n        }\n    ],\n    \"price\": 50000.0,\n    \"name\": \"Test Pricing\",\n    \"description\": \"I am available for Test Pricing\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/profile/1/pricing/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"pricing",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Pricing - Retrieve",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profile/1/pricing/1/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"pricing",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Pricing - Update",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"keywords\": [\n        {\n            \"name\": \"Web Development\",\n            \"status\": \"active\"\n        },\n        {\n            \"name\": \"Advetising\",\n            \"status\": \"active\"\n        },\n        {\n            \"name\": \"Game Development\",\n            \"status\": \"active\"\n        },\n        {\n            \"name\": \"Music Writing\",\n            \"status\": \"active\"\n        }\n    ],\n    \"price\": 50000.0,\n    \"name\": \"To be Deleted Pricing\",\n    \"description\": \"I am available for Test Pricing\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/profile/1/pricing/4/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"pricing",
+										"4",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Pricing - Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/profile/1/pricing/4/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"profile",
+										"1",
+										"pricing",
+										"4",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Profile - List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/profile/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profile",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Profile - Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"image\": \"https://drive.google.com/uc?id=1JHW_-OzF784OJubIruQvj8dwIQUkVIPH&export=download\",\n    \"cv_file\": \"https://drive.google.com/uc?id=1GMQ2OUPSbY3CcTm9QrdPsi-6NpqF0O8_&export=download\",\n    \"first_name\": \"Elkanah\",\n    \"second_name\": \"Malonza\",\n    \"email_1\": \"elkanahmalonza@gmail.com\",\n    \"email_2\": \"malonetechnologies101@gmail.com\",\n    \"phone_number_1\": \"+254716506983\",\n    \"phone_number_2\": \"+254776390094\",\n    \"description\": \"Hello, I’m a Elkanah, web-developer based on Nairobi. I have rich experience in web site design & building and customization.\",\n    \"address\": \"Nairobi, Kenya\",\n    \"social_links\": [\n        {\n            \"name\": \"Github\",\n            \"logo\": \"fab fa-github\",\n            \"url\": \"https://github.com/MalonzaElkanah/\"\n        },\n        {\n            \"name\": \"Facebook\",\n            \"logo\": \"fab fa-facebook-f\",\n            \"url\": \"https://github.com/MalonzaElkanah/\"\n        },\n        {\n            \"name\": \"Twitter\",\n            \"logo\": \"fab fa-twitter\",\n            \"url\": \"https://github.com/MalonzaElkanah/\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/profile/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profile",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Profile - Retrieve",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/profile/1/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profile",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Profile - Update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"image\": \"https://drive.google.com/uc?id=1JHW_-OzF784OJubIruQvj8dwIQUkVIPH&export=download\",\n    \"cv_file\": \"https://drive.google.com/uc?id=1GMQ2OUPSbY3CcTm9QrdPsi-6NpqF0O8_&export=download\",\n    \"first_name\": \"Elkanah\",\n    \"second_name\": \"Malonza\",\n    \"email_1\": \"elkanahmalonza@gmail.com\",\n    \"email_2\": \"malonetechnologies101@gmail.com\",\n    \"phone_number_1\": \"+254716506983\",\n    \"phone_number_2\": \"+254776390094\",\n    \"description\": \"Hello, I’m a Elkanah, web-developer based on Nairobi. I have rich experience in web site design & building and customization.\",\n    \"address\": \"Nairobi, Kenya\",\n    \"social_links\": [\n        {\n            \"name\": \"Github\",\n            \"logo\": \"fab fa-github\",\n            \"url\": \"https://github.com/MalonzaElkanah/\"\n        },\n        {\n            \"name\": \"Facebook\",\n            \"logo\": \"fab fa-facebook-f\",\n            \"url\": \"https://facebook.com/MalonzaElkanah/\"\n        },\n        {\n            \"name\": \"Twitter\",\n            \"logo\": \"fab fa-twitter\",\n            \"url\": \"https://twitter.com/MalonzaElkanah/\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/profile/1/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profile",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Profile - Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/profile/2/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profile",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Professional Skills",
+			"item": [
+				{
+					"name": "Professional Skills - List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/profile/1/professional-skills/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profile",
+								"1",
+								"professional-skills",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Professional Skills - Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"This is a test\",\n    \"percentage\": 85\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/profile/1/professional-skills/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profile",
+								"1",
+								"professional-skills",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Professional Skills - Retrieve",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/profile/1/professional-skills/1/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profile",
+								"1",
+								"professional-skills",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Professional Skills - Update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"To be deleted\",\n    \"percentage\": 85\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/profile/1/professional-skills/5/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profile",
+								"1",
+								"professional-skills",
+								"5",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Professional Skills - Deleted",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/profile/1/professional-skills/5/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profile",
+								"1",
+								"professional-skills",
+								"5",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Messages",
+					"item": [
+						{
+							"name": "Messages - List",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/admin/messages/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"messages",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Messages - Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"hA HA HA\",\n    \"email\": \"elkanahmalonza@gmail.com\",\n    \"message\": \"This is a test message. Dont worry about it.\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/admin/messages/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"messages",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Message - Retrieve",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/admin/messages/1/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"messages",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Message - Update",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"The Jocker\",\n    \"email\": \"elkanahmalonza@gmail.com\",\n    \"message\": \"Chaos Chaos Chaos. HA! HA! HA! HA! .\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/admin/messages/7/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"messages",
+										"7",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Message - Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/admin/messages/7/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"messages",
+										"7",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "App Settings",
+					"item": [
+						{
+							"name": "Settings - List",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/admin/app-settings/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"app-settings",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Settings - Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"app_name\": \"Malone\",\n    \"logo\": \"https://drive.google.com/uc?id=1gixvCvLV7EAsTfiN59ePRC_k_MiLaPmp&export=download\",\n    \"favicon\": \"https://drive.google.com/uc?id=1yY1nhgChpzvmHCqyrbnViYS5ImOUSoND&export=download\",\n    \"layout\": \"1\",\n    \"sidebar_color\": \"1\",\n    \"color_theme\": \"white\",\n    \"mini_sidebar\": \"off\",\n    \"sticky_header\": \"on\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/admin/app-settings/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"app-settings",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Settings - Retrieve",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/admin/app-settings/1/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"app-settings",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Settings - Update",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"app_name\": \"Malone\",\n    \"logo\": \"https://drive.google.com/uc?id=1gixvCvLV7EAsTfiN59ePRC_k_MiLaPmp&export=download\",\n    \"favicon\": \"https://drive.google.com/uc?id=1yY1nhgChpzvmHCqyrbnViYS5ImOUSoND&export=download\",\n    \"layout\": \"1\",\n    \"sidebar_color\": \"1\",\n    \"color_theme\": \"white\",\n    \"mini_sidebar\": \"off\",\n    \"sticky_header\": \"on\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/admin/app-settings/1/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"app-settings",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Settings - Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/admin/app-settings/1/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"app-settings",
+										"1",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1:8000/api/v1/token-auth",
+			"type": "default"
+		},
+		{
+			"key": "token",
+			"value": "66bee8cef488b5192ba460365ef49b57f479298f",
+			"type": "default"
+		}
+	]
+}

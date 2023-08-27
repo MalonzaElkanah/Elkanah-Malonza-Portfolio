@@ -40,7 +40,7 @@
                     </ul>
                 </div>
                 <ul class="navbar-nav navbar-right">
-                    
+
                     <li class="dropdown dropdown-list-toggle">
                         <a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg"><i data-feather="bell" class="bell"></i></a>
                         <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
@@ -51,13 +51,13 @@
                             </div>
                             <div class="dropdown-list-content dropdown-list-icons">
                             {% for notification in notifications %}
-                                <a href="{{notification.url}}" class="dropdown-item dropdown-item-unread"> 
-                                    <span class="dropdown-item-icon {{notification.icon_color}} text-white"> <i class="{{notification.icon}}"></i></span> 
-                                    <span class="dropdown-item-desc"> 
-                                        {{notification.name}} 
+                                <a href="{{notification.url}}" class="dropdown-item dropdown-item-unread">
+                                    <span class="dropdown-item-icon {{notification.icon_color}} text-white"> <i class="{{notification.icon}}"></i></span>
+                                    <span class="dropdown-item-desc">
+                                        {{notification.name}}
                                         <span class="time">{{notification.time_difference}}</span>
                                     </span>
-                                </a> 
+                                </a>
                             {% endfor %}
                             </div>
                             <div class="dropdown-footer text-center">
@@ -66,23 +66,23 @@
                         </div>
                     </li>
                     <li class="dropdown">
-                        <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user"> 
-                            <img alt="image" src="{{profile.image.url}}" class="user-img-radious-style"> 
+                        <a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                            <img alt="image" src="{{profile.image.url}}" class="user-img-radious-style">
                             <span class="d-sm-none d-lg-inline-block"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right pullDown">
                             <div class="dropdown-title">Hello {{user.first_name}} {{user.second_name}}</div>
-                            <a href="#" class="dropdown-item has-icon"> 
+                            <a href="#" class="dropdown-item has-icon">
                                 <i class="far fa-user"></i> Profile
-                            </a> 
-                            <a href="#" class="dropdown-item has-icon"> 
+                            </a>
+                            <a href="#" class="dropdown-item has-icon">
                                 <i class="fas fa-bolt"></i>Activities
-                            </a> 
-                            <a href="#" class="dropdown-item has-icon"> 
+                            </a>
+                            <a href="#" class="dropdown-item has-icon">
                                 <i class="fas fa-cog"></i> Settings
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item has-icon text-danger"> 
+                            <a href="#" class="dropdown-item has-icon text-danger">
                                 <i class="fas fa-sign-out-alt"></i> Logout
                             </a>
                         </div>
@@ -96,9 +96,9 @@
                     </div>
                     <ul class="sidebar-menu">
                         <li class="menu-header">Main</li>
-                        
+
                         {% block sidenav %}
-                                                
+
                         {% endblock %}
                     </ul>
                 </aside>
@@ -106,15 +106,15 @@
             <!-- Main Content -->
             <div class="main-content">
                 {% block content %}
-                                
+
                 {% endblock %}
 
                 {% block modal %}
 
                 {% endblock %}
-                
+
                 <div class="settingSidebar">
-                    <a href="javascript:void(0)" class="settingPanelToggle"> 
+                    <a href="javascript:void(0)" class="settingPanelToggle">
                         <i class="fa fa-spin fa-cog"></i>
                     </a>
                     <div class="settingSidebar-body ps-container ps-theme-default">
@@ -229,12 +229,12 @@
             $(".select-layout[value|='{{app.layout}}']").prop("checked", true);
             // set dark or light sidebar(1=light, 2=dark)
             $(".select-sidebar[value|='{{app.sidebar_color}}']").prop("checked", true);
-            // set sticky header 
+            // set sticky header
             $("#sticky_header_setting").prop("checked", {{app.sticky_header}});
             if (!{{app.sticky_header}}){
                 $(".main-navbar")[0].classList.remove("{{app.sticky_header_class}}");
             }
-            // set mini sidebar 
+            // set mini sidebar
             $("#mini_sidebar_setting").prop("checked", {{app.mini_sidebar}});
             if ({{app.mini_sidebar}}){
                 let body = $("body");
@@ -269,7 +269,7 @@
                 var update_data = {
                     update_id: id
                 };
-                $.ajax({ 
+                $.ajax({
                     data: update_data,
                     type: 'GET',
                     url: "{% url 'restore-default' %}", //restore-default
@@ -286,7 +286,7 @@
                         console.log(request.response);
                     }
                 });
-                return false;    
+                return false;
             });
 
             $("#sticky_header_setting").on("change", function () {
@@ -313,7 +313,7 @@
                 var update_data = {
                     theme: selectedTheme
                 };
-                $.ajax({ 
+                $.ajax({
                     data: update_data,
                     type: 'GET',
                     url: "{% url 'color-theme-settings' %}",
@@ -362,7 +362,7 @@
                 var update_data = {
                     header: id
                 };
-                $.ajax({ 
+                $.ajax({
                     data: update_data,
                     type: 'GET',
                     url: "{% url 'sticky-header' %}",
@@ -392,7 +392,7 @@
                 var update_data = {
                     sidebar: id
                 };
-                $.ajax({ 
+                $.ajax({
                     data: update_data,
                     type: 'GET',
                     url: "{% url 'sidebar-toggle' %}",
@@ -416,7 +416,7 @@
                 var update_data = {
                     sidebar: color
                 };
-                $.ajax({ 
+                $.ajax({
                     data: update_data,
                     type: 'GET',
                     url: "{% url 'sidebar-color-settings' %}",
@@ -440,7 +440,7 @@
                 var update_data = {
                     layout: color
                 };
-                $.ajax({ 
+                $.ajax({
                     data: update_data,
                     type: 'GET',
                     url: "{% url 'layout-settings' %}",
@@ -459,7 +459,7 @@
                 });
                 return false;
             }
-            
+
         });
 
     </script>

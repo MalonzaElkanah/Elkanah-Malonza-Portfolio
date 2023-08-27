@@ -7,29 +7,57 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('profile_settings', '0010_professionalskillhighlight_technicalskillhighlight'),
+        ("profile_settings", "0010_professionalskillhighlight_technicalskillhighlight"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='message',
-            name='status',
-            field=models.CharField(default='unsend', max_length=50, verbose_name='Status'),
+            model_name="message",
+            name="status",
+            field=models.CharField(
+                default="unsend", max_length=50, verbose_name="Status"
+            ),
         ),
         migrations.AlterField(
-            model_name='message',
-            name='last_name',
-            field=models.CharField(blank=True, max_length=50, null=True, verbose_name='Last Name'),
+            model_name="message",
+            name="last_name",
+            field=models.CharField(
+                blank=True, max_length=50, null=True, verbose_name="Last Name"
+            ),
         ),
         migrations.CreateModel(
-            name='EmailApp',
+            name="EmailApp",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('smtp_server', models.CharField(max_length=100, verbose_name='SMTP SERVER')),
-                ('port', models.IntegerField(default=587, verbose_name='Port')),
-                ('email', models.CharField(default='malonetechnologies101.com', max_length=100, verbose_name='App Email')),
-                ('password', models.CharField(max_length=200, verbose_name='Password')),
-                ('profile', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='profile_settings.profile')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "smtp_server",
+                    models.CharField(max_length=100, verbose_name="SMTP SERVER"),
+                ),
+                ("port", models.IntegerField(default=587, verbose_name="Port")),
+                (
+                    "email",
+                    models.CharField(
+                        default="malonetechnologies101.com",
+                        max_length=100,
+                        verbose_name="App Email",
+                    ),
+                ),
+                ("password", models.CharField(max_length=200, verbose_name="Password")),
+                (
+                    "profile",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="profile_settings.profile",
+                    ),
+                ),
             ],
         ),
     ]

@@ -7,30 +7,66 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0001_initial'),
+        ("blog", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Comment',
+            name="Comment",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200, verbose_name='Keyword')),
-                ('email', models.CharField(max_length=200, verbose_name='Email')),
-                ('message', models.CharField(max_length=1200, verbose_name='Keyword')),
-                ('date_created', models.DateTimeField(auto_now_add=True, verbose_name='Date Created')),
-                ('article', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='blog.article')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200, verbose_name="Keyword")),
+                ("email", models.CharField(max_length=200, verbose_name="Email")),
+                ("message", models.CharField(max_length=1200, verbose_name="Keyword")),
+                (
+                    "date_created",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Date Created"
+                    ),
+                ),
+                (
+                    "article",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="blog.article"
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='CommentReply',
+            name="CommentReply",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200, verbose_name='Keyword')),
-                ('email', models.CharField(max_length=200, verbose_name='Email')),
-                ('message', models.CharField(max_length=1200, verbose_name='Keyword')),
-                ('date_created', models.DateTimeField(auto_now_add=True, verbose_name='Date Created')),
-                ('comment', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='blog.comment')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200, verbose_name="Keyword")),
+                ("email", models.CharField(max_length=200, verbose_name="Email")),
+                ("message", models.CharField(max_length=1200, verbose_name="Keyword")),
+                (
+                    "date_created",
+                    models.DateTimeField(
+                        auto_now_add=True, verbose_name="Date Created"
+                    ),
+                ),
+                (
+                    "comment",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="blog.comment"
+                    ),
+                ),
             ],
         ),
     ]

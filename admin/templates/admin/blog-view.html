@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{% static 'admin/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css' %}">
 {% endblock %}
 
-{% block sidenav %}                              
+{% block sidenav %}
     <li class="dropdown">
         <a href="{% url 'admin-home' %}" class="nav-link"><i data-feather="monitor"></i><span>Home</span></a>
     </li>
@@ -33,13 +33,13 @@
     </li>
     <li class="dropdown">
         <a href="{% url 'admin-services' %}" class="nav-link"><i data-feather="briefcase"></i><span>Service</span></a>
-    </li>  
+    </li>
     <li class="dropdown">
         <a href="{% url 'admin-prices' %}" class="nav-link"><i data-feather="shopping-bag"></i><span>Pricing</span></a>
-    </li> 
+    </li>
     <li class="dropdown active">
         <a href="{% url 'admin-blog' %}" class="nav-link"><i data-feather="file-text"></i><span>Blog</span></a>
-    </li>          
+    </li>
     <li class="dropdown">
         <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Settings</span></a>
         <ul class="dropdown-menu">
@@ -53,7 +53,7 @@
             <li><a class="nav-link" href="{% url 'admin-change-password' %}">New-password</a></li>
             <li><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
         </ul>
-    </li>                                   
+    </li>
 {% endblock %}
 
 {% block content %}
@@ -64,7 +64,7 @@
                     <div class="card mb-0">
                         <div class="card-body">
                             <ul class="nav nav-pills">
-                                <li class="nav-item"> 
+                                <li class="nav-item">
                                     <a id="status-all" class="nav-link status-link active" href="#">All <span class="badge badge-white status-badge">{{articles.paginator.count}}</span></a>
                                 </li>
                                 <li class="nav-item">
@@ -136,7 +136,7 @@
                                             <th>Action</th>
                                         </tr>
                                         {% for article in articles %}
-                                        <tr class="article-all article-{{article.status}}"> 
+                                        <tr class="article-all article-{{article.status}}">
                                             <td>
                                                 <div class="custom-checkbox custom-control">
                                                   <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input"
@@ -171,7 +171,7 @@
                                             <td>{{article.date_created}}</td>
                                             <td>{{article.tags}}</td>
                                             <td>{{article.views}}</td>
-                                            <td> 
+                                            <td>
                                             {% if article.status == 'Pending' %}
                                                 <div class="badge badge-warning">{{article.status}}</div>
                                             {% elif article.status == 'Publish' %}
@@ -262,7 +262,7 @@
                 $(".article-all").hide();
                 $(".article-Trash").show();
             }else{
-                alert("no status");                
+                alert("no status");
                 $(".article-all").show();
             }
         });

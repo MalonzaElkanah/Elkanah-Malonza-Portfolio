@@ -6,13 +6,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('profile_settings', '0008_projectimage_picture'),
+        ("profile_settings", "0008_projectimage_picture"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='profile',
-            name='cv_file',
-            field=models.FileField(default='file/profile/cv/default_cv.pdf', max_length=1000, upload_to='file/profile/cv/'),
+            model_name="profile",
+            name="cv_file",
+            field=models.FileField(
+                default="file/profile/cv/default_cv.pdf",
+                max_length=1000,
+                upload_to="file/profile/cv/",
+            ),
         ),
     ]
