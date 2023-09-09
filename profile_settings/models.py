@@ -6,6 +6,9 @@ from django.contrib.auth.models import User
 import django.utils.timezone as tz
 from gdstorage.storage import GoogleDriveStorage
 
+from blog.models import Article
+
+
 # Define Google Drive Storage
 gd_storage = GoogleDriveStorage()
 
@@ -37,6 +40,26 @@ class Profile(models.Model):
 
     class Meta:
         ordering = ["id"]
+
+    @property
+    def technical_skills(self):
+        return TechnicalSkillHighlight.objects.filter(
+            skill_keyword__skill__profile=self.id
+        )
+
+    @property
+    def project_highlights(self):
+        # 4 Recent Projects
+        return Project.objects.filter(profile=self.id).order_by("date").reverse()[0:4]
+
+    @property
+    def article_highlights(self):
+        # 3 Recent Articles
+        return (
+            Article.objects.filter(status="Publish")
+            .order_by("date_created")
+            .reverse()[0:3]
+        )
 
     def socials(self):
         return SocialLink.objects.filter(profile=self.id)
@@ -84,6 +107,9 @@ class ProjectKeyword(models.Model):
     class Meta:
         unique_together = ["project", "technology"]
         ordering = ["id"]
+
+    def __str__(self):
+        return self.technology
 
 
 class ProjectImage(models.Model):
@@ -164,6 +190,9 @@ class WorkHighlight(models.Model):
         unique_together = ["work", "name"]
         ordering = ["id"]
 
+    def __str__(self):
+        return self.name
+
 
 class Skill(models.Model):
     profile = models.ForeignKey(
@@ -191,6 +220,9 @@ class SkillKeyword(models.Model):
     class Meta:
         unique_together = ["skill", "name"]
         ordering = ["id"]
+
+    def __str__(self):
+        return self.name
 
 
 class TechnicalSkillHighlight(models.Model):
@@ -286,6 +318,9 @@ class PricingKeyword(models.Model):
     class Meta:
         unique_together = ["pricing", "name"]
         ordering = ["id"]
+
+    def __str__(self):
+        return self.name
 
 
 class Message(models.Model):

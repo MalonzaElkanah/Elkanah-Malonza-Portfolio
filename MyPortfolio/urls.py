@@ -37,7 +37,7 @@ urlpatterns_v1 = [
     path("token-auth/", authtoken_views.obtain_auth_token, name="api-token"),
     path("", schema_view),
     path("blog/", include("blog.api.urls")),
-    path("admin/", include("admin.api.urls")),
+    path("", include("admin.api.urls")),
     path("projects/", include("projects.api.urls")),
     path("profile/", include("profile_settings.api.urls")),
 ]

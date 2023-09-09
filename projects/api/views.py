@@ -1,5 +1,7 @@
-from rest_framework import generics, viewsets, status
+from rest_framework import generics, viewsets, status, filters
+from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.pagination import LimitOffsetPagination
 
 from profile_settings.models import (
     Profile,
@@ -11,6 +13,7 @@ from projects.api.serializers import (
     ProjectSerializer,
     ProjectImageSerializer,
     ProjectKeywordSerializer,
+    KeywordSerializer,
 )
 from MyPortfolio.api.permissions import (
     IsAuthenticatedOrReadOnly,
@@ -28,6 +31,9 @@ class ListCreateProject(generics.ListCreateAPIView):
     permission_classes = [
         IsAuthenticatedOrReadOnly,
     ]
+    filter_backends = [filters.SearchFilter]
+    # filterset_fields = ['name',]
+    search_fields = ["name", "keywords__technology"]
 
     def post(self, request, format=None):
         serializer = self.get_serializer(data=request.data)
@@ -116,3 +122,46 @@ class ProjectKeywordViewSet(viewsets.ModelViewSet):
             raise CustomException("Error: Project not Found")
 
         serializer.save(project=project[0])
+
+
+class ListKeywords(generics.ListAPIView):
+    queryset = ProjectKeyword.objects.all()
+    serializer_class = KeywordSerializer
+    permission_classes = [
+        IsAuthenticatedOrReadOnly,
+    ]
+    paginator_class = LimitOffsetPagination
+
+    def get_queryset(self):
+        """
+        List all Unique Project Keywords Technology
+        """
+        return ProjectKeyword.objects.order_by("technology").distinct("technology")
+
+
+class ListKeywordProjects(APIView):
+    permission_classes = [
+        IsAuthenticatedOrReadOnly,
+    ]
+
+    def get(self, request, slug, format=None):
+        projects = Project.objects.filter(keywords__technology__icontains=str(slug))
+
+        search = self.request.query_params.get("search")
+        if search is not None:
+            projects_searched = Project.objects.none()
+
+            keyword_search = projects.filter(
+                keywords__technology__icontains=str(search)
+            )
+            name_search = projects.filter(name__icontains=str(search))
+
+            projects_searched = projects_searched.union(
+                keyword_search, name_search
+            ).order_by("date")
+
+            projects = projects_searched
+
+        serializer = ProjectSerializer(projects, many=True)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)

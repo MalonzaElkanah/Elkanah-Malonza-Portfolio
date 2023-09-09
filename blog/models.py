@@ -15,13 +15,16 @@ class ArticleSeries(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     # name,
 
+    class Meta:
+        ordering = ["id"]
+
     @property
     def articles(self):
         return Article.objects.filter(series=self.id)
 
     @property
     def article_count(self):
-        return Article.objects.filter(series=self.id).count()
+        return Article.objects.filter(series=self.id, status="Publish").count()
 
 
 class ArticleCategory(models.Model):
@@ -30,11 +33,14 @@ class ArticleCategory(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     # name,
 
+    class Meta:
+        ordering = ["id"]
+
     def articles(self):
         return Article.objects.filter(category=self.id)
 
     def article_count(self):
-        return Article.objects.filter(category=self.id).count()
+        return Article.objects.filter(category=self.id, status="Publish").count()
 
 
 class Article(models.Model):
@@ -51,37 +57,54 @@ class Article(models.Model):
     status = models.CharField("Status", max_length=50, default="PRIVATE")
     views = models.IntegerField("Views", default=0, null=True, blank=True)
     date_created = models.DateTimeField("Date Created", auto_now_add=True)
-    category = models.ForeignKey(ArticleCategory, on_delete=models.CASCADE)
+    category = models.ForeignKey(
+        ArticleCategory, related_name="articles", on_delete=models.CASCADE
+    )
     series = models.ForeignKey(
-        ArticleSeries, on_delete=models.CASCADE, null=True, blank=True
+        ArticleSeries,
+        related_name="articles",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
     )
     # user, image, title, content, tags, status, views, date_created, category, series
+
+    class Meta:
+        ordering = ["id"]
 
     @property
     def content_text(self):
         return strip_tags(self.content)
 
-    @property
     def comments(self):
         return Comment.objects.filter(article=self.id)
 
 
 class Comment(models.Model):
-    article = models.ForeignKey(Article, on_delete=models.CASCADE)
-    name = models.CharField("Keyword", max_length=200)
+    article = models.ForeignKey(
+        Article, related_name="comments", on_delete=models.CASCADE
+    )
+    name = models.CharField("Name", max_length=200)
     email = models.CharField("Email", max_length=200)
-    message = models.CharField("Keyword", max_length=1200)
+    message = models.CharField("Message", max_length=1200)
     date_created = models.DateTimeField("Date Created", auto_now_add=True)
     # article, name, email, message
 
-    @property
+    class Meta:
+        ordering = ["id"]
+
     def replies(self):
         return CommentReply.objects.filter(comment=self.id)
 
 
 class CommentReply(models.Model):
-    comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
-    name = models.CharField("Keyword", max_length=200)
+    comment = models.ForeignKey(
+        Comment, related_name="replies", on_delete=models.CASCADE
+    )
+    name = models.CharField("Name", max_length=200)
     email = models.CharField("Email", max_length=200)
-    message = models.CharField("Keyword", max_length=1200)
+    message = models.CharField("Message", max_length=1200)
     date_created = models.DateTimeField("Date Created", auto_now_add=True)
+
+    class Meta:
+        ordering = ["id"]

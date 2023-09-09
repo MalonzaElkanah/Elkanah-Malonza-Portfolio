@@ -1,9 +1,20 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 
 from blog.api import views
 
 
 app_name = "blog_api"
+
+# Create a router and register our viewsets with it.
+blog_router = DefaultRouter()
+blog_router.register(r"categories", views.ArticleCategoryViewset)
+blog_router.register(r"series", views.ArticleSeriesViewset)
+blog_router.register(r"comments", views.CommentModelViewSet)
+
+article_router = DefaultRouter()
+article_router.register(r"comments", views.ArticleCommentModelViewSet)
+
 
 urlpatterns = [
     path(
@@ -15,23 +26,10 @@ urlpatterns = [
         name="article_retrieve_update_delete_api",
     ),
     path(
-        "categories/",
-        views.ListCreateArticleCategory.as_view(),
-        name="blog_category_list_create_api",
+        "articles/featured/",
+        views.FeaturedArticlesAPIView.as_view(),
+        name="featured_articles_list_api",
     ),
-    path(
-        "categories/<int:pk>/",
-        views.RetrieveUpdateDestroyArticleCategory.as_view(),
-        name="blog_category_retrieve_update_delete_api",
-    ),
-    path(
-        "series/",
-        views.ListCreateArticleSeries.as_view(),
-        name="blog_series_list_create_api",
-    ),
-    path(
-        "series/<int:pk>/",
-        views.RetrieveUpdateDestroyArticleSeries.as_view(),
-        name="blog_series_retrieve_update_delete_api",
-    ),
+    path("", include(blog_router.urls)),
+    path("articles/<int:article_pk>/", include(article_router.urls)),
 ]

@@ -1,5 +1,6 @@
 from rest_framework import serializers
 
+from django.contrib.auth.models import User
 from blog.models import (
     Article,
     ArticleCategory,
@@ -7,7 +8,14 @@ from blog.models import (
     Comment,
     CommentReply,
 )
-from MyPortfolio.api.serializers import UserProfileSerializer
+
+# from MyPortfolio.api.serializers import UserProfileSerializer
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["first_name", "last_name"]
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -43,12 +51,15 @@ class CommentSerializer(serializers.ModelSerializer):
         model = Comment
         fields = "__all__"
 
+        extra_kwargs = {"article": {"read_only": True, "validators": []}}
+
 
 class ArticleSerializer(serializers.ModelSerializer):
     category = CategorySerializer()
     series = SeriesSerializer()
-    user = UserProfileSerializer(read_only=True)
+    user = UserSerializer(read_only=True)
     comments = CommentSerializer(read_only=True, many=True)
+    content_text = serializers.CharField()
 
     class Meta:
         model = Article
@@ -77,6 +88,8 @@ class ArticleSerializer(serializers.ModelSerializer):
 
 
 class ArticleCategorySerializer(serializers.ModelSerializer):
+    article_count = serializers.CharField(read_only=True)
+
     class Meta:
         model = ArticleCategory
         exclude = [
@@ -85,6 +98,8 @@ class ArticleCategorySerializer(serializers.ModelSerializer):
 
 
 class ArticleSeriesSerializer(serializers.ModelSerializer):
+    article_count = serializers.CharField(read_only=True)
+
     class Meta:
         model = ArticleSeries
         exclude = [

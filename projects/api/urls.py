@@ -19,5 +19,11 @@ urlpatterns = [
         views.RetrieveUpdateDestroyProject.as_view(),
         name="project_retrieve_update_delete_api",
     ),
+    path("keywords/", views.ListKeywords.as_view(), name="keywords_list_api"),
+    path(
+        "keywords/<slug:slug>/projects/",
+        views.ListKeywordProjects.as_view(),
+        name="keywords_projects_list_api",
+    ),
     path("<int:project_pk>/", include(router.urls)),
 ]

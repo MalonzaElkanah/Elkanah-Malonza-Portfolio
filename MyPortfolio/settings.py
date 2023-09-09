@@ -37,7 +37,26 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
+
+# CORS SETTINGS
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOW_HEADERS = (
+    "accept",
+    "authorization",
+    "content-type",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+    "access-control-allow-origin",
+)
+
+# CORS_ALLOWED_ORIGINS = [
+#    "http://localhost:4200",
+#    "http://localhost:8080",
+#    "http://127.0.0.1:5000",
+# ]
 
 #
 # Google Drive Storage Settings
@@ -66,11 +85,14 @@ INSTALLED_APPS = [
     "gdstorage",
     "rest_framework",
     "rest_framework.authtoken",
+    "corsheaders",
+    "django_filters",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -97,7 +119,7 @@ TEMPLATES = [
 ]
 
 REST_FRAMEWORK = {
-    # 'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
+    # "DEFAULT_FILTER_BACKENDS": ("django_filters.rest_framework.DjangoFilterBackend",),
     "DEFAULT_AUTHENTICATION_CLASSES": (
         # 'rest_framework.authentication.TokenAuthentication',
         "MyPortfolio.api.authentication.BearerAuthentication",
@@ -105,7 +127,7 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.SessionAuthentication",
     ),
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
-    "PAGE_SIZE": 10,
+    "PAGE_SIZE": 15,
 }
 
 WSGI_APPLICATION = "MyPortfolio.wsgi.application"

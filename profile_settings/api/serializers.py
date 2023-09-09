@@ -16,7 +16,10 @@ from profile_settings.models import (
     PricingKeyword,
     AppSettings,
     EmailApp,
+    Project,
 )
+from blog.models import Article
+
 from MyPortfolio.api.serializers import UserProfileSerializer
 
 
@@ -35,6 +38,8 @@ class ProfileEducationSerializer(serializers.ModelSerializer):
 
 
 class ProfileWorkSerializer(serializers.ModelSerializer):
+    highlights = serializers.StringRelatedField(read_only=True, many=True)
+
     class Meta:
         model = Work
         exclude = [
@@ -42,12 +47,74 @@ class ProfileWorkSerializer(serializers.ModelSerializer):
         ]
 
 
+class ProfileSkillKeywordSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SkillKeyword
+        exclude = [
+            "skill",
+        ]
+
+
 class ProfileSkillSerializer(serializers.ModelSerializer):
+    keywords = ProfileSkillKeywordSerializer(many=True)
+
     class Meta:
         model = Skill
         exclude = [
             "profile",
         ]
+
+
+class ProfileServiceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Service
+        exclude = [
+            "profile",
+        ]
+
+
+class ProfileTechnicalSkillSerializer(serializers.ModelSerializer):
+    skill_keyword = serializers.StringRelatedField(read_only=True)
+
+    class Meta:
+        model = TechnicalSkillHighlight
+        fields = "__all__"
+
+
+class ProfileProfessionalSkillSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProfessionalSkillHighlight
+        exclude = [
+            "profile",
+        ]
+
+
+class ProfileProjectSerializer(serializers.ModelSerializer):
+    keywords = serializers.StringRelatedField(read_only=True, many=True)
+
+    class Meta:
+        model = Project
+        exclude = [
+            "profile",
+        ]
+
+
+class ProfilePricingSerializer(serializers.ModelSerializer):
+    keywords = serializers.StringRelatedField(read_only=True, many=True)
+
+    class Meta:
+        model = Pricing
+        exclude = [
+            "profile",
+        ]
+
+
+class ArticleSerializer(serializers.ModelSerializer):
+    user = serializers.StringRelatedField(read_only=True, source="user.first_name")
+
+    class Meta:
+        model = Article
+        fields = ["image", "title", "date_created", "user", "content_text", "id"]
 
 
 class ProfileSerializer(serializers.ModelSerializer):
@@ -56,6 +123,12 @@ class ProfileSerializer(serializers.ModelSerializer):
     education = ProfileEducationSerializer(many=True, read_only=True)
     work = ProfileWorkSerializer(many=True, read_only=True)
     skills = ProfileSkillSerializer(many=True, read_only=True)
+    services = ProfileServiceSerializer(many=True, read_only=True)
+    technical_skills = ProfileTechnicalSkillSerializer(many=True, read_only=True)
+    professional_skills = ProfileProfessionalSkillSerializer(many=True, read_only=True)
+    project_highlights = ProfileProjectSerializer(many=True, read_only=True)
+    pricing = ProfilePricingSerializer(many=True, read_only=True)
+    article_highlights = ArticleSerializer(many=True, read_only=True)
 
     class Meta:
         model = Profile
