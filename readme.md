@@ -27,6 +27,7 @@ Built with Django and Django-REST-Framework
 - JWT Authentication
 - Frontend with Angular
 - Create and Send Notifications (Calery)
+- Write tests
 
 
 ## Installation Guide
@@ -40,6 +41,9 @@ Built with Django and Django-REST-Framework
     python3 -m venv venv
     source venv/bin/activate
     ```
+- The project contains a `.env.sample` file at its root with the environment variables required to run the app. Copy the file and name it `.env`, populating it with the correct values.
+  __NOTE:__ The 'SECRET_KEY' environment variables is a long random bytes or str.
+
 - Install the project dependacies from requirements.txt by running the following command in shell:
 ```bash
 pip install -r requirements.txt
@@ -50,7 +54,7 @@ pip install -r requirements.txt
 ```bash
 python manage.py runserver
 ```
-At this point, the development server should be accessible at _http://127.0.0.1:8000/_
+At this point, the development server should be accessible at _http://127.0.0.1:8000/api/v1/_
 
 2. Testing - To run all the tests:
 
@@ -60,10 +64,11 @@ python manage.py test
 
 
 ## API Documentation
+- **DRF Docs:** [http://127.0.0.1:8000/api/v1/](http://127.0.0.1:8000/api/v1/)
 - **OpenAPI Specification Docs:** [http://127.0.0.1:8000/?format=openapi-json](http://127.0.0.1:8000/?format=openapi-json)
 
 ## Key Python Modules Used
-- **Django(4.1.1):** Django is a back-end server side web framework. Django is free, open source and written in Python. Django makes it easier to build web pages using Python.
+- **Django(4.2.5):** Django is a back-end server side web framework. Django is free, open source and written in Python. Django makes it easier to build web pages using Python.
 - **Django Rest Framework:** Django Rest Framework (DRF) is a package built on the top of Django to create web APIs. DRF allows us to represent their functionality Django application in the form of REST APIs.
 - **flake8** - static analysis tool
 

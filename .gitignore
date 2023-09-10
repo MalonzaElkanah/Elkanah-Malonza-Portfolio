@@ -20,3 +20,7 @@ client_secret1.json
 client_secret.json
 
 .ruff_cache
+
+db.sqlite3
+sqldb.json
+portfolio.json
