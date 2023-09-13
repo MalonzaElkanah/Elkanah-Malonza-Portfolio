@@ -109,7 +109,7 @@
                     <h3>About</h3>
                     <p>{{project.description}}</p>
                     <div class="col-12">
-                    {% for keyword in project.keywords %}
+                    {% for keyword in project.keywords.all %}
                         <span class="badge bg-primary">{{keyword.technology}}</span>
                     {% endfor %}
                     </div>
@@ -124,7 +124,7 @@
                         <div class="row clearfix">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12">
                                 <div id="aniimated-thumbnials" class="list-unstyled row clearfix">
-                                {% for image in project.images %}
+                                {% for image in project.images.all %}
                                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 g-5">
                                         <a href="{{image.picture.url}}" data-sub-html="{{project.name}}">
                                           <img class="img-fluid thumbnail" src="{{image.picture.url}}" alt="">

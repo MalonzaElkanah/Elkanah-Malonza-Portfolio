@@ -28,7 +28,7 @@ from . import views
 schema_view = get_schema_view(
     title="Portfolio APIs",
     description="API Docs for Portfolio APIs",
-    url="http://127.0.0.1:8000/",
+    url="https://elkanahmalonza.pythonanywhere.com/",
     version="1.0.0",
 )
 

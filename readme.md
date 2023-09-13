@@ -1,10 +1,11 @@
-# Clinic_Appointment_App_API
+# PORTFOLIO_API
 Built with Django and Django-REST-Framework
 
 ## Table of Contents
   - [Features](#features)
     - [Implemented](#implemented)
     - [Todo](#todo)
+  - [Live Demo](#live-demo)
   - [Installation guide](#installation-guide)
     - [Dependacies Installation](#dependacies-installation)
   - [Testing and Running Guide](#testing-and-running-guide)
@@ -15,19 +16,108 @@ Built with Django and Django-REST-Framework
 
 ## Features
 ### Implemented
-0. Generate token (Login), Revoke token by User
-1. CRUD Blog
-2. CRUD Projects
-3. CRUD Profile
-4.
+
+#### Auth
+1. Generate token (Login), Revoke token by User
+
+#### Projects
+1. Create, List, Read, Update and Delete Project.
+2. Create Project Tech-Stack
+3. Create, Update Project Images Demo.
+
+#### Blog
+1. Create, List, Read, Update and Delete Article.
+2. Article HTML Editor.
+3. Create, Update Article Categories
+4. Create, Update Article Series
+5. Create, Delete Comments and Replies.
+
+#### Profile
+1. Create, List, Read, Update and Delete profile
+  - Full Name,
+  - Title,
+  - Phone_number
+  - Display Image,
+  - Email,
+  - Description,
+  - Address
+2. Create, Update Resume/CV file
+3. Create, Update Social Links with their icons
+
+#### Contact-Me
+1. Send/Create Messages
+
+#### Skills
+1. Create, List, Read, Update and Delete Technical Skills
+2. Create, List, Read, Update and Delete Professional Skills
+
+#### Service
+1. Create, List, Read, Update and Delete Service
+  - Name
+  - Description
+
+#### Education
+1. Create, List, Read, Update and Delete Education
+  - institution,
+  - location,
+  - study_area,
+  - study_type,
+  - start_date,
+  - end_date,
+  - gpa,
+  - description
+
+#### Work
+1. Create, List, Read, Update and Delete Work
+  - company,
+  - location,
+  - position,
+  - website,
+  - start_date,
+  - end_date
+2. Create, List, Read, Update and Delete Work Highlights
+
+#### Pricing
+1. Create, List, Read, Update and Delete Pricing
 
 
 ### Todo
+#### General
 - Document apis with Postman
-- JWT Authentication
 - Frontend with Angular
 - Create and Send Notifications (Calery)
 - Write tests
+- Log Users/Device IP Address - Traffic
+- Admin-Email Management
+- Back-Up DB
+- Separete Settings.py (Production, Development, Testing)
+- 500 / 404 Error Display
+- Hire Me feature
+- Change id field to UUIDField
+
+#### Auth
+- JWT Authentication
+
+#### Project
+- Video Demo (Youtube)
+- Image Demo
+- Github Api
+- Description MarkDown Editor
+- Project-List Serializer should be minimal
+- Project archive list
+
+#### Blog
+- Clicks and Article views
+- Article Read time
+- Article archive list
+
+#### Contact-Me
+- Email Notification of new Messages
+
+## Live Demo
+The projected is hosted at:
+  - **BACKEND:** https://elkanahmalonza.pythonanywhere.com/api/v1/
+  - **FRONTEND:** https://elkanahmalonza.netlify.app/
 
 
 ## Installation Guide

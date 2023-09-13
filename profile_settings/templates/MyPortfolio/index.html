@@ -114,7 +114,7 @@
         		<div class="row">
         			<div class="col-12">
         			{% for skill in skills %}
-        				{% for keyword in skill.keywords %}
+        				{% for keyword in skill.keywords.all %}
     					<a href="#" class="btn btn-outline-primary disabled my-1">{{keyword.name}}</a>
         				{% endfor %}
     				{% endfor %}
@@ -229,7 +229,7 @@
         								<div class="card-text">
         									<em class="small">Responsibility</em>
         									<ul class="small">
-        									{% for highlight in work.highlights %}
+        									{% for highlight in work.highlights.all %}
 											    <li>{{highlight.name}}</li>
 											{% endfor %}
 											</ul>
@@ -307,7 +307,7 @@
 		        				</div>
 		        				<div class="row pb-3">
 		        					<p>
-		        					{% for keyword in price.keywords %}
+		        					{% for keyword in price.keywords.all %}
 								    	{{keyword.name}}<br>
 								    {% endfor %}
 									</p>

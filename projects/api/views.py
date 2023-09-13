@@ -136,7 +136,20 @@ class ListKeywords(generics.ListAPIView):
         """
         List all Unique Project Keywords Technology
         """
-        return ProjectKeyword.objects.order_by("technology").distinct("technology")
+
+        # POSTGRES QUERY
+        # return ProjectKeyword.objects.order_by("technology").distinct("technology")
+
+        keywords = ProjectKeyword.objects.order_by("technology")
+        unique_keywords = []
+        _list = []
+
+        for keyword in keywords:
+            if keyword.technology not in _list:
+                unique_keywords.append(keyword)
+                _list.append(keyword.technology)
+
+        return unique_keywords
 
 
 class ListKeywordProjects(APIView):
