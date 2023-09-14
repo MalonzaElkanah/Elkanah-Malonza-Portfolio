@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+from datetime import timedelta
 
 
 # import django_heroku
@@ -68,6 +69,15 @@ GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = os.path.join(
 )
 GOOGLE_DRIVE_STORAGE_MEDIA_ROOT = "my-portfolio"  # OPTIONAL
 
+#
+# SIMPLE JWT SETTINGS
+#
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+}
+
 
 # Application definition
 
@@ -87,6 +97,7 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     "corsheaders",
     "django_filters",
+    "rest_framework_simplejwt",
 ]
 
 MIDDLEWARE = [
@@ -122,6 +133,7 @@ REST_FRAMEWORK = {
     # "DEFAULT_FILTER_BACKENDS": ("django_filters.rest_framework.DjangoFilterBackend",),
     "DEFAULT_AUTHENTICATION_CLASSES": (
         # 'rest_framework.authentication.TokenAuthentication',
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
         "MyPortfolio.api.authentication.BearerAuthentication",
         "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.SessionAuthentication",

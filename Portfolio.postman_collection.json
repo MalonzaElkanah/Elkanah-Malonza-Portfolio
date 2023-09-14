@@ -9,7 +9,7 @@
 			"name": "auth",
 			"item": [
 				{
-					"name": "Token",
+					"name": "Token - Obtain Token",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -23,12 +23,42 @@
 							}
 						},
 						"url": {
-							"raw": "{{base_url}}/token-auth/",
+							"raw": "{{base_url}}/auth/token/",
 							"host": [
 								"{{base_url}}"
 							],
 							"path": [
-								"token-auth",
+								"auth",
+								"token",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Token - Refresh Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY5NDgwNjMyNCwiaWF0IjoxNjk0NzE5OTI0LCJqdGkiOiJhYzY1NWVmNjhiMDg0NGY4YmZlNmZjOTdkMzk3ZDRhMCIsInVzZXJfaWQiOjF9.EZ6XMHtH1T4JbH2srQ9NoW1aMXIQ7zxNMiRTcFwKWag\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/token/refresh/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"token",
+								"refresh",
 								""
 							]
 						}
@@ -158,6 +188,30 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Category Articles - List",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/blog/categories/1/articles/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"blog",
+										"categories",
+										"1",
+										"articles",
+										""
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -214,6 +268,9 @@
 						{
 							"name": "Series - Retrieve",
 							"request": {
+								"auth": {
+									"type": "noauth"
+								},
 								"method": "GET",
 								"header": [],
 								"url": {
@@ -274,6 +331,30 @@
 										"blog",
 										"series",
 										"5",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Series Articles - List",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/blog/series/5/articles/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"blog",
+										"series",
+										"5",
+										"articles",
 										""
 									]
 								}
@@ -405,6 +486,29 @@
 										"blog",
 										"articles",
 										"6",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Article - Featured",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/blog/articles/featured/",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"blog",
+										"articles",
+										"featured",
 										""
 									]
 								}
@@ -2790,7 +2894,7 @@
 		},
 		{
 			"key": "token",
-			"value": "66bee8cef488b5192ba460365ef49b57f479298f",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk0NzI0Njc4LCJpYXQiOjE2OTQ3MjQzNzgsImp0aSI6IjFkMWU5YzRlNDdkYTRlZDNhMWNkZTU1MDJjY2E0MTBmIiwidXNlcl9pZCI6MX0.xMaj-ciyXAn_gAiVlRW5JliF0tC5AT4aYH8F3Mfgjl4",
 			"type": "default"
 		}
 	]

@@ -19,8 +19,10 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 from django.conf import settings
 
-from rest_framework.authtoken import views as authtoken_views
+# from rest_framework.authtoken import views as authtoken_views
 from rest_framework.schemas import get_schema_view
+
+from rest_framework_simplejwt import views as jwt_views
 
 from . import views
 
@@ -33,8 +35,16 @@ schema_view = get_schema_view(
 )
 
 urlpatterns_v1 = [
-    path("auth/", include("rest_framework.urls")),
-    path("token-auth/", authtoken_views.obtain_auth_token, name="api-token"),
+    path(
+        "auth/token/", jwt_views.TokenObtainPairView.as_view(), name="token_obtain_pair"
+    ),
+    path(
+        "auth/token/refresh/",
+        jwt_views.TokenRefreshView.as_view(),
+        name="token_refresh",
+    ),
+    # path("auth/", include("rest_framework.urls")),
+    # path("token-auth/", authtoken_views.obtain_auth_token, name="api-token"),
     path("", schema_view),
     path("blog/", include("blog.api.urls")),
     path("", include("admin.api.urls")),

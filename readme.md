@@ -18,7 +18,7 @@ Built with Django and Django-REST-Framework
 ### Implemented
 
 #### Auth
-1. Generate token (Login), Revoke token by User
+1. JWT Authentication
 
 #### Projects
 1. Create, List, Read, Update and Delete Project.
@@ -96,7 +96,6 @@ Built with Django and Django-REST-Framework
 - Change id field to UUIDField
 
 #### Auth
-- JWT Authentication
 
 #### Project
 - Video Demo (Youtube)
@@ -154,6 +153,7 @@ python manage.py test
 
 
 ## API Documentation
+- **POSTMAN Collection Docs** [Portfolio.postman_collection.json](Portfolio.postman_collection.json)
 - **DRF Docs:** [http://127.0.0.1:8000/api/v1/](http://127.0.0.1:8000/api/v1/)
 - **OpenAPI Specification Docs:** [http://127.0.0.1:8000/?format=openapi-json](http://127.0.0.1:8000/?format=openapi-json)
 
