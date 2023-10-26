@@ -9,7 +9,7 @@ django-cors-headers
 django-filter==23.2
 django-googledrive-storage
 djangorestframework
-djangorestframework_simplejwt
+djangorestframework-simplejwt
 google-api-core
 google-api-python-client==2.93.0
 google-auth

@@ -132,7 +132,7 @@ def contact_me(request):
 
 
 def auth_login(request):
-    if request.is_ajax():
+    if request.method == "POST":
         user = authenticate(
             request,
             username=request.POST["username"],

@@ -11,8 +11,10 @@ router = DefaultRouter()
 router.register(r"social-links", views.SocialLinkModelViewSet)
 router.register(r"education", views.EducationModelViewSet)
 router.register(r"professional-skills", views.ProfessionalSkillHighlightModelViewSet)
+router.register(r"technical-skills", views.TechnicalSkillHighlightModelViewSet)
 router.register(r"services", views.ServiceModelViewSet)
 router.register(r"testimonies", views.TestimonyModelViewSet)
+router.register(r"email-settings", views.EmailAppModelViewSet)
 
 work_router = DefaultRouter()
 work_router.register(r"highlights", views.WorkHighlightModelViewSet)
@@ -24,6 +26,7 @@ pricing_router = DefaultRouter()
 pricing_router.register(r"keywords", views.PricingKeywordModelViewSet)
 
 urlpatterns = [
+    path("me/", views.RetrieveMyProfile.as_view(), name="profile_retrieve_my-profile"),
     path("", views.ListCreateProfile.as_view(), name="profile_list_create_api"),
     path(
         "<int:pk>/",
@@ -50,11 +53,11 @@ urlpatterns = [
         views.RetrieveUpdateDestroySkill.as_view(),
         name="skill_retrieve_update_destroy_api",
     ),
-    path(
-        "<int:profile_pk>/technical-skills/",
-        views.ListTechnicalSkillHighlight.as_view(),
-        name="technical-skills_list_api",
-    ),
+    # path(
+    #     "<int:profile_pk>/technical-skills/",
+    #     views.ListTechnicalSkillHighlight.as_view(),
+    #     name="technical-skills_list_api",
+    # ),
     path(
         "<int:profile_pk>/pricing/",
         views.ListCreatePricing.as_view(),

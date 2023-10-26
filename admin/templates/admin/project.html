@@ -100,7 +100,7 @@
 							                <p>{{project.description}}</p>
 							            </div>
 						                <div class="col-12">
-					                    {% for keyword in project.keywords %}
+					                    {% for keyword in project.keywords.all %}
 					                        <a href="#" class="btn btn-primary">{{keyword.technology}}</a>
 					                    {% endfor %}
 						                </div>

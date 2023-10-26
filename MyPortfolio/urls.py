@@ -24,6 +24,13 @@ from rest_framework.schemas import get_schema_view
 
 from rest_framework_simplejwt import views as jwt_views
 
+from drf_spectacular.views import (
+    SpectacularAPIView,
+    SpectacularRedocView,
+    SpectacularSwaggerView,
+)
+
+
 from . import views
 
 
@@ -50,6 +57,17 @@ urlpatterns_v1 = [
     path("", include("admin.api.urls")),
     path("projects/", include("projects.api.urls")),
     path("profile/", include("profile_settings.api.urls")),
+    # YOUR PATTERNS
+    path("schema/", SpectacularAPIView.as_view(), name="schema"),
+    # Optional UI:
+    path(
+        "schema/swagger-ui/",
+        SpectacularSwaggerView.as_view(url_name="schema"),
+        name="swagger-ui",
+    ),
+    path(
+        "schema/redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"
+    ),
 ]
 
 # versions from the Apis(v1,v2)

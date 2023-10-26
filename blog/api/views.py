@@ -67,11 +67,6 @@ class ListCreateArticle(generics.ListCreateAPIView):
         category_data = serializer.validated_data.pop("category")
         series = serializer.validated_data.get("series", None)
 
-        if series:
-            series = ArticleSeries.objects.get_or_create(
-                name=serializer.validated_data.pop("category"), user=request.user
-            )
-
         article = Article(
             **serializer.validated_data,
             category=ArticleCategory.objects.get_or_create(
@@ -79,6 +74,13 @@ class ListCreateArticle(generics.ListCreateAPIView):
             )[0],
             user=request.user
         )
+
+        if series:
+            series = ArticleSeries.objects.get_or_create(
+                name=serializer.validated_data.pop("series"), user=request.user
+            )
+            article.series = series
+
         article.save()
 
         return Response(

@@ -43,6 +43,34 @@ class ProjectSerializer(serializers.ModelSerializer):
         return instance
 
 
+class ProjectListCreateSerializer(serializers.ModelSerializer):
+    images = ImageSerializer(many=True, write_only=True, required=False)
+    keywords = KeywordSerializer(many=True)
+
+    class Meta:
+        model = Project
+        fields = "__all__"
+        extra_kwargs = {
+            "profile": {"read_only": True, "required": False},
+            "images": {"required": False, "write_only": True},
+        }
+
+    def update(self, instance, validated_data):
+        for attr, value in validated_data.items():
+            if attr == "images":
+                for item in value:
+                    ProjectImage.objects.get_or_create(**item, project=instance)
+            elif attr == "keywords":
+                for item in value:
+                    ProjectKeyword.objects.get_or_create(**item, project=instance)
+            else:
+                setattr(instance, attr, value)
+
+        instance.save()
+
+        return instance
+
+
 class ProjectImageSerializer(serializers.ModelSerializer):
     # project = ProjectSerializer()
 

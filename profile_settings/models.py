@@ -15,18 +15,8 @@ gd_storage = GoogleDriveStorage()
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(
-        upload_to="image/profile/",
-        max_length=1000,
-        default="image/profile/default_profile.jpg",
-        storage=gd_storage,
-    )
-    cv_file = models.FileField(
-        upload_to="file/profile/cv/",
-        max_length=1000,
-        default="file/profile/cv/default_cv.pdf",
-        storage=gd_storage,
-    )
+    image = models.URLField()
+    cv_file = models.URLField(null=True)
     first_name = models.CharField("First Name", max_length=50)
     second_name = models.CharField("Second Name", max_length=50)
     email_1 = models.CharField("Email 1", max_length=50)
@@ -69,12 +59,13 @@ class Project(models.Model):
     profile = models.ForeignKey(
         Profile, related_name="projects", on_delete=models.CASCADE
     )
-    image = models.ImageField(
-        upload_to="image/project/",
-        max_length=1000,
-        default="image/project/project.jpg",
-        storage=gd_storage,
-    )
+    # image = models.ImageField(
+    #    upload_to="image/project/",
+    #    max_length=1000,
+    #    default="image/project/project.jpg",
+    #    storage=gd_storage,
+    # )
+    image = models.URLField(null=True)
     name = models.CharField("Projects", max_length=200)
     description = models.TextField()
     url = models.URLField(null=True)

@@ -100,7 +100,7 @@
 				                            </td>
 					                        <td>{{skill.name}}</td>
 					                        <td class="align-middle">
-			                              	{% for keyword in skill.keywords %}
+			                              	{% for keyword in skill.keywords.all %}
 			                              		<div class="badge badge-info badge-shadow">{{keyword.name}}</div>
 			                              	{% endfor %}
 					                        </td>
@@ -159,7 +159,7 @@
 				                            <td class="align-middle">
 						                        <select class="form-control" name="skill_keyword">
 						                        {% for skill in skills %}
-				                              		{% for keyword in skill.keywords %}
+				                              		{% for keyword in skill.keywords.all %}
 				                              			{% if tech.skill_keyword.id == keyword.id %}
 				                              		<option value="{{keyword.id}}" selected="">{{keyword.name}}</option>
 				                              			{% else %}
@@ -193,7 +193,7 @@
 				                            <td class="align-middle">
 						                        <select class="form-control" name="skill_keyword">
 						                        {% for skill in skills %}
-				                              		{% for keyword in skill.keywords %}
+				                              		{% for keyword in skill.keywords.all %}
 				                              		<option value="{{keyword.id}}">{{keyword.name}}</option>
 				                              		{% endfor %}
 				                              	{% endfor %}

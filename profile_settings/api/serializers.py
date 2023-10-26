@@ -23,6 +23,14 @@ from blog.models import Article
 from MyPortfolio.api.serializers import UserProfileSerializer
 
 
+class MyProfileSerializer(serializers.ModelSerializer):
+    user = UserProfileSerializer(read_only=True)
+
+    class Meta:
+        model = Profile
+        fields = ["id", "image", "first_name", "second_name", "user"]
+
+
 class ProfileSocialLinkSerializer(serializers.ModelSerializer):
     class Meta:
         model = SocialLink
@@ -224,11 +232,39 @@ class SkillSerializer(serializers.ModelSerializer):
 
 
 class TechnicalSkillHighlightSerializer(serializers.ModelSerializer):
-    skill_keyword = SkillKeywordSerializer(read_only=True)
+    skill_keyword = SkillKeywordSerializer()
 
     class Meta:
         model = TechnicalSkillHighlight
         fields = "__all__"
+
+    def create(self, validated_data):
+        print(validated_data)
+
+        percentage = validated_data.get("percentage")
+        print(percentage)
+        keyword = validated_data.get("skill_keyword").get("name")
+        print(keyword)
+
+        keywords = SkillKeyword.objects.filter(name__contains=keyword)
+        print(keywords)
+
+        return TechnicalSkillHighlight.objects.create(
+            percentage=percentage, skill_keyword=keywords[0]
+        )
+
+    def update(self, instance, validated_data):
+        for attr, value in validated_data.items():
+            if attr == "skill_keyword":
+                keywords = SkillKeyword.objects.filter(name__contains=value["name"])
+                if keywords.exists():
+                    setattr(instance, attr, keywords[0])
+            else:
+                setattr(instance, attr, value)
+
+        instance.save()
+
+        return instance
 
 
 class ProfessionalSkillHighlightSerializer(serializers.ModelSerializer):

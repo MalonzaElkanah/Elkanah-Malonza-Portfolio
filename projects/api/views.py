@@ -10,6 +10,7 @@ from profile_settings.models import (
     ProjectImage,
 )
 from projects.api.serializers import (
+    ProjectListCreateSerializer,
     ProjectSerializer,
     ProjectImageSerializer,
     ProjectKeywordSerializer,
@@ -27,7 +28,7 @@ from MyPortfolio.api.exceptions import CustomException
 
 class ListCreateProject(generics.ListCreateAPIView):
     queryset = Project.objects.all()
-    serializer_class = ProjectSerializer
+    serializer_class = ProjectListCreateSerializer  # ProjectSerializer
     permission_classes = [
         IsAuthenticatedOrReadOnly,
     ]

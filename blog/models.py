@@ -45,12 +45,7 @@ class ArticleCategory(models.Model):
 
 class Article(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField(
-        upload_to="image/blog/",
-        max_length=1000,
-        default="image/blog/blog_default.jpg",
-        storage=gd_storage,
-    )
+    image = models.URLField(null=True)
     title = models.CharField("Title", max_length=50)
     content = models.TextField()
     tags = models.CharField("Tags", max_length=50)

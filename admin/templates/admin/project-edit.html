@@ -109,7 +109,7 @@
                                         <div class="form-row">
                                             <div class="form-group col-md-8">
                                                 <label>Technologies</label>
-                                                <input type="text" class="form-control inputtags" name="keywords" value="{% for keyword in project.keywords %}
+                                                <input type="text" class="form-control inputtags" name="keywords" value="{% for keyword in project.keywords.all %}
                                               {{keyword.technology}},
                                             {% endfor %}" required>
                                             </div>

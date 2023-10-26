@@ -74,10 +74,26 @@ GOOGLE_DRIVE_STORAGE_MEDIA_ROOT = "my-portfolio"  # OPTIONAL
 #
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "ACCESS_TOKEN_LIFETIME": timedelta(
+        minutes=int(os.getenv("ACCESS_TOKEN_LIFETIME", default=5))
+    ),
+    "REFRESH_TOKEN_LIFETIME": timedelta(
+        days=int(os.getenv("REFRESH_TOKEN_LIFETIME", default=1))
+    ),
 }
 
+#
+# LOG USER ACTIVITIES
+#
+
+ACTIVATE_LOGS = True
+LOG_AUTHENTICATED_USERS_ONLY = False
+IP_ADDRESS_HEADERS = (
+    "HTTP_X_REAL_IP",
+    "HTTP_CLIENT_IP",
+    "HTTP_X_FORWARDED_FOR",
+    "REMOTE_ADDR",
+)
 
 # Application definition
 
@@ -98,6 +114,8 @@ INSTALLED_APPS = [
     "corsheaders",
     "django_filters",
     "rest_framework_simplejwt",
+    "drf_spectacular",
+    "drf_spectacular_sidecar",
 ]
 
 MIDDLEWARE = [
@@ -109,6 +127,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "MyPortfolio.api.middleware.UserLoggerMiddleware",
 ]
 
 ROOT_URLCONF = "MyPortfolio.urls"
@@ -140,10 +159,24 @@ REST_FRAMEWORK = {
     ),
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 15,
+    # YOUR SETTINGS
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
 WSGI_APPLICATION = "MyPortfolio.wsgi.application"
 
+
+# Docs
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Portfolio",
+    "DESCRIPTION": "My Portfolio",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+    "SWAGGER_UI_DIST": "SIDECAR",  # shorthand to use the sidecar instead
+    "SWAGGER_UI_FAVICON_HREF": "SIDECAR",
+    "REDOC_DIST": "SIDECAR",
+    # OTHER SETTINGS
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -155,34 +188,6 @@ WSGI_APPLICATION = "MyPortfolio.wsgi.application"
     }
 }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'my_database',
-        'USER': 'root',
-        'PASSWORD': 'your_password',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        }
-    }
-}
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": os.getenv("PGNAME"),
-        "USER": os.getenv("PGUSER"),
-        "PASSWORD": os.getenv("PGPASSWORD"),
-        "HOST": os.getenv("PGHOST"),
-        "PORT": os.getenv("PGPORT"),
-        "OPTIONS": {
-            "init_command": "SET sql_mode='STRICT_TRANS_TABLES'"
-        }
-    }
-}
-"""
 
 DATABASES = {
     "default": {
@@ -192,6 +197,20 @@ DATABASES = {
         "PASSWORD": "Pass1234",
         "HOST": "localhost",
         "PORT": "5432",
+    }
+}
+
+"""
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": os.getenv("PGNAME"),
+        "USER": os.getenv("PGUSER"),
+        "PASSWORD": os.getenv("PGPASSWORD"),
+        "HOST": os.getenv("PGHOST"),
+        "PORT": os.getenv("PGPORT"),
+        "OPTIONS": {"init_command": "SET sql_mode='STRICT_TRANS_TABLES'"},
     }
 }
 

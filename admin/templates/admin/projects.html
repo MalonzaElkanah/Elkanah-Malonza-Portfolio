@@ -97,7 +97,7 @@
 				                              	<img alt="image" src="{{project.image.url}}" width="35">
 				                            </td>
 				                            <td>
-				                            {% for keyword in project.keywords %}
+				                            {% for keyword in project.keywords.all %}
 				                              {{keyword.technology}},
 				                            {% endfor %}
 				                            </td>

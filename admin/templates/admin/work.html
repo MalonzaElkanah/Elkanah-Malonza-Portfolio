@@ -98,7 +98,7 @@
                                     </p>
                                     <div>
                                         <ul>
-                                        {% for highlight in work.highlights %}
+                                        {% for highlight in work.highlights.all %}
                                             <li>{{highlight.name}}</li>
                                         {% endfor %}
                                         </ul>

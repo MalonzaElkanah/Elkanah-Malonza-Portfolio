@@ -102,7 +102,7 @@
                                                  <input type="text" class="form-control" name="end_date" value="{{work.end_date|date:"Y-m-d"}}" required>
                                             </div>
                                         </div>
-                                        {% for highlight in work.highlights %}
+                                        {% for highlight in work.highlights.all %}
                                         <div class="edit-highlight-info">
                                             <div class="row form-row highlight-cont">
                                                 <div class="col-10">

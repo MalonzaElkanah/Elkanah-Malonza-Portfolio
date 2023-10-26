@@ -83,7 +83,7 @@
                                         <div class="form-row">
                                             <div class="form-group col-md-12">
                                                 <label>Keywords</label>
-                                                <input type="text" class="form-control" name="keywords" value="{% for keyword in skill.keywords %} {{keyword.name}}, {% endfor %}">
+                                                <input type="text" class="form-control" name="keywords" value="{% for keyword in skill.keywords.all %} {{keyword.name}}, {% endfor %}">
                                             </div>
                                         </div>
                                         <div class="form-row">

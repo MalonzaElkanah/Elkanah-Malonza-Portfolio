@@ -2,6 +2,8 @@ from rest_framework import generics, viewsets, status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework.views import APIView
+
 
 from profile_settings.models import (
     Profile,
@@ -34,6 +36,7 @@ from profile_settings.api.serializers import (
     PricingSerializer,
     PricingKeywordSerializer,
     EmailAppSerializer,
+    MyProfileSerializer,
 )
 from MyPortfolio.api.permissions import (
     IsOwnerOrReadOnly,
@@ -43,6 +46,7 @@ from profile_settings.api.permissions import (
     IsOwnerProfileOrReadOnly,
     IsOwnerWorkOrReadOnly,
     IsOwnerSkillOrReadOnly,
+    IsOwnerSkillKeywordOrReadOnly,
     IsOwnerPricingOrReadOnly,
     IsOwnerProfile,
 )
@@ -83,6 +87,30 @@ class RetrieveUpdateDestroyProfile(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [
         IsOwnerOrReadOnly,
     ]
+
+
+class RetrieveMyProfile(APIView):
+    permission_classes = [
+        IsAuthenticated,
+    ]
+
+    def get(self, request, format=None):
+        """
+        Retrieve THE authenticated user profile
+        """
+        if self.request.user.is_authenticated:
+            profile = Profile.objects.filter(user=self.request.user.id)
+
+            if not profile.exists():
+                raise CustomException("Error: Profile not Found")
+
+            return Response(
+                MyProfileSerializer(profile.first()).data, status=status.HTTP_200_OK
+            )
+
+        raise CustomException(
+            "Authentication credentials were not provided.", status=401
+        )
 
 
 class SocialLinkModelViewSet(viewsets.ModelViewSet):
@@ -307,6 +335,24 @@ class ListTechnicalSkillHighlight(generics.ListAPIView):
     serializer_class = TechnicalSkillHighlightSerializer
     permission_classes = [
         IsAuthenticatedOrReadOnly,
+    ]
+
+    def get_queryset(self):
+        profile = Profile.objects.filter(id=self.kwargs["profile_pk"])
+        if not profile.exists():
+            raise CustomException("Error: Profile not Found")
+
+        return TechnicalSkillHighlight.objects.filter(
+            skill_keyword__skill__profile=profile[0].id
+        )
+
+
+class TechnicalSkillHighlightModelViewSet(viewsets.ModelViewSet):
+    queryset = TechnicalSkillHighlight.objects.all()
+    serializer_class = TechnicalSkillHighlightSerializer
+    permission_classes = [
+        IsAuthenticatedOrReadOnly,
+        IsOwnerSkillKeywordOrReadOnly,
     ]
 
     def get_queryset(self):
