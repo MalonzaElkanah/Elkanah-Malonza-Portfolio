@@ -20,5 +20,24 @@ urlpatterns = [
         name="change-password",
     ),
     path("activity-logs/", views.ListActivityLogs.as_view(), name="activity_log_list"),
+    path(
+        "visitors/daily/", views.ListDailyVisitor.as_view(), name="daily_visitor_list"
+    ),
+    path(
+        "visitors/weekly/",
+        views.ListWeeklyVisitor.as_view(),
+        name="weekly_visitor_list",
+    ),
+    path(
+        "visitors/monthly/",
+        views.ListMonthlyVisitor.as_view(),
+        name="monthly_visitor_list",
+    ),
+    path(
+        "visitors/yearly/",
+        views.ListYearlyVisitor.as_view(),
+        name="yearly_visitor_list",
+    ),
+    path("visitors/stats/", views.RetrieveVisitorStat.as_view(), name="visitors_stat"),
     path("", include(admin_router.urls)),
 ]

@@ -57,3 +57,16 @@ class ActivityLogSerializer(serializers.ModelSerializer):
     class Meta:
         model = ActivityLog
         fields = "__all__"
+
+
+class VisitorSerializer(serializers.Serializer):
+    date = serializers.DateField(required=True)
+    ip_addresses = serializers.ListField(child=serializers.IPAddressField())
+    requests_count = serializers.IntegerField(min_value=0, required=False)
+
+
+class VisitorStatSerializer(serializers.Serializer):
+    day = serializers.IntegerField(min_value=0)
+    week = serializers.IntegerField(min_value=0)
+    month = serializers.IntegerField(min_value=0)
+    year = serializers.IntegerField(min_value=0)

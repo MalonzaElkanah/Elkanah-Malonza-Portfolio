@@ -93,6 +93,14 @@ class RetrieveUpdateDestroyArticle(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ArticleSerializer
     permission_classes = [IsOwnerOrReadOnly]
 
+    def retrieve(self, request, *args, **kwargs):
+        obj = self.get_object()
+        # Update Views
+        obj.views = obj.views + 1
+        obj.save()
+
+        return Response(self.get_serializer(obj).data, status=status.HTTP_200_OK)
+
 
 class FeaturedArticlesAPIView(APIView):
     """

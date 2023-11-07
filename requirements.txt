@@ -10,6 +10,8 @@ django-filter==23.2
 django-googledrive-storage
 djangorestframework
 djangorestframework-simplejwt
+drf_spectacular
+drf_spectacular_sidecar
 google-api-core
 google-api-python-client==2.93.0
 google-auth
@@ -21,6 +23,7 @@ idna==3.4
 importlib-metadata==6.8.0
 ipython
 Markdown==3.4.3
+mysqlclient
 Pillow
 pre-commit
 protobuf==4.23.4

@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 # from rest_framework.authtoken import views as authtoken_views
-from rest_framework.schemas import get_schema_view
+# from rest_framework.schemas import get_schema_view
 
 from rest_framework_simplejwt import views as jwt_views
 
@@ -34,12 +34,12 @@ from drf_spectacular.views import (
 from . import views
 
 
-schema_view = get_schema_view(
-    title="Portfolio APIs",
-    description="API Docs for Portfolio APIs",
-    url="https://elkanahmalonza.pythonanywhere.com/",
-    version="1.0.0",
-)
+# schema_view = get_schema_view(
+#     title="Portfolio APIs",
+#     description="API Docs for Portfolio APIs",
+#     url="https://elkanahmalonza.pythonanywhere.com/",
+#     version="1.0.0",
+# )
 
 urlpatterns_v1 = [
     path(
@@ -52,7 +52,7 @@ urlpatterns_v1 = [
     ),
     # path("auth/", include("rest_framework.urls")),
     # path("token-auth/", authtoken_views.obtain_auth_token, name="api-token"),
-    path("", schema_view),
+    path("", SpectacularRedocView.as_view(url_name="schema"), name="docs"),
     path("blog/", include("blog.api.urls")),
     path("", include("admin.api.urls")),
     path("projects/", include("projects.api.urls")),

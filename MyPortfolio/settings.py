@@ -188,20 +188,7 @@ SPECTACULAR_SETTINGS = {
     }
 }
 
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "portfolio_test",
-        "USER": "malone",
-        "PASSWORD": "Pass1234",
-        "HOST": "localhost",
-        "PORT": "5432",
-    }
-}
-
 """
-
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
