@@ -1,5 +1,6 @@
 asgiref==3.7.2
 backports.zoneinfo;python_version<"3.9"
+beautifulsoup4
 cachetools==4.2.4
 certifi
 charset-normalizer==3.2.0
@@ -24,6 +25,7 @@ importlib-metadata==6.8.0
 ipython
 Markdown==3.4.3
 mysqlclient
+pdfkit
 Pillow
 pre-commit
 protobuf==4.23.4
@@ -36,6 +38,7 @@ python-dotenv
 pytz==2023.3
 requests==2.31.0
 rsa==4.9
+selenium
 six==1.16.0
 sqlparse==0.4.4
 typing-extensions==4.7.1

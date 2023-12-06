@@ -57,6 +57,7 @@ urlpatterns_v1 = [
     path("", include("admin.api.urls")),
     path("projects/", include("projects.api.urls")),
     path("profile/", include("profile_settings.api.urls")),
+    path("", include("jobs.api.urls")),
     # YOUR PATTERNS
     path("schema/", SpectacularAPIView.as_view(), name="schema"),
     # Optional UI:

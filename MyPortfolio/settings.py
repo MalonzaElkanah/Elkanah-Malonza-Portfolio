@@ -95,6 +95,16 @@ IP_ADDRESS_HEADERS = (
     "REMOTE_ADDR",
 )
 
+#
+# WEB SCRAPPER SETTINGS
+#
+# I prefer my scripts to run quietly in the background, so I use a tool called
+# PhantomJS in lieu of an actual browser.
+# PhantomJS can be downloaded from: http://phantomjs.org/download.html
+
+WEB_DRIVER_PATH = ""
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -108,6 +118,7 @@ INSTALLED_APPS = [
     "profile_settings.apps.ProfileSettingsConfig",
     "projects.apps.ProjectsConfig",
     "admin.apps.AdminConfig",
+    "jobs.apps.JobsConfig",
     "gdstorage",
     "rest_framework",
     "rest_framework.authtoken",
@@ -188,7 +199,20 @@ SPECTACULAR_SETTINGS = {
     }
 }
 
-"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'my_database',
+        'USER': 'root',
+        'PASSWORD': 'your_password',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
+    }
+}
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
@@ -197,7 +221,21 @@ DATABASES = {
         "PASSWORD": os.getenv("PGPASSWORD"),
         "HOST": os.getenv("PGHOST"),
         "PORT": os.getenv("PGPORT"),
-        "OPTIONS": {"init_command": "SET sql_mode='STRICT_TRANS_TABLES'"},
+        "OPTIONS": {
+            "init_command": "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
+    }
+}
+"""
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "portfolio_test",
+        "USER": "malone",
+        "PASSWORD": "Pass1234",
+        "HOST": "localhost",
+        "PORT": "5432",
     }
 }
 
@@ -228,7 +266,7 @@ X_FRAME_OPTIONS = "SAMEORIGIN"
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Africa/Nairobi"
 
 USE_I18N = True
 

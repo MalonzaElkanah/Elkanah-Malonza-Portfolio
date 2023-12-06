@@ -167,9 +167,13 @@ python manage.py test
 - [Django(4.2.3)](https://docs.djangoproject.com/en/4.2/intro/overview/)
 - [Django Rest Framework](https://www.django-rest-framework.org/)
 
-
+```
+Google’s GeoChart library to create an interesting map chart:
+https://developers.google.com/chart/interactive/docs/gallery/geochart
 
 ```
+
+```py
 class HasIDMixin(models.Model):
     id = models.UUIDField(
         primary_key=True,
