@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.html import strip_tags
 from django.contrib.auth.models import User
 
 # Create your models here.
@@ -85,6 +86,10 @@ class Project(models.Model):
 
     def highlight_keywords(self):
         return ProjectKeyword.objects.filter(project=self.id)[0:7]
+
+    @property
+    def description_text(self):
+        return strip_tags(self.description)
 
 
 class ProjectKeyword(models.Model):

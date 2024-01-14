@@ -95,15 +95,6 @@ IP_ADDRESS_HEADERS = (
     "REMOTE_ADDR",
 )
 
-#
-# WEB SCRAPPER SETTINGS
-#
-# I prefer my scripts to run quietly in the background, so I use a tool called
-# PhantomJS in lieu of an actual browser.
-# PhantomJS can be downloaded from: http://phantomjs.org/download.html
-
-WEB_DRIVER_PATH = ""
-
 
 # Application definition
 
@@ -213,20 +204,6 @@ DATABASES = {
     }
 }
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": os.getenv("PGNAME"),
-        "USER": os.getenv("PGUSER"),
-        "PASSWORD": os.getenv("PGPASSWORD"),
-        "HOST": os.getenv("PGHOST"),
-        "PORT": os.getenv("PGPORT"),
-        "OPTIONS": {
-            "init_command": "SET sql_mode='STRICT_TRANS_TABLES'"
-        }
-    }
-}
-"""
 
 DATABASES = {
     "default": {
@@ -238,7 +215,19 @@ DATABASES = {
         "PORT": "5432",
     }
 }
+"""
 
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": os.getenv("PGNAME"),
+        "USER": os.getenv("PGUSER"),
+        "PASSWORD": os.getenv("PGPASSWORD"),
+        "HOST": os.getenv("PGHOST"),
+        "PORT": os.getenv("PGPORT"),
+        "OPTIONS": {"init_command": "SET sql_mode='STRICT_TRANS_TABLES'"},
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

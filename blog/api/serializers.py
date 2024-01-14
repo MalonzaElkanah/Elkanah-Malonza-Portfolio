@@ -59,7 +59,7 @@ class ArticleSerializer(serializers.ModelSerializer):
     series = SeriesSerializer()
     user = UserSerializer(read_only=True)
     comments = CommentSerializer(read_only=True, many=True)
-    content_text = serializers.CharField()
+    content_text = serializers.CharField(read_only=True)
 
     class Meta:
         model = Article

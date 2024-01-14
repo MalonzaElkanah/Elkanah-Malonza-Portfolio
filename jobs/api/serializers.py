@@ -4,8 +4,8 @@ from jobs.models import JobSite, Job, Qualification, Attribute, Letter, JobAppli
 
 
 class JobSiteSerializer(serializers.ModelSerializer):
-    job_count = serializers.IntegerField()
-    applied_job_count = serializers.IntegerField()
+    job_count = serializers.IntegerField(read_only=True)
+    applied_job_count = serializers.IntegerField(read_only=True)
 
     class Meta:
         model = JobSite

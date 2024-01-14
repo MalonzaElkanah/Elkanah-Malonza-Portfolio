@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
 
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse
@@ -9,8 +10,6 @@ from urllib.parse import urlparse
 import requests
 import logging
 import time
-
-from MyPortfolio.settings import WEB_DRIVER_PATH
 
 
 logging.basicConfig()
@@ -22,16 +21,21 @@ class HTMLCrawler:
         self.driver = None
 
         if site.site_type == "dynamic":
-            self.driver = webdriver.PhantomJS(executable_path=WEB_DRIVER_PATH)
+            options = FirefoxOptions()
+            options.add_argument("--headless")
+            self.driver = webdriver.Firefox()
 
-    def get_page(self, url):
+    def get_page(self, url, selector=None):
         if self.site.site_type == "dynamic":
             self.driver.get(url)
 
             try:
-                WebDriverWait(self.driver, 10).until(
-                    EC.presence_of_element_located((By.CSS_SELECTOR, url))
-                )
+                if selector is not None:
+                    WebDriverWait(self.driver, 10).until(
+                        EC.presence_of_element_located((By.CSS_SELECTOR, selector))
+                    )
+                else:
+                    WebDriverWait(self.driver, 10)
             finally:
                 page_source = self.driver.page_source
         else:
@@ -91,7 +95,7 @@ class HTMLCrawler:
         """
         job_data = []
 
-        bs = self.get_page(self.site.job_list_link)
+        bs = self.get_page(self.site.job_list_link, selector=self.site.job_link_element)
 
         # target_pages = bs.findAll('a', href=re.compile(self.site.job_link_element))
         target_pages = bs.select(self.site.job_link_element)
@@ -105,7 +109,8 @@ class HTMLCrawler:
 
             # self.parse(url=targetPage)
             print(f"Target Page: {target_page}")
-            bs = self.get_page(target_page)
+
+            bs = self.get_page(target_page, selector=self.site.name_element)
 
             if bs:
                 data = {

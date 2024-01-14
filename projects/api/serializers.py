@@ -18,6 +18,7 @@ class KeywordSerializer(serializers.ModelSerializer):
 class ProjectSerializer(serializers.ModelSerializer):
     images = ImageSerializer(many=True)
     keywords = KeywordSerializer(many=True)
+    description_text = serializers.CharField(read_only=True)
 
     class Meta:
         model = Project
@@ -46,6 +47,7 @@ class ProjectSerializer(serializers.ModelSerializer):
 class ProjectListCreateSerializer(serializers.ModelSerializer):
     images = ImageSerializer(many=True, write_only=True, required=False)
     keywords = KeywordSerializer(many=True)
+    description_text = serializers.CharField(read_only=True)
 
     class Meta:
         model = Project
