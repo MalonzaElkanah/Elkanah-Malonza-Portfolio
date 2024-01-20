@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+from django.conf import settings
 from django.utils import timezone
 from django.contrib.auth.models import User
 
@@ -16,7 +18,7 @@ class UploadImage(models.Model):
 
     @property
     def path(self):
-        return self.image.url
+        return f'{settings.BASE_URL}{reverse("admin:uploadimage-image", args=[self.id])}'  # self.image.url
 
 
 class UploadFile(models.Model):
@@ -26,7 +28,7 @@ class UploadFile(models.Model):
 
     @property
     def path(self):
-        return self.file.url
+        return f'{settings.BASE_URL}{reverse("admin:uploadfile-file", args=[self.id])}'  # self.file.url
 
 
 class ActivityLog(models.Model):

@@ -95,6 +95,12 @@ IP_ADDRESS_HEADERS = (
     "REMOTE_ADDR",
 )
 
+#
+# BASE URL SETTINGS
+#
+
+BASE_URL = os.getenv("BASE_URL", default="http://127.0.0.1:8000")
+
 
 # Application definition
 

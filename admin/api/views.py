@@ -1,7 +1,9 @@
+from django.http import FileResponse
 from django.utils import timezone
 
 from rest_framework import viewsets, generics, filters, status
 from rest_framework.views import APIView
+from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 
@@ -19,6 +21,7 @@ from admin.api.serializers import (
 )
 from MyPortfolio.api.permissions import (
     IsAuthenticatedOrPostOnly,
+    IsAuthenticatedOrReadOnly,
     IsOwner,
 )
 from MyPortfolio.api.exceptions import CustomException
@@ -57,6 +60,21 @@ class UploadImageModelViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
+    @action(
+        detail=True,
+        methods=["get"],
+        permission_classes=[IsAuthenticatedOrReadOnly],
+    )
+    def image(self, request, pk=None, **kwargs):
+        instance = self.get_object()
+
+        if instance.image is not None:
+            # req = requests.get(instance.image)
+            # if req.status_code == 200:
+            return FileResponse(instance.image, filename=instance.image.name)
+
+        return Response("Image Not Found", status=status.HTTP_404_NOT_FOUND)
+
 
 class UploadFileModelViewSet(viewsets.ModelViewSet):
     queryset = UploadFile.objects.all()
@@ -67,6 +85,19 @@ class UploadFileModelViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+    @action(
+        detail=True,
+        methods=["get"],
+        permission_classes=[IsAuthenticatedOrReadOnly],
+    )
+    def file(self, request, pk=None, **kwargs):
+        instance = self.get_object()
+
+        if instance.file is not None:
+            return FileResponse(instance.file, filename=instance.file.name)
+
+        return Response("File Not Found", status=status.HTTP_404_NOT_FOUND)
 
 
 class ChangePasswordAPIView(APIView):

@@ -56,7 +56,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
 class ArticleSerializer(serializers.ModelSerializer):
     category = CategorySerializer()
-    series = SeriesSerializer()
+    series = SeriesSerializer(required=False, allow_null=True)
     user = UserSerializer(read_only=True)
     comments = CommentSerializer(read_only=True, many=True)
     content_text = serializers.CharField(read_only=True)
@@ -67,6 +67,7 @@ class ArticleSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             "views": {"read_only": False, "required": False},
             "image": {"required": False},
+            "series": {"required": False},
         }
 
     def update(self, instance, validated_data):
@@ -76,9 +77,12 @@ class ArticleSerializer(serializers.ModelSerializer):
                     **value, user=instance.user
                 )[0]
             elif attr == "series":
-                instance.series = ArticleSeries.objects.get_or_create(
-                    **value, user=instance.user
-                )[0]
+                if value:
+                    instance.series = ArticleSeries.objects.get_or_create(
+                        **value, user=instance.user
+                    )[0]
+                else:
+                    setattr(instance, attr, value)
             else:
                 setattr(instance, attr, value)
 
